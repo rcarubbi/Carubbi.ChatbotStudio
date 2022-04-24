@@ -1,0 +1,51 @@
+#blocklyDiv {
+	height: 80vh;
+	width: 100%;
+	margin-left: 5px;
+}
+
+.blocklyToolboxDiv {
+
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	border-bottom: #c6c6c6 solid 1px;
+	border-left: #c6c6c6 solid 1px;
+	border-top: #c6c6c6 solid 1px;
+	background-color: rgb(34,33,32);
+	color: white;
+}
+
+.blocklySvg{
+
+	border-radius: 6px;
+	border: #c6c6c6 solid 1px;
+}
+
+.blocklyTreeSelected{
+	box-shadow: 0 4px 20px 0 rgba(0, 0, 0,.14), 0 7px 10px -5px rgba(156, 39, 176,.4);
+	background-color: #9c27b0 !important;
+	border-radius: 6px;
+	margin:3px;
+}
+
+.blocklyFlyoutBackground {
+	fill-opacity: 0.5;
+	border-bottom-left-radius: 6px;
+	border-top-left-radius: 6px;
+	fill: unset;
+}
+
+.blocklyTreeRow{
+
+	margin:3px;
+	transition: all 600ms linear;
+}
+
+.blocklyTreeRow:not(.blocklyTreeSelected):hover {
+	margin:3px;
+	background-color: transparent;
+}
+
+.blocklyTreeLabel {
+ 
+}

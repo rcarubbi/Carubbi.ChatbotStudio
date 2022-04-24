@@ -1,0 +1,18 @@
+{
+  "id": 1,
+  "name": "SingleMessage",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Olá"
+        ]
+      },
+      "id": 1
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

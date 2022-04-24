@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{355567DD-F92E-47C9-99B3-FB2654F40323}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Carubbi.BotEditor.Backend.DataAccess</RootNamespace>
+    <AssemblyName>Carubbi.BotEditor.Backend.DataAccess</AssemblyName>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>
+    </CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <LangVersion>7.3</LangVersion>
+    <ErrorReport>prompt</ErrorReport>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Autofac\RepositoriesModule.cs" />
+    <Compile Include="Cache\InMemoryBotConfigCache.cs" />
+    <Compile Include="ConnectionManager.cs" />
+    <Compile Include="Queries\AppAccessQueries.cs" />
+    <Compile Include="Queries\BotQueries.cs" />
+    <Compile Include="Queries\GroupQueries.cs" />
+    <Compile Include="Queries\PermissionQueries.cs" />
+    <Compile Include="Repositories\DapperAppAccessRepository.cs" />
+    <Compile Include="Repositories\DapperBotRepository.cs" />
+    <Compile Include="Repositories\DapperGroupRepository.cs" />
+    <Compile Include="Repositories\DapperPermissionRepository.cs" />
+    <Compile Include="Queries\UserQueries.cs" />
+    <Compile Include="Repositories\DapperUserRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Carubbi.BotEditor.Backend.Domain\Carubbi.BotEditor.Backend.Domain.csproj">
+      <Project>{ead40984-591a-4745-b631-81d7231f5055}</Project>
+      <Name>Carubbi.BotEditor.Backend.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Carubbi.BotEditor.Config\Carubbi.BotEditor.Config.csproj">
+      <Project>{AC52366F-56CB-4267-AA59-4E1694FB7546}</Project>
+      <Name>Carubbi.BotEditor.Config</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Autofac">
+      <Version>4.9.4</Version>
+    </PackageReference>
+    <PackageReference Include="Dapper">
+      <Version>2.0.30</Version>
+    </PackageReference>
+    <PackageReference Include="DapperExtensions">
+      <Version>1.6.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.AspNet.Identity.Core">
+      <Version>2.2.2</Version>
+    </PackageReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

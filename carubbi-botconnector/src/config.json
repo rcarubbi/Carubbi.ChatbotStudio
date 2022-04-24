@@ -1,0 +1,4 @@
+{
+    "directLineEndpoint": "http://127.0.0.1",
+    "botEngineEndpoint": "http://localhost:3979/bot"
+}

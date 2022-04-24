@@ -1,0 +1,39 @@
+{
+  "id": 1,
+  "name": "SimpleConfirm",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "É sua primeira vez por aqui?"
+        ]
+      },
+      "trueStepId": 2,
+      "falseStepId": 3,
+      "durable": false,
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Então seja bem-vindo"
+        ]
+      },
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Que bom te ver de novo!"
+        ]
+      },
+      "id": 3
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

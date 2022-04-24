@@ -1,0 +1,127 @@
+{
+  "id": 16,
+  "name": "ImageClassificationBot",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ImageClassificationStep, Carubbi.BotEditor.Config",
+      "output": [],
+      "durable": false,
+      "minScore": 50.0,
+      "maxResults": 10,
+      "retryMessage": {
+        "typed": [
+          "Não consegui identificar a foto do painel, pode me enviar de novo?"
+        ]
+      },
+      "imageClassificationSettings": {
+        "projectId": "1709c7b2-29c8-4c58-9975-8bda40c0c3cc",
+        "predictionKey": "acc31cd6fc3c4655a95a17d3d4e6efb6",
+        "trainingKey": "2a7797dfc18c45a1b3e59a756858b0ea",
+        "predictionEndpoint": "https://westus2.api.cognitive.microsoft.com/",
+        "trainingEndpoint": "https://westus2.api.cognitive.microsoft.com/",
+        "serviceType": "MicrosoftCustomVision"
+      },
+      "askImageMessage": {
+        "typed": [
+          "Envie a foto de um painel de Agile para verificar as luzes"
+        ]
+      },
+      "errorStepId": 7,
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConditionStep, Carubbi.BotEditor.Config",
+      "conditionExpresssion": "@1.Output.Count > 0",
+      "trueStepId": 3,
+      "falseStepId": 6,
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Os resultados encontrados foram @foreach(var prediction in ViewBag.Step1.Output) { \r\n <text>Tag: @prediction.Tag, Score: @prediction.Score</text> \r\n }"
+        ]
+      },
+      "id": 3,
+      "nextStepId": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.TransformStep, Carubbi.BotEditor.Config",
+      "propertyPath": "@DataSource.Tag",
+      "transformations": [
+        {
+          "inputExpression": "abs_system",
+          "outputExpression": "Sistema ABS"
+        },
+        {
+          "inputExpression": "break_system",
+          "outputExpression": "Freio de mão puxado"
+        },
+        {
+          "inputExpression": "door_open",
+          "outputExpression": "Porta aberta"
+        },
+        {
+          "inputExpression": "engine_cooling",
+          "outputExpression": "Arrefecimento do motor"
+        },
+        {
+          "inputExpression": "engine_oil_pressure",
+          "outputExpression": "Pressão do óleo baixa"
+        },
+        {
+          "inputExpression": "fault_indicator",
+          "outputExpression": "Indicador de Falha"
+        },
+        {
+          "inputExpression": "low_battery",
+          "outputExpression": "Bateria fraca"
+        },
+        {
+          "inputExpression": "low_fuel",
+          "outputExpression": "Pouco combustível"
+        },
+        {
+          "inputExpression": "revision",
+          "outputExpression": "Revisão"
+        }
+      ],
+      "output": [],
+      "id": 4,
+      "nextStepId": 5,
+      "dataSourceExpression": "@1.Output"
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Os resultados encontrados foram @foreach(var prediction in ViewBag.Step4.Output) { \r\n <text>@prediction</text> \r\n }"
+        ]
+      },
+      "id": 5
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Não encontrei nenhuma luz acesa no seu painel"
+        ]
+      },
+      "id": 6
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Não estou conseguindo entender sua foto agora, se quiser tentar de novo é só me chamar"
+        ]
+      },
+      "id": 7
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

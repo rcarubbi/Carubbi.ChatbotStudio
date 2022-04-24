@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[AppAccess]
+(
+	[Id] UNIQUEIDENTIFIER NOT NULL PRIMARY KEY DEFAULT newid(), 
+	[ClientId] VARCHAR(150) NOT NULL,
+	[AccessKey] VARCHAR(350) NOT NULL,
+	[SecretKey] VARCHAR(350) NOT NULL,
+	[ApplicationName] VARCHAR(50) NOT NULL,
+)

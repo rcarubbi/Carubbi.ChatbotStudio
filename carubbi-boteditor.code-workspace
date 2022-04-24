@@ -1,0 +1,22 @@
+{
+	"folders": [
+		{
+			"path": "carubbi-boteditor"
+		}
+	],
+	"settings": {
+		"editor.fontFamily": "Fira Code Retina",
+		"editor.fontSize": 12,
+		"editor.fontLigatures": true,
+		"[html]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"files.associations": {
+			"*.js": "javascriptreact"
+		},
+		"[javascriptreact]": {
+			"editor.defaultFormatter": "esbenp.prettier-vscode"
+		},
+		"editor.formatOnSave": true
+	}
+}

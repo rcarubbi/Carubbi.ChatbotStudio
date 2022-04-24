@@ -1,0 +1,57 @@
+{
+  "id": 1,
+  "name": "ReadGPSLocationStep",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConditionStep, Carubbi.BotEditor.Config",
+      "conditionExpresssion": "@ChannelId == telegram | @ChannelId == facebook",
+      "trueStepId": 2,
+      "falseStepId": 3,
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ReadGPSLocationStep, Carubbi.BotEditor.Config",
+      "askLocationMessage": {
+        "typed": [
+          "Me manda aonde você tá"
+        ]
+      },
+      "durable": false,
+      "errorStepId": 5,
+      "id": 2,
+      "nextStepId": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este canal não da suporte a compartilhamento de localização via GPS"
+        ]
+      },
+      "id": 3
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Você está na latitude @ViewBag.Step2.Output.Latitude e na longitude @ViewBag.Step2.Output.Longitude"
+        ]
+      },
+      "id": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Não consegui ler sua localização, vamos começar de novo"
+        ]
+      },
+      "id": 5
+    }
+  ],
+  "appId": "e4f733bb-75c4-4dc5-a2c9-fe5251316d9e",
+  "appPassword": "H49JEdu8g-:k:-f1J19j.-?lz3orqq0h",
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

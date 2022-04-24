@@ -1,0 +1,204 @@
+{
+  "id": 1,
+  "name": "Carubbi",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Olá",
+          "Oi",
+          "Opa"
+        ],
+        "spoken": [
+          "<speak version=\"1.0\" xmlns=\"https://www.w3.org/2001/10/synthesis\" xml:lang=\"pt-BR\"><voice name=\"pt-BR-HeloisaRUS\">Oi, <prosody contour=\"(25%,+30Hz) (40%,-30%) (80%,+110%)\">Como você está?</prosody></voice></speak>",
+          "<speak version=\"1.0\" xmlns=\"https://www.w3.org/2001/10/synthesis\" xml:lang=\"pt-BR\"><voice name=\"pt-BR-HeloisaRUS\">Olá, <prosody contour=\"(25%,+30Hz) (70%,-30%) (80%,+110%)\">em que posso te ajudar hoje?</prosody></voice></speak>",
+          "<speak version=\"1.0\" xmlns=\"https://www.w3.org/2001/10/synthesis\" xml:lang=\"pt-BR\"><voice name=\"pt-BR-HeloisaRUS\">Opa, <prosody contour=\"(40%,-30Hz) (98%,+30Hz)\">Tudo bem?</prosody></voice></speak>"
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "Você gostou deste bot?"
+        ],
+        "spoken": [
+          "<speak version=\"1.0\" xmlns=\"https://www.w3.org/2001/10/synthesis\" xml:lang=\"pt-BR\"><voice name=\"pt-BR-HeloisaRUS\"><prosody contour=\"(25%,+30Hz) (40%,-30%) (80%,+90%)\">Você gostou dêste Bóte?</prosody></voice></speak>"
+        ]
+      },
+      "trueStepId": 3,
+      "falseStepId": 4,
+      "durable": false,
+      "noAcceptedAnswers": [
+        "não",
+        "nah",
+        "mais ou menos",
+        "não muito"
+      ],
+      "yesAcceptedAnswers": [
+        "sim",
+        "gostei",
+        "é bem legal",
+        "eu curti",
+        "é bacana"
+      ],
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Você respondeu @(ViewBag.Step2.Output == null ? \"Nada\" : ViewBag.Step2.Output.Answer)"
+        ]
+      },
+      "id": 3,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "listType": "ButtonList",
+      "input": [
+        {
+          "order": 0,
+          "title": "Ver endereços",
+          "action": "NavigateStep",
+          "targetStepId": 5
+        },
+        {
+          "order": 0,
+          "title": "Enviar um email",
+          "action": "NavigateStep",
+          "targetStepId": 6
+        },
+        {
+          "order": 0,
+          "title": "Visitar nosso site",
+          "buttonValue": "http://www.carubbi.com",
+          "action": "OpenURL",
+          "targetStepId": 0
+        }
+      ],
+      "durable": false,
+      "promptMessage": {
+        "typed": [
+          "Então como quer entrar em contato com a gente?"
+        ],
+        "spoken": [
+          "<speak version=\"1.0\" xmlns=\"https://www.w3.org/2001/10/synthesis\" xml:lang=\"pt-BR\"><voice name=\"pt-BR-HeloisaRUS\">Então <prosody contour=\"(5%,+30Hz) (40%,-30%)\">como quer entrar em contato com a gente?</prosody></voice></speak>"
+        ]
+      },
+      "id": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.CompositeStep, Carubbi.BotEditor.Config",
+      "name": "Show Maps",
+      "rootStepId": 8,
+      "steps": [
+        {
+          "$type": "Carubbi.BotEditor.Config.Steps.ApiStep, Carubbi.BotEditor.Config",
+          "verb": "GET",
+          "apiURL": "https://carubbiboteditorsamplesapi.azurewebsites.net/api",
+          "parameters": [],
+          "resource": "location",
+          "durable": false,
+          "id": 8,
+          "nextStepId": 9
+        },
+        {
+          "$type": "Carubbi.BotEditor.Config.Steps.MapsStep, Carubbi.BotEditor.Config",
+          "selectable": true,
+          "apiKey": "AssWuoCfzr3Bj3VCRW_MBhW8t8muASrD72l-o40xQabBBDWqAr4-pybu9Ki8FSr6",
+          "input": [
+            {
+              "latitude": "@DataSource.Latitude",
+              "longitude": "@DataSource.Longitude",
+              "address": "@DataSource.Endereco",
+              "zipCode": "@DataSource.Cep",
+              "city": "@DataSource.Cidade",
+              "state": "@DataSource.UF",
+              "name": "@DataSource.Nome",
+              "id": "@DataSource.Id"
+            }
+          ],
+          "durable": false,
+          "serviceType": "BingMaps",
+          "id": 9,
+          "dataSourceExpression": "@8.Output"
+        }
+      ],
+      "id": 5,
+      "nextStepId": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "formFields": [
+        {
+          "id": 1,
+          "name": "Nome",
+          "order": 0,
+          "question": "Por favor informe seu nome",
+          "type": "Text",
+          "optional": false
+        },
+        {
+          "id": 2,
+          "name": "Idade",
+          "order": 0,
+          "question": "Qual sua idade?",
+          "type": "Number",
+          "optional": false
+        }
+      ],
+      "durable": false,
+      "version": 0,
+      "showSummary": true,
+      "includeFieldListOnSummary": true,
+      "includeConfirmationButtonsOnSummary": true,
+      "id": 6,
+      "nextStepId": 1
+    }
+  ],
+  "customCommands": [
+    {
+      "commandText": "/reiniciar",
+      "clearDialogStack": true,
+      "deleteProfile": true,
+      "invalidateCache": false,
+      "customMessageReply": "Certo, vamos recomeçar do zero",
+      "startup": false
+    },
+    {
+      "commandText": "/start",
+      "clearDialogStack": false,
+      "deleteProfile": false,
+      "invalidateCache": false,
+      "startup": true
+    }
+  ],
+  "speechSettings": {
+    "recognition": {
+      "subscriptionKey": "c90f63dde7d3473d89531fbe68f89a94",
+      "serviceRegion": "westus",
+      "language": "pt-BR",
+      "serviceType": "BingSpeech"
+    },
+    "synthesis": {
+      "voiceName": "pt-BR-Daniel-Apollo",
+      "subscriptionKey": "c90f63dde7d3473d89531fbe68f89a94",
+      "serviceRegion": "westus",
+      "language": "pt-BR",
+      "serviceType": "BingSpeech",
+      "cacheType": "InMemory",
+      "storeType": "FileSystem"
+    }
+  },
+  "appId": "f12a0175-1722-449f-a190-6506aaaed04b",
+  "appPassword": "777JFXEGer1bWehi:q?nFuZnyGQ-DzG.",
+  "connectionString": "DefaultEndpointsProtocol=https;AccountName=carubbiboteditorapi;AccountKey=csp3AaBDt10vBEB4vAPbdaotprAYyW8SPngUwv1ajnW0MxHtZS9rtD1gl7BLWqKA1n3VGKql9I7nZn1aJE4KKw==",
+  "persistenceStrategy": "AzureTables",
+  "spokenInteraction": false
+}

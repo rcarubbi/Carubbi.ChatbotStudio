@@ -1,0 +1,32 @@
+- Exibir mensagens
+- Avaliar condições
+- Avaliar Switches
+- Exibir listas de botões
+- Exibir listas de cards com images
+- Exibir listas de cards com images e botões
+- Exibir perguntas de Sim/Não
+- Chamada de API's
+- Exibir formulários  
+- validações de tipos de dados com mensagens configuráveis
+- validações customizadas via API
+- exibir sumários ao final do preenchimento de formulários
+- exibir campos dos tipos texto, numero, data, hora, decimal, opções de única escolha, opções de múltipla escolha, sim/não, CPF 
+- campos especial para recuperação de respostas em conversas anteriores
+- campos de lista com opções dinamicas
+- NLP nas respostas do formulário
+- utilizar entidades recuperadas em NLP's de outros passos como respostas do formulário
+- Exibir perguntas de texto aberto
+- Avaliar sentimento na resposta em perguntas de texto aberto
+- NLP em respostas de perguntas de texto aberto e listas
+- Lista de mapas
+- Classificação de imagens com IA
+- FAQ com IA
+- Composição de passos para reuso
+- Suporte a Templates Razor em mensagens de saída
+- Multiplas credenciais para utilizar o serviço de channel registration do azure
+- Multiplos bots por instância de API
+- Bases de dados apartadas por bot
+- Log de histórico de conversação
+- Suporte a SQL Server on premise e Azure Tables
+- Vincular saidas de API's como origens de dados dos passos de mensagem, mapas, listas, condições e switches
+- comandos globais para reiniciar bot e limpar dados salvos do usuário configuráveis

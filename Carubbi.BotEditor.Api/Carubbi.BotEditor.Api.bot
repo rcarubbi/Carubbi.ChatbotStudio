@@ -1,0 +1,167 @@
+{
+    "name": "Carubbi.BotEditor.Api",
+    "description": "",
+    "services": [
+        {
+            "type": "endpoint",
+            "appId": "f12a0175-1722-449f-a190-6506aaaed04b",
+            "appPassword": "777JFXEGer1bWehi:q?nFuZnyGQ-DzG.",
+            "endpoint": "https://carubbiboteditorapi.azurewebsites.net/bot/carubbi",
+            "id": "4718af50-c320-11e8-a009-498616ca8c53",
+            "name": "Carubbi Prod"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/RandomMessage",
+            "id": "134",
+            "name": "Random Message"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/MultipleMessages",
+            "id": "250",
+            "name": "Multiple Messages"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/SimpleConfirm",
+            "id": "52",
+            "name": "Simple Confirm"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/RetrieveConfirmAnswer",
+            "id": "100",
+            "name": "Retrieve Confirm Answer"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/ConfirmAdvancedConfiguration",
+            "id": "17",
+            "name": "Confirm Advanced Configuration"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/ChainedConfirms",
+            "id": "210",
+            "name": "Chained Confirms"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/simpleinput",
+            "id": "14",
+            "name": "Simple Input"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/SentimentAnalysisInput",
+            "id": "90",
+            "name": "Sentiment Analysis Input"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/nlpinput",
+            "id": "151",
+            "name": "NLP Input"
+        },
+        {
+            "type": "endpoint",
+            "appId": "f03963af-e755-4c94-a6d2-6e5aa47cc463",
+            "appPassword": "fskBbZaDT2]*/?3kOsMPph5qckpa8Uuw",
+            "endpoint": "http://localhost:3979/bot/buttonlist",
+            "id": "101",
+            "name": "Button List"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/imagebuttonlist",
+            "id": "246",
+            "name": "Image Button List"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/ImageListWithNlp",
+            "id": "149",
+            "name": "Image List With NLP"
+        },
+        {
+            "type": "endpoint",
+            "appId": "f12a0175-1722-449f-a190-6506aaaed04b",
+            "appPassword": "777JFXEGer1bWehi:q?nFuZnyGQ-DzG.",
+            "endpoint": "http://localhost:3979/bot/carubbi",
+            "id": "215",
+            "name": "Carubbi"
+        },
+        {
+            "type": "endpoint",
+            "appId": "1489db1a-fcf5-4e14-94a5-70e407c9f870",
+            "appPassword": "JhC-Qyj0vQWs/JV:VIw8*SQPYZEa4FD8",
+            "endpoint": "http://localhost:3979/bot/carubbinlp",
+            "id": "143",
+            "name": "CarubbiNLP"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/imageclassificationbot",
+            "id": "84",
+            "name": "Image Classification"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/faqbot",
+            "id": "65",
+            "name": "Faq"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/simpleform",
+            "id": "6",
+            "name": "Simple Form"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/apivalidationform",
+            "id": "204",
+            "name": "Api Validation Form"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/DynamicFieldsAndOptionsForm",
+            "id": "237",
+            "name": "Dynamic Fields And Options Form"
+        },
+        {
+            "type": "endpoint",
+            "appId": "1489db1a-fcf5-4e14-94a5-70e407c9f870",
+            "appPassword": "JhC-Qyj0vQWs/JV:VIw8*SQPYZEa4FD8",
+            "endpoint": "https://carubbiboteditorapi.azurewebsites.net/bot/carubbinlp",
+            "id": "73",
+            "name": "Carubbi NLP Prod"
+        },
+        {
+            "type": "endpoint",
+            "appId": "e4f733bb-75c4-4dc5-a2c9-fe5251316d9e",
+            "appPassword": "H49JEdu8g-:k:-f1J19j.-?lz3orqq0h",
+            "endpoint": "http://localhost:3979/bot/ReadGPSLocationStep",
+            "id": "190",
+            "name": "Read GPS Location Step"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/showroom",
+            "id": "106",
+            "name": "Showroom"
+        },
+        {
+            "type": "endpoint",
+            "endpoint": "http://localhost:3979/bot/nampai",
+            "id": "177",
+            "name": "teste"
+        }
+    ],
+    "padlock": "",
+    "version": "2.0",
+    "path": "C:\\Users\\ab1300161\\source\\repos\\Carubbi.BotEditor\\Carubbi.BotEditor.Api\\Carubbi.BotEditor.Api.bot",
+    "overrides": null,
+    "secretKey": ""
+}

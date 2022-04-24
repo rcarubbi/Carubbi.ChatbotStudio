@@ -1,0 +1,28 @@
+{
+  "id": 1,
+  "name": "MultipleMessages",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Olá"
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Tudo bem?"
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

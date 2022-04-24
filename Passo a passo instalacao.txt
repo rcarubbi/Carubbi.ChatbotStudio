@@ -1,0 +1,65 @@
+Pre-requisitos:
+Visual Studio
+
+Visual Studio Code: 
+Fonta = Fonte fira code
+
+Sql Management Studio
+Insomnia
+
+.net Framework 4.5.2 (Caso instalado com VS aberto, reiniciar o VS antes de rodar o build)
+IIS Express
+Sql Express
+remover qualquer versao de node pre-instalada
+instalar o NVM
+Node 12.22.1 (instalar via NVM) 
+bot framework emulator v3 (https://github.com/microsoft/BotFramework-Emulator/releases/tag/v3.5.36)
+yarn 1.22.5
+
+chocolatey 0.11.3
+Git for windows 2.33.0.windows.2
+
+1. Clonar repositorio https://github.com/rcarubbi/Carubbi.BotEditor
+2. Configurar todos os projetos para arquitetura x64
+3. Clicar no projeto Database com o botao direito e selecionar publish
+4. Definir a instancia de servidor de banco de dados como MSSqlLocalDb 
+5. Nomear o banco como botEditor e publicar
+6. Rodar projeto Backend.Api, se solicitado, instalar o certificado de desenvolvimento
+
+Configurar usuario padrao
+
+7. Abrir o Insomnia, ir em preferences e remover a opcao Validate Certificates 
+8. Criar uma nova request collection como BotEditor
+9. Clicar no botao + e criar um request chamado CreateUser com as seguintes configurações
+method: POST
+URL: http://localhost:44398/api/Account
+header: Content-type: application/json
+payload: 
+{
+	"username":"admin",
+	"email":"admin@boteditor.com",
+	"password":"admin",
+	"active": 1
+}
+
+Configurar acesso da UI ao backend
+
+10. Criar um novo request chamado GrantBackendAccessToUI com as seguintes configuraçõesÇ
+method: POST
+URL: http://localhost:44398/api/Account
+header: Content-type: application/json
+payload: "BotEditor UI"
+
+copiar o clientId, accesskey e secretKey do response para os proximos passos
+ 
+11. abrir o vs code na pasta carubbi-boteditor
+12. Abrir o arquivo .env e substituir:
+REACT_APP_CLIENT_ID={ClientId}:{AccessKey} 
+REACT_APP_CLIENT_SECRET={SecretKey}
+
+13. Abrir o arquivo configs/clientCredentials.json e substituir client_id={ClientId}:{AccessKey} e client_secret={ClientSecret}
+14. baixar as dependencias com npm install
+
+configurar o bot connector
+
+15. abrir outra instancia do vs code na pasta carubbi-botconnector

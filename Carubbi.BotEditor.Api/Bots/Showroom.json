@@ -1,0 +1,500 @@
+﻿{
+  "id": "YOo#7~vn]BI_)rw7rb@j",
+  "name": "Showroom",
+  "rootStepId": "1",
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "id": "1",
+      "listType": "ButtonList",
+      "promptMessage": {
+        "typed": [ "Olá, tudo bem? Sou seu assistente virtual, em que posso ajudar?" ],
+        "spoken": [],
+        "imageUrls": []
+      },
+      "input": [
+        {
+          "title": "Cancelar Dependente",
+          "subtitle": "",
+          "imageUrl": "",
+          "buttonTitle": "",
+          "buttonValue": "CancelarDependente",
+          "action": "NavigateStep",
+          "targetStepId": "2"
+        },
+        {
+          "title": "Segunda Via",
+          "subtitle": "",
+          "imageUrl": "",
+          "buttonTitle": "",
+          "buttonValue": "SegundaVia",
+          "action": "NavigateStep",
+          "targetStepId": "5"
+        },
+        {
+          "title": "Falar com atendente",
+          "subtitle": "",
+          "imageUrl": "http://",
+          "buttonTitle": "",
+          "buttonValue": "http://www.carubbi.com",
+          "action": "OpenURL"
+        }
+      ],
+      "retryMessage": "",
+      "tooManyAttemptsMessage": "",
+      "durable": false,
+      "attempts": 3,
+      "nlpSettings": "",
+      "nextStepId": null,
+      "dataSourceExpresssion": null
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "version": 0,
+      "id": "2",
+      "nextStepId": "4",
+      "formFields": [
+        {
+          "name": "CPF",
+          "question": "Certo, você quer cancelar um dependente. Por favor me informe seu CPF",
+          "optional": false,
+          "type": "CPF",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "Ops, algo de errado com os dados, vamos tentar novamente!",
+          "activeApiUrl": "",
+          "id": 1
+        },
+        {
+          "name": "Dependente",
+          "question": "Agora me informe qual dependente deseja cancelar?",
+          "optional": false,
+          "type": "SingleOption",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "Ops, me informe o dependente novamente",
+          "activeApiUrl": "",
+          "options": null,
+          "optionsSource": "https://localhost:44325/api/ShowroomListarDependentes",
+          "id": 2
+        },
+        {
+          "name": "Plano",
+          "question": "Qual plano deseja cancelar?",
+          "optional": false,
+          "type": "SingleOption",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "Ops, me informe o plano novamente",
+          "activeApiUrl": "",
+          "options": null,
+          "optionsSource": "https://localhost:44325/api/showroomlistarplanos",
+          "id": 3
+        },
+        {
+          "name": "Motivo",
+          "question": "Qual o motivo do cancelamento?",
+          "optional": false,
+          "type": "SingleOption",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "Ops, me informe o motivo novamente",
+          "activeApiUrl": "",
+          "options": [
+            {
+              "value": "Financeiro",
+              "description": "Financeiro"
+            },
+            {
+              "value": "Insatisfacao",
+              "description": "Insatisfação"
+            },
+            {
+              "value": "RedeCredenciada",
+              "description": "Rede Credenciada"
+            }
+          ],
+          "optionsSource": null,
+          "id": 4
+        }
+      ],
+      "durable": false,
+      "showSummary": false,
+      "summaryText": null,
+      "includeFieldsOnSummary": null,
+      "includeConfirmatioButtonsOnSummary": null,
+      "nlpSettings": "",
+      "configuration": {
+        "yes": [],
+        "no": [],
+        "noPreferenceMessage": [],
+        "choiceLastSeparator": null,
+        "lastSeparator": null,
+        "navigationFieldName": null,
+        "currentChoiceMessage": [],
+        "boolHelpMessage": null,
+        "boolMessage": null,
+        "clarifyMessage": null,
+        "confirmationMessage": null,
+        "dateTimeMessage": null,
+        "dateTimeHelpMessage": null,
+        "doubleHelpMessage": null,
+        "doubleMessage": null,
+        "enumManyNumberHelpMessage": null,
+        "enumOneNumberHelpMessage": null,
+        "enumSelectManyMessage": null,
+        "enumOneWordHelpMessage": null,
+        "enumSelectOneMessage": null,
+        "feedBackMessage": null,
+        "helpMessage": null,
+        "helpClarifyMessage": null,
+        "helpConfirmMessage": null,
+        "helpNavigationMessage": null,
+        "integerMessage": null,
+        "integerHelpMessage": null,
+        "navigationMessage": null,
+        "navigationCommandHelpMessage": null,
+        "navigationFormatMessage": null,
+        "navigationHelpMessage": null,
+        "notUnderstoodMessage": null,
+        "statusFormatMessage": null,
+        "stringMessage": null,
+        "stringHelpMessage": null,
+        "unspecifiedMessage": null,
+        "enumManyWordHelpMessage": null,
+        "commands": {
+          "helpDescription": null,
+          "helpTerms": null,
+          "helpHelpMessage": null,
+          "backupDescription": null,
+          "backupTerms": null,
+          "backupHelpMessage": null,
+          "resetDescription": null,
+          "resetTerms": null,
+          "resetHelpMessage": null,
+          "quitDescription": null,
+          "quitTerms": null,
+          "quitHelpMessage": null,
+          "statusDescription": null,
+          "statusTerms": null,
+          "statusHelpMessage": null
+        }
+      }
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [ "Para maiores informações, consulte o Artigo 15 RN 412 PARA PLANO DE SAÚDE, visite https://bit.ly/2q6uSnQ. \r\n\r\n Aguarde, em instantes você será atendido por um de nossos consultores!" ],
+        "spoken": [],
+        "imageUrls": []
+      },
+      "id": "4",
+      "nextStepId": null
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ApiStep, Carubbi.BotEditor.Config",
+      "id": "8",
+      "nextStepId": null,
+      "verb": "Post",
+      "apiUrl": "https://localhost:44325/api/",
+      "resource": "ShowroomEnviarEmail",
+      "parameters": [
+        {
+          "name": "Email",
+          "value": "@10.Output.Form.Email",
+          "type": "Default"
+        },
+        {
+          "name": "LinkFatura",
+          "value": "@6.Output.LinkFatura",
+          "type": "Default"
+        }
+      ],
+      "durable": false,
+      "datasourceExpresssion": ""
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "version": 0,
+      "id": "10",
+      "nextStepId": "11",
+      "formFields": [
+        {
+          "name": "Email",
+          "question": "Certo, me informe seu e-mail",
+          "optional": false,
+          "type": "Text",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "",
+          "activeApiUrl": "",
+          "id": 1
+        }
+      ],
+      "durable": false,
+      "showSummary": false,
+      "summaryText": null,
+      "includeFieldsOnSummary": null,
+      "includeConfirmatioButtonsOnSummary": null,
+      "nlpSettings": "",
+      "configuration": {
+        "yes": [],
+        "no": [],
+        "noPreferenceMessage": [],
+        "choiceLastSeparator": null,
+        "lastSeparator": null,
+        "navigationFieldName": null,
+        "currentChoiceMessage": [],
+        "boolHelpMessage": null,
+        "boolMessage": null,
+        "clarifyMessage": null,
+        "confirmationMessage": null,
+        "dateTimeMessage": null,
+        "dateTimeHelpMessage": null,
+        "doubleHelpMessage": null,
+        "doubleMessage": null,
+        "enumManyNumberHelpMessage": null,
+        "enumOneNumberHelpMessage": null,
+        "enumSelectManyMessage": null,
+        "enumOneWordHelpMessage": null,
+        "enumSelectOneMessage": null,
+        "feedBackMessage": null,
+        "helpMessage": null,
+        "helpClarifyMessage": null,
+        "helpConfirmMessage": null,
+        "helpNavigationMessage": null,
+        "integerMessage": null,
+        "integerHelpMessage": null,
+        "navigationMessage": null,
+        "navigationCommandHelpMessage": null,
+        "navigationFormatMessage": null,
+        "navigationHelpMessage": null,
+        "notUnderstoodMessage": null,
+        "statusFormatMessage": null,
+        "stringMessage": null,
+        "stringHelpMessage": null,
+        "unspecifiedMessage": null,
+        "enumManyWordHelpMessage": null,
+        "commands": {
+          "helpDescription": null,
+          "helpTerms": null,
+          "helpHelpMessage": null,
+          "backupDescription": null,
+          "backupTerms": null,
+          "backupHelpMessage": null,
+          "resetDescription": null,
+          "resetTerms": null,
+          "resetHelpMessage": null,
+          "quitDescription": null,
+          "quitTerms": null,
+          "quitHelpMessage": null,
+          "statusDescription": null,
+          "statusTerms": null,
+          "statusHelpMessage": null
+        }
+      }
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "id": "11",
+      "question": {
+        "typed": [ "Confirma envio do boleto?" ],
+        "spoken": [],
+        "imageUrls": []
+      },
+      "retryMessage": "",
+      "tooManyAttemptsMessage": "",
+      "durable": false,
+      "yesText": "Sim",
+      "noText": "Não",
+      "yesAcceptedAnswers": [],
+      "noAcceptedAnswers": [],
+      "attempts": 3,
+      "trueStepId": "8",
+      "falseStepId": null
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "version": 0,
+      "id": "5",
+      "nextStepId": "6",
+      "formFields": [
+        {
+          "name": "CPF",
+          "question": "Entendi, você quer emitir a segunda via do boleto. Agora me informe seu CPF",
+          "optional": false,
+          "type": "CPF",
+          "nlpentityName": "",
+          "validationApiUrl": "",
+          "validationFailedMessage": "Ops, algo de errado com os dados, vamos tentar novamente!",
+          "activeApiUrl": "",
+          "id": 1
+        }
+      ],
+      "durable": false,
+      "showSummary": false,
+      "summaryText": null,
+      "includeFieldsOnSummary": null,
+      "includeConfirmatioButtonsOnSummary": null,
+      "nlpSettings": "",
+      "configuration": {
+        "yes": [],
+        "no": [],
+        "noPreferenceMessage": [],
+        "choiceLastSeparator": null,
+        "lastSeparator": null,
+        "navigationFieldName": null,
+        "currentChoiceMessage": [],
+        "boolHelpMessage": null,
+        "boolMessage": null,
+        "clarifyMessage": null,
+        "confirmationMessage": null,
+        "dateTimeMessage": null,
+        "dateTimeHelpMessage": null,
+        "doubleHelpMessage": null,
+        "doubleMessage": null,
+        "enumManyNumberHelpMessage": null,
+        "enumOneNumberHelpMessage": null,
+        "enumSelectManyMessage": null,
+        "enumOneWordHelpMessage": null,
+        "enumSelectOneMessage": null,
+        "feedBackMessage": null,
+        "helpMessage": null,
+        "helpClarifyMessage": null,
+        "helpConfirmMessage": null,
+        "helpNavigationMessage": null,
+        "integerMessage": null,
+        "integerHelpMessage": null,
+        "navigationMessage": null,
+        "navigationCommandHelpMessage": null,
+        "navigationFormatMessage": null,
+        "navigationHelpMessage": null,
+        "notUnderstoodMessage": null,
+        "statusFormatMessage": null,
+        "stringMessage": null,
+        "stringHelpMessage": null,
+        "unspecifiedMessage": null,
+        "enumManyWordHelpMessage": null,
+        "commands": {
+          "helpDescription": null,
+          "helpTerms": null,
+          "helpHelpMessage": null,
+          "backupDescription": null,
+          "backupTerms": null,
+          "backupHelpMessage": null,
+          "resetDescription": null,
+          "resetTerms": null,
+          "resetHelpMessage": null,
+          "quitDescription": null,
+          "quitTerms": null,
+          "quitHelpMessage": null,
+          "statusDescription": null,
+          "statusTerms": null,
+          "statusHelpMessage": null
+        }
+      }
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ApiStep, Carubbi.BotEditor.Config",
+      "id": "6",
+      "nextStepId": "7",
+      "verb": "Post",
+      "apiUrl": "https://localhost:44325/api/",
+      "resource": "showroomlistarfaturas",
+      "parameters": [
+        {
+          "name": "CPF",
+          "value": "@5.Output.Form.CPF",
+          "type": "Default"
+        }
+      ],
+      "durable": false,
+      "datasourceExpresssion": ""
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "id": "7",
+      "listType": "ButtonList",
+      "promptMessage": {
+        "typed": [ "Pronto, Encontrei @ViewBag.Step6.Output.qtdFaturas fatura(s) em aberto, no valor de R$ @(ViewBag.Step6.Output.valorTotal). Como gostaria de receber o código de barras?" ],
+        "spoken": [],
+        "imageUrls": []
+      },
+      "input": [
+        {
+          "title": "Aqui Mesmo",
+          "subtitle": "",
+          "imageUrl": "",
+          "buttonTitle": "",
+          "buttonValue": "@6.Output.LinkFatura",
+          "action": "DownloadFile"
+        },
+        {
+          "title": "Por Email",
+          "subtitle": "",
+          "imageUrl": "",
+          "buttonTitle": "",
+          "buttonValue": "Email",
+          "action": "NavigateStep",
+          "targetStepId": "10"
+        }
+      ],
+      "retryMessage": "",
+      "tooManyAttemptsMessage": "",
+      "durable": false,
+      "attempts": 3,
+      "nlpSettings": "",
+      "nextStepId": "9",
+      "dataSourceExpresssion": null
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [ "Journey agradece por utilizar este canal. Para um novo pedido, me chama que estarei por aqui. Obrigado :)" ],
+        "spoken": [],
+        "imageUrls": []
+      },
+      "id": "9",
+      "nextStepId": null
+    }
+  ],
+  "customCommands": [
+    {
+      "commandText": "/start",
+      "startup": true,
+      "clearDialogStack": false,
+      "deleteProfile": false,
+      "invalidateCache": false,
+      "customMessageReply": ""
+    },
+    {
+      "commandText": "/reiniciar",
+      "startup": false,
+      "clearDialogStack": true,
+      "deleteProfile": false,
+      "invalidateCache": false,
+      "customMessageReply": "Certo, vamos recomeçar então..."
+    },
+    {
+      "commandText": "/esquecer",
+      "startup": false,
+      "clearDialogStack": true,
+      "deleteProfile": true,
+      "invalidateCache": false,
+      "customMessageReply": "Certo, seus dados foram excluídos. Vamos recomeçar então..."
+    },
+    {
+      "commandText": "/recarregar",
+      "startup": false,
+      "clearDialogStack": true,
+      "deleteProfile": true,
+      "invalidateCache": true,
+      "customMessageReply": "Fluxo recarregado. "
+    }
+  ],
+  "speechSettings": null,
+  "appId": null,
+  "appPassword": null,
+  "persistenceStrategy": "InMemory",
+  "connectionString": null
+}

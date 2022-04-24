@@ -1,0 +1,53 @@
+{
+  "id": 17,
+  "name": "FaqBot",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FaqStep, Carubbi.BotEditor.Config",
+      "faqSettings": {
+        "knowledgeBaseId": "cd2ad4a7-50c1-4753-8ec7-ced40bfd7c98",
+        "endpointKey": "9b6b02ab-e350-4d06-9bc1-c5faeff8fcfd",
+        "endpoint": "https://carubbiqnasample.azurewebsites.net",
+        "maxAnswers": 2,
+        "serviceType": "QnAMaker"
+      },
+      "askQuestionMessage": {
+        "typed": [
+          "O que você deseja saber sobre o pagseguro?"
+        ]
+      },
+      "miminumScore": 10.0,
+      "durable": false,
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConditionStep, Carubbi.BotEditor.Config",
+      "conditionExpresssion": "@1.Output.Count > 0",
+      "trueStepId": 3,
+      "falseStepId": 4,
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Aqui estão as perguntas e respostas relevantes que eu encontrei relacionadas a sua dúvida: @foreach (var answer in ViewBag.Step1.Output) {\r\n                                    <text>Perguntas: \\r\\n</text>\r\n                                    foreach( var question in answer.Questions) \r\n                                    {\r\n                                        <text>* @question \\n\\r\\n\\r</text>\r\n                                    }\r\n                                    <text>Resposta: @answer.Text</text>\r\n                                }"
+        ]
+      },
+      "id": 3
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Desculpe, eu ainda não sei a resposta para esta pergunta. Tente reformular sua pergunta. Talvez eu consiga te ajudar."
+        ]
+      },
+      "id": 4
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

@@ -1,0 +1,35 @@
+{
+  "id": 1,
+  "name": "SentimentAnalysisInput",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.InputStep, Carubbi.BotEditor.Config",
+      "textAnalysisSettings": {
+        "language": "pt",
+        "subscriptionKey": "57a25c1dd14343af99f88c5416368b1e",
+        "endpoint": "https://bottextanalytics.cognitiveservices.azure.com",
+        "serviceType": "MicrosoftTextAnalysis"
+      },
+      "durable": false,
+      "question": {
+        "typed": [
+          "O que achou do meu atendimento?"
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "O Score da sua resposta é @ViewBag.Step1.Output.SentimentScore"
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

@@ -1,0 +1,63 @@
+{
+  "id": 1,
+  "name": "ImageListWithNlp",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "nlpSettings": {
+        "models": [
+          {
+            "appId": "02f75d97-3b07-451b-a5bd-1707fbaa6983",
+            "endpointPredictionKey": "21821c94a2774e12a4fd43dcd2c3fe6c",
+            "endpoint": "https://nlpinput.cognitiveservices.azure.com"
+          }
+        ],
+        "serviceType": "Luis"
+      },
+      "listType": "ImageList",
+      "input": [
+        {
+          "order": 1,
+          "title": "FAQ",
+          "subtitle": "QnA Maker",
+          "imageUrl": "",
+          "buttonValue": "Faq",
+          "action": "NavigateStep",
+          "targetStepId": 2
+        },
+        {
+          "order": 2,
+          "title": "Input",
+          "subtitle": "Input Step",
+          "imageUrl": "",
+          "buttonValue": "Input",
+          "action": "NavigateStep",
+          "targetStepId": 3
+        }
+      ],
+      "durable": false,
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo do FAQ"
+        ]
+      },
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo do input"
+        ]
+      },
+      "id": 3
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

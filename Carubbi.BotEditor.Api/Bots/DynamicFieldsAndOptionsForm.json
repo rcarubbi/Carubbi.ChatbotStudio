@@ -1,0 +1,146 @@
+{
+  "id": 19,
+  "name": "DynamicFieldsAndOptionsForm",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Oi! Tudo bem? Eu sou um bot de exemplo de formulário... vou te fazer uma série de perguntas e se você tiver dúvidas pode digitar /ajuda a qualquer momento que eu te dou umas dicas okay? Vamos lá..."
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "formFields": [
+        {
+          "id": 1,
+          "name": "Nome",
+          "order": 1,
+          "question": "Qual o seu nome?",
+          "type": "Text",
+          "optional": false
+        },
+        {
+          "id": 3,
+          "name": "TipoDeCarroPreferido",
+          "order": 3,
+          "question": "Qual tipo de carro você prefere?",
+          "type": "SingleOption",
+          "options": [
+            {
+              "order": 1,
+              "value": "Sedan",
+              "description": "Sedan"
+            },
+            {
+              "order": 2,
+              "value": "Hatch",
+              "description": "Hatch"
+            },
+            {
+              "order": 3,
+              "value": "SUV",
+              "description": "SUV"
+            }
+          ],
+          "optional": false
+        },
+        {
+          "id": 4,
+          "name": "Opcionais",
+          "order": 4,
+          "question": "Quais Opcionais você deseja?",
+          "type": "ManyOptions",
+          "options": [
+            {
+              "order": 1,
+              "value": "ArCondicionado",
+              "description": "Ar Condicionado"
+            },
+            {
+              "order": 2,
+              "value": "VidorEletrico",
+              "description": "Vidro Elétrico"
+            },
+            {
+              "order": 3,
+              "value": "DirecaoHidraulica",
+              "description": "Direção Hidraulica"
+            },
+            {
+              "order": 4,
+              "value": "BancoCouro",
+              "description": "Banco de couro"
+            }
+          ],
+          "optional": false,
+          "activeApiURL": "https://carubbiboteditorsamplesapi.azurewebsites.net/api/opcionaisactive"
+        },
+        {
+          "id": 5,
+          "name": "OpcionaisDeSUV",
+          "order": 5,
+          "question": "Quais Opcionais você deseja?",
+          "type": "ManyOptions",
+          "optional": false,
+          "optionsSource": "https://carubbiboteditorsamplesapi.azurewebsites.net/api/suvoptionssource",
+          "activeApiURL": "https://carubbiboteditorsamplesapi.azurewebsites.net/api/suvopcionaisactive"
+        }
+      ],
+      "durable": false,
+      "version": 0,
+      "showSummary": false,
+      "includeFieldListOnSummary": false,
+      "includeConfirmationButtonsOnSummary": false,
+      "id": 2,
+      "nextStepId": 3
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConditionStep, Carubbi.BotEditor.Config",
+      "conditionExpresssion": "@2.Output.FormCancelled == true",
+      "trueStepId": 4,
+      "falseStepId": 5,
+      "id": 3
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Okay, se quiser falar comigo de novo é só chamar"
+        ]
+      },
+      "id": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Obrigado @ViewBag.Step2.Output.Form.Nome, seu pedido foi enviado"
+        ]
+      },
+      "id": 5
+    }
+  ],
+  "speechSettings": {
+    "recognition": {
+      "subscriptionKey": "c90f63dde7d3473d89531fbe68f89a94",
+      "serviceRegion": "westus",
+      "language": "pt-BR",
+      "serviceType": "BingSpeech"
+    },
+    "synthesis": {
+      "subscriptionKey": "c90f63dde7d3473d89531fbe68f89a94",
+      "serviceRegion": "westus",
+      "language": "pt-BR",
+      "serviceType": "BingSpeech",
+      "cacheType": "InMemory",
+      "storeType": "FileSystem"
+    }
+  },
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

@@ -1,0 +1,65 @@
+{
+  "id": 1,
+  "name": "ImageButtonList",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "listType": "ImageButtonList",
+      "input": [
+        {
+          "order": 1,
+          "title": "Pesquisar",
+          "subtitle": "Na web",
+          "imageUrl": "https://www.google.com/images/branding/googleg/1x/googleg_standard_color_128dp.png",
+          "buttonTitle": "Abrir Google",
+          "buttonValue": "http://www.google.com",
+          "action": "OpenURL",
+          "targetStepId": 0
+        },
+        {
+          "order": 2,
+          "title": "Baixar Manual",
+          "subtitle": "Samsung Galaxy A5",
+          "imageUrl": "https://images.whatismyphone.com/DI/Front_72656.png",
+          "buttonTitle": "Download",
+          "buttonValue": "http://files.customersaas.com/files/Samsung_A510F_Galaxy_A5_(2016)_Manual_do_usu%C3%A1rio.pdf",
+          "action": "DownloadFile",
+          "targetStepId": 0
+        },
+        {
+          "order": 3,
+          "title": "Ir para o último passo",
+          "subtitle": "Pular o passo 2",
+          "imageUrl": "https://cdn4.iconfinder.com/data/icons/pretty-office-part-5-shadow-style/256/Navigate-right.png",
+          "buttonTitle": "Navegar",
+          "buttonValue": "Navegar",
+          "action": "NavigateStep",
+          "targetStepId": 3
+        }
+      ],
+      "durable": false,
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo @ViewBag.Step2.Id"
+        ]
+      },
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo @ViewBag.Step3.Id"
+        ]
+      },
+      "id": 3
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

@@ -1,0 +1,14 @@
+- instrucoes para criar ambiente (step by step)
+- Migrar de framework full pra .net core ou .net 6
+- Implementar anexo e autenticacao no botconnector-offline
+- passo de API, suporte a response com array no root
+- implementar traducao para as API's de canais (telegram, facebook, etc...) para tirar dependencia do Azure channel registration
+- implementar voz para facebook messenger (só funciona no telegram atualmente)
+- melhorias de UX/UI
+- Multi abas para blocos compostos
+- implementar configurações de perfil de usuário
+- implementar dashboard
+- implementar rollback
+- corrigir flechas do componente de fluxo
+ 
+ 

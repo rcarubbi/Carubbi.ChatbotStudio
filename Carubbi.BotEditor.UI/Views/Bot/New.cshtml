@@ -1,0 +1,71 @@
+﻿@{
+    ViewBag.Title = "Novo bot";
+}
+
+
+<div class="col-lg-6">
+    <div id="blocklyArea" style="margin-bottom: 20px; height: 80vh; width: 100%; text-align: center">
+    </div>
+    <div id="blocklyDiv" style="position: absolute; top:0px; left: 0px;"></div>
+</div>
+
+<div class="col-lg-6">
+    <div id="canvas"></div>
+</div>
+<div class="col-lg-12">
+    <div class="btn-group pull-right" role="group" aria-label="Basic example">
+        <button id="jsonGenerateButton" class="btn btn-primary">Gerar Json</button>
+        <button id="SaveBlocks" class="btn btn-info">Salvar blocos</button>
+        <button id="LoadBlocks" class="btn btn-warning">Restaurar blocos</button>
+    </div>
+
+</div>
+<div class="col-lg-8">
+    <div id="jsonoutput" class="jsoncontainer" style="margin-top:10px; overflow: auto; max-width: 100%; height: 400px"></div>
+</div>
+<div class="col-lg-4">
+    <textarea id="blocksxml" class="form-control" style="margin-top:10px; min-width: 100%" rows="5"></textarea>
+</div>
+
+@Html.Partial("_toolbox")
+@Html.Partial("_workspace")
+
+@section scripts {
+
+    <script src="~/Scripts/jquery.beatify-json/jquery.beautify-json.js"></script>
+    <script src="~/Scripts/blockly/blockly_compressed.js"></script>
+    <script src="~/Scripts/blockly/msg/js/pt-br.js"></script>
+    <script src="~/Scripts/blockly/JsonBotDefinition/JsonBotDefinitionBlocks.js"></script>
+    <script src="~/Scripts/blockly/JsonBotDefinition/JsonBotDefinitionCodeGenerator.js"></script>
+    <script src="~/Scripts/blockly/JsonBotDefinition/FlowchartCodeGenerator.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/raphael/2.2.0/raphael-min.js"></script>
+    @*<script src="https://flowchart.js.org/flowchart-latest.js"></script>*@
+    <script src="~/Scripts/flowchart/flowchart.js"></script>
+    <script src="~/Scripts/blockly/app.js"></script>
+    <script>
+
+
+        var mediaUrl = '@Url.Content("~/Content/blockly/media/")';
+        
+        var app = Blockly.InitializeApp(mediaUrl);
+        var onFlowchartNodeClicked = app.onFlowchartNodeClicked;
+
+        $(function () {
+            $("#jsonGenerateButton").on("click", (e) => {
+                app.generateJson(e);
+                $('.jsoncontainer').beautifyJSON({
+                    color: true,
+                });
+            });
+            $("#SaveBlocks").on("click", app.saveBlocks);
+            $("#LoadBlocks").on("click", app.loadBlocks);
+
+
+        });
+    </script>
+
+}
+
+@section styles {
+    <link href="~/Content/jquery.beautify-json/beautify-json.css" rel="stylesheet" />
+}

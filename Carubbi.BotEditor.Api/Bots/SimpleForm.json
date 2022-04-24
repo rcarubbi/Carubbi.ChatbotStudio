@@ -1,0 +1,132 @@
+{
+  "id": 18,
+  "name": "SimpleForm",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.FormStep, Carubbi.BotEditor.Config",
+      "formFields": [
+        {
+          "id": 1,
+          "name": "Nome",
+          "order": 1,
+          "question": "Qual é o seu nome?",
+          "type": "Text",
+          "optional": false
+        },
+        {
+          "id": 2,
+          "name": "Cpf",
+          "order": 2,
+          "question": "Qual o seu CPF?",
+          "type": "CPF",
+          "validationFailedMessage": "Este CPF não é válido, pode digitar novamente?",
+          "optional": false
+        },
+        {
+          "id": 3,
+          "name": "DataDeNascimento",
+          "order": 3,
+          "question": "Qual sua data de nascimento?",
+          "type": "Date",
+          "optional": false
+        },
+        {
+          "id": 4,
+          "name": "Altura",
+          "order": 4,
+          "question": "Quanto você tem de altura?",
+          "type": "Decimal",
+          "optional": false
+        },
+        {
+          "id": 5,
+          "name": "TipoDeCarroPreferido",
+          "order": 5,
+          "question": "Qual tipo de carro você prefere?",
+          "type": "SingleOption",
+          "options": [
+            {
+              "order": 1,
+              "value": "Sedan",
+              "description": "Sedan"
+            },
+            {
+              "order": 2,
+              "value": "Hatch",
+              "description": "Hatch"
+            },
+            {
+              "order": 3,
+              "value": "SUV",
+              "description": "SUV"
+            }
+          ],
+          "optional": false
+        },
+        {
+          "id": 6,
+          "name": "Opcionais",
+          "order": 6,
+          "question": "Quais Opcionais você deseja?",
+          "type": "ManyOptions",
+          "options": [
+            {
+              "order": 1,
+              "value": "ArCondicionado",
+              "description": "Ar Condicionado"
+            },
+            {
+              "order": 2,
+              "value": "VidorEletrico",
+              "description": "Vidro Elétrico"
+            },
+            {
+              "order": 3,
+              "value": "DirecaoHidraulica",
+              "description": "Direção Hidraulica"
+            },
+            {
+              "order": 4,
+              "value": "BancoCouro",
+              "description": "Banco de couro"
+            }
+          ],
+          "optional": false
+        },
+        {
+          "id": 7,
+          "name": "QuantidadeDeFilhos",
+          "order": 7,
+          "question": "Quantos filhos você tem?",
+          "type": "Number",
+          "optional": true
+        },
+        {
+          "id": 8,
+          "name": "HorarioDaVisita",
+          "order": 8,
+          "question": "Para qual horário você quer agendar a visita?",
+          "type": "Time",
+          "optional": false
+        },
+        {
+          "id": 9,
+          "name": "LembretePorEmail",
+          "order": 9,
+          "question": "Quer receber um lembrete por email?",
+          "type": "YesNo",
+          "optional": false
+        }
+      ],
+      "durable": false,
+      "version": 0,
+      "showSummary": false,
+      "includeFieldListOnSummary": false,
+      "includeConfirmationButtonsOnSummary": false,
+      "id": 1
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

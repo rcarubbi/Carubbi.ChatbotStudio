@@ -1,0 +1,26 @@
+{
+  "id": 1,
+  "name": "RandomMessage",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Olá",
+          "Oi",
+          "E ai!",
+          "Tudo bem?",
+          "Beleza?",
+          "Como está?",
+          "Fala cara!",
+          "Opa!",
+          "Tudo Certo?"
+        ]
+      },
+      "id": 1
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

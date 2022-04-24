@@ -1,0 +1,6 @@
+﻿INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (1, N'Listar Bots', N'2019-10-17 14:20:32')
+INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (2, N'Criar/Alterar Bots', N'2019-10-17 14:20:41')
+INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (3, N'Listar Usuários', N'2019-10-17 14:20:49')
+INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (4, N'Alterar Usuários', N'2019-10-17 14:20:56')
+INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (5, N'Listar Grupos de Acesso', N'2019-10-17 14:21:04')
+INSERT INTO [dbo].[Permission] ([Id], [Name], [CreatedAt]) VALUES (6, N'Criar/Alterar Grupos de Acesso', N'2019-10-17 14:21:11')

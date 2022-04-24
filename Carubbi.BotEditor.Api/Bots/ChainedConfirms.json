@@ -1,0 +1,56 @@
+{
+  "id": 1,
+  "name": "ChainedConfirms",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "É sua primeira vez por aqui?"
+        ]
+      },
+      "trueStepId": 2,
+      "falseStepId": 3,
+      "durable": false,
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "Já utilizou outros bots antes?"
+        ]
+      },
+      "trueStepId": 0,
+      "falseStepId": 0,
+      "durable": false,
+      "id": 2,
+      "nextStepId": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "Gosta deste Bot?"
+        ]
+      },
+      "trueStepId": 0,
+      "falseStepId": 0,
+      "durable": false,
+      "id": 3,
+      "nextStepId": 4
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Dialogo 1: @(ViewBag.Step1.Output == null ? \"Nada\" : ViewBag.Step1.Output.Answer) \r\n Dialogo 2: @(ViewBag.Step2.Output == null ? \"Nada\" : ViewBag.Step2.Output.Answer) \r\n Dialogo 3: @(ViewBag.Step3.Output == null ? \"Nada\" : ViewBag.Step3.Output.Answer)"
+        ]
+      },
+      "id": 4
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

@@ -1,0 +1,31 @@
+{
+  "id": 1,
+  "name": "RetrieveConfirmAnswer",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
+      "question": {
+        "typed": [
+          "É sua primeira vez por aqui?"
+        ]
+      },
+      "trueStepId": 0,
+      "falseStepId": 0,
+      "durable": false,
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Sua resposta foi @(ViewBag.Step1.Output == null ? \"Nada\" : ViewBag.Step1.Output.Answer)"
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}

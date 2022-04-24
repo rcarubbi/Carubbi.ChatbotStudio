@@ -1,0 +1,70 @@
+{
+  "id": 1,
+  "name": "ButtonList",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.ListStep, Carubbi.BotEditor.Config",
+      "listType": "ButtonList",
+      "input": [
+        {
+          "order": 1,
+          "title": "Passo 2",
+          "action": "NavigateStep",
+          "targetStepId": 2
+        },
+        {
+          "order": 2,
+          "title": "Passo 3",
+          "action": "NavigateStep",
+          "targetStepId": 3
+        },
+        {
+          "order": 3,
+          "title": "Passo 4",
+          "action": "NavigateStep",
+          "targetStepId": 4
+        }
+      ],
+      "durable": false,
+      "retryMessage": {
+        "typed": [
+          "Tenta de novo"
+        ]
+      },
+      "id": 1
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo @ViewBag.Step2.Id"
+        ]
+      },
+      "id": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo @ViewBag.Step3.Id"
+        ]
+      },
+      "id": 3
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Este é o passo @ViewBag.Step4.Id"
+        ]
+      },
+      "id": 4
+    }
+  ],
+  "appId": "f03963af-e755-4c94-a6d2-6e5aa47cc463",
+  "appPassword": "fskBbZaDT2]*/?3kOsMPph5qckpa8Uuw",
+  "connectionString": "DefaultEndpointsProtocol=https;AccountName=carubbiboteditorapi;AccountKey=csp3AaBDt10vBEB4vAPbdaotprAYyW8SPngUwv1ajnW0MxHtZS9rtD1gl7BLWqKA1n3VGKql9I7nZn1aJE4KKw==",
+  "persistenceStrategy": "AzureTables",
+  "spokenInteraction": false
+}

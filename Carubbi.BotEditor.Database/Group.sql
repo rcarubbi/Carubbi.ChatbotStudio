@@ -1,0 +1,8 @@
+﻿CREATE TABLE [dbo].[Group]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1), 
+    [Name] VARCHAR(50) NOT NULL, 
+    [Active] BIT NOT NULL DEFAULT 1, 
+    [CreatedAt] DATETIME NOT NULL DEFAULT GETDATE(), 
+    [UpdatedAt] DATETIME NULL
+)

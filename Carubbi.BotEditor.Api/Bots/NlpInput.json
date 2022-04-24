@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "name": "NlpInput",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.InputStep, Carubbi.BotEditor.Config",
+      "nlpSettings": {
+        "models": [
+          {
+            "appId": "02f75d97-3b07-451b-a5bd-1707fbaa6983",
+            "endpointPredictionKey": "21821c94a2774e12a4fd43dcd2c3fe6c",
+            "endpoint": "https://nlpinput.cognitiveservices.azure.com"
+          }
+        ],
+        "serviceType": "Luis"
+      },
+      "durable": false,
+      "question": {
+        "typed": [
+          "O que você deseja?"
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "A intenção encontrada foi @ViewBag.Step1.Output.NLPResult.Intent.Name \r\n    com o score @ViewBag.Step1.Output.NLPResult.Intent.Score \r\n    Entidades Encontradas: \r\n    @foreach(var entity in ViewBag.Step1.Output.NLPResult.Entities) { \r\n        <text>Tipo: @(entity.Type), Valor: @entity.Name</text>\r\n    }"
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "connectionString": "DefaultEndpointsProtocol=https;AccountName=carubbiboteditorapi;AccountKey=csp3AaBDt10vBEB4vAPbdaotprAYyW8SPngUwv1ajnW0MxHtZS9rtD1gl7BLWqKA1n3VGKql9I7nZn1aJE4KKw==",
+  "persistenceStrategy": "AzureTables",
+  "spokenInteraction": false
+}

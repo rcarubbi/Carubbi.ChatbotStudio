@@ -1,0 +1,30 @@
+{
+  "id": 1,
+  "name": "SimpleInput",
+  "rootStepId": 1,
+  "steps": [
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.InputStep, Carubbi.BotEditor.Config",
+      "durable": false,
+      "question": {
+        "typed": [
+          "Qual o seu nome?"
+        ]
+      },
+      "id": 1,
+      "nextStepId": 2
+    },
+    {
+      "$type": "Carubbi.BotEditor.Config.Steps.MessageStep, Carubbi.BotEditor.Config",
+      "messages": {
+        "typed": [
+          "Olá @ViewBag.Step1.Output.Answer seja bem-vindo",
+          "Oi @ViewBag.Step1.Output.Answer como posso te ajudar?"
+        ]
+      },
+      "id": 2
+    }
+  ],
+  "persistenceStrategy": "InMemory",
+  "spokenInteraction": false
+}
