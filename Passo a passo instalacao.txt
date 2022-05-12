@@ -15,7 +15,7 @@ Pre-requisitos:
 * Git for windows 2.33.0.windows.2
 * ngrok
 
-1. Clonar repositorio https://github.com/rcarubbi/Carubbi.BotEditor
+1. Clonar repositorio https://github.com/rcarubbi/Carubbi.ChatbotStudio
 2. Configurar todos os projetos para arquitetura x64
 
 3. Clicar no projeto Database com o botao direito e selecionar publish
