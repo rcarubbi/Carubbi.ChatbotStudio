@@ -16,4 +16,6 @@ INSERT INTO [dbo].[GroupPermission] ([PermissionId], [GroupId], [CreatedAt]) VAL
 INSERT INTO [dbo].[GroupPermission] ([PermissionId], [GroupId], [CreatedAt]) VALUES (5, 1, N'2019-10-17 14:23:35')
 INSERT INTO [dbo].[GroupPermission] ([PermissionId], [GroupId], [CreatedAt]) VALUES (6, 1, N'2019-10-17 14:23:37') 
 
-INSERT INTO DBO.GroupUser (UserId, GroupId) values('5BBD4D0F-41A2-4116-B2F8-AB037FA8579F', 1)
+DECLARE @UserId VARCHAR(36)
+SELECT @UserId = Id from [User] where UserName = 'admin'
+INSERT INTO DBO.GroupUser (UserId, GroupId) values(@UserId, 1)

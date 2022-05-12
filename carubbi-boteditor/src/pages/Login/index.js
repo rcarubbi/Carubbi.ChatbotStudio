@@ -126,8 +126,8 @@ function LoginPage(props) {
                 <form className={classes.form}>
                   <CardHeader color="primary" className={classes.cardHeader}>
                     <h4>
-                      Carubbi Digital & Trade <br />
-                      Bot Editor
+                      Carubbi <br />
+                      Chatbot Studio
                     </h4>
                     <div className={classes.socialLine}></div>
                   </CardHeader>

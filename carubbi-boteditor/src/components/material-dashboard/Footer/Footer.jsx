@@ -62,7 +62,7 @@ function Footer({ ...props }) {
 							target='_blank'
 							className={classes.a}
 						>
-							Carubbi Digital & Trade
+							Carubbi
 						</a>
 					</span>
 				</p>
