@@ -22,6 +22,8 @@ Pre-requisites:
 * Git for windows 2.33.0.windows.2
 * ngrok
 
+## Preparing the backend
+
 1. Clone the repository from https://github.com/rcarubbi/Carubbi.ChatbotStudio
 2. Configure all projects to x64 architecture
 
@@ -56,20 +58,21 @@ header: Content-type: application/json
 payload: "BotEditor UI"
 
 Copy clientId, accesskey and secretKey from response to use in the next steps
- 
-12. Run vs code from folder carubbi-boteditor
-13. Open .env file and replace:
+
+12. Stop the backend
+13. Run vs code from folder carubbi-boteditor
+14. Open .env file and replace:
 REACT_APP_CLIENT_ID={ClientId}:{AccessKey} 
 REACT_APP_CLIENT_SECRET={SecretKey}
 
-14. Open configs/clientCredentials.json file and replace client_id={ClientId}:{AccessKey} e client_secret={ClientSecret}
-15. Install node-gyp and dependencies following the guide https://github.com/nodejs/node-gyp
-16. download dependencies with yarn
-17. Install serve - yarn global add serve
-18. Create a ngrok account https://dashboard.ngrok.com/signup
-19. Configure authtoken: ngrok config add-authtoken <TOKEN>
-20. Build UI: npm run build (note: can be required to update react-scripts before build)
-21. Check the sites configuration in the applicationhost.config file inside .vs folder:
+15. Open configs/clientCredentials.json file and replace client_id={ClientId}:{AccessKey} e client_secret={ClientSecret}
+16. Install node-gyp and dependencies following the guide https://github.com/nodejs/node-gyp
+17. download dependencies with yarn
+18. Install serve - yarn global add serve
+19. Create a ngrok account https://dashboard.ngrok.com/signup
+20. Configure authtoken: ngrok config add-authtoken <TOKEN>
+21. Build UI: npm run build (note: can be required to update react-scripts before build)
+22. Check the sites configuration in the applicationhost.config file inside .vs folder:
  <sites>
              <site name="Carubbi.BotEditor.SamplesApi" id="1">
                 <application path="/" applicationPool="Clr4IntegratedAppPool">
@@ -111,8 +114,8 @@ REACT_APP_CLIENT_SECRET={SecretKey}
 
 ## Configure bot connector
 
-22. Download dependencies with yarn
-23. Open a 2nd instance of vs code from folder carubbi-botconnector
+23. Download dependencies with yarn
+24. Open a 2nd instance of vs code from folder carubbi-botconnector
 
-24. Update the paths in the bat files BotEditor Backend.bat e BotEditor Frontend.bat
-25. Run BotEditor Backend.bat e BotEditor Frontend.bat
+25. Update the paths in the bat files BotEditor Backend.bat e BotEditor Frontend.bat
+26. Run BotEditor Backend.bat e BotEditor Frontend.bat
