@@ -1,6 +1,8 @@
 # Carubbi.ChatbotStudio
 Chatbot Studio is a platform to design, manage and run chatbots using a blockly-based interface, and a powerful engine over Microsoft Bot Framework. 
 
+*Leia isto em outros idiomas: [English](README.md), [Português](README.pt-br.md).*
+
 https://user-images.githubusercontent.com/1128724/168243164-812d8af8-a24b-4f11-a46c-f85d82017d64.mp4
 
 Pre-requisitos:
