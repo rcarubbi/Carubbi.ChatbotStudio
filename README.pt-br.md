@@ -1,5 +1,5 @@
 # Carubbi.ChatbotStudio
-Chatbot Studio is a platform to design, manage and run chatbots using a blockly-based interface, and a powerful engine over Microsoft Bot Framework. 
+Chatbot Studio é uma plataforma para criar, gerenciar and executar chatbots usando uma interface baseada em blockly, e um poderoso motor escrito sobre o Microsoft Bot Framework. 
 
 *Leia isto em outros idiomas: [English](README.md), [Português](README.pt-br.md).*
 
@@ -22,19 +22,19 @@ Pre-requisitos:
 * Git for windows 2.33.0.windows.2
 * ngrok
 
-1. Clonar repositorio https://github.com/rcarubbi/Carubbi.ChatbotStudio
+1. Clonar repositório https://github.com/rcarubbi/Carubbi.ChatbotStudio
 2. Configurar todos os projetos para arquitetura x64
 
-3. Clicar no projeto Database com o botao direito e selecionar publish
-4. Definir a instancia de servidor de banco de dados como MSSqlLocalDb 
+3. Clicar no projeto Database com o botão direito e selecionar publish
+4. Definir a instância de servidor de banco de dados como MSSqlLocalDb 
 5. Nomear o banco como botEditor e publicar
 6. Rodar projeto Backend.Api, se solicitado, instalar o certificado de desenvolvimento
 
 ## Configurar o usuário admin padrão
 
-7. Abrir o Insomnia, ir em preferences e remover a opcao Validate Certificates 
+7. Abrir o Insomnia, ir em preferences e remover a opção Validate Certificates 
 8. Criar um novo document como Carubbi.ChatbotStudio
-9. Clicar no botao + e criar um request chamado CreateAdminUser com as seguintes configurações
+9. Clicar no botão + e criar um request chamado CreateAdminUser com as seguintes configurações
 method: POST
 URL: http://localhost:44398/api/Account
 header: Content-type: application/json
@@ -55,21 +55,21 @@ URL: http://localhost:44398/api/AppAccess
 header: Content-type: application/json
 payload: "BotEditor UI"
 
-copiar o clientId, accesskey e secretKey do response para os proximos passos
+copiar o clientId, accesskey e secretKey do response para os próximos passos
  
-12. abrir o vs code na pasta carubbi-boteditor
+12. Abrir o vs code na pasta carubbi-boteditor
 13. Abrir o arquivo .env e substituir:
 REACT_APP_CLIENT_ID={ClientId}:{AccessKey} 
 REACT_APP_CLIENT_SECRET={SecretKey}
 
 14. Abrir o arquivo configs/clientCredentials.json e substituir client_id={ClientId}:{AccessKey} e client_secret={ClientSecret}
-15. Instalar node-gyp e dependencias https://github.com/nodejs/node-gyp
-16. baixar as dependencias com yarn
+15. Instalar node-gyp e dependências https://github.com/nodejs/node-gyp
+16. Baixar as dependências com yarn
 17. Instalar serve - yarn global add serve
-18. Criar conta no ngrok
+18. Criar conta no ngrok: https://dashboard.ngrok.com/signup
 19. configurar authtoken: ngrok config add-authtoken <TOKEN>
-20. Build UI: npm run build (obs: pode ser necessario atualizar o react-scripts)
-21. Check the sites configuration in the applicationhost.config file inside .vs folder:
+20. Fazer o build da UI: npm run build (obs: pode ser necessário atualizar o react-scripts antes de fazer o build)
+21. Verifique a configuração dos sites no arquivo applicationhost.config dentro da pasta .vs:
  <sites>
              <site name="Carubbi.BotEditor.SamplesApi" id="1">
                 <application path="/" applicationPool="Clr4IntegratedAppPool">
@@ -109,10 +109,10 @@ REACT_APP_CLIENT_SECRET={SecretKey}
             </site>
 
 
-## configurar o bot connector
+## Configurar o bot connector
 
-22. baixar dependencias com yarn
-23. abrir outra instancia do vs code na pasta carubbi-botconnector
+22. Baixar as dependências com yarn
+23. Abrir outra instância do vs code na pasta carubbi-botconnector
 
 24. Atualizar os paths nos arquivos bat BotEditor Backend.bat e BotEditor Frontend.bat
 25. Rodar BotEditor Backend.bat e BotEditor Frontend.bat
