@@ -314,7 +314,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Carubbi.BotEditor.Config\Carubbi.BotEditor.Config.csproj">
-      <Project>{AC52366F-56CB-4267-AA59-4E1694FB7546}</Project>
+      <Project>{ac52366f-56cb-4267-aa59-4e1694fb7546}</Project>
       <Name>Carubbi.BotEditor.Config</Name>
     </ProjectReference>
   </ItemGroup>
@@ -337,7 +337,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <Optimize>true</Optimize>
     <DebugType>pdbonly</DebugType>
-    <PlatformTarget>x86</PlatformTarget>
+    <PlatformTarget>x64</PlatformTarget>
     <LangVersion>7.3</LangVersion>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
