@@ -5,6 +5,10 @@ Chatbot Studio is a platform to design, manage and run chatbots using a blockly-
 
 https://user-images.githubusercontent.com/1128724/168243164-812d8af8-a24b-4f11-a46c-f85d82017d64.mp4
 
+
+https://user-images.githubusercontent.com/1128724/168454581-0590a0ca-59f2-4098-9299-c5a4563bde78.mp4
+
+
 Pre-requisites:
 * Visual Studio
 * Visual Studio Code: 
