@@ -5,6 +5,8 @@ Chatbot Studio é uma plataforma para criar, gerenciar and executar chatbots usa
 
 https://user-images.githubusercontent.com/1128724/168243164-812d8af8-a24b-4f11-a46c-f85d82017d64.mp4
 
+https://user-images.githubusercontent.com/1128724/168454581-0590a0ca-59f2-4098-9299-c5a4563bde78.mp4
+
 Pre-requisitos:
 * Visual Studio
 * Visual Studio Code: 
