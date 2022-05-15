@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Carubbi.BotEditor.Config.Steps
 {
     [Serializable]
-    public class MapsStep : Step, IOutput<Maps.Location>
+    public class MapsStep : Step, IOutput<MapsOutput>
     {
         public bool Selectable { get; set; }
 
@@ -14,7 +14,7 @@ namespace Carubbi.BotEditor.Config.Steps
 
         public bool Durable { get; set; }
 
-        public Maps.Location Output { get; set; }
+        public MapsOutput Output { get; set; }
 
         public MapsServiceType ServiceType { get; set; }
     }

@@ -93,7 +93,8 @@ class BlocklyComponent extends React.Component {
   };
 
   getJsonRuntime = () => {
-    return JsonBotDefinition.fromWorkspace(this.primaryWorkspace);
+    const json = JsonBotDefinition.fromWorkspace(this.primaryWorkspace);
+    return json;
   };
 
   getStepBlockById = id => {

@@ -115,6 +115,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         public async Task StartAsync(IDialogContext context)
         {
+            if (_expressionEvaluator != null) _expressionEvaluator.Activity = context.Activity;
             await CheckBotIntegrity(context,
                 async (ctx) => await PerformStartAsync(ctx));
         }

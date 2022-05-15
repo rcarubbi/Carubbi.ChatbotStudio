@@ -67,11 +67,11 @@ namespace Carubbi.BotEditor.Api.Dialogs
                 {
                     ListItem evaluatedOption = new ListItem
                     {
-                        Title = _expressionEvaluator.Evaluate(option.Title, null).ToString(),
-                        Subtitle = _expressionEvaluator.Evaluate(option.Subtitle, null).ToString(),
-                        ImageUrl = _expressionEvaluator.Evaluate(option.ImageUrl, null).ToString(),
-                        ButtonTitle = _expressionEvaluator.Evaluate(option.ButtonTitle, null).ToString(),
-                        ButtonValue = _expressionEvaluator.Evaluate(option.ButtonValue, null).ToString(),
+                        Title = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.Title), null).ToString(),
+                        Subtitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.Subtitle), null).ToString(),
+                        ImageUrl = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ImageUrl), null).ToString(),
+                        ButtonTitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ButtonTitle), null).ToString(),
+                        ButtonValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ButtonValue), null).ToString(),
                         Action = option.Action,
                     };
 
@@ -87,11 +87,11 @@ namespace Carubbi.BotEditor.Api.Dialogs
                 {
                     ListItem evaluatedOption = new ListItem
                     {
-                        Title = _expressionEvaluator.Evaluate(option.Title, item).ToString(),
-                        Subtitle = _expressionEvaluator.Evaluate(option.Subtitle, item).ToString(),
-                        ImageUrl = _expressionEvaluator.Evaluate(option.ImageUrl, item).ToString(),
-                        ButtonTitle = _expressionEvaluator.Evaluate(option.ButtonTitle, item).ToString(),
-                        ButtonValue = _expressionEvaluator.Evaluate(option.ButtonValue, item).ToString(),
+                        Title = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.Title), item).ToString(),
+                        Subtitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.Subtitle), item).ToString(),
+                        ImageUrl = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ImageUrl), item).ToString(),
+                        ButtonTitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ButtonTitle), item).ToString(),
+                        ButtonValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, option.ButtonValue), item).ToString(),
                         Action = option.Action,
                     };
 

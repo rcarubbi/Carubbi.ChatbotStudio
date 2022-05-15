@@ -98,6 +98,7 @@
     <Compile Include="Steps\FormStep\ConfigCommands.cs" />
     <Compile Include="Steps\FormStep\FormConfig.cs" />
     <Compile Include="Steps\FormStep\ValidationResponse.cs" />
+    <Compile Include="Steps\MapsStep\MapsOutput.cs" />
     <Compile Include="Steps\MessageStep\AttachedFile.cs" />
     <Compile Include="Steps\ReadGPSLocationResult.cs" />
     <Compile Include="Steps\ReadGPSLocationStep.cs" />

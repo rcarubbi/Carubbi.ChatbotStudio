@@ -6445,7 +6445,7 @@
       </block>
     </value>
   </block><block type="factory_base" id="re:wQf$ut7lYuXjGw1.j" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">MapsStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -6454,7 +6454,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="T2rF}Jf]U6`Ue(Uj@8bu">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="S=Mt0fD}O%V~l_EH_,}E">
@@ -6468,7 +6468,7 @@
             <field name="ALIGN">LEFT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id=")5SRKO:mDXUqNC]5_{e/">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">ServiceType</field>
                 <field name="USER0">Serviço</field>
                 <field name="CPU0">None</field>
@@ -6479,63 +6479,79 @@
               </block>
             </statement>
             <next>
-              <block type="input_statement" id="H0A1+l!RUirP0bKa/$6j">
-                <field name="INPUTNAME">NAME</field>
+              <block type="input_dummy" id="fSW2#TD`lsUzwH?OvxN2">
                 <field name="ALIGN">LEFT</field>
                 <statement name="FIELDS">
-                  <block type="field_static" id="64A!(0n#/PuTUN`CrbB7">
-                    <field name="TEXT">Endereços</field>
+                  <block type="field_static" id="m%rQqfS~~CKt:SsdK$94">
+                    <field name="TEXT">Chave da Api</field>
+                    <next>
+                      <block type="field_input" id="z?^M/+P]V$-(jmm#-.~c">
+                        <field name="TEXT"></field>
+                        <field name="FIELDNAME">ApiKey</field>
+                      </block>
+                    </next>
                   </block>
                 </statement>
-                <value name="TYPE">
-                  <shadow type="type_null" id="xu{oOVR01Aq2b}%%XXnM"/>
-                  <block type="type_other" id="HY+54G31PKZ~tNix;Y5i">
-                    <field name="TYPE">LocationSource</field>
-                  </block>
-                </value>
                 <next>
-                  <block type="input_dummy" id="kea}5PjZ~i=m_K5sdx|q">
+                  <block type="input_statement" id="H0A1+l!RUirP0bKa/$6j">
+                    <field name="INPUTNAME">Input</field>
                     <field name="ALIGN">LEFT</field>
                     <statement name="FIELDS">
-                      <block type="field_static" id="JDaK%+H~CMvr;V[RhJY`">
-                        <field name="TEXT">Selecionável?</field>
-                        <next>
-                          <block type="field_checkbox" id="?n7pZU{p#KP!lJ}ZAD2q">
-                            <field name="CHECKED">FALSE</field>
-                            <field name="FIELDNAME">Selectable</field>
-                          </block>
-                        </next>
+                      <block type="field_static" id="64A!(0n#/PuTUN`CrbB7">
+                        <field name="TEXT">Endereços</field>
                       </block>
                     </statement>
+                    <value name="TYPE">
+                      <shadow type="type_null" id="xu{oOVR01Aq2b}%%XXnM"></shadow>
+                      <block type="type_other" id="HY+54G31PKZ~tNix;Y5i">
+                        <field name="TYPE">LocationSource</field>
+                      </block>
+                    </value>
                     <next>
-                      <block type="input_dummy" id="BVdG+5n`eXBhlx||(/Cc">
+                      <block type="input_dummy" id="kea}5PjZ~i=m_K5sdx|q">
                         <field name="ALIGN">LEFT</field>
                         <statement name="FIELDS">
-                          <block type="field_static" id="aFPbU;0ikUlK+3C3?Gvv">
-                            <field name="TEXT">Durável?</field>
+                          <block type="field_static" id="JDaK%+H~CMvr;V[RhJY`">
+                            <field name="TEXT">Selecionável?</field>
                             <next>
-                              <block type="field_checkbox" id="~-d2h-CDCWMKA@T}Z;Gu">
+                              <block type="field_checkbox" id="?n7pZU{p#KP!lJ}ZAD2q">
                                 <field name="CHECKED">FALSE</field>
-                                <field name="FIELDNAME">Durable</field>
+                                <field name="FIELDNAME">Selectable</field>
                               </block>
                             </next>
                           </block>
                         </statement>
                         <next>
-                          <block type="input_value" id="oJ^hs]O]1%J~t7I)`S#w">
-                            <field name="INPUTNAME">DataSource</field>
+                          <block type="input_dummy" id="BVdG+5n`eXBhlx||(/Cc">
                             <field name="ALIGN">LEFT</field>
                             <statement name="FIELDS">
-                              <block type="field_static" id="z-RM`rW]~y,1ItIKXhpq">
-                                <field name="TEXT">Fonte de dados</field>
+                              <block type="field_static" id="aFPbU;0ikUlK+3C3?Gvv">
+                                <field name="TEXT">Durável?</field>
+                                <next>
+                                  <block type="field_checkbox" id="~-d2h-CDCWMKA@T}Z;Gu">
+                                    <field name="CHECKED">FALSE</field>
+                                    <field name="FIELDNAME">Durable</field>
+                                  </block>
+                                </next>
                               </block>
                             </statement>
-                            <value name="TYPE">
-                              <shadow type="type_null"/>
-                              <block type="type_other" id="gQ[_ffxkqKzo%R7[,0ll">
-                                <field name="TYPE">DataSource</field>
+                            <next>
+                              <block type="input_value" id="oJ^hs]O]1%J~t7I)`S#w">
+                                <field name="INPUTNAME">DataSource</field>
+                                <field name="ALIGN">LEFT</field>
+                                <statement name="FIELDS">
+                                  <block type="field_static" id="z-RM`rW]~y,1ItIKXhpq">
+                                    <field name="TEXT">Fonte de dados</field>
+                                  </block>
+                                </statement>
+                                <value name="TYPE">
+                                  <shadow type="type_null" id="?)1lj^_iCRF9p_,yL%CP"></shadow>
+                                  <block type="type_other" id="gQ[_ffxkqKzo%R7[,0ll">
+                                    <field name="TYPE">DataSource</field>
+                                  </block>
+                                </value>
                               </block>
-                            </value>
+                            </next>
                           </block>
                         </next>
                       </block>
@@ -6550,18 +6566,18 @@
     </statement>
     <value name="TOOLTIP">
       <block type="text" id="}@9_i)dur:Vpp22P;iuM" deletable="false" movable="false">
-        <field name="TEXT">Passo de consulta a perguntas frequentes</field>
+        <field name="TEXT">Passo de lista de mapas</field>
       </block>
     </value>
     <value name="HELPURL">
       <block type="text" id="n-|S|66L-a?$cN@93keB" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="%U#Uh2[^^x*+yz1pYrpu"/>
+      <shadow type="type_null" id="%U#Uh2[^^x*+yz1pYrpu"></shadow>
       <block type="type_group" id="Z7%bf*U0tfdDE%Eh$JHS">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="@OtPjm5Tv7pud?^~h!|B">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -6665,9 +6681,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="igScEewDUV+~co$?N0Z-"/>
+      <shadow type="type_null" id="igScEewDUV+~co$?N0Z-"></shadow>
       <block type="type_group" id="~`C0gJy8jW~{_uzC1Sk4">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id=",S%dWZoz6j;~_pF73B7A">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -6772,7 +6788,7 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="zLW/aYz~RK(!azP`Kndt">
-        <mutation colour="#5ba55b"/>
+        <mutation colour="#5ba55b"></mutation>
         <field name="HUE">120</field>
       </block>
     </value>

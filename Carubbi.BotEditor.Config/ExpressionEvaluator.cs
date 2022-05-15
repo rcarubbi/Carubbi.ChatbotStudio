@@ -128,6 +128,9 @@ namespace Carubbi.BotEditor.Config
 
         public string PrepareMessage(int stepId, string message)
         {
+            if (string.IsNullOrEmpty(message))
+                return string.Empty;
+
             var viewBag = PrepareViewBag(stepId);
             var config = new TemplateServiceConfiguration();
             config.EncodedStringFactory = new RawStringFactory(); 

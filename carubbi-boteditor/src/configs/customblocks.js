@@ -2617,7 +2617,7 @@ const jsonBotDefinitionBlocks = [{
 },
 {
   "type": "mapsstep",
-  "message0": "%1 Mapas %2 %3 %4 Endereços %5 Selecionável? %6 %7 Durável? %8 %9 Fonte de dados %10",
+  "message0": "%1 Mapas %2 %3 %4 Chave da Api %5 %6 Endereços %7 Selecionável? %8 %9 Durável? %10 %11 Fonte de dados %12",
   "args0": [
     {
       "type": "field_label_serializable",
@@ -2650,8 +2650,16 @@ const jsonBotDefinitionBlocks = [{
       "type": "input_dummy"
     },
     {
+      "type": "field_input",
+      "name": "ApiKey",
+      "text": ""
+    },
+    {
+      "type": "input_dummy"
+    },
+    {
       "type": "input_statement",
-      "name": "NAME",
+      "name": "Input",
       "check": "LocationSource"
     },
     {
@@ -2721,7 +2729,7 @@ const jsonBotDefinitionBlocks = [{
     "SimpleListStep"
   ],
   "colour": 120,
-  "tooltip": "Passo de consulta a perguntas frequentes",
+  "tooltip": "Passo de lista de mapas",
   "helpUrl": ""
 },
 {

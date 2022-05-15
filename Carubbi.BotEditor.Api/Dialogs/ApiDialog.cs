@@ -19,9 +19,11 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         protected override async Task PerformStartAsync(IDialogContext context)
         {
-
-            var client = new RestClient(_step.ApiURL);
-            var request = new RestRequest(_step.Resource, ParseVerb(_step.Verb));
+             
+            var apiUrl = _expressionEvaluator.PrepareMessage(_step.Id, _step.ApiURL);
+            var resource = _expressionEvaluator.PrepareMessage(_step.Id, _step.Resource);
+            var client = new RestClient(apiUrl);
+            var request = new RestRequest(resource, ParseVerb(_step.Verb));
 
             foreach (var parameter in _step.Parameters)
             {
@@ -95,7 +97,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         private void AddParameter(RestRequest request, ApiParameter parameter, object item)
         {
-            var evaluatedValue = _expressionEvaluator.Evaluate(parameter.Value, item).ToString();
+            var evaluatedValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, parameter.Value), item).ToString();
             switch (parameter.Type)
             {
                 case ParameterTypes.UrlSegment:
@@ -124,7 +126,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
                 if (x.Value.ToObject<string>().StartsWith(Constants.AT_CHARACTER))
                 {
                     string originalValue = x.Value.ToObject<string>();
-                    var evaluatedValue = _expressionEvaluator.Evaluate(originalValue, item);
+                    var evaluatedValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, originalValue), item);
                     var evaluatedValueString = string.Join(Constants.SEPARATOR_CHARACTER, evaluatedValue);
                     jsonString = jsonString.Replace(originalValue, evaluatedValueString);
                 }

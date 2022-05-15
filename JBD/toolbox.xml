@@ -163,7 +163,10 @@
                     <shadow type="restoreformfield">
                       <field name="Name">Nome</field>
                       <field name="Question">Texto</field>
-                      <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da&#10;            pergunta utilizando o nome dos campos entre #'s.Ex: Você vai&#10;            responder novamente como #Nome#?</comment>
+                      <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
+            pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
+            responder novamente como #Nome#?
+                      </comment>
                       <statement name="RestoreFields">
                         <shadow type="string">
                           <field name="Value">Texto</field>
@@ -348,9 +351,10 @@
     <block type="mapsstep" collapsed="true">
       <field name="Id"></field>
       <field name="ServiceType">None</field>
+      <field name="ApiKey"></field>
       <field name="Selectable">FALSE</field>
       <field name="Durable">FALSE</field>
-      <statement name="NAME">
+      <statement name="Input">
         <shadow type="locationsource">
           <field name="Name"></field>
           <field name="Latitude"></field>
@@ -535,7 +539,10 @@
     <block type="restoreformfield">
       <field name="Name">Nome</field>
       <field name="Question">Texto</field>
-      <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da&#10;            pergunta utilizando o nome dos campos entre #'s.Ex: Você vai&#10;            responder novamente como #Nome#?</comment>
+      <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
+            pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
+            responder novamente como #Nome#?
+      </comment>
     </block>
     <block type="summary">
       <field name="SummaryText">Texto</field>
@@ -654,6 +661,7 @@
     <block type="mapsstep">
       <field name="Id"></field>
       <field name="ServiceType">None</field>
+      <field name="ApiKey"></field>
       <field name="Selectable">FALSE</field>
       <field name="Durable">FALSE</field>
     </block>

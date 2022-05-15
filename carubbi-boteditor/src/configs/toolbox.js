@@ -352,9 +352,10 @@ export default function toolbox() {
     <block type="mapsstep" collapsed="true">
       <field name="Id"></field>
       <field name="ServiceType">None</field>
+      <field name="ApiKey"></field>
       <field name="Selectable">FALSE</field>
       <field name="Durable">FALSE</field>
-      <statement name="NAME">
+      <statement name="Input">
         <shadow type="locationsource">
           <field name="Name"></field>
           <field name="Latitude"></field>
@@ -658,6 +659,7 @@ export default function toolbox() {
     <block type="mapsstep">
       <field name="Id"></field>
       <field name="ServiceType">None</field>
+      <field name="ApiKey"></field>
       <field name="Selectable">FALSE</field>
       <field name="Durable">FALSE</field>
     </block>

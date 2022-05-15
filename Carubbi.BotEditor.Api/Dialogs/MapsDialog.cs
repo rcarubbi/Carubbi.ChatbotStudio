@@ -16,14 +16,17 @@ namespace Carubbi.BotEditor.Api.Dialogs
     [Serializable]
     public class MapsDialog : BaseDialog<object, MapsStep>
     {
+        private readonly IMapsService _mapsService;
+
         public MapsDialog(BotConfig botConfig, CompositeStep parentStep, MapsStep step)
             : base(botConfig, parentStep, step)
         {
+            _mapsService = Conversation.Container.ResolveKeyed<IMapsService>(_step.ServiceType, new TypedParameter(typeof(string), _step.ApiKey));
+            if (_step.Output == null) _step.Output = new MapsOutput();
         }
 
         public IEnumerable<HeroCard> CreateHeroCards(IList<Location> locations, IList<string> locationNames = null, IList<string> locationIds = null)
         {
-            var mapsService = Conversation.Container.ResolveKeyed<IMapsService>(_step.ServiceType, new TypedParameter(typeof(string), _step.ApiKey));
             var cards = new List<HeroCard>();
 
             int i = 1;
@@ -39,9 +42,11 @@ namespace Carubbi.BotEditor.Api.Dialogs
                     Subtitle = address
                 };
 
+
+
                 if (location.Point != null)
                 {
-                    var image = new CardImage(url: mapsService.GetLocationMapImageUrl(location, i));
+                    var image = new CardImage(url: _mapsService.GetLocationMapImageUrl(location, i));
                     heroCard.Images = new[] { image };
                 }
                 if (locationIds != null)
@@ -60,7 +65,9 @@ namespace Carubbi.BotEditor.Api.Dialogs
         {
             var message = context.MakeMessage();
             message.AttachmentLayout = AttachmentLayoutTypes.Carousel;
-            var locations = ParseLocations(_step.Input).ToList();
+            var locations = (await ParseLocations(_step.Input)).ToList();
+            _step.Output.Locations = locations;
+            PersistOutput(context, _step.Output);
 
             var cards = CreateHeroCards(locations,
                 locations.Select(x => x.Name).ToArray(),
@@ -92,52 +99,69 @@ namespace Carubbi.BotEditor.Api.Dialogs
             }
         }
 
-        private IEnumerable<Location> ParseLocations(List<LocationSource> input)
+        private async Task<IEnumerable<Location>> ParseLocations(List<LocationSource> input)
         {
+            var locations = new List<Location>();
+
             if (DataSource != null)
             {
                 foreach (var item in DataSource)
                 {
                     var location = input.First();
-                    yield return ParseLocation(location, item);
+                    locations.Add(await ParseLocation(location, item));
                 }
             }
             else
             {
                 foreach (var item in input)
                 {
-                    yield return ParseLocation(item, null);
+                    locations.Add(await ParseLocation(item, null));
                 }
             }
+            return locations;
         }
 
-        private Location ParseLocation(LocationSource locationSource, object item)
+        private async Task<Location> ParseLocation(LocationSource locationSource, object item)
         {
-            var id = _expressionEvaluator.Evaluate(locationSource.Id, item).ToString();
-            var address = _expressionEvaluator.Evaluate(locationSource.Address, item).ToString();
-            var city = _expressionEvaluator.Evaluate(locationSource.City, item).ToString();
-            var latitude = Convert.ToDouble(_expressionEvaluator.Evaluate(locationSource.Latitude, item));
-            var longitude = Convert.ToDouble(_expressionEvaluator.Evaluate(locationSource.Longitude, item));
-            var state = _expressionEvaluator.Evaluate(locationSource.State, item).ToString();
-            var name = _expressionEvaluator.Evaluate(locationSource.Name, item).ToString();
-            var zip = _expressionEvaluator.Evaluate(locationSource.ZipCode, item).ToString();
-
-            return new Location
+            var id = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.Id), item).ToString();
+            var address = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.Address), item).ToString();
+            var city = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.City), item).ToString();
+            var validLatitude = double.TryParse(_expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.Latitude), item).ToString(), out var latitude);
+            var validLongitude = double.TryParse(_expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.Longitude), item).ToString(), out var longitude);
+            var state = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.State), item).ToString();
+            var name = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.Name), item).ToString();
+            var zip = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, locationSource.ZipCode), item).ToString();
+            var formattedAddress = $"{address}, {city} - {state} - {zip}";
+            var locationSet = await _mapsService.GetLocationsByQueryAsync(formattedAddress);
+            if (locationSet.Locations.Any())
             {
-                Address = new Address { FormattedAddress = $"{address}, {city} - {state} - {zip}", AddressLine = address },
-                GeocodePoints = new List<GeocodePoint> { new GeocodePoint { Coordinates = new List<double> { latitude, longitude } } },
-                Name = name,
-                Id = id,
-                Point = new GeocodePoint { Coordinates = new List<double> { latitude, longitude } }
-            };
+                var location = locationSet.Locations.First();
+                location.Name = name;
+                return location;
+            }
+            else
+            {
+                return new Location
+                {
+                    Address = new Address { FormattedAddress = $"{address}, {city} - {state} - {zip}", AddressLine = address },
+                    GeocodePoints = validLatitude && validLongitude
+                    ? new List<GeocodePoint> { new GeocodePoint { Coordinates = new List<double> { latitude, longitude } } }
+                    : null,
+                    Name = name,
+                    Id = id,
+                    Point = validLatitude && validLongitude
+                    ? new GeocodePoint { Coordinates = new List<double> { latitude, longitude } }
+                    : null
+                };
+            }
         }
 
         private async Task LocationSelectedAsync(IDialogContext context, IAwaitable<IMessageActivity> result)
         {
             var activity = await result;
-            var location = ParseLocations(_step.Input).SingleOrDefault(x => x.Id == activity.Text);
+            var location = (await ParseLocations(_step.Input)).SingleOrDefault(x => x.Id == activity.Text);
 
-            _step.Output = location;
+            _step.Output.SelectedLocation = location;
             PersistOutput(context, _step.Output);
 
             if (_step.NextStepId.HasValue)

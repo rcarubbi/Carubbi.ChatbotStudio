@@ -335,7 +335,7 @@ JsonBotDefinition['liststep'] = function (block) {
     const checkbox_durable = block.getFieldValue('Durable') === 'TRUE';
     const number_attempts = block.getFieldValue('Attempts');
     const value_nlpsettings = parseValue(JsonBotDefinition.valueToCode(block, 'NLPSettings', JsonBotDefinition.ORDER_ATOMIC));
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
 
     const nextBlock = block.getNextBlock();
 
@@ -351,7 +351,7 @@ JsonBotDefinition['liststep'] = function (block) {
         attempts: number_attempts,
         nlpSettings: value_nlpsettings,
         nextStepId: (nextBlock && nextBlock.getFieldValue("Id")) || null,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null
     };
 
     const code = JSON.stringify(listStep);
@@ -721,7 +721,7 @@ JsonBotDefinition['conditionstep'] = (block) => {
     const value_conditionexpression = parseValue(JsonBotDefinition.valueToCode(block, 'ConditionExpression', JsonBotDefinition.ORDER_ATOMIC));
     const statements_truestep = statementToArray(JsonBotDefinition.statementToCode(block, 'TrueStep'));
     const statements_falsestep = statementToArray(JsonBotDefinition.statementToCode(block, 'FalseStep'));
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
 
     addStepsToLater(statements_truestep.concat(statements_falsestep));
 
@@ -729,7 +729,7 @@ JsonBotDefinition['conditionstep'] = (block) => {
         $type: "Carubbi.BotEditor.Config.Steps.ConditionStep, Carubbi.BotEditor.Config",
         id: label_id,
         conditionExpression: value_conditionexpression,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
         trueStepId: (statements_truestep.length > 0 && statements_truestep[0].id) || null,
         falseStepId: (statements_falsestep.length > 0 && statements_falsestep[0].id) || null,
     };
@@ -864,7 +864,7 @@ JsonBotDefinition['apistep'] = (block) => {
     const text_resource = block.getFieldValue('Resource');
     const statements_parameters = statementToArray(JsonBotDefinition.statementToCode(block, 'Parameters'));
     const checkbox_durable = block.getFieldValue('Durable') === 'TRUE';
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
     const value_loadingmessage = parseValue(JsonBotDefinition.valueToCode(block, 'LoadingMessage', JsonBotDefinition.ORDER_ATOMIC));
     
     const nextBlock = block.getNextBlock();
@@ -878,7 +878,7 @@ JsonBotDefinition['apistep'] = (block) => {
         resource: text_resource,
         parameters: statements_parameters,
         durable: checkbox_durable,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
         loadingMessage: value_loadingmessage
     };
 
@@ -979,21 +979,24 @@ JsonBotDefinition['faqsettings'] = (block) => {
 };
 
 JsonBotDefinition['mapsstep'] =  (block) => {
+   
     const dropdown_servicetype = block.getFieldValue('ServiceType');
     const label_id = block.getFieldValue('Id');
     const statements_input = statementToArray(JsonBotDefinition.statementToCode(block, 'Input'));
     const checkbox_selectable = block.getFieldValue('Selectable') === 'TRUE';
     const checkbox_durable = block.getFieldValue('Durable') === 'TRUE';
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const apiKey = block.getFieldValue('ApiKey');
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
     const nextBlock = block.getNextBlock();
-
+ 
     const mapsStep = {
         $type: "Carubbi.BotEditor.Config.Steps.MapsStep, Carubbi.BotEditor.Config",
         id: label_id,
+        apiKey: apiKey,
         nextStepId: (nextBlock && nextBlock.getFieldValue("Id")) || null,
         selectable: checkbox_selectable,
         durable: checkbox_durable,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
         input: statements_input,
         serviceType: dropdown_servicetype
     };
@@ -1029,7 +1032,7 @@ JsonBotDefinition['locationsource'] = (block) => {
 JsonBotDefinition['switchstep'] = (block) => {
     const text_input = block.getFieldValue('Input');
     const statements_cases = statementToArray(JsonBotDefinition.statementToCode(block, 'Cases'));
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
     const label_id = block.getFieldValue("Id");
     const nextBlock = block.getNextBlock();
     
@@ -1038,7 +1041,7 @@ JsonBotDefinition['switchstep'] = (block) => {
         id: label_id,
         input: text_input,
         cases: statements_cases,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null,
         nextStepId: (nextBlock && nextBlock.getFieldValue("Id")) || null,
     };
 
@@ -1143,7 +1146,7 @@ JsonBotDefinition['readgpslocationstep'] = function (block) {
 JsonBotDefinition['transformstep'] = (block)  => {
     const text_propertypath = block.getFieldValue('PropertyPath');
     const statements_transformations = statementToArray(JsonBotDefinition.statementToCode(block, 'Transformations'));
-    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSourceExpression', JsonBotDefinition.ORDER_ATOMIC));
+    const value_datasourceexpression = parseValue(JsonBotDefinition.valueToCode(block, 'DataSource', JsonBotDefinition.ORDER_ATOMIC));
     const nextBlock = block.getNextBlock();
     const label_id = block.getFieldValue("Id");
 
@@ -1153,7 +1156,7 @@ JsonBotDefinition['transformstep'] = (block)  => {
         nextStepId: (nextBlock && nextBlock.getFieldValue("Id")) || null,
         propertyPath: text_propertypath,
         transformations: statements_transformations,
-        dataSourceExpresssion: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null
+        dataSourceExpression: (value_datasourceexpression && `@${value_datasourceexpression.stepId}.${value_datasourceexpression.expression}`) || null
     };
 
     const code = JSON.stringify(transformStep);
