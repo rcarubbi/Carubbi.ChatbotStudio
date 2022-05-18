@@ -34,12 +34,16 @@ function WebChat({ visible, classes, runtime }) {
 
     const reloadWebchatConnection = useCallback(async (runtime, channelId) => {
         const botConfig = JSON.parse(runtime);
-
+         
         setDirectline(
             new DirectLine({
                 domain: process.env.REACT_APP_DIRECTLINE_ENDPOINT,
                 webSocket: false,
-                botAgent: JSON.stringify({ channelId, botId : botConfig.id })
+                botAgent: JSON.stringify({ 
+                    channelId, 
+                    botId : botConfig.id, 
+                    appId: botConfig.appId, 
+                    appPassword: botConfig.appPassword }),
             })
         );
     }, []);

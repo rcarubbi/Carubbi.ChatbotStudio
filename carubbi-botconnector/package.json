@@ -2,7 +2,8 @@
   "name": "carubbi-botconnector",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app/server.js",
+  "type": "module",
   "scripts": {
     "start": "node ./app/server.js",
     "debug": "nodemon ./app/server.js",
@@ -12,15 +13,13 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "debug": "^4.1.1",
+    "body-parser": "^1.20.0",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "get-port": "^5.0.0",
-    "isomorphic-fetch": "2.2.1",
-    "moment": "2.22.2",
+    "isomorphic-fetch": "^3.0.0",
+    "moment": "^2.29.3",
     "normalize-port": "^1.0.0",
-    "uuid": "^3.1.0"
+    "uuidv4": "^6.2.13"
   },
   "devDependencies": {
     "nodemon": "^2.0.2",
