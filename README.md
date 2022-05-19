@@ -122,4 +122,4 @@ REACT_APP_CLIENT_SECRET={SecretKey}
 24. Open a 2nd instance of vs code from folder carubbi-botconnector
 
 25. Update the paths in the SetEnvironmentVariables.ps1 file and execute it
-26. Run BotEditor Backend.bat e BotEditor Frontend.bat
+26. Run BotEditor.bat to start the application
