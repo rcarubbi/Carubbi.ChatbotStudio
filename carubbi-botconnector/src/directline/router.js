@@ -2,21 +2,22 @@ import express from "express";
 import bodyParser from "body-parser";
 import fetch from "isomorphic-fetch";
 import botAgentExtractor from "./botAgentExtractor.js";
+import { authenticatedRequest } from "./authentication.js";
 
 import {
   createConversation,
   createConversationUpdateActivity,
   createActivityFromBot,
-  createMessageActivity, 
-  getConversation
-} from  "./conversationManager.js";
+  createMessageActivity,
+  getConversation,
+} from "./conversationManager.js";
 
 import {
   getBotData,
   setUserData,
   setConversationData,
   setPrivateConversationData,
-  deleteStateForUser
+  deleteStateForUser,
 } from "./botDataStore.js";
 
 const getRouter = (
@@ -48,23 +49,31 @@ const getRouter = (
 
   router.post("/directline/conversations", (req, res) => {
     const botAgent = botAgentExtractor(req);
+
     const conversationId = createConversation();
     const activity = createConversationUpdateActivity(
       serviceUrl,
       conversationId
     );
 
-    fetch(`${botUrl}/${botAgent.botId}`, {
+    const request = {
+      url: `${botUrl}/${botAgent.botId}`,
       method: "POST",
       body: JSON.stringify(activity),
       headers: {
         "Content-Type": "application/json",
       },
-    }).then((response) => {
-      res.status(response.status).send({
-        conversationId,
-        expiresIn,
-      });
+    };
+
+    authenticatedRequest(botAgent, request, (err, response) => {
+      if (err) {
+        res.status(500).send(err);
+      } else {
+        res.status(response.status).send({
+          conversationId,
+          expiresIn,
+        });
+      }
     });
   });
 
@@ -119,14 +128,24 @@ const getRouter = (
       if (conversation) {
         conversation.history.push(activity);
         const botAgent = botAgentExtractor(req);
-        fetch(`${botUrl}/${botAgent.botId}`, {
+
+        
+
+        const request = {
+          url: `${botUrl}/${botAgent.botId}`,
           method: "POST",
           body: JSON.stringify(activity),
           headers: {
             "Content-Type": "application/json",
           },
-        }).then((response) => {
-          res.status(response.status).json({ id: activity.id });
+        };
+
+        authenticatedRequest(botAgent, request, (err, response, body) => {
+          if (err) {
+            res.status(500).send(err);
+          } else {
+            res.status(response.status).json({ id: activity.id });
+          }
         });
       } else {
         // Conversation was never initialized
