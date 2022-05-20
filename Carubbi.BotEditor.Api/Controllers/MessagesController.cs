@@ -148,6 +148,7 @@ namespace Carubbi.BotEditor.Api
                     var outputStep = step as IOutput<object>;
                     if (outputStep.Durable)
                     {
+
                         var data = userData.GetProperty<object>(step.Id.ToString());
                         if (data != null)
                         {

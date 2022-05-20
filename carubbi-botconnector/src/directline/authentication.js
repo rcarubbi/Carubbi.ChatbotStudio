@@ -57,10 +57,10 @@ const authenticatedRequest = (
   } else {
     fetch(requestParameters.url, requestParameters)
       .then((response) => {
-        callback(null, response, body);
+        callback(null, response);
       })
       .catch((error) => {
-        callback(err, null, null);
+        callback(error, null);
       });
   }
 };

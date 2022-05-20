@@ -75,7 +75,7 @@ REACT_APP_CLIENT_SECRET={SecretKey}
 18. Install serve - yarn global add serve
 19. Create a ngrok account https://dashboard.ngrok.com/signup
 20. Configure authtoken: ngrok config add-authtoken <TOKEN>
-21. Build UI: npm run build (note: can be required to update react-scripts before build)
+21. Build UI: yarn build (note: can be required to update react-scripts before build)
 22. Check the sites configuration in the applicationhost.config file inside .vs folder:
  <sites>
              <site name="Carubbi.BotEditor.SamplesApi" id="1">
