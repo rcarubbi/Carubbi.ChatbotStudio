@@ -55,7 +55,7 @@ namespace Carubbi.BotEditor.SamplesApi.Controllers
             }
             catch (Exception ex)
             {
-                var a = ex;
+            
                 return Request.CreateResponse(HttpStatusCode.InternalServerError, ex.Message);
             }
         }

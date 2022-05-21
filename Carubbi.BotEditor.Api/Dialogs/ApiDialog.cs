@@ -67,7 +67,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
             try
             {
-                _step.Output = JsonConvert.DeserializeObject(response.Content);
+                _step.Output = JsonConvert.DeserializeObject($"{{ 'data':{response.Content} }}");
             }
             catch
             {

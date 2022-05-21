@@ -331,5 +331,6 @@ ASALocalRun/
 
 FormStepAssemblies
 SynthCache
-/carubbi-boteditor/src/pages/Builder/index copy.js
-/carubbi-botconnector/yarn.lock
+
+carubbi-boteditor/yarn.lock
+carubbi-botconnector/yarn.lock
