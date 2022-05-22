@@ -7,7 +7,7 @@ import NotificationImportant from "@material-ui/icons/NotificationImportant";
 import GridItem from "../../components/material-dashboard/Grid/GridItem.jsx";
 import GridContainer from "../../components/material-dashboard/Grid/GridContainer.jsx";
 import BlocklyComponent from "../../components/custom/BlocklyComponent";
-import Toolbox from "../../configs/toolbox";
+import toolbox from "../../configs/toolbox";
 import FlowchartComponent from "../../components/custom/FlowchartComponent";
 import "../../configs/customblocks";
 import Blockly from "blockly/core";
@@ -265,15 +265,15 @@ function BuilderPage(props) {
 
   
   return (
-    <GridContainer justify="flex-end" className={classes.builderGridContainer}>
+    <GridContainer justifyContent="flex-end" className={classes.builderGridContainer}>
       <GridItem xs={12} sm={12} md={8} className={classes.builderGridItem}>
         <BlocklyComponent
           botId={botId.current}
           ref={blocklyComponentReference}
           initialXml={workspace}
+          toolboxXml={toolbox}
           handleWorkspaceChanged={handleWorkspaceChanged}
         >
-          <Toolbox></Toolbox>
         </BlocklyComponent>
       </GridItem>
       <GridItem xs={12} sm={12} md={4}>
@@ -285,7 +285,7 @@ function BuilderPage(props) {
         ></FlowchartComponent>
       </GridItem>
       <GridItem xs={12} sm={12} md={4}>
-        <GridContainer justify="flex-end" style={{ paddingRight: "34px" }}>
+        <GridContainer justifyContent="flex-end" style={{ paddingRight: "34px" }}>
           <Button
             onClick={handleSaveOnClick}
             color="primary"

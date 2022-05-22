@@ -89,7 +89,7 @@ class AdminNavbarLinks extends React.Component {
         </Button>
         <div className={classes.manager}>
           <Button
-            buttonRef={node => {
+            ref={node => {
               this.anchorProfile = node;
             }}
             color={

@@ -1,9 +1,5 @@
-import React from "react";
-
-export default function toolbox() {
-  return (
-    <>
-       <category name="Atalhos">
+const toolbox = 
+    `<xml xmlns="https://developers.google.com/blockly/xml"><category name="Atalhos">
     <block type="simplemessagestep">
       <field name="Id"></field>
       <field name="Message"></field>
@@ -736,7 +732,6 @@ export default function toolbox() {
       <field name="PersistenceStrategy">InMemory</field>
       <field name="ConnectionString"></field>
     </block>
-  </category>
-    </>
-  );
-}
+  </category></xml>`;
+
+export default toolbox;

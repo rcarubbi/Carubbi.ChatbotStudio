@@ -11,7 +11,7 @@ class BlocklyComponent extends React.Component {
   componentDidMount() {
     const {
       initialXml,
-      children,
+      toolboxXml,
       handleWorkspaceChanged,
       history,
       botId,
@@ -20,7 +20,7 @@ class BlocklyComponent extends React.Component {
     const mediaUrl = `${process.env.PUBLIC_URL}/blockly-media/`;
 
     this.primaryOptions = {
-      toolbox: this.toolbox,
+      toolbox: toolboxXml,
       collapse: true,
       comments: true,
       disable: false,
@@ -145,22 +145,12 @@ class BlocklyComponent extends React.Component {
   }
 
   render() {
-    const { children } = this.props;
+   
 
     return (
-      <>
+      
         <div ref={e => (this.blocklyDiv = e)} id="blocklyDiv" />
-        <xml
-          xmlns="https://developers.google.com/blockly/xml"
-          is="blockly"
-          style={{ display: "none" }}
-          ref={toolbox => {
-            this.toolbox = toolbox;
-          }}
-        >
-          {children}
-        </xml>
-      </>
+      
     );
   }
 }

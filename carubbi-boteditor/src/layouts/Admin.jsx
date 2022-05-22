@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 import PerfectScrollbar from 'perfect-scrollbar';
 import 'perfect-scrollbar/css/perfect-scrollbar.css';
 // @material-ui/core components
-import { createMuiTheme, withStyles } from '@material-ui/core/styles';
+import { createTheme, withStyles } from '@material-ui/core/styles';
 
 import { ThemeProvider } from '@material-ui/styles';
 
@@ -25,7 +25,7 @@ import { activeRoute } from '../services/routeService';
 
 import '../assets/material-dashboard/css/material-dashboard-react.css';
 
-const theme = createMuiTheme({});
+const theme = createTheme({});
 
 const switchRoutes = (
 	<Switch>

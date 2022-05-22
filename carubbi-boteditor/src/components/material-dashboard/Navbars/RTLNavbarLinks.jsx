@@ -90,7 +90,7 @@ class RTLNavbarLinks extends React.Component {
         </Button>
         <div className={classes.manager}>
           <Button
-            buttonRef={node => {
+            ref={node => {
               this.anchorEl = node;
             }}
             color={window.innerWidth > 959 ? "transparent" : "white"}

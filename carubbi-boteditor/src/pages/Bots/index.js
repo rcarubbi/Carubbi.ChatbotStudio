@@ -206,7 +206,7 @@ function BotsPage(props) {
   }, [fetchData, listBots]);
 
   return (
-    <GridContainer justify="flex-end">
+    <GridContainer justifyContent="flex-end">
       <GridItem xs={12} sm={12} md={12}>
         <Dialog
           classes={{
@@ -285,7 +285,7 @@ function BotsPage(props) {
         </Card>
       </GridItem>
       <GridItem xs={12} sm={12} md={12}>
-        <Grid container justify="flex-end">
+        <Grid container justifyContent="flex-end">
           <Button simple color="primary" onClick={handleNewBotButtonClick}>
             <AddCircle style={{ width: 30, height: 30 }} />
           </Button>

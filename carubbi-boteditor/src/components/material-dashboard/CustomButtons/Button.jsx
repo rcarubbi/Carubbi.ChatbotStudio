@@ -26,7 +26,8 @@ import withStyles from "@material-ui/core/styles/withStyles";
 import Button from "@material-ui/core/Button";
 
 import buttonStyle from "../../../assets/material-dashboard/jss/material-dashboard-react/components/buttonStyle.jsx";
-function RegularButton({ ...props }) {
+
+const RegularButton = React.forwardRef((props, ref) => {
   const {
     classes,
     color,
@@ -55,11 +56,11 @@ function RegularButton({ ...props }) {
     [className]: className
   });
   return (
-    <Button {...rest} classes={muiClasses} className={btnClasses}>
+    <Button {...rest} ref={ref} classes={muiClasses} className={btnClasses}>
       {children}
     </Button>
   );
-}
+});
 
 RegularButton.propTypes = {
   classes: PropTypes.object.isRequired,
