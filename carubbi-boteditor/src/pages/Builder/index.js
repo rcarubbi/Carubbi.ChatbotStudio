@@ -14,46 +14,46 @@ import Blockly from "blockly/core";
 import workspace from "../../configs/workspace";
 import Button from "../../components/material-dashboard/CustomButtons/Button.jsx";
 import Snackbar from "../../components/material-dashboard/Snackbar/Snackbar";
-import WebChat from '../../components/custom/WebChat';
+import WebChat from "../../components/custom/WebChat";
 import api from "../../services/api";
 
 const styles = {
   loading: {
     color: primaryColor[0],
-    textAlign: "center"
+    textAlign: "center",
   },
   builderGridItem: {
-    padding: "0px 0px !important"
+    padding: "0px 0px !important",
   },
   builderGridContainer: {
-    margin: "0px 0px !important"
+    margin: "0px 0px !important",
   },
 };
 
 function BuilderPage(props) {
   const {
     classes,
-    location: { state }
+    location: { state },
   } = props;
 
   const botId = useRef(state && state.id);
-  
+
   const [showWebchat, setShowWebchat] = useState(false);
   const blocklyComponentReference = useRef(null);
   const [selectedId, setSelectedId] = useState(null);
   const [saving, setSaving] = useState(false);
   const [toasterOpened, setToasterOpened] = useState(false);
   const [runtime, setRuntime] = useState("");
-  
+
   const [toasterMessage, setToasterMessage] = useState({
     Message: "",
-    Color: "success"
+    Color: "success",
   });
 
   let toasterHandler = useRef(null);
 
   const [lastBlocklyUpdate, setLastBlocklyUpdate] = useState(new Date());
-  const handleNodeSelected = useCallback(nodeName => {
+  const handleNodeSelected = useCallback((nodeName) => {
     const { current: blocklyComponent } = blocklyComponentReference;
     const blockId = getBlockId(nodeName);
     const id = blockId.replace("step", "").split("i")[0];
@@ -71,7 +71,7 @@ function BuilderPage(props) {
     }
   }, []);
 
-  const setBlockId = useCallback(block => {
+  const setBlockId = useCallback((block) => {
     const { current: blocklyComponent } = blocklyComponentReference;
     if (block === null) return;
     if (block.type === "goto") return;
@@ -86,12 +86,12 @@ function BuilderPage(props) {
     }
   }, []);
 
-  const getBlockId = nodeName => {
+  const getBlockId = (nodeName) => {
     if (nodeName.startsWith("step")) {
       return nodeName;
     }
 
-    const nameParts = nodeName.split(" ").filter(el => el.trim() !== "");
+    const nameParts = nodeName.split(" ").filter((el) => el.trim() !== "");
     if (parseInt(nameParts[0])) {
       return `step${nameParts[0]}`;
     } else {
@@ -100,8 +100,7 @@ function BuilderPage(props) {
   };
 
   const handleWorkspaceChanged = useCallback(
-    event => {
-       
+    (event) => {
       const { current: blocklyComponent } = blocklyComponentReference;
       if (!blocklyComponent) return;
       const { workspace: ws } = blocklyComponent;
@@ -139,15 +138,15 @@ function BuilderPage(props) {
   const overrideContextMenu = useCallback(() => {
     const originalBlocklyContextMenuPopulate = Blockly.ContextMenu.populate_;
     const {
-      current: { options: wsOptions }
+      current: { options: wsOptions },
     } = blocklyComponentReference;
 
-    Blockly.ContextMenu.populate_ = function(options, rtl) {
+    Blockly.ContextMenu.populate_ = function (options, rtl) {
       const menu = originalBlocklyContextMenuPopulate(
         wsOptions.toogleInputMode
           ? options
           : options.filter(
-              x =>
+              (x) =>
                 x.text !== Blockly.Msg["INLINE_INPUTS"] &&
                 x.text !== Blockly.Msg["EXTERNAL_INPUTS"]
             ),
@@ -160,7 +159,7 @@ function BuilderPage(props) {
   const getBot = useCallback(async () => {
     const response = await api.get(`/api/bot/${botId.current}`);
     const devVersions = response.data.Versions.filter(
-      i => i.PublishedAt == null
+      (i) => i.PublishedAt == null
     );
     const currentVersion =
       devVersions.length > 0
@@ -180,7 +179,6 @@ function BuilderPage(props) {
     blocklyComponent.loadXml(design);
   }, [botId, getBot]);
 
-  
   const handleSaveOnClick = useCallback(async () => {
     const updateBot = async () => {
       const { current: blocklyComponent } = blocklyComponentReference;
@@ -188,7 +186,7 @@ function BuilderPage(props) {
       await api.put("api/bot", {
         jsonRuntime: blocklyComponent.getJsonRuntime(),
         xmlDesign: blocklyComponent.getXmlDesign(),
-        id: await botId.current
+        id: await botId.current,
       });
     };
 
@@ -197,7 +195,7 @@ function BuilderPage(props) {
 
       const response = await api.post("api/bot", {
         jsonRuntime: blocklyComponent.getJsonRuntime(),
-        xmlDesign: blocklyComponent.getXmlDesign()
+        xmlDesign: blocklyComponent.getXmlDesign(),
       });
 
       return response.data.Id;
@@ -208,7 +206,7 @@ function BuilderPage(props) {
       botId.current ? await updateBot() : (botId.current = await saveBot());
       setToasterMessage({
         Message: "Bot salvo com sucesso!",
-        Color: "success"
+        Color: "success",
       });
       setToasterOpened(true);
       getBot();
@@ -227,7 +225,7 @@ function BuilderPage(props) {
 
       setToasterMessage({
         Message: `Erro ao salvar o bot: ${errorMessage}`,
-        Color: "danger"
+        Color: "danger",
       });
       setToasterOpened(true);
     } finally {
@@ -248,7 +246,6 @@ function BuilderPage(props) {
     overrideContextMenu();
   }, [overrideContextMenu, loadBot]);
 
-  
   useEffect(() => {
     if (toasterOpened) {
       toasterHandler.current = setTimeout(() => {
@@ -263,9 +260,11 @@ function BuilderPage(props) {
     };
   }, [toasterOpened]);
 
-  
   return (
-    <GridContainer justifyContent="flex-end" className={classes.builderGridContainer}>
+    <GridContainer
+      justifyContent="flex-end"
+      className={classes.builderGridContainer}
+    >
       <GridItem xs={12} sm={12} md={8} className={classes.builderGridItem}>
         <BlocklyComponent
           botId={botId.current}
@@ -273,8 +272,7 @@ function BuilderPage(props) {
           initialXml={workspace}
           toolboxXml={toolbox}
           handleWorkspaceChanged={handleWorkspaceChanged}
-        >
-        </BlocklyComponent>
+        ></BlocklyComponent>
       </GridItem>
       <GridItem xs={12} sm={12} md={4}>
         <FlowchartComponent
@@ -285,7 +283,10 @@ function BuilderPage(props) {
         ></FlowchartComponent>
       </GridItem>
       <GridItem xs={12} sm={12} md={4}>
-        <GridContainer justifyContent="flex-end" style={{ paddingRight: "34px" }}>
+        <GridContainer
+          justifyContent="flex-end"
+          style={{ paddingRight: "34px" }}
+        >
           <Button
             onClick={handleSaveOnClick}
             color="primary"
@@ -332,7 +333,7 @@ function BuilderPage(props) {
 }
 
 BuilderPage.propTypes = {
-  classes: PropTypes.object
+  classes: PropTypes.object,
 };
 
 export default withRouter(withStyles(styles)(BuilderPage));

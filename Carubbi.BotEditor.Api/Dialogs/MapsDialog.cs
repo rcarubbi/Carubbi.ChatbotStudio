@@ -46,7 +46,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
                 if (location.Point != null)
                 {
-                    var image = new CardImage(url: _mapsService.GetLocationMapImageUrl(location, i));
+                    var image = new CardImage(url: _mapsService.GetLocationMapImageUrl(location, i), alt: locationString);
                     heroCard.Images = new[] { image };
                 }
                 if (locationIds != null)

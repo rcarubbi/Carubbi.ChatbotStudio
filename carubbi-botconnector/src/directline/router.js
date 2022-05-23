@@ -2,7 +2,7 @@ import express from "express";
 import bodyParser from "body-parser";
 import fetch from "isomorphic-fetch";
 import botAgentExtractor from "./botAgentExtractor.js";
-import { authenticatedRequest } from "./authentication.js";
+import { authenticatedRequest, refreshToken } from "./authentication.js";
 
 import {
   createConversation,
@@ -44,6 +44,12 @@ const getRouter = (
   });
 
   router.options("/directline", (req, res) => {
+    res.status(200).end();
+  });
+
+  router.post("/directline/tokens/refresh", (req, res) => {
+    const botAgent = botAgentExtractor(req);
+    refreshToken(botAgent);
     res.status(200).end();
   });
 

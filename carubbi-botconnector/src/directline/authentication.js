@@ -4,6 +4,15 @@ import { StatusCodes } from "http-status-codes";
 
 const tokens = {};
 
+const refreshToken = (botAgent) => {
+  tokens[botAgent.appId] = {};
+  getAccessToken(botAgent, (err, token) => {
+    if (!err && token) {
+      tokens[botAgent.appId] = token;
+    }
+  });
+}
+
 const authenticatedRequest = (
   botAgent,
   requestParameters,
@@ -135,4 +144,4 @@ const getAccessToken = (botAgent, callback) => {
   }
 };
 
-export { authenticatedRequest };
+export { authenticatedRequest, refreshToken };
