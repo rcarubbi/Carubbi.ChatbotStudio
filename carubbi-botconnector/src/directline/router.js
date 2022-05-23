@@ -1,6 +1,5 @@
 import express from "express";
 import bodyParser from "body-parser";
-import fetch from "isomorphic-fetch";
 import botAgentExtractor from "./botAgentExtractor.js";
 import { authenticatedRequest, refreshToken } from "./authentication.js";
 

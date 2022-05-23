@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useCallback } from "react";
-import ReactWebChat from "botframework-webchat";
+import ReactWebChat, {createStyleSet} from "botframework-webchat";
 import { DirectLine } from "botframework-directlinejs";
 import CustomInput from "../../material-dashboard/CustomInput/CustomInput";
 import { withStyles } from "@material-ui/core";
@@ -14,12 +14,13 @@ const styles = {
         bottom: "60px",
         right: "78px",
         backgroundColor: "white",
-    },
-    webchat: {
-        width: "400px",
-        height: "450px",
     }
 };
+
+const webchatStyles = createStyleSet({
+    rootHeight: "450px",
+    rootWidth: "400px",
+})
 
 function WebChat({ visible, classes, runtime }) {
 
@@ -69,10 +70,10 @@ function WebChat({ visible, classes, runtime }) {
                 }}
             />
             <ReactWebChat
-                className={classes.webchat}
                 directLine={directLine}
                 userID={"BotBuilder"}
                 username={"Bot Builder"}
+                styleSet={webchatStyles}
             />
         </div>
         ) : (
