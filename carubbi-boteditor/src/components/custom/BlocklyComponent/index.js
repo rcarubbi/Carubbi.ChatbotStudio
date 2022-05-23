@@ -128,7 +128,7 @@ class BlocklyComponent extends React.Component {
 
     if (event.type === Blockly.Events.BLOCK_CREATE) {
       collapseStepBlocks();
-      //ws.scroll(30, 30);
+      ws.centerOnBlock(event.blockId);
       ws.removeChangeListener(onBlockLoaded);
       if (handleWorkspaceChanged) {
         ws.addChangeListener(handleWorkspaceChanged);
