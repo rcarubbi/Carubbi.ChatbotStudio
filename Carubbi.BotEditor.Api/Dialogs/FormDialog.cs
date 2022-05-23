@@ -27,7 +27,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         protected override Task PerformStartAsync(IDialogContext context)
         {
-            ReflectState(context);
+             ReflectState(context);
             //Debugar(context);
 
             return Task.CompletedTask;
@@ -35,11 +35,13 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         //private void Debugar(IDialogContext context)
         //{
-        //    var instance = new Step2(context.PrivateConversationData, _step, _botConfig);
+        //    if (_step.ContainsRestoreFields()) LoadRestoreField(context);
+        //    if (_step.HasNlpEntitiesToAttach()) AttachNlpEntities(context);
+        //    var instance = new VoiceBot.Step1(context.PrivateConversationData, _step, _botConfig);
         //    var callback = new StateCallBack();
         //    callback.OnStateCompleted += Callback_OnStateCompleted;
         //    instance.Callback = callback;
-        //    var dialog = new FormDialog<Step2>(instance, instance.BuildForm, FormOptions.PromptInStart, null, new CultureInfo("pt-BR"));
+        //    var dialog = new FormDialog<VoiceBot.Step1>(instance, instance.BuildForm, FormOptions.PromptInStart, null, new CultureInfo("pt-BR"));
         //    context.Call(dialog, instance.ResumeAfterInput);
         //}
 

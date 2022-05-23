@@ -79,7 +79,7 @@ namespace Carubbi.BotEditor.Api.Forms
                 {
                     if (string.IsNullOrEmpty(field.OptionsSource))
                     {
-                        _attachPreviousNlpEntities.AppendLine($"{field.Name} = GetValue<{GetFriendlyName(field)}?>(dataBag, \"Entity|{field.Name}|{field.Id}\");");
+                        CreateGetValueStatement(_attachPreviousNlpEntities, field, string.Empty, "Entity|");
                     }
                     else
                     {
@@ -88,7 +88,7 @@ namespace Carubbi.BotEditor.Api.Forms
                 }
                 else
                 {
-                    _attachPreviousNlpEntities.AppendLine($"{field.Name} = GetValue<{GetFriendlyName(field)}>(dataBag, \"Entity|{field.Name}|{field.Id}\");");
+                    CreateGetValueStatement(_attachPreviousNlpEntities, field, string.Empty, "Entity|");
                 }
             }
 
@@ -99,7 +99,7 @@ namespace Carubbi.BotEditor.Api.Forms
                 var currentPropertyValues = new StringBuilder();
                 foreach (var item in _storedFields)
                 {
-                    _getStoredFields.AppendLine($"Previous{item.Name} = GetValue<{GetFriendlyName(item)}>(dataBag, \"{item.Name}|{item.Id}\");");
+                    CreateGetValueStatement(_getStoredFields, item, "Previous");
                     currentPropertyValues.AppendLine($"currentPropertyValues.Add(\"{item.Name}|{item.Id}\", {item.Name}?.ToString());");
                 }
 
@@ -107,7 +107,7 @@ namespace Carubbi.BotEditor.Api.Forms
                                        {{
                                             var currentPropertyValues = new Dictionary<string, string>();
 
-                                            {currentPropertyValues.ToString()}
+                                            {currentPropertyValues}
 
                                             foreach (KeyValuePair<string, string> kvp in currentPropertyValues)
                                             {{
@@ -149,6 +149,20 @@ namespace Carubbi.BotEditor.Api.Forms
 
 
             return Compile(botConfig, step, syntaxTree, references);
+        }
+
+        private void CreateGetValueStatement(StringBuilder stringBuilder, FormField field, string propertyPrefix = "", string dataBagKeyPrefix = "")
+        {
+            var friendlyName = GetFriendlyName(field);
+            if (friendlyName == $"{nameof(DateTime)}?")
+            {
+                stringBuilder.AppendLine($"var dateTimeParse{propertyPrefix}{field.Name}Success = DateTime.TryParse(GetValue<string>(dataBag, \"{dataBagKeyPrefix}{field.Name}|{field.Id}\"), out var parsed{propertyPrefix}{field.Name});");
+                stringBuilder.AppendLine($"if (dateTimeParse{propertyPrefix}{field.Name}Success ) {{ {propertyPrefix}{field.Name} = parsed{propertyPrefix}{field.Name}; }}");
+            }
+            else
+            {
+                stringBuilder.AppendLine($"{propertyPrefix}{field.Name} = GetValue<{GetFriendlyName(field)}>(dataBag, \"{dataBagKeyPrefix}{field.Name}|{field.Id}\");");
+            }
         }
 
         private string IncludeSummaryText(FormStep step)
@@ -387,8 +401,11 @@ namespace Carubbi.BotEditor.Api.Forms
                 case FieldTypes.SingleOption:
                     if (string.IsNullOrEmpty(field.OptionsSource))
                     {
-                        _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
-                        WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                        if (!_enumNamesDictionary.ContainsKey(field.Id))
+                        {
+                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
+                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                        }
                         CreateProperty(field.Name, $"{_enumNamesDictionary[field.Id]}?");
                         CreateFormBuilderProperty(field);
                     }
@@ -401,8 +418,11 @@ namespace Carubbi.BotEditor.Api.Forms
                 case FieldTypes.ManyOptions:
                     if (string.IsNullOrEmpty(field.OptionsSource))
                     {
-                        _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
-                        WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                        if (!_enumNamesDictionary.ContainsKey(field.Id))
+                        {
+                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
+                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                        }
                         CreateProperty(field.Name, $"List<{_enumNamesDictionary[field.Id]}>");
                         CreateFormBuilderProperty(field);
                     }
@@ -479,7 +499,12 @@ namespace Carubbi.BotEditor.Api.Forms
                 case FieldTypes.SingleOption:
                     if (string.IsNullOrEmpty(field.OptionsSource))
                     {
-                        CreateProperty($"Previous{field.Name}", _enumNamesDictionary[field.Id]);
+                        if (!_enumNamesDictionary.ContainsKey(field.Id))
+                        {
+                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
+                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                        }
+                        CreateProperty($"Previous{field.Name}", $"{_enumNamesDictionary[field.Id]}?");
                     }
                     else
                     {
@@ -489,7 +514,7 @@ namespace Carubbi.BotEditor.Api.Forms
                 case FieldTypes.ManyOptions:
                     if (string.IsNullOrEmpty(field.OptionsSource))
                     {
-                        CreateProperty($"Previous{field.Name}", _enumNamesDictionary[field.Id]);
+                        CreateProperty($"Previous{field.Name}", $"List<{_enumNamesDictionary[field.Id]}>");
                     }
                     else
                     {
@@ -711,7 +736,7 @@ namespace Carubbi.BotEditor.Api.Forms
                     return "bool?";
                 case FieldTypes.SingleOption:
                     return string.IsNullOrWhiteSpace(field.OptionsSource)
-                        ? _enumNamesDictionary[field.Id]
+                        ? $"{_enumNamesDictionary[field.Id]}?"
                         : "string";
                 case FieldTypes.ManyOptions:
                     return string.IsNullOrWhiteSpace(field.OptionsSource)
