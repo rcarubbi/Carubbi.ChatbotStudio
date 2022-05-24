@@ -70,7 +70,7 @@ namespace Carubbi.BotEditor.Api
         /// POST: api/Messages
         /// Receive a message from a user and reply to it
         /// </summary>
-        public async Task<HttpResponseMessage> Post([FromBody]Activity activity, string botId)
+        public async Task<HttpResponseMessage> Post([FromBody] Activity activity, string botId)
         {
             if (activity.Type == ActivityTypes.Message)
             {
@@ -122,7 +122,7 @@ namespace Carubbi.BotEditor.Api
                 // TODO: Tratar autenticação
                 //_botConfig.AppId
                 //_botConfig.AppPassword
-                
+
                 var response = await client.PostAsJsonAsync($"{Request.GetRequestContext().VirtualPathRoot}/bot/{_botConfig.Name}", reply);
             }
         }
@@ -153,16 +153,29 @@ namespace Carubbi.BotEditor.Api
                         if (data != null)
                         {
                             var stepToSet = updatedBotConfig.Steps.Single(x => x.Id == step.Id);
-                            if (data is JObject)
+
+                            if (stepToSet is FormStep)
                             {
                                 if ((data as JObject).ContainsFormStepType())
                                 {
                                     SetFormResult(data, stepToSet);
-                                } 
+                                }
                                 else
                                 {
-                                    stepToSet.GetType().GetProperty(Constants.OUTPUT_PROPERTY_NAME).SetValue(stepToSet, data, null);
+                                    bool formCancelled = false;
+                                    if ((data as JObject).ContainsFormCancelled())
+                                    {
+                                        var formCancelledJtoken = (data as JObject).GetValue("formCancelled");
+                                        formCancelled = formCancelledJtoken.Value<bool>();
+                                    }
+
+                                    var formResult = new FormResult
+                                    {
+                                        FormCancelled = formCancelled
+                                    };
+                                    stepToSet.GetType().GetProperty(Constants.OUTPUT_PROPERTY_NAME).SetValue(stepToSet, formResult, null);
                                 }
+
                             }
                             else
                             {
@@ -179,7 +192,7 @@ namespace Carubbi.BotEditor.Api
         private static void SetFormResult(object data, Step stepToSet)
         {
             (data as JObject).StripFormStepTypes();
-          
+
             var form = (data as JObject)["form"] as JObject;
 
             var formData = new JObject();
@@ -212,7 +225,7 @@ namespace Carubbi.BotEditor.Api
                 {
                     var mainTask = Task.Factory.StartNew(async () =>
                     {
-                            if (activity.HasAudioAttachment() && _botConfig.SpeechSettings?.Recognition != null)
+                        if (activity.HasAudioAttachment() && _botConfig.SpeechSettings?.Recognition != null)
                         {
                             var speechRecognitionService = _scope.ResolveKeyed<ISpeechRecognitionService>(_botConfig.SpeechSettings?.Recognition?.ServiceType,
                                    new TypedParameter(typeof(SpeechRecognitionSettings), _botConfig.SpeechSettings?.Recognition),

@@ -47,7 +47,7 @@ namespace Carubbi.BotEditor.Api.Forms
             {
                 _speechSynthesizerCreateInstance = "speechSynthesizerManager = Conversation.Container.Resolve<SpeechSynthesizerManager>();";
             }
-             
+
             _properties.Clear();
             _formBuilderProperties.Clear();
             _replaceFieldValuesInQuestion.Clear();
@@ -61,35 +61,8 @@ namespace Carubbi.BotEditor.Api.Forms
 
             foreach (var field in step.FormFields.OrderBy(x => x.Order))
             {
-
                 GenerateProperty(field, step);
-
-                if (field.Type == FieldTypes.ManyOptions)
-                {
-                    if (string.IsNullOrEmpty(field.OptionsSource))
-                    {
-                        _attachPreviousNlpEntities.AppendLine($"{field.Name} = GetValue<List<{GetFriendlyName(field)}>>(dataBag, \"Entity|{field.Name}|{field.Id}\");");
-                    }
-                    else
-                    {
-                        _attachPreviousNlpEntities.AppendLine($"{field.Name} = GetValue<List<string>>(dataBag, \"Entity|{field.Name}|{field.Id}\");");
-                    }
-                }
-                else if (field.Type == FieldTypes.SingleOption)
-                {
-                    if (string.IsNullOrEmpty(field.OptionsSource))
-                    {
-                        CreateGetValueStatement(_attachPreviousNlpEntities, field, string.Empty, "Entity|");
-                    }
-                    else
-                    {
-                        _attachPreviousNlpEntities.AppendLine($"{field.Name} = GetValue<string>(dataBag, \"Entity|{field.Name}|{field.Id}\");");
-                    }
-                }
-                else
-                {
-                    CreateGetValueStatement(_attachPreviousNlpEntities, field, string.Empty, "Entity|");
-                }
+                CreateGetValueStatement(_attachPreviousNlpEntities, field, string.Empty, "Entity|");
             }
 
             if (step.ContainsRestoreFields())
@@ -111,7 +84,8 @@ namespace Carubbi.BotEditor.Api.Forms
 
                                             foreach (KeyValuePair<string, string> kvp in currentPropertyValues)
                                             {{
-                                                context.UserData.SetValue(kvp.Key, state.GetType().GetProperty(kvp.Key.Split('|')[0]).GetValue(state).ToString());
+                                                var stateValue = JsonConvert.SerializeObject(state.GetType().GetProperty(kvp.Key.Split('|')[0]).GetValue(state));
+                                                context.UserData.SetValue(kvp.Key, stateValue);
                                             }}
 
                                             return Task.CompletedTask;
@@ -218,7 +192,7 @@ namespace Carubbi.BotEditor.Api.Forms
                         List<string> errorMessages = new List<string>();
                         foreach (Diagnostic diagnostic in failures)
                         {
-                             errorMessages.Add(diagnostic.GetMessage());
+                            errorMessages.Add(diagnostic.GetMessage());
                         }
                         return new FormStepResult(step.Id, false, errorMessages.ToArray());
                     }
@@ -270,7 +244,7 @@ namespace Carubbi.BotEditor.Api.Forms
 
                     namespace {botName}
                     {{
-                        {_enums.ToString()}
+                        {_enums}
 
                         
                         [Serializable]
@@ -278,16 +252,19 @@ namespace Carubbi.BotEditor.Api.Forms
                         {{
                              protected T GetValue<T>(IBotDataBag dataBag, string key)
                              {{
-                                 T value = default(T);
-                                 dataBag.TryGetValue<T>(key, out value);
-                                 return value;
+                                   string value = default(string);
+                                   dataBag.TryGetValue(key, out value);
+
+                                   return string.IsNullOrWhiteSpace(value)
+                                        ? default(T)
+                                        : JsonConvert.DeserializeObject<T>(value);
                              }}
 
                              private readonly FormStep _step;
                              private readonly BotConfig _botConfig;
                              public {className}(IBotDataBag dataBag, FormStep step, BotConfig botConfig) {{
-                                 {_getStoredFields.ToString()}
-                                 {_attachPreviousNlpEntities.ToString()}
+                                 {_getStoredFields}
+                                 {_attachPreviousNlpEntities}
                                  _step = step;
                                  _botConfig = botConfig;
                              }}
@@ -295,7 +272,7 @@ namespace Carubbi.BotEditor.Api.Forms
                             [JsonIgnore]
                              public StateCallBack Callback {{ get; set; }}
                              
-                             {_properties.ToString()}
+                             {_properties}
 
                              public IForm<{className}> BuildForm() {{
                                     INLPService nlpService = null;
@@ -306,7 +283,7 @@ namespace Carubbi.BotEditor.Api.Forms
 
                                     var fbFactory = new FormBuilderFactory<{className}>(_step);
                                     var fb = fbFactory.Create();
-                                    {_formBuilderProperties.ToString()}
+                                    {_formBuilderProperties}
                                     
                                     {_summary}
                                     {_saveAnswers}
@@ -398,42 +375,23 @@ namespace Carubbi.BotEditor.Api.Forms
                     CreateProperty(field);
                     CreateFormBuilderProperty(field);
                     break;
-                case FieldTypes.SingleOption:
-                    if (string.IsNullOrEmpty(field.OptionsSource))
+                case FieldTypes.SingleOption when field.OptionsSource == null:
+                case FieldTypes.ManyOptions when field.OptionsSource == null:
+                    if (!_enumNamesDictionary.ContainsKey(field.Id))
                     {
-                        if (!_enumNamesDictionary.ContainsKey(field.Id))
-                        {
-                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
-                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
-                        }
-                        CreateProperty(field.Name, $"{_enumNamesDictionary[field.Id]}?");
-                        CreateFormBuilderProperty(field);
+                        _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
+                        WriteEnum(_enumNamesDictionary[field.Id], field.Options);
                     }
-                    else
-                    {
-                        CreateProperty(field.Name, $"string");
-                        CreateFormBuilderDynamicOptionsProperty(field, step);
-                    }
+                    CreateProperty(field);
+                    CreateFormBuilderProperty(field);
                     break;
+                case FieldTypes.SingleOption:
                 case FieldTypes.ManyOptions:
-                    if (string.IsNullOrEmpty(field.OptionsSource))
-                    {
-                        if (!_enumNamesDictionary.ContainsKey(field.Id))
-                        {
-                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
-                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
-                        }
-                        CreateProperty(field.Name, $"List<{_enumNamesDictionary[field.Id]}>");
-                        CreateFormBuilderProperty(field);
-                    }
-                    else
-                    {
-                        CreateProperty(field.Name, $"List<string>");
-                        CreateFormBuilderDynamicOptionsProperty(field, step);
-                    }
+                    CreateProperty(field);
+                    CreateFormBuilderDynamicOptionsProperty(field, step);
                     break;
                 case FieldTypes.Restore:
-                    CreateProperty(field.Name, "bool");
+                    CreateProperty(field);
                     var relatedStoredFields = _storedFields.Where(ff => field.RestoreFields.Contains(ff.Name));
                     foreach (var restoreField in _storedFields.Where(ff => field.RestoreFields.Contains(ff.Name)))
                     {
@@ -488,38 +446,24 @@ namespace Carubbi.BotEditor.Api.Forms
         {
             switch (field.Type)
             {
+                case FieldTypes.SingleOption when field.OptionsSource == null:
+                case FieldTypes.ManyOptions when field.OptionsSource == null:
+                    if (!_enumNamesDictionary.ContainsKey(field.Id))
+                    {
+                        _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
+                        WriteEnum(_enumNamesDictionary[field.Id], field.Options);
+                    }
+                    CreatePreviousProperty(field);
+                    break;
                 case FieldTypes.Number:
                 case FieldTypes.Text:
                 case FieldTypes.Date:
                 case FieldTypes.Time:
                 case FieldTypes.Decimal:
                 case FieldTypes.CPF:
-                    CreatePreviousProperty(field);
-                    break;
                 case FieldTypes.SingleOption:
-                    if (string.IsNullOrEmpty(field.OptionsSource))
-                    {
-                        if (!_enumNamesDictionary.ContainsKey(field.Id))
-                        {
-                            _enumNamesDictionary.Add(field.Id, $"Enum{++enumCount}");
-                            WriteEnum(_enumNamesDictionary[field.Id], field.Options);
-                        }
-                        CreateProperty($"Previous{field.Name}", $"{_enumNamesDictionary[field.Id]}?");
-                    }
-                    else
-                    {
-                        CreateProperty($"Previous{field.Name}", $"string");
-                    }
-                    break;
                 case FieldTypes.ManyOptions:
-                    if (string.IsNullOrEmpty(field.OptionsSource))
-                    {
-                        CreateProperty($"Previous{field.Name}", $"List<{_enumNamesDictionary[field.Id]}>");
-                    }
-                    else
-                    {
-                        CreateProperty($"Previous{field.Name}", $"List<string>");
-                    }
+                    CreatePreviousProperty(field);
                     break;
                 default:
                     break;
@@ -555,7 +499,7 @@ namespace Carubbi.BotEditor.Api.Forms
 
             foreach (var item in field.RestoreFields)
             {
-                stb.AppendLine($"state.{item} = state.Previous{item};");
+                stb.AppendLine($"if (state.{item} == null) {{ state.{item} = state.Previous{item}; }}");
             }
 
             return stb.ToString();
@@ -567,13 +511,10 @@ namespace Carubbi.BotEditor.Api.Forms
 
             foreach (var item in field.RestoreFields)
             {
-                stb.Append($"!string.IsNullOrEmpty(state.Previous{item}?.ToString()) && ");
+                stb.Append($"!string.IsNullOrEmpty(state.Previous{item}?.ToString()) || ");
             }
 
-            foreach (var item in field.RestoreFields)
-            {
-                stb.Append($"string.IsNullOrEmpty(state.{item}?.ToString()) && ");
-            }
+          
             stb.Remove(stb.Length - 3, 3);
             return stb.ToString();
         }
@@ -616,10 +557,10 @@ namespace Carubbi.BotEditor.Api.Forms
         private void WriteEnum(string domainName, List<FieldOption> options)
         {
             _enums.Append($"public enum {domainName} {{");
-
+            var i = 1;
             foreach (var item in options.OrderBy(x => x.Order))
             {
-                _enums.Append($" [Describe(\"{item.Description}\")] [Terms(\"{item.Description}\")] {item.Value},");
+                _enums.Append($" [Describe(\"{item.Description}\")] [Terms(\"{item.Description}\")] {item.Value} = {i++},");
             }
 
             string strEnums = _enums.ToString();
@@ -734,16 +675,16 @@ namespace Carubbi.BotEditor.Api.Forms
                     return "float?";
                 case FieldTypes.YesNo:
                     return "bool?";
+                case FieldTypes.SingleOption when field.OptionsSource == null:
+                    return $"{_enumNamesDictionary[field.Id]}?";
                 case FieldTypes.SingleOption:
-                    return string.IsNullOrWhiteSpace(field.OptionsSource)
-                        ? $"{_enumNamesDictionary[field.Id]}?"
-                        : "string";
+                    return "string";
+                case FieldTypes.ManyOptions when field.OptionsSource == null:
+                    return $"List<{_enumNamesDictionary[field.Id]}>";
                 case FieldTypes.ManyOptions:
-                    return string.IsNullOrWhiteSpace(field.OptionsSource)
-                       ? _enumNamesDictionary[field.Id]
-                       : "List<string>";
+                    return "List<string>";
                 case FieldTypes.Restore:
-                    return "bool";
+                    return "bool?";
                 default:
                     throw new NotSupportedException();
             }
@@ -771,11 +712,6 @@ namespace Carubbi.BotEditor.Api.Forms
         private void CreatePreviousProperty(FormField field)
         {
             _properties.AppendLine($"public {GetFriendlyName(field)} Previous{field.Name} {{get;set;}}");
-        }
-
-        private void CreateProperty(string propertyName, string propertyTypeName)
-        {
-            _properties.AppendLine($"public {propertyTypeName} {propertyName} {{get;set;}}");
         }
     }
 }

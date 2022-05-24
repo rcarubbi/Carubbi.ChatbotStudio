@@ -6,6 +6,7 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.Dialogs.Internals;
 using Microsoft.Bot.Builder.FormFlow;
 using Microsoft.Bot.Builder.Luis.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -17,7 +18,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
     [Serializable]
     public class FormDialog : BaseDialog<object, FormStep>
     {
-        
+
 
         public FormDialog(BotConfig botConfig, CompositeStep parentStep, FormStep step)
             : base(botConfig, parentStep, step)
@@ -27,7 +28,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         protected override Task PerformStartAsync(IDialogContext context)
         {
-             ReflectState(context);
+            ReflectState(context);
             //Debugar(context);
 
             return Task.CompletedTask;
@@ -37,11 +38,11 @@ namespace Carubbi.BotEditor.Api.Dialogs
         //{
         //    if (_step.ContainsRestoreFields()) LoadRestoreField(context);
         //    if (_step.HasNlpEntitiesToAttach()) AttachNlpEntities(context);
-        //    var instance = new VoiceBot.Step1(context.PrivateConversationData, _step, _botConfig);
+        //    var instance = new CineBot.Step1(context.PrivateConversationData, _step, _botConfig);
         //    var callback = new StateCallBack();
         //    callback.OnStateCompleted += Callback_OnStateCompleted;
         //    instance.Callback = callback;
-        //    var dialog = new FormDialog<VoiceBot.Step1>(instance, instance.BuildForm, FormOptions.PromptInStart, null, new CultureInfo("pt-BR"));
+        //    var dialog = new FormDialog<CineBot.Step1>(instance, instance.BuildForm, FormOptions.PromptInStart, null, new CultureInfo("pt-BR"));
         //    context.Call(dialog, instance.ResumeAfterInput);
         //}
 
@@ -89,12 +90,105 @@ namespace Carubbi.BotEditor.Api.Dialogs
         private void AttachNlpEntities(IDialogContext context)
         {
             var entities = _botConfig.GetNLPEntities();
-
-            foreach (var field in _step.GetFieldsWithNlpEntities())
+            if (entities.Any())
             {
-                var entity = entities.FirstOrDefault(x => x.Type.Equals(field.NlpEntityName, StringComparison.CurrentCultureIgnoreCase));
-                if (entity != null) context.PrivateConversationData.SetValue(string.Format(Constants.ENTITY_PRIVATE_CONVERSATION_DATA_KEY_PATTERN, field.Name, field.Id), entity.Name);
+                var manyOptionsDict = GenerateManyOptionsEntitiesMap(entities);
+
+                foreach (var field in _step.GetFieldsWithNlpEntities())
+                {
+                    var entity = entities.FirstOrDefault(x => x.Type.Equals(field.NlpEntityName, StringComparison.CurrentCultureIgnoreCase));
+
+                    if (entity != null)
+                    {
+                        var serializedValue = SerializeEntity(manyOptionsDict, field, entity);
+                        if (!string.IsNullOrEmpty(serializedValue))
+                            context.PrivateConversationData.SetValue(string.Format(Constants.ENTITY_PRIVATE_CONVERSATION_DATA_KEY_PATTERN, field.Name, field.Id), serializedValue);
+                    }
+                }
             }
+        }
+
+        private Dictionary<string, List<string>> GenerateManyOptionsEntitiesMap(IEnumerable<Config.NLP.Entity> entities)
+        {
+            var manyOptionsDict = new Dictionary<string, List<string>>();
+            foreach (var field in _step.GetFieldsWithNlpEntities().Where(f => f.Type == FieldTypes.ManyOptions))
+            {
+                var filteredEntities = entities.Where(x => x.Type.Equals(field.NlpEntityName, StringComparison.CurrentCultureIgnoreCase));
+                foreach (var entity in filteredEntities)
+                {
+                    if (!manyOptionsDict.ContainsKey(entity.Type))
+                    {
+                        manyOptionsDict.Add(entity.Type, new List<string>());
+                    }
+                    manyOptionsDict[entity.Type].Add(entity.Name);
+                }
+            }
+
+            return manyOptionsDict;
+        }
+
+        private static string SerializeEntity(Dictionary<string, List<string>> manyOptionsDict, FormField field, Config.NLP.Entity entity)
+        {
+            string serializedValue = string.Empty;
+            switch (field.Type)
+            {
+                case FieldTypes.Number:
+                    if (int.TryParse(entity.Name, out var intValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(intValue);
+                    }
+                    break;
+                case FieldTypes.Text:
+                    serializedValue = JsonConvert.SerializeObject(entity.Name);
+                    break;
+                case FieldTypes.Date:
+                    if (DateTime.TryParse(entity.Name, out var dateValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(dateValue);
+                    }
+                    break;
+                case FieldTypes.Time:
+                    if (DateTime.TryParse(entity.Name, out var timeValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(timeValue);
+                    }
+                    break;
+                case FieldTypes.Decimal:
+                    if (decimal.TryParse(entity.Name, out var decimalValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(decimalValue);
+                    }
+                    break;
+                case FieldTypes.ManyOptions:
+                    if (manyOptionsDict.ContainsKey(entity.Type))
+                    {
+                        var list = manyOptionsDict[entity.Type];
+                        serializedValue = JsonConvert.SerializeObject(list);
+                    }
+                    break;
+                case FieldTypes.SingleOption:
+                    serializedValue = JsonConvert.SerializeObject(entity.Name.Capitalize());
+                    break;
+                case FieldTypes.YesNo:
+                    if (bool.TryParse(entity.Name, out var boolValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(boolValue);
+                    }
+                    break;
+                case FieldTypes.CPF:
+                    serializedValue = JsonConvert.SerializeObject(entity.Name);
+                    break;
+                case FieldTypes.Restore:
+                    if (bool.TryParse(entity.Name, out var restoreValue))
+                    {
+                        serializedValue = JsonConvert.SerializeObject(restoreValue);
+                    }
+                    break;
+                default:
+                    break;
+            }
+
+            return serializedValue;
         }
 
         private void LoadRestoreField(IDialogContext context)
@@ -115,7 +209,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
             _step.Output.Form = e.State;
             _step.Output.FormCancelled = e.FormCancelled;
-            
+
 
             PersistOutput(e.Context, _step.Output);
 
@@ -132,6 +226,6 @@ namespace Carubbi.BotEditor.Api.Dialogs
 
         }
 
-       
+
     }
 }

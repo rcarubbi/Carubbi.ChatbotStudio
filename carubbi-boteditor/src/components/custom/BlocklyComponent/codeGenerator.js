@@ -38,7 +38,7 @@ function getFormCustomMessageValues(formCustomMessages, key) {
 
 function getFormCustomMessageValue(formCustomMessages, key) {
     // eslint-disable-next-line
-    return (formCustomMessages && formCustomMessages.filter(x => x.key.toLowerCase() === key.toLowerCase())[0] || null);
+    return (formCustomMessages && formCustomMessages.filter(x => x.key.toLowerCase() === key.toLowerCase()).map(x => x.value)[0] || null);
 }
 
 function getFormCustomComnand(formCustomCommands, type) {

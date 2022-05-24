@@ -48,9 +48,20 @@ namespace Carubbi.BotEditor.Config.Steps
 
         public static bool ContainsFormStepType(this JObject formStep)
         {
-            var form = formStep["form"];
-            var p = ((JObject)form).Property("$type");
+            JToken form;
+            var containsForm = formStep.TryGetValue("form", out form);
+            if (!containsForm)
+            {
+               return false;
+            }
+                var p = ((JObject)form).Property("$type");
             return p != null;
+        }
+
+        public static bool ContainsFormCancelled(this JObject formStep)
+        {
+            var containsFormCancelled = formStep.TryGetValue("formCancelled", out _);
+            return containsFormCancelled;
         }
 
         public static void StripFormStepTypes(this JObject formStep)
