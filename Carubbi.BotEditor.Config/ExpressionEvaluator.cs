@@ -141,7 +141,7 @@ namespace Carubbi.BotEditor.Config
             
             return Engine.Razor.IsTemplateCached(templateName, null)
                 ? Engine.Razor.Run(templateName, viewBag: viewBag)
-                : Engine.Razor.RunCompile(message, templateName, viewBag: viewBag);
+                : Engine.Razor.RunCompile(message, templateName, modelType: typeof(object), model: null, viewBag: viewBag);
         }
 
         private DynamicViewBag PrepareViewBag(int stepId)

@@ -263,16 +263,16 @@ Blockly.Flowchart["confirmstep"] = function(block) {
 
   if (!trueStepId) {
     flowchartDeclarations.push(`eYes${label_id}=>end: Fim`);
-    flowchartConnections.push(`step${label_id}(yes, left)->eYes${label_id}`);
+    flowchartConnections.push(`step${label_id}(yes)->eYes${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(yes, left)->step${trueStepId}`);
+    flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
   }
 
   if (!falseStepId) {
     flowchartDeclarations.push(`eNo${label_id}=>end: Fim`);
-    flowchartConnections.push(`step${label_id}(no, right)->eNo${label_id}`);
+    flowchartConnections.push(`step${label_id}(no)->eNo${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(no, right)->step${falseStepId}`);
+    flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
   }
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
@@ -515,16 +515,16 @@ Blockly.Flowchart["conditionstep"] = function(block) {
 
   if (!trueStepId) {
     flowchartDeclarations.push(`eYes${label_id}=>end: Fim`);
-    flowchartConnections.push(`step${label_id}(yes, left)->eYes${label_id}`);
+    flowchartConnections.push(`step${label_id}(yes)->eYes${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(yes, left)->step${trueStepId}`);
+    flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
   }
 
   if (!falseStepId) {
     flowchartDeclarations.push(`eNo${label_id}=>end: Fim`);
-    flowchartConnections.push(`step${label_id}(no, right)->eNo${label_id}`);
+    flowchartConnections.push(`step${label_id}(no)->eNo${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(no, right)->step${falseStepId}`);
+    flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
   }
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
