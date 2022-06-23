@@ -70,10 +70,13 @@
     <Compile Include="Entities\PermissionPerGroup.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Integrations\IBotRuntimeServiceClient.cs" />
+    <Compile Include="Integrations\IChannelRegistrationServiceClient.cs" />
     <Compile Include="Models\BotUpdateChanges.cs" />
     <Compile Include="Models\Request\BotRequest.cs" />
     <Compile Include="Models\Request\BotRuntimeRequest.cs" />
+    <Compile Include="Models\Request\ChannelRegistrationRequest.cs" />
     <Compile Include="Models\Response\BotRuntimeResponse.cs" />
+    <Compile Include="Models\Response\ChannelRegistrationResponse.cs" />
     <Compile Include="Models\Response\FormStepResult.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\IAppAccessRepository.cs" />

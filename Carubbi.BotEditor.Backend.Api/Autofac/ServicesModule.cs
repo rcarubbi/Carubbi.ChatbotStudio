@@ -49,7 +49,15 @@ namespace Carubbi.BotEditor.Backend.Api.Autofac
                 .Named<IBotRuntimeServiceClient>("prodBotRuntimeServiceClient")
                 .InstancePerLifetimeScope();
 
+            builder.RegisterInstance(
+              CreateRestClient("ChannelRegistrationBaseUrl")
+            )
+             .Keyed<IRestClient>("channelRegistrationRestClient")
+             .SingleInstance();
 
+            builder.Register(ctx => new ChannelRegistrationServiceClient(ctx.ResolveKeyed<IRestClient>("channelRegistrationRestClient")))
+              .As<IChannelRegistrationServiceClient>()
+               .InstancePerLifetimeScope();
         }
 
         private static IRestClient CreateRestClient(string baseUrlAppSettingsKey)

@@ -22,6 +22,8 @@ namespace Carubbi.BotEditor.Config
 
         public SpeechSettings SpeechSettings { get; set; }
 
+        public List<IChannel> Channels { get; set;  } 
+
         public string AppId { get; set; }
         public string AppPassword { get; set; }
         public string ConnectionString { get; set; }

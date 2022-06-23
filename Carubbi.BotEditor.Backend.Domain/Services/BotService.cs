@@ -13,6 +13,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Transactions;
 
 namespace Carubbi.BotEditor.Backend.Domain.Services
@@ -22,6 +23,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
         private readonly IBotRepository _botRepository;
         private readonly IBotRuntimeServiceClient _devBotRuntimeServiceClient;
         private readonly IBotRuntimeServiceClient _prodBotRuntimeServiceClient;
+        private readonly IChannelRegistrationServiceClient _channelRegistrationServiceClient;
 
         public BotService(IBotRepository botRepository,
             ILifetimeScope scope)
@@ -76,9 +78,10 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                     botConfig.Id = bot.Id;
 
                     version.Runtime = JsonConvert.SerializeObject(botConfig);
-                    _botRepository.UpdateVersion(version);  
+                    _botRepository.UpdateVersion(version);
 
                     var response = _devBotRuntimeServiceClient.Create(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
+
 
                     if (response.FormStepResults.Any(x => !x.Success))
                     {
@@ -99,7 +102,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
 
 
 
-       
+
         internal List<BotConfig> ListPublishedBotConfigs(Func<BotConfig, bool> predicate)
         {
             var botVersions = _botRepository.ListPublishedBotVersions();
@@ -157,7 +160,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
             return botConfig;
         }
 
-        public void Deactivate(Guid id, User user)
+        public async Task DeactivateAsync(Guid id, User user)
         {
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required,
                new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
@@ -173,6 +176,13 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
 
                     var devResponse = _devBotRuntimeServiceClient.Delete(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
                     var prodResponse = _prodBotRuntimeServiceClient.Delete(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
+                    var channelRegistrationResponse = await _channelRegistrationServiceClient.UnregisterAsync(new ChannelRegistrationRequest { BotId = botConfig.Id });
+
+                    if (!channelRegistrationResponse.Success)
+                    {
+                        throw new ApplicationException(JoinErrorMessage(channelRegistrationResponse));
+                    }
+
 
                     if (devResponse.FormStepResults.Any(x => !x.Success))
                     {
@@ -295,7 +305,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
             newFormSteps.ForEach(x => x.Hash = JsonConvert.SerializeObject(x).GetHashCode());
             newBotConfig.UpdatedAt = DateTime.Now;
 
-            
+
 
             var runtime = JsonConvert.SerializeObject(newBotConfig);
 
@@ -306,7 +316,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
             };
         }
 
-        public void Publish(Guid id, User publisher)
+        public async Task PublishAsync(Guid id, User publisher)
         {
             using (TransactionScope scope = new TransactionScope(TransactionScopeOption.Required,
                 new TransactionOptions { IsolationLevel = IsolationLevel.ReadCommitted }))
@@ -332,9 +342,17 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                         ? _prodBotRuntimeServiceClient.Update(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = PrepareUpdate(botConfig, lastDevVersion).FormStepsToUpdate })
                         : _prodBotRuntimeServiceClient.Create(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
 
+
                     if (response.FormStepResults.Any(x => !x.Success))
                     {
                         throw new ApplicationException(JoinErrorMessage(response));
+                    }
+
+                    var channelRegistrationResponse = await _channelRegistrationServiceClient.RegisterAsync(new ChannelRegistrationRequest { BotId = botConfig.Id, Channels = botConfig.Channels });
+
+                    if (!channelRegistrationResponse.Success)
+                    {
+                        throw new ApplicationException(JoinErrorMessage(channelRegistrationResponse));
                     }
 
                     scope.Complete();
@@ -345,6 +363,20 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                     throw ex;
                 }
             }
+        }
+
+        private string JoinErrorMessage(ChannelRegistrationResponse channelRegistrationResponse)
+        {
+            var stbErrors = new StringBuilder();
+
+
+            foreach (var message in channelRegistrationResponse.ErrorMessages)
+            {
+                stbErrors.AppendLine(message);
+
+            }
+
+            return stbErrors.ToString();
         }
     }
 }

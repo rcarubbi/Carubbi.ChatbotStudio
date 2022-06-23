@@ -258,6 +258,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Integrations\BotRuntimeServiceClient.cs" />
+    <Compile Include="Integrations\ChannelRegistrationServiceClient.cs" />
     <Compile Include="Integrations\JsonNetSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Providers\ApplicationOAuthProvider.cs" />

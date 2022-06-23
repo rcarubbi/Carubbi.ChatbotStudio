@@ -27,8 +27,6 @@ namespace Carubbi.BotEditor.Config
             _parentStep = parentStep;
             Activity = activity;
         }
-
-
       
         public IActivity Activity { get; set; }
 
@@ -153,9 +151,9 @@ namespace Carubbi.BotEditor.Config
             
 
             viewBag.AddDictionary(data);
-            viewBag.AddValue(Constants.CONTACT_NAME, Activity.From.Name);
+            viewBag.AddValue(Constants.CONTACT_NAME, Activity?.From?.Name);
             viewBag.AddValue(Constants.START_MESSAGE, _botConfig.StartMessage);
-            viewBag.AddValue(Constants.CHANNEL_ID, Activity.ChannelId);
+            viewBag.AddValue(Constants.CHANNEL_ID, Activity?.ChannelId);
             viewBag.AddValue(Constants.DATA_SOURCE, ResolveDataSource(currentStep.DataSourceExpression));
             return viewBag;
         }

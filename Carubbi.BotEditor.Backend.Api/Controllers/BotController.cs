@@ -67,7 +67,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
         public async Task<IHttpActionResult> Deactivate(BotRequest request)
         {
             var user = await _userService.FindByNameAsync(LoggedUser);
-            _botService.Deactivate(request.Id, user);
+            await _botService.DeactivateAsync(request.Id, user);
 
             return Ok();
         }
@@ -78,7 +78,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
         public async Task<IHttpActionResult> Publish(BotRequest request)
         {
             var user = await _userService.FindByNameAsync(LoggedUser);
-            _botService.Publish(request.Id, user);
+            await _botService.PublishAsync(request.Id, user);
             return Ok();
         }
     }
