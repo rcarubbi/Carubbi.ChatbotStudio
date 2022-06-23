@@ -26,11 +26,12 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
         private readonly IChannelRegistrationServiceClient _channelRegistrationServiceClient;
 
         public BotService(IBotRepository botRepository,
-            ILifetimeScope scope)
+            ILifetimeScope scope, IChannelRegistrationServiceClient channelRegistrationServiceClient)
         {
             _botRepository = botRepository;
             _devBotRuntimeServiceClient = scope.ResolveOptionalNamed<IBotRuntimeServiceClient>("devBotRuntimeServiceClient");
             _prodBotRuntimeServiceClient = scope.ResolveOptionalNamed<IBotRuntimeServiceClient>("prodBotRuntimeServiceClient");
+            _channelRegistrationServiceClient = channelRegistrationServiceClient;
         }
 
         public IEnumerable<Bot> ListAll()
