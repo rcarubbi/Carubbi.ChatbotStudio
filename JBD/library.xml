@@ -1,5 +1,5 @@
 <xml xmlns="https://developers.google.com/blockly/xml"><block type="factory_base" id="caD}w5vjFZGspJ]J(AkM" x="10" y="10">
-    <mutation connections="NONE"/>
+    <mutation connections="NONE"></mutation>
     <field name="NAME">botconfig</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">NONE</field>
@@ -23,7 +23,7 @@
             </statement>
             <value name="TYPE">
               <block type="type_group" id="!%1*^!68vs5|v{bMdw;2">
-                <mutation types="20"/>
+                <mutation types="20"></mutation>
                 <value name="TYPE0">
                   <block type="type_other" id="L*3m*OF[XQl5TIN2d:fE">
                     <field name="TYPE">ReadGPSLocationStep</field>
@@ -182,6 +182,40 @@
                                 <field name="TYPE">StoreSettings</field>
                               </block>
                             </value>
+                            <next>
+                              <block type="input_value" id="c$/G,7h~,i4=x;gI2=@^">
+                                <field name="INPUTNAME">Whatsapp</field>
+                                <field name="ALIGN">LEFT</field>
+                                <statement name="FIELDS">
+                                  <block type="field_static" id="senN8u.UZo(Yy;8TFuPK">
+                                    <field name="TEXT">WhatsApp</field>
+                                  </block>
+                                </statement>
+                                <value name="TYPE">
+                                  <shadow type="type_null" id="S|y(c#t%6?4AIzPrDdy!"></shadow>
+                                  <block type="type_other" id="^FYW+}0H[l7x*%L.^=5)">
+                                    <field name="TYPE">WhatsAppChannel</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="input_value" id="NF|JutmHHV.s%`2@IjY*">
+                                    <field name="INPUTNAME">Telegram</field>
+                                    <field name="ALIGN">LEFT</field>
+                                    <statement name="FIELDS">
+                                      <block type="field_static" id="oyO6AWN-;j`}MX];[p}6">
+                                        <field name="TEXT">Telegram</field>
+                                      </block>
+                                    </statement>
+                                    <value name="TYPE">
+                                      <shadow type="type_null" id="}I+Y;?j00QBlXW;QND*n"></shadow>
+                                      <block type="type_other" id="z8eX=w%s)oob`3QefNq6">
+                                        <field name="TYPE">TelegramChannel</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
                           </block>
                         </next>
                       </block>
@@ -201,17 +235,17 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="f}VeDtcT+3=0Zo9Y]Vk`">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="J_58iP@)5,x%xX0yTT?]">
-        <mutation colour="#5b5ba5"/>
+        <mutation colour="#5b5ba5"></mutation>
         <field name="HUE">240</field>
       </block>
     </value>
   </block><block type="factory_base" id="wSA3oq!.3hb13Yr[uMQx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">MessageStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -221,7 +255,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="r7[@G#JoO;VK6GC`1]u5">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="/Q;413}MBRJDW(77?HpT">
@@ -231,7 +265,7 @@
           </block>
         </statement>
         <value name="TYPE">
-          <shadow type="type_null" id="DiY:Ba/W0aiBVF%xxP@#"/>
+          <shadow type="type_null" id="DiY:Ba/W0aiBVF%xxP@#"></shadow>
           <block type="type_other" id="MVP$Qsv@XE]u?URmA+/u">
             <field name="TYPE">MessageInteractions</field>
           </block>
@@ -245,13 +279,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="_yjsUG|iH=M^z47g21+~" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="qK{3(M{rMkl0Zb]H89J="/>
+      <shadow type="type_null" id="qK{3(M{rMkl0Zb]H89J="></shadow>
       <block type="type_group" id="/*h%[9V`8H*C[ip1Re[Q">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="^ZcH!Ec^cV$3JI$CL2Fi">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -355,9 +389,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="/nolX^Kk?mLAoAZ}.czb"/>
+      <shadow type="type_null" id="/nolX^Kk?mLAoAZ}.czb"></shadow>
       <block type="type_group" id="bT]j]eiM9S#dR@!-3rs$">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="|Qv?]64Rn?A~nbffwpgz">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -462,12 +496,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Qh!ErZhBTO5T6qhzgGdj">
-        <mutation colour="#80a55b"/>
+        <mutation colour="#80a55b"></mutation>
         <field name="HUE">90</field>
       </block>
     </value>
   </block><block type="factory_base" id="i~fNV?m|tP0pT$meZ6?Z" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">InputStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -477,7 +511,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="XVeYfMRK0,RGx!(q~8a}">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="i(Y+IKSy0cbGWzWRCU$-">
@@ -487,7 +521,7 @@
           </block>
         </statement>
         <value name="TYPE">
-          <shadow type="type_null" id="ob}t2q*1ytWx:3PHVR+b"/>
+          <shadow type="type_null" id="ob}t2q*1ytWx:3PHVR+b"></shadow>
           <block type="type_other" id="QDMQTutUl~Rz33T(1_(;">
             <field name="TYPE">MessageInteractions</field>
           </block>
@@ -516,7 +550,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="G,3TSv)Qu0GBtLiDoGzz"/>
+                  <shadow type="type_null" id="G,3TSv)Qu0GBtLiDoGzz"></shadow>
                   <block type="type_other" id="pfw+)Mtu_Tvc*vBkrAzb">
                     <field name="TYPE">NlpSettings</field>
                   </block>
@@ -531,7 +565,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null" id="M^?E@?OtfpI|3/YaA0Z^"/>
+                      <shadow type="type_null" id="M^?E@?OtfpI|3/YaA0Z^"></shadow>
                       <block type="type_other" id="V.B[kF;ky9)L8#pvLsGm">
                         <field name="TYPE">TextAnalysisSettings</field>
                       </block>
@@ -551,13 +585,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="W4JZ%,WA*!xI{6Xbx{~j" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="M84K!)Pu?wJIxzMftKHw"/>
+      <shadow type="type_null" id="M84K!)Pu?wJIxzMftKHw"></shadow>
       <block type="type_group" id="@aD]IvUFh3#shftZkF]s">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="s-p8rZYJz*d}p%{@uYYK">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -661,9 +695,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="88PUCq/5}L?}!gf|XiVS"/>
+      <shadow type="type_null" id="88PUCq/5}L?}!gf|XiVS"></shadow>
       <block type="type_group" id="?|QULKHri.JL%e{[PJIE">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="fx:aROs3c9;cuX}5wPu{">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -768,12 +802,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ln~L.VWDIst6RXUsY#wT">
-        <mutation colour="#5ba5a5"/>
+        <mutation colour="#5ba5a5"></mutation>
         <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id="x,z;a+@ZqJ%9|a5nRFrD" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">String</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -805,29 +839,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="NFpk.gw*U404oFE[NPK#" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="G/]4(w./x,^_,X{YCD;b"/>
+      <shadow type="type_null" id="G/]4(w./x,^_,X{YCD;b"></shadow>
       <block type="type_other" id="L}*g@`oQkj-FE@4A:X6!">
         <field name="TYPE">String</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="Ipoa`UKO9]~X/u3XYmN%"/>
+      <shadow type="type_null" id="Ipoa`UKO9]~X/u3XYmN%"></shadow>
       <block type="type_other" id="lRc{`]~mgER:T*G9a9M0">
         <field name="TYPE">String</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id=")(q,lv5Hh61|Zx!A?qoN">
-        <mutation colour="#5ba56d"/>
+        <mutation colour="#5ba56d"></mutation>
         <field name="HUE">135</field>
       </block>
     </value>
   </block><block type="factory_base" id="b?8KuXUR!dUf9{+=pMh0" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">NlpSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -844,7 +878,7 @@
             <field name="ALIGN">CENTRE</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="2Cm|x;#R{4utyZ5A.;-?">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">NlpServiceType</field>
                 <field name="USER0">Tipo de serviço</field>
                 <field name="CPU0">None</field>
@@ -866,7 +900,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="_=Q~_ApV1pOWf{d=;C|B"/>
+                  <shadow type="type_null" id="_=Q~_ApV1pOWf{d=;C|B"></shadow>
                   <block type="type_other" id="5GBNF![G(P]0eqDIccvb">
                     <field name="TYPE">NlpModel</field>
                   </block>
@@ -884,23 +918,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="sF(4$#jPw}tpU/0{777(" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="Ool$Ms]9pmKZ_a15TIg+"/>
+      <shadow type="type_null" id="Ool$Ms]9pmKZ_a15TIg+"></shadow>
       <block type="type_other" id="}(2ER-9SXQOLFZih6p!p">
         <field name="TYPE">NlpSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="f[Zug6D;`%`h||mqPp$o">
-        <mutation colour="#5b6da5"/>
+        <mutation colour="#5b6da5"></mutation>
         <field name="HUE">225</field>
       </block>
     </value>
   </block><block type="factory_base" id="?TEgtH-y?_CPVSTY]6K=" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">TextAnalysisSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -917,7 +951,7 @@
             <field name="ALIGN">RIGHT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="cKw{oFio-4KY@A(.[_C|">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">TextAnalysisServiceType</field>
                 <field name="USER0">Tipo de Serviço</field>
                 <field name="CPU0">None</field>
@@ -930,7 +964,7 @@
                 <field name="ALIGN">RIGHT</field>
                 <statement name="FIELDS">
                   <block type="field_dropdown" id="$tpD#*z:Cnznn+#kVX7N">
-                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">Language</field>
                     <field name="USER0">Idioma</field>
                     <field name="CPU0">None</field>
@@ -950,7 +984,7 @@
                         <field name="TEXT">Chave</field>
                         <next>
                           <block type="field_input" id="JwIfCs%k4!^lmZC/YrW|">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">SubscriptionKey</field>
                           </block>
                         </next>
@@ -987,23 +1021,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="97!s]rjbvYK6c:(~Gemf" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="nF00]MMQK?sQ:QO4{!kC"/>
+      <shadow type="type_null" id="nF00]MMQK?sQ:QO4{!kC"></shadow>
       <block type="type_other" id="6-s@ro,)bS((=Oe4=HsX">
         <field name="TYPE">TextAnalysisSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="2F:{JU*Zn]bGTztBi?-;">
-        <mutation colour="#a55b93"/>
+        <mutation colour="#a55b93"></mutation>
         <field name="HUE">315</field>
       </block>
     </value>
   </block><block type="factory_base" id="ad1ID)+:JxUSx~,r%-cl" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">NlpModel</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -1023,7 +1057,7 @@
                 <field name="TEXT">App Id</field>
                 <next>
                   <block type="field_input" id="nHNKN/b!B:w8r-FM!(][">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">AppId</field>
                   </block>
                 </next>
@@ -1037,7 +1071,7 @@
                     <field name="TEXT">Prediction Key</field>
                     <next>
                       <block type="field_input" id="]/dlrJ8)p[YdLM4qD_)K">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">PredictionKey</field>
                       </block>
                     </next>
@@ -1051,7 +1085,7 @@
                         <field name="TEXT">Prediction Endpoint</field>
                         <next>
                           <block type="field_input" id="?~gY:H~5w4Gv7[??iDT-">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">PredictionEndpoint</field>
                           </block>
                         </next>
@@ -1072,29 +1106,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="ZK(C0{|A8z^.iItm*wCC" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="7*C7qHV?eKW!ml,xOnW="/>
+      <shadow type="type_null" id="7*C7qHV?eKW!ml,xOnW="></shadow>
       <block type="type_other" id="PKwCEK^Q@vVN-u-ys[Qt">
         <field name="TYPE">NlpModel</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="h:qb~0iUY~ozS(8@.[4o"/>
+      <shadow type="type_null" id="h:qb~0iUY~ozS(8@.[4o"></shadow>
       <block type="type_other" id="f?4w{x-z*IAVX|peIKqW">
         <field name="TYPE">NlpModel</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="S^X(q[E_S*J#fDS|)utd">
-        <mutation colour="#a5805b"/>
+        <mutation colour="#a5805b"></mutation>
         <field name="HUE">30</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">ConfirmStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -1103,7 +1137,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="I?A@O8Pv/vSjYu{PMt{1">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
@@ -1122,7 +1156,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"/>
+              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"></shadow>
               <block type="type_other" id="?tLN`l/~R|uf,l_y!7vA">
                 <field name="TYPE">MessageInteractions</field>
               </block>
@@ -1137,7 +1171,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null"/>
+                  <shadow type="type_null"></shadow>
                   <block type="type_other" id="o7xy*+{%T,idb5X-8hm^">
                     <field name="TYPE">MessageInteractions</field>
                   </block>
@@ -1152,7 +1186,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="H)C|T6b*^oC+NhD@~9GO">
                         <field name="TYPE">MessageInteractions</field>
                       </block>
@@ -1209,7 +1243,7 @@
                                       </block>
                                     </statement>
                                     <value name="TYPE">
-                                      <shadow type="type_null" id="Dk7E^w[^JWU,2|K#z/Aa"/>
+                                      <shadow type="type_null" id="Dk7E^w[^JWU,2|K#z/Aa"></shadow>
                                       <block type="type_other" id="`~IOY/4CIpn1H7*En~XJ">
                                         <field name="TYPE">String</field>
                                       </block>
@@ -1224,7 +1258,7 @@
                                           </block>
                                         </statement>
                                         <value name="TYPE">
-                                          <shadow type="type_null"/>
+                                          <shadow type="type_null"></shadow>
                                           <block type="type_other" id="lm[DmaMpvjb2!aHA+27a">
                                             <field name="TYPE">String</field>
                                           </block>
@@ -1256,9 +1290,9 @@
                                                   </block>
                                                 </statement>
                                                 <value name="TYPE">
-                                                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+                                                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
                                                   <block type="type_group" id="Km~^_AT^h`HLK={3sBs]">
-                                                    <mutation types="20"/>
+                                                    <mutation types="20"></mutation>
                                                     <value name="TYPE0">
                                                       <block type="type_other" id="+MMbP.OQ;g-Yj-:p0P@Q">
                                                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -1371,9 +1405,9 @@
                                                       </block>
                                                     </statement>
                                                     <value name="TYPE">
-                                                      <shadow type="type_null" id="kIz#?oZuR[e9Hht4}r%A"/>
+                                                      <shadow type="type_null" id="kIz#?oZuR[e9Hht4}r%A"></shadow>
                                                       <block type="type_group" id="C1RA@ukZ_jCpBxi}$sp#">
-                                                        <mutation types="20"/>
+                                                        <mutation types="20"></mutation>
                                                         <value name="TYPE0">
                                                           <block type="type_other" id="JlE^OJ0xY|h=DdbXr+Q4">
                                                             <field name="TYPE">ReadGPSLocationStep</field>
@@ -1507,13 +1541,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="6U21mf4I;/;C|dfb$[#."/>
+      <shadow type="type_null" id="6U21mf4I;/;C|dfb$[#."></shadow>
       <block type="type_group" id="B=gq5$8y-SsL2PjAmw(j">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="QFtUXQ)}5EeO*c{-sUUn">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -1618,12 +1652,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#805ba5"/>
+        <mutation colour="#805ba5"></mutation>
         <field name="HUE">270</field>
       </block>
     </value>
   </block><block type="factory_base" id="v0QNFjasu6h=?1cKWfHG" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">MessageInteractions</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -1645,7 +1679,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="hE)VW_=^v#+~y!JtE.B("/>
+              <shadow type="type_null" id="hE)VW_=^v#+~y!JtE.B("></shadow>
               <block type="type_other" id="!5N.N/s2XOXVBF?+Q{4O">
                 <field name="TYPE">String</field>
               </block>
@@ -1660,7 +1694,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="$EhxFuWrRYF:9P!,V1N2"/>
+                  <shadow type="type_null" id="$EhxFuWrRYF:9P!,V1N2"></shadow>
                   <block type="type_other" id="h~/ZG2YiI@35}G|f2FD.">
                     <field name="TYPE">String</field>
                   </block>
@@ -1675,7 +1709,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null" id="7:,g.78rF_.D}F}@2k|y"/>
+                      <shadow type="type_null" id="7:,g.78rF_.D}F}@2k|y"></shadow>
                       <block type="type_other" id="rC|hN|r%5NYZo.ZUWBF_">
                         <field name="TYPE">File</field>
                       </block>
@@ -1695,23 +1729,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="c#pof;pqz%{M~gMG[z8x" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="ilZNQts,T$Q_I#Xw}##-"/>
+      <shadow type="type_null" id="ilZNQts,T$Q_I#Xw}##-"></shadow>
       <block type="type_other" id="Fq;z9#IrOWO3vFb;P{^#">
         <field name="TYPE">MessageInteractions</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="48x0A+2:DFZ`Yj?yg-1r">
-        <mutation colour="#5ba55b"/>
+        <mutation colour="#5ba55b"></mutation>
         <field name="HUE">120</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">ListStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -1720,14 +1754,14 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="fX3;-sK$e:6^tmJcf3Xc">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
                 <field name="TEXT">Lista de</field>
                 <next>
                   <block type="field_dropdown" id="2nb7Uq`xk(cUb(Eacsh|">
-                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">ListType</field>
                     <field name="USER0">Imagens</field>
                     <field name="CPU0">ImageList</field>
@@ -1751,7 +1785,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"/>
+              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"></shadow>
               <block type="type_other" id="?tLN`l/~R|uf,l_y!7vA">
                 <field name="TYPE">MessageInteractions</field>
               </block>
@@ -1766,7 +1800,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
                   <block type="type_other" id="FNazW.$@Oo9~0|y7cjt;">
                     <field name="TYPE">ListItem</field>
                   </block>
@@ -1781,7 +1815,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="o7xy*+{%T,idb5X-8hm^">
                         <field name="TYPE">MessageInteractions</field>
                       </block>
@@ -1796,7 +1830,7 @@
                           </block>
                         </statement>
                         <value name="TYPE">
-                          <shadow type="type_null"/>
+                          <shadow type="type_null"></shadow>
                           <block type="type_other" id="H)C|T6b*^oC+NhD@~9GO">
                             <field name="TYPE">MessageInteractions</field>
                           </block>
@@ -1842,7 +1876,7 @@
                                       </block>
                                     </statement>
                                     <value name="TYPE">
-                                      <shadow type="type_null"/>
+                                      <shadow type="type_null"></shadow>
                                       <block type="type_other" id="RV0bZQ]z@z8BffOA@5{j">
                                         <field name="TYPE">NlpSettings</field>
                                       </block>
@@ -1857,7 +1891,7 @@
                                           </block>
                                         </statement>
                                         <value name="TYPE">
-                                          <shadow type="type_null"/>
+                                          <shadow type="type_null"></shadow>
                                           <block type="type_other" id="FS(o(`|CgWH1:0Cz=2WX">
                                             <field name="TYPE">DataSource</field>
                                           </block>
@@ -1887,13 +1921,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="U9),6U|}FsNp7e|/jm8#"/>
+      <shadow type="type_null" id="U9),6U|}FsNp7e|/jm8#"></shadow>
       <block type="type_group" id="0^?#E3h_WV(1Ih8wff*C">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="yjix$a,`O?i}O,zU9p@H">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -1998,12 +2032,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a5935b"/>
+        <mutation colour="#a5935b"></mutation>
         <field name="HUE">45</field>
       </block>
     </value>
   </block><block type="factory_base" id="]1)Pi2:%c9**7REpP5.i" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">CustomCommandConfig</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -2110,29 +2144,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="{:LLA$dD*1or:zHavw/3" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="yLe,6g,f:*Qvn4?[I[/Q"/>
+      <shadow type="type_null" id="yLe,6g,f:*Qvn4?[I[/Q"></shadow>
       <block type="type_other" id="e70pTUzxUf+rZK5D_BcY">
         <field name="TYPE">CustomCommandConfig</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id=".!KLKGlDVCq9z%h?ggK;"/>
+      <shadow type="type_null" id=".!KLKGlDVCq9z%h?ggK;"></shadow>
       <block type="type_other" id="N`-h5a45uchi.9wS6d4y">
         <field name="TYPE">CustomCommandConfig</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="yOs.uHD;7_z!JXsGIDw}">
-        <mutation colour="#a55b5b"/>
+        <mutation colour="#a55b5b"></mutation>
         <field name="HUE">0</field>
       </block>
     </value>
   </block><block type="factory_base" id="yWP[Y~nX:cVXNH.[Il6i" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">SpeechSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -2144,7 +2178,7 @@
             <field name="TEXT">Voz STT</field>
             <next>
               <block type="field_dropdown" id="|iAUuz:|q7g:!~3TDpK/">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">Language</field>
                 <field name="USER0">Idioma</field>
                 <field name="CPU0">None</field>
@@ -2166,7 +2200,7 @@
                 <field name="TEXT">STT</field>
                 <next>
                   <block type="field_dropdown" id="9h^n4WQL7X``QPRB_U!x">
-                    <mutation options="[&quot;text&quot;]"/>
+                    <mutation options="[&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">RecognitionServiceType</field>
                     <field name="USER0">Microsoft Speech</field>
                     <field name="CPU0">BingSpeech</field>
@@ -2182,7 +2216,7 @@
                     <field name="TEXT">Região do STT </field>
                     <next>
                       <block type="field_dropdown" id="KjqKP73/rX*#ht.[kqhx">
-                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                         <field name="FIELDNAME">RecognitionServiceRegion</field>
                         <field name="USER0">Sul do Brasil</field>
                         <field name="CPU0">brazilsouth</field>
@@ -2218,7 +2252,7 @@
                         <field name="TEXT">Chave do STT</field>
                         <next>
                           <block type="field_input" id="`4YKrKvUPY[)KYAK+3xV">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">RecognitionSubscriptionKey</field>
                           </block>
                         </next>
@@ -2246,7 +2280,7 @@
                                 <field name="TEXT">TTS</field>
                                 <next>
                                   <block type="field_dropdown" id="IKu?9r?h8ziv.s^4}^Bl">
-                                    <mutation options="[&quot;text&quot;]"/>
+                                    <mutation options="[&quot;text&quot;]"></mutation>
                                     <field name="FIELDNAME">SynthesisServiceType</field>
                                     <field name="USER0">Microsoft Speech</field>
                                     <field name="CPU0">BingSpeech</field>
@@ -2262,7 +2296,7 @@
                                     <field name="TEXT">Região do TTS</field>
                                     <next>
                                       <block type="field_dropdown" id="q?z={nGO;m{VPR2uj)1W">
-                                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                                         <field name="FIELDNAME">SynthesisServiceRegion</field>
                                         <field name="USER0">Sul do Brasil</field>
                                         <field name="CPU0">brazilsouth</field>
@@ -2298,7 +2332,7 @@
                                         <field name="TEXT">Chave do TTS</field>
                                         <next>
                                           <block type="field_input" id="EuTz2Juw8a5-dFDaExjc">
-                                            <field name="TEXT"/>
+                                            <field name="TEXT"></field>
                                             <field name="FIELDNAME">SynthesisSubscriptionKey</field>
                                           </block>
                                         </next>
@@ -2309,7 +2343,7 @@
                                         <field name="ALIGN">LEFT</field>
                                         <statement name="FIELDS">
                                           <block type="field_dropdown" id="4@T4NEowNQf2el*]xw^D">
-                                            <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                                            <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                                             <field name="FIELDNAME">CacheType</field>
                                             <field name="USER0">Tipo de Cache</field>
                                             <field name="CPU0">None</field>
@@ -2324,7 +2358,7 @@
                                             <field name="ALIGN">LEFT</field>
                                             <statement name="FIELDS">
                                               <block type="field_dropdown" id="$t-ySTU!;pT=~+TUr9*P">
-                                                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                                                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                                                 <field name="FIELDNAME">StoreType</field>
                                                 <field name="USER0">Tipo de Armazenamento</field>
                                                 <field name="CPU0">None</field>
@@ -2361,23 +2395,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="e-ln_uRnm=Hvl%9W!(;{" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="Vel3Y5;Q#C`8}F{B,lrV"/>
+      <shadow type="type_null" id="Vel3Y5;Q#C`8}F{B,lrV"></shadow>
       <block type="type_other" id="!;9.%^;Pq`3}=3Spi]?v">
         <field name="TYPE">SpeechSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="uCP*p^L?h0|3X+_,el|4">
-        <mutation colour="#a5935b"/>
+        <mutation colour="#a5935b"></mutation>
         <field name="HUE">45</field>
       </block>
     </value>
   </block><block type="factory_base" id="S/j2_X=CfzsG9*_aOJB-" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">AppCredentials</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -2397,7 +2431,7 @@
                 <field name="TEXT">App Id</field>
                 <next>
                   <block type="field_input" id="VxQ(*]]]^@{`E`Mo?`9w">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">AppId</field>
                   </block>
                 </next>
@@ -2411,7 +2445,7 @@
                     <field name="TEXT">App Password</field>
                     <next>
                       <block type="field_input" id="(SrRjUR|ClSNUiN1{{gU">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">AppPassword</field>
                       </block>
                     </next>
@@ -2430,23 +2464,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="hL8f-gw8JmBEnB5iKjs(" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="~BHfw1p9J_iq(D_h}-5k"/>
+      <shadow type="type_null" id="~BHfw1p9J_iq(D_h}-5k"></shadow>
       <block type="type_other" id="O/$w`KXMJH.eqctgRe}*">
         <field name="TYPE">AppCredentials</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="VoR/an58EbXK~tzM}1DD">
-        <mutation colour="#5ba593"/>
+        <mutation colour="#5ba593"></mutation>
         <field name="HUE">165</field>
       </block>
     </value>
   </block><block type="factory_base" id="6PuI#%,!1a=ES)]1*nwz" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">StoreSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -2466,7 +2500,7 @@
                 <field name="TEXT">Armazenar em</field>
                 <next>
                   <block type="field_dropdown" id="ECz|q!JQ))bK*c)J02l]">
-                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">PersistenceStrategy</field>
                     <field name="USER0">Memória</field>
                     <field name="CPU0">InMemory</field>
@@ -2486,7 +2520,7 @@
                     <field name="TEXT">String de conexão</field>
                     <next>
                       <block type="field_input" id="-1!S89lrW3mS+3@d$UP]">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">ConnectionString</field>
                       </block>
                     </next>
@@ -2505,23 +2539,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="TLeAFR#vCT{u+3-eeeV`" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="z(luAg(EIYcCW*=#^y:!"/>
+      <shadow type="type_null" id="z(luAg(EIYcCW*=#^y:!"></shadow>
       <block type="type_other" id="Gl_RKm4zy6(G#wpxClkX">
         <field name="TYPE">StoreSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id=":wTDNY|Dx+5~SbQJC~y3">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
       </block>
     </value>
   </block><block type="factory_base" id="j*bHCoNS0)s(`PkE7H]5" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FormStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -2530,7 +2564,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="D,i(Q==j^PIu2+x]AQmD">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="6|$rZ2lXwl}-}:dgx6t?">
@@ -2549,7 +2583,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="!GBIyJOl?37h)^s=TEOS"/>
+              <shadow type="type_null" id="!GBIyJOl?37h)^s=TEOS"></shadow>
               <block type="type_other" id="(pZ`3hyy63nkaq,wg.Zs">
                 <field name="TYPE">FormField</field>
               </block>
@@ -2564,7 +2598,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="~lHng70R/UVI+G]@4Kgv"/>
+                  <shadow type="type_null" id="~lHng70R/UVI+G]@4Kgv"></shadow>
                   <block type="type_other" id="EPFn-b*J$e%w2rkkaoNA">
                     <field name="TYPE">Summary</field>
                   </block>
@@ -2593,7 +2627,7 @@
                           </block>
                         </statement>
                         <value name="TYPE">
-                          <shadow type="type_null" id="AB#Ay{OrB}r%$LxVev!?"/>
+                          <shadow type="type_null" id="AB#Ay{OrB}r%$LxVev!?"></shadow>
                           <block type="type_other" id="j!)FQ5s%~t_3jYF7Mam[">
                             <field name="TYPE">FormCustomMessage</field>
                           </block>
@@ -2608,7 +2642,7 @@
                               </block>
                             </statement>
                             <value name="TYPE">
-                              <shadow type="type_null"/>
+                              <shadow type="type_null"></shadow>
                               <block type="type_other" id="w,(V$4YsPiz|.42f}kC(">
                                 <field name="TYPE">FormCustomCommand</field>
                               </block>
@@ -2623,7 +2657,7 @@
                                   </block>
                                 </statement>
                                 <value name="TYPE">
-                                  <shadow type="type_null" id="H{)Sta/=ZW88zdJR5Qxp"/>
+                                  <shadow type="type_null" id="H{)Sta/=ZW88zdJR5Qxp"></shadow>
                                   <block type="type_other" id="Y^c^q,Vqbd3hfEpkA=h6">
                                     <field name="TYPE">NlpSettings</field>
                                   </block>
@@ -2649,13 +2683,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="6_V#6?9mZrK+k($~D.AX" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="[,MZ2=;-*Gp|DnXsE7*$"/>
+      <shadow type="type_null" id="[,MZ2=;-*Gp|DnXsE7*$"></shadow>
       <block type="type_group" id="jxtBykjZJVqV3EZq?hy0">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="tJ$3*_N91cPZA|g[b2hP">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -2759,9 +2793,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="vB%3yLM,(lD!^OHi(2_j"/>
+      <shadow type="type_null" id="vB%3yLM,(lD!^OHi(2_j"></shadow>
       <block type="type_group" id="Ce4|k7^ubQ5aVm?EspbR">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="XPJa!Kx^@x3HiXj-q{#(">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -2866,12 +2900,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="PD%dw4u@n@!GF1gH):VW">
-        <mutation colour="#5ba58c"/>
+        <mutation colour="#5ba58c"></mutation>
         <field name="HUE">160</field>
       </block>
     </value>
   </block><block type="factory_base" id="A_~ay))A8c/d7bf5N|C_" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FormField</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -2917,7 +2951,7 @@
                     <field name="ALIGN">LEFT</field>
                     <statement name="FIELDS">
                       <block type="field_dropdown" id="*.D!36S(c1L}G#%*8zuP">
-                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                         <field name="FIELDNAME">Type</field>
                         <field name="USER0">Tipo</field>
                         <field name="CPU0">None</field>
@@ -2945,7 +2979,7 @@
                             <field name="TEXT">Entidade NLP</field>
                             <next>
                               <block type="field_input" id="]Z3]7gyJgYT;2`3{,[2f">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">NlpEntityName</field>
                               </block>
                             </next>
@@ -3016,13 +3050,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="YMx`LTEWqB.wpw}SLZ.w" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="dTY4w4!Qd_p`=6^#m=hz"/>
+      <shadow type="type_null" id="dTY4w4!Qd_p`=6^#m=hz"></shadow>
       <block type="type_group" id="vhRv`^i}ODRGQCtK`My+">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="S@5O,i*QZWkRIWbWdlNm">
             <field name="TYPE">FormField</field>
@@ -3041,9 +3075,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="2IK9KjJH+qbY^Cl7K*?q"/>
+      <shadow type="type_null" id="2IK9KjJH+qbY^Cl7K*?q"></shadow>
       <block type="type_group" id=":]aQVxb~jW;o4o!j*3:.">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="~#N5^Mo?R~k_ytEGaKr*">
             <field name="TYPE">FormField</field>
@@ -3063,12 +3097,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="_{xgsRxeV%G6Lk}~Yhx$">
-        <mutation colour="#745ba5"/>
+        <mutation colour="#745ba5"></mutation>
         <field name="HUE">260</field>
       </block>
     </value>
   </block><block type="factory_base" id="A_~ay))A8c/d7bf5N|C_" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">OptionsFormField</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -3114,7 +3148,7 @@
                     <field name="ALIGN">LEFT</field>
                     <statement name="FIELDS">
                       <block type="field_dropdown" id="*.D!36S(c1L}G#%*8zuP">
-                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                         <field name="FIELDNAME">Type</field>
                         <field name="USER0">Tipo</field>
                         <field name="CPU0">None</field>
@@ -3134,9 +3168,9 @@
                           </block>
                         </statement>
                         <value name="TYPE">
-                          <shadow type="type_null" id="lIzxrk.Su0KYp=Ldl*Ix"/>
+                          <shadow type="type_null" id="lIzxrk.Su0KYp=Ldl*Ix"></shadow>
                           <block type="type_group" id="sr(AB`SWGPh;zpD0/*!A">
-                            <mutation types="2"/>
+                            <mutation types="2"></mutation>
                             <value name="TYPE0">
                               <block type="type_other" id="(^A}HL|Xyv-O;g;a_E7u">
                                 <field name="TYPE">FieldOption</field>
@@ -3157,7 +3191,7 @@
                                 <field name="TEXT">Entidade NLP</field>
                                 <next>
                                   <block type="field_input" id="]Z3]7gyJgYT;2`3{,[2f">
-                                    <field name="TEXT"/>
+                                    <field name="TEXT"></field>
                                     <field name="FIELDNAME">NlpEntityName</field>
                                   </block>
                                 </next>
@@ -3230,13 +3264,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="YMx`LTEWqB.wpw}SLZ.w" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="3+sEW1y9Iz9Zmv])LfYS"/>
+      <shadow type="type_null" id="3+sEW1y9Iz9Zmv])LfYS"></shadow>
       <block type="type_group" id="vhRv`^i}ODRGQCtK`My+">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="S@5O,i*QZWkRIWbWdlNm">
             <field name="TYPE">FormField</field>
@@ -3255,9 +3289,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="td0u},+%gU6Xjwizp|J@"/>
+      <shadow type="type_null" id="td0u},+%gU6Xjwizp|J@"></shadow>
       <block type="type_group" id=":]aQVxb~jW;o4o!j*3:.">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="~#N5^Mo?R~k_ytEGaKr*">
             <field name="TYPE">FormField</field>
@@ -3277,12 +3311,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="_{xgsRxeV%G6Lk}~Yhx$">
-        <mutation colour="#995ba5"/>
+        <mutation colour="#995ba5"></mutation>
         <field name="HUE">290</field>
       </block>
     </value>
   </block><block type="factory_base" id="C:zj(AVo4KUB][%HEB(C" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FieldOption</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -3320,29 +3354,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="Y:@mY;ucEv6-TviE=n3R" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id=";,NM$-dIJ{i){.C:P-KV"/>
+      <shadow type="type_null" id=";,NM$-dIJ{i){.C:P-KV"></shadow>
       <block type="type_other" id="PZsD?O)[0*!BxuSa]+,Y">
         <field name="TYPE">FieldOption</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="z:/(E9+%Y=/wcyAoLS;h"/>
+      <shadow type="type_null" id="z:/(E9+%Y=/wcyAoLS;h"></shadow>
       <block type="type_other" id="0:f8z9@l0*X?OjiC/bhH">
         <field name="TYPE">FieldOption</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="?*LmXeYGUblhGOG{Zl(6">
-        <mutation colour="#5b67a5"/>
+        <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
     </value>
   </block><block type="factory_base" id="C:zj(AVo4KUB][%HEB(C" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">FieldOptionSource</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -3374,23 +3408,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="Y:@mY;ucEv6-TviE=n3R" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="yF)FZWnd-4YoY,7hGP*]"/>
+      <shadow type="type_null" id="yF)FZWnd-4YoY,7hGP*]"></shadow>
       <block type="type_other" id="#k),B)QCJe)3V_;)37+2">
         <field name="TYPE">FieldOptionSource</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="?*LmXeYGUblhGOG{Zl(6">
-        <mutation colour="#5b67a5"/>
+        <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
     </value>
   </block><block type="factory_base" id="A_~ay))A8c/d7bf5N|C_" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">RestoreFormField</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -3427,7 +3461,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="vW:7_%[?-r.g,p;%?}z5"/>
+                  <shadow type="type_null" id="vW:7_%[?-r.g,p;%?}z5"></shadow>
                   <block type="type_other" id="YyyTquidB+/|!?GM9^)%">
                     <field name="TYPE">String</field>
                   </block>
@@ -3445,13 +3479,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="YMx`LTEWqB.wpw}SLZ.w" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="#V}HR_hv3,_2ABYib36@"/>
+      <shadow type="type_null" id="#V}HR_hv3,_2ABYib36@"></shadow>
       <block type="type_group" id="vhRv`^i}ODRGQCtK`My+">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="S@5O,i*QZWkRIWbWdlNm">
             <field name="TYPE">FormField</field>
@@ -3470,9 +3504,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="3MMI)cUKH/?h)gdVAz`F"/>
+      <shadow type="type_null" id="3MMI)cUKH/?h)gdVAz`F"></shadow>
       <block type="type_group" id=":]aQVxb~jW;o4o!j*3:.">
-        <mutation types="3"/>
+        <mutation types="3"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="~#N5^Mo?R~k_ytEGaKr*">
             <field name="TYPE">FormField</field>
@@ -3492,12 +3526,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="_{xgsRxeV%G6Lk}~Yhx$">
-        <mutation colour="#745ba5"/>
+        <mutation colour="#745ba5"></mutation>
         <field name="HUE">260</field>
       </block>
     </value>
   </block><block type="factory_base" id="Qj@}C4s2v9.X$luo/nZL" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">Summary</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -3556,23 +3590,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="1Zje!5@mTu(^TJTGgT2L" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="+#Of9@ar_c%Fr^~+?2$n"/>
+      <shadow type="type_null" id="+#Of9@ar_c%Fr^~+?2$n"></shadow>
       <block type="type_other" id="t1uAc{8kQo1DyrG3e=2G">
         <field name="TYPE">Summary</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Kg8WXLl1Gk!s@,V7UFMr">
-        <mutation colour="#80a55b"/>
+        <mutation colour="#80a55b"></mutation>
         <field name="HUE">90</field>
       </block>
     </value>
   </block><block type="factory_base" id="d,MCo.8@VVShqv?7tlRx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FormCustomMessage</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -3584,7 +3618,7 @@
             <field name="TEXT">Customização de Literal</field>
             <next>
               <block type="field_dropdown" id="KASv)0vDi1HMqOx$5L$5">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">Key</field>
                 <field name="USER0">Sim</field>
                 <field name="CPU0">Yes</field>
@@ -3681,29 +3715,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="]A=34]KaYOG(Jmw*PObh" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="UEs9:Ud(]}._.Fex2T]U"/>
+      <shadow type="type_null" id="UEs9:Ud(]}._.Fex2T]U"></shadow>
       <block type="type_other" id="zk}gDDMY0a`P?qjQBXwo">
         <field name="TYPE">FormCustomMessage</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="l5Tb5mNXO@#~/`T0gY4i"/>
+      <shadow type="type_null" id="l5Tb5mNXO@#~/`T0gY4i"></shadow>
       <block type="type_other" id="0Fe.{}TE4FAwYsxg#d`N">
         <field name="TYPE">FormCustomMessage</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="uJwi#09ubGAJ^q[W)m0`">
-        <mutation colour="#5b67a5"/>
+        <mutation colour="#5b67a5"></mutation>
         <field name="HUE">230</field>
       </block>
     </value>
   </block><block type="factory_base" id="d,MCo.8@VVShqv?7tlRx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FormCustomCommand</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -3715,7 +3749,7 @@
             <field name="TEXT">Customização do comando</field>
             <next>
               <block type="field_dropdown" id="-vh}t)D?]t}*YxQVpw7J">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">CommandType</field>
                 <field name="USER0">Ajuda</field>
                 <field name="CPU0">Help</field>
@@ -3739,14 +3773,14 @@
                 <field name="TEXT">Nome</field>
                 <next>
                   <block type="field_input" id="*s@yN_rQ]}rs`h=IAh|n">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Description</field>
                     <next>
                       <block type="field_static" id="}=oVhcgoAueQA(.]m`G/">
                         <field name="TEXT">Texto</field>
                         <next>
                           <block type="field_input" id="WC9kcz5-3tP6w)gA-14|">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">Terms</field>
                           </block>
                         </next>
@@ -3764,7 +3798,7 @@
                     <field name="TEXT">Mensagem de ajuda</field>
                     <next>
                       <block type="field_input" id="7Lx,g_V~MN@$}NcE2_T/">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">HelpMessage</field>
                       </block>
                     </next>
@@ -3783,29 +3817,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="]A=34]KaYOG(Jmw*PObh" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="@!7o[Ejnm|j5mJ`V)Oij"/>
+      <shadow type="type_null" id="@!7o[Ejnm|j5mJ`V)Oij"></shadow>
       <block type="type_other" id="zk}gDDMY0a`P?qjQBXwo">
         <field name="TYPE">FormCustomCommand</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="QkNBM9bA=;$=yL;xNO.4"/>
+      <shadow type="type_null" id="QkNBM9bA=;$=yL;xNO.4"></shadow>
       <block type="type_other" id="0Fe.{}TE4FAwYsxg#d`N">
         <field name="TYPE">FormCustomCommand</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="uJwi#09ubGAJ^q[W)m0`">
-        <mutation colour="#5ba56d"/>
+        <mutation colour="#5ba56d"></mutation>
         <field name="HUE">135</field>
       </block>
     </value>
   </block><block type="factory_base" id="1j}TqD}O(-tr09^ryhy5" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">DataSource</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -3856,23 +3890,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="b2cT]D1%!lfjgEYJM)x`" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="V),KIYLF]b.Qo~/jQk-8"/>
+      <shadow type="type_null" id="V),KIYLF]b.Qo~/jQk-8"></shadow>
       <block type="type_other" id="@}_:l.Gr*kLZ+-!%#P;#">
         <field name="TYPE">DataSource</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="J2TU3f?2SqLruhYj(97!">
-        <mutation colour="#935ba5"/>
+        <mutation colour="#935ba5"></mutation>
         <field name="HUE">285</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">ConditionStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -3882,7 +3916,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="fX3;-sK$e:6^tmJcf3Xc">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="Pm`].x]zUPXMw,PcN-L.">
@@ -3892,9 +3926,9 @@
           </block>
         </statement>
         <value name="TYPE">
-          <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"/>
+          <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"></shadow>
           <block type="type_group" id="Wi$Z^|BEZrEJ+I:,d5wq">
-            <mutation types="3"/>
+            <mutation types="3"></mutation>
             <value name="TYPE0">
               <block type="type_other" id="Nt-lk*w4YP!%,~!Q=_g_">
                 <field name="TYPE">RelationalExpression</field>
@@ -3922,9 +3956,9 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
               <block type="type_group" id="ny#i)x$%SCc,ci[vY:f~">
-                <mutation types="20"/>
+                <mutation types="20"></mutation>
                 <value name="TYPE0">
                   <block type="type_other" id="_qMB@)63?`GF6n8I|Tkv">
                     <field name="TYPE">ReadGPSLocationStep</field>
@@ -4037,9 +4071,9 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="C+h$xK0b^dm/f$|P7!7D"/>
+                  <shadow type="type_null" id="C+h$xK0b^dm/f$|P7!7D"></shadow>
                   <block type="type_group" id="H[/h9q:*r3BI@S1P,o1}">
-                    <mutation types="20"/>
+                    <mutation types="20"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="O(a]j;N6R54V2%[ZX9A4">
                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -4152,7 +4186,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="FS(o(`|CgWH1:0Cz=2WX">
                         <field name="TYPE">DataSource</field>
                       </block>
@@ -4172,23 +4206,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="]+pBfH_E3W_P#*h|)$BS"/>
+      <shadow type="type_null" id="]+pBfH_E3W_P#*h|)$BS"></shadow>
       <block type="type_other" id="WR]2*:g*P;@ZmCAsr:tG">
         <field name="TYPE">ConditionStep</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5b5ba5"/>
+        <mutation colour="#5b5ba5"></mutation>
         <field name="HUE">240</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">RelationalExpression</field>
     <field name="INLINE">INT</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -4197,9 +4231,9 @@
         <field name="INPUTNAME">Left</field>
         <field name="ALIGN">LEFT</field>
         <value name="TYPE">
-          <shadow type="type_null" id="Qs}T6zx{wr~gDtKO[o{l"/>
+          <shadow type="type_null" id="Qs}T6zx{wr~gDtKO[o{l"></shadow>
           <block type="type_group" id="1lGyuhQ]m0pNY:8gSUqn">
-            <mutation types="2"/>
+            <mutation types="2"></mutation>
             <value name="TYPE0">
               <block type="type_other" id="m-Q9DNJlADuASJLzeB:2">
                 <field name="TYPE">Literal</field>
@@ -4217,7 +4251,7 @@
             <field name="ALIGN">LEFT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="c*XKl%}qQe;3B3K;[/jI">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">Operator</field>
                 <field name="USER0">=</field>
                 <field name="CPU0">Equals</field>
@@ -4238,9 +4272,9 @@
                 <field name="INPUTNAME">Right</field>
                 <field name="ALIGN">LEFT</field>
                 <value name="TYPE">
-                  <shadow type="type_null" id="_$s(5vYCpd6PaW!~Bubd"/>
+                  <shadow type="type_null" id="_$s(5vYCpd6PaW!~Bubd"></shadow>
                   <block type="type_group" id="Mn:EhA[~_%RAh|yU[U4u">
-                    <mutation types="2"/>
+                    <mutation types="2"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="}}dKvUoD,Qoa4Qt.3fGK">
                         <field name="TYPE">Literal</field>
@@ -4266,23 +4300,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="I8psMFO#Q?qQpRDVNZVV"/>
+      <shadow type="type_null" id="I8psMFO#Q?qQpRDVNZVV"></shadow>
       <block type="type_other" id="*jjfGv|V+6Sk=MEgKkUB">
         <field name="TYPE">RelationalExpression</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5b5ba5"/>
+        <mutation colour="#5b5ba5"></mutation>
         <field name="HUE">240</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">BinaryLogicalExpression</field>
     <field name="INLINE">INT</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -4291,9 +4325,9 @@
         <field name="INPUTNAME">Left</field>
         <field name="ALIGN">LEFT</field>
         <value name="TYPE">
-          <shadow type="type_null" id="N/2jO|vRV7@P2DU+o|[{"/>
+          <shadow type="type_null" id="N/2jO|vRV7@P2DU+o|[{"></shadow>
           <block type="type_group" id="r`EBJg%,%g7qo{Lc9U)W">
-            <mutation types="3"/>
+            <mutation types="3"></mutation>
             <value name="TYPE0">
               <block type="type_other" id="K94WU{;9MeCAegEK4t8z">
                 <field name="TYPE">UnaryLogicalExpression</field>
@@ -4316,7 +4350,7 @@
             <field name="ALIGN">LEFT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="DBYg.I=!7_;gpWTaA/zp">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">Operator</field>
                 <field name="USER0">e</field>
                 <field name="CPU0">And</field>
@@ -4329,9 +4363,9 @@
                 <field name="INPUTNAME">Right</field>
                 <field name="ALIGN">LEFT</field>
                 <value name="TYPE">
-                  <shadow type="type_null" id="~,pwz0]5m9PnG%HNsCRP"/>
+                  <shadow type="type_null" id="~,pwz0]5m9PnG%HNsCRP"></shadow>
                   <block type="type_group" id="{]AsU8mNvjWK.L~X;YIw">
-                    <mutation types="3"/>
+                    <mutation types="3"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="u]M{6LY=Veb1MG^)`_:Q">
                         <field name="TYPE">UnaryLogicalExpression</field>
@@ -4362,20 +4396,20 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="M#/9O@HV~5uzzn3WB9=f"/>
+      <shadow type="type_null" id="M#/9O@HV~5uzzn3WB9=f"></shadow>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#93a55b"/>
+        <mutation colour="#93a55b"></mutation>
         <field name="HUE">75</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">UnaryLogicalExpression</field>
     <field name="INLINE">INT</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -4389,9 +4423,9 @@
           </block>
         </statement>
         <value name="TYPE">
-          <shadow type="type_null" id="yIRO^t_F=SN7ZH{r;FSn"/>
+          <shadow type="type_null" id="yIRO^t_F=SN7ZH{r;FSn"></shadow>
           <block type="type_group" id="fY3aDwR2h,[fKJ:YF:Za">
-            <mutation types="3"/>
+            <mutation types="3"></mutation>
             <value name="TYPE0">
               <block type="type_other" id="b%1xG7|^oc*TWO#n-+WB">
                 <field name="TYPE">BinaryLogicalExpression</field>
@@ -4418,23 +4452,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="%7yHGrSV(:!_mpXk:xC^"/>
+      <shadow type="type_null" id="%7yHGrSV(:!_mpXk:xC^"></shadow>
       <block type="type_other" id="p*);#he-W)N$.CZZL1ys">
         <field name="TYPE">UnaryLogicalExpression</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a55b5b"/>
+        <mutation colour="#a55b5b"></mutation>
         <field name="HUE">0</field>
       </block>
     </value>
   </block><block type="factory_base" id="1j}TqD}O(-tr09^ryhy5" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">StepExpression</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -4475,23 +4509,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="b2cT]D1%!lfjgEYJM)x`" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="(AhoJi5#Qt#FY`,}z`Oa"/>
+      <shadow type="type_null" id="(AhoJi5#Qt#FY`,}z`Oa"></shadow>
       <block type="type_other" id="@}_:l.Gr*kLZ+-!%#P;#">
         <field name="TYPE">StepExpression</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="J2TU3f?2SqLruhYj(97!">
-        <mutation colour="#935ba5"/>
+        <mutation colour="#935ba5"></mutation>
         <field name="HUE">285</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">Literal</field>
     <field name="INLINE">INT</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -4513,23 +4547,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="[[G[d.6/r=EZql@o_^z!"/>
+      <shadow type="type_null" id="[[G[d.6/r=EZql@o_^z!"></shadow>
       <block type="type_other" id="*jjfGv|V+6Sk=MEgKkUB">
         <field name="TYPE">Literal</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5ba5a5"/>
+        <mutation colour="#5ba5a5"></mutation>
         <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id="JXiC;9WkqUj}rDt@gR!Y" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">NavigateListItem</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -4549,7 +4583,7 @@
                 <field name="TEXT">Título</field>
                 <next>
                   <block type="field_input" id="0egZ}ZqZ60CnPAHymd=J">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Title</field>
                   </block>
                 </next>
@@ -4563,7 +4597,7 @@
                     <field name="TEXT">Sub-Título</field>
                     <next>
                       <block type="field_input" id="m)NYOn(Ss/[XRWBt!0!6">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">SubTitle</field>
                       </block>
                     </next>
@@ -4591,7 +4625,7 @@
                             <field name="TEXT">Título do Botão</field>
                             <next>
                               <block type="field_input" id="w/YI?XkFLz#e,)?pH3:D">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">ButtonTitle</field>
                               </block>
                             </next>
@@ -4605,7 +4639,7 @@
                                 <field name="TEXT">Valor do Botão</field>
                                 <next>
                                   <block type="field_input" id="GI+{qz$h!W+^8!R=K@`x">
-                                    <field name="TEXT"/>
+                                    <field name="TEXT"></field>
                                     <field name="FIELDNAME">ButtonValue</field>
                                   </block>
                                 </next>
@@ -4621,9 +4655,9 @@
                                   </block>
                                 </statement>
                                 <value name="TYPE">
-                                  <shadow type="type_null" id="pg(cVs4e=2QVI2w/~^th"/>
+                                  <shadow type="type_null" id="pg(cVs4e=2QVI2w/~^th"></shadow>
                                   <block type="type_group" id="MG2~ySJ_k#]y2CA3/ZlM">
-                                    <mutation types="20"/>
+                                    <mutation types="20"></mutation>
                                     <value name="TYPE0">
                                       <block type="type_other" id="};ND|xFE$%u4l:K*yt_J">
                                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -4747,29 +4781,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="*S5]5SSrE%|Huh3C8.L|" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="XPxV3W_s:hHHmhv#n8_J"/>
+      <shadow type="type_null" id="XPxV3W_s:hHHmhv#n8_J"></shadow>
       <block type="type_other" id="5NvT_Q4lo_.V^St-qzvg">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="dhnWl(+w6F{Vx^f?Ex~j"/>
+      <shadow type="type_null" id="dhnWl(+w6F{Vx^f?Ex~j"></shadow>
       <block type="type_other" id="yAosQ,?@a_P]/=`-i_VT">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="eSu(n|rTT[=/g*]Dv;aR">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
       </block>
     </value>
   </block><block type="factory_base" id="JXiC;9WkqUj}rDt@gR!Y" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">OpenUrlListItem</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -4789,7 +4823,7 @@
                 <field name="TEXT">Título</field>
                 <next>
                   <block type="field_input" id="0egZ}ZqZ60CnPAHymd=J">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Title</field>
                   </block>
                 </next>
@@ -4803,7 +4837,7 @@
                     <field name="TEXT">Sub-Título</field>
                     <next>
                       <block type="field_input" id="m)NYOn(Ss/[XRWBt!0!6">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">SubTitle</field>
                       </block>
                     </next>
@@ -4831,7 +4865,7 @@
                             <field name="TEXT">Título do Botão</field>
                             <next>
                               <block type="field_input" id="w/YI?XkFLz#e,)?pH3:D">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">ButtonTitle</field>
                               </block>
                             </next>
@@ -4870,29 +4904,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="*S5]5SSrE%|Huh3C8.L|" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="X+E{l|^8[ObHIsZQ{;06"/>
+      <shadow type="type_null" id="X+E{l|^8[ObHIsZQ{;06"></shadow>
       <block type="type_other" id="5NvT_Q4lo_.V^St-qzvg">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="9mObfvteEMx]OYWh.``E"/>
+      <shadow type="type_null" id="9mObfvteEMx]OYWh.``E"></shadow>
       <block type="type_other" id="yAosQ,?@a_P]/=`-i_VT">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="eSu(n|rTT[=/g*]Dv;aR">
-        <mutation colour="#a55b6d"/>
+        <mutation colour="#a55b6d"></mutation>
         <field name="HUE">345</field>
       </block>
     </value>
   </block><block type="factory_base" id="JXiC;9WkqUj}rDt@gR!Y" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">DownloadFileListItem</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -4912,7 +4946,7 @@
                 <field name="TEXT">Título</field>
                 <next>
                   <block type="field_input" id="0egZ}ZqZ60CnPAHymd=J">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Title</field>
                   </block>
                 </next>
@@ -4926,7 +4960,7 @@
                     <field name="TEXT">Sub-Título</field>
                     <next>
                       <block type="field_input" id="m)NYOn(Ss/[XRWBt!0!6">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">SubTitle</field>
                       </block>
                     </next>
@@ -4954,7 +4988,7 @@
                             <field name="TEXT">Título do Botão</field>
                             <next>
                               <block type="field_input" id="w/YI?XkFLz#e,)?pH3:D">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">ButtonTitle</field>
                               </block>
                             </next>
@@ -4993,29 +5027,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="*S5]5SSrE%|Huh3C8.L|" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="t#*lU=FthLWjMq|64lx8"/>
+      <shadow type="type_null" id="t#*lU=FthLWjMq|64lx8"></shadow>
       <block type="type_other" id="5NvT_Q4lo_.V^St-qzvg">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="F6e|0172Ls73q8`D.+H_"/>
+      <shadow type="type_null" id="F6e|0172Ls73q8`D.+H_"></shadow>
       <block type="type_other" id="yAosQ,?@a_P]/=`-i_VT">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="eSu(n|rTT[=/g*]Dv;aR">
-        <mutation colour="#93a55b"/>
+        <mutation colour="#93a55b"></mutation>
         <field name="HUE">75</field>
       </block>
     </value>
   </block><block type="factory_base" id=")2Ga+yESt|8AC@kU=Kdc" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">ApiStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -5024,7 +5058,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="`1[4DdQQ((@t=#e5)GyL">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="V-l=oe;8chsw_21i(--Z">
@@ -5041,7 +5075,7 @@
                 <field name="TEXT">Método</field>
                 <next>
                   <block type="field_dropdown" id="DaO7knPp[P:P`vGtga1n">
-                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                    <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                     <field name="FIELDNAME">Verb</field>
                     <field name="USER0">Get</field>
                     <field name="CPU0">Get</field>
@@ -5077,7 +5111,7 @@
                         <field name="TEXT">Recurso</field>
                         <next>
                           <block type="field_input" id="RO=/Ee+1Bg!LZ*$2oG-x">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">Resource</field>
                           </block>
                         </next>
@@ -5093,7 +5127,7 @@
                           </block>
                         </statement>
                         <value name="TYPE">
-                          <shadow type="type_null" id="t4J5bu}mMU.o#Y)6W=@`"/>
+                          <shadow type="type_null" id="t4J5bu}mMU.o#Y)6W=@`"></shadow>
                           <block type="type_other" id="LFBGF)DDX0?p:PQa5[t/">
                             <field name="TYPE">ApiParameter</field>
                           </block>
@@ -5122,7 +5156,7 @@
                                   </block>
                                 </statement>
                                 <value name="TYPE">
-                                  <shadow type="type_null"/>
+                                  <shadow type="type_null"></shadow>
                                   <block type="type_other" id=":bqtSjps}mK`f4A6+Aa4">
                                     <field name="TYPE">DataSource</field>
                                   </block>
@@ -5137,7 +5171,7 @@
                                       </block>
                                     </statement>
                                     <value name="TYPE">
-                                      <shadow type="type_null"/>
+                                      <shadow type="type_null"></shadow>
                                       <block type="type_other" id="+T]}%OO?~m|,GG]apXDM">
                                         <field name="TYPE">MessageInteractions</field>
                                       </block>
@@ -5165,13 +5199,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="`U`KF57!gW4}f7;]TQZm" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="fN}5hWja+sl`v*$sU:PN"/>
+      <shadow type="type_null" id="fN}5hWja+sl`v*$sU:PN"></shadow>
       <block type="type_group" id="kF-PW!jU,H@}(Fq-CiAp">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="KG~2)^HE/fV[oIF,]LtB">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -5275,9 +5309,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="MH|AAL-N[:$sJk)=xr~9"/>
+      <shadow type="type_null" id="MH|AAL-N[:$sJk)=xr~9"></shadow>
       <block type="type_group" id="ee*_or;^T]ArKZYKTRG.">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="wdVPHe6Wy#R^DX}$4:zk">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -5382,12 +5416,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Ofj=!Xt(4^dfG?!rML3A">
-        <mutation colour="#80a55b"/>
+        <mutation colour="#80a55b"></mutation>
         <field name="HUE">90</field>
       </block>
     </value>
   </block><block type="factory_base" id="!Pf2+zf#Sjw!EO-%!`B/" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">ApiParameter</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -5407,14 +5441,14 @@
                 <field name="TEXT">Nome</field>
                 <next>
                   <block type="field_input" id="%l2C_-4l^[%hbf9?|mrN">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Name</field>
                     <next>
                       <block type="field_static" id="6mhQjd(@~l~@+p^f]hpi">
                         <field name="TEXT">Valor</field>
                         <next>
                           <block type="field_input" id="mZy)+[Q.Xu2]~W!BHf6g">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">Value</field>
                           </block>
                         </next>
@@ -5432,7 +5466,7 @@
                     <field name="TEXT">Tipo</field>
                     <next>
                       <block type="field_dropdown" id="R^[aUZHjtS:/$3}9Mt4s">
-                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"/>
+                        <mutation options="[&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;,&quot;text&quot;]"></mutation>
                         <field name="FIELDNAME">Type</field>
                         <field name="USER0">Padrão</field>
                         <field name="CPU0">Default</field>
@@ -5461,29 +5495,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="eI)$E?6?NS?HD(L}gzI;" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="t(=.OWQP0CF459hun#Zd"/>
+      <shadow type="type_null" id="t(=.OWQP0CF459hun#Zd"></shadow>
       <block type="type_other" id="r5h@5Iv:cy#ooqY}Z69x">
         <field name="TYPE">ApiParameter</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="yYeyLtBwZ444,iNu1AWi"/>
+      <shadow type="type_null" id="yYeyLtBwZ444,iNu1AWi"></shadow>
       <block type="type_other" id="gfos9$V8l|9N;j6G;~1W">
         <field name="TYPE">ApiParameter</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="P:9I{~9uTYv*MrB`bMx;">
-        <mutation colour="#a5a55b"/>
+        <mutation colour="#a5a55b"></mutation>
         <field name="HUE">60</field>
       </block>
     </value>
   </block><block type="factory_base" id="wSA3oq!.3hb13Yr[uMQx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">GoTo</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">TOP</field>
@@ -5495,7 +5529,7 @@
             <field name="TEXT">Ir para o Passo</field>
             <next>
               <block type="field_input" id="ej6xMb%GPGB@L2H-,}r3">
-                <field name="TEXT"/>
+                <field name="TEXT"></field>
                 <field name="FIELDNAME">Id</field>
               </block>
             </next>
@@ -5510,13 +5544,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="_yjsUG|iH=M^z47g21+~" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="iJAL{CCkuCyU8,C#^?,z"/>
+      <shadow type="type_null" id="iJAL{CCkuCyU8,C#^?,z"></shadow>
       <block type="type_group" id="T[nsTQiM3_{xt9.BNM~@">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="_Y!_.5dc$s-Qsv|_,mNw">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -5621,12 +5655,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Qh!ErZhBTO5T6qhzgGdj">
-        <mutation colour="#a55b80"/>
+        <mutation colour="#a55b80"></mutation>
         <field name="HUE">330</field>
       </block>
     </value>
   </block><block type="factory_base" id="wSA3oq!.3hb13Yr[uMQx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">CompositeStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -5635,7 +5669,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="]FZ0ULE?uOzcMh+s={+d">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="~I,toP8/|+Na=mR.,iM=">
@@ -5652,7 +5686,7 @@
                 <field name="TEXT">Nome</field>
                 <next>
                   <block type="field_input" id="HAVB/XUKML34=-aypP18">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Name</field>
                   </block>
                 </next>
@@ -5668,9 +5702,9 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="aNW]#Qriw9_NG;|SDOMi"/>
+                  <shadow type="type_null" id="aNW]#Qriw9_NG;|SDOMi"></shadow>
                   <block type="type_group" id="c?%`,rK{XEtBgPSSErMo">
-                    <mutation types="20"/>
+                    <mutation types="20"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="S*Hi;O-YnNuT9]Y@+.zb">
                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -5786,13 +5820,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="_yjsUG|iH=M^z47g21+~" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="R#@FJ7Z=oCM,AMoU7USF"/>
+      <shadow type="type_null" id="R#@FJ7Z=oCM,AMoU7USF"></shadow>
       <block type="type_group" id="Sf;Yx2k$?*M##KhOX7Eo">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="pg?/rK2nm}nc,DY[zrv_">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -5896,9 +5930,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="$p6G94_]WA{85$2G-Ga|"/>
+      <shadow type="type_null" id="$p6G94_]WA{85$2G-Ga|"></shadow>
       <block type="type_group" id="{c6m`wmAljlXV?:88Eij">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="fl0idftHO-J4%e.EdTSf">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -6003,12 +6037,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Qh!ErZhBTO5T6qhzgGdj">
-        <mutation colour="#a55b80"/>
+        <mutation colour="#a55b80"></mutation>
         <field name="HUE">330</field>
       </block>
     </value>
   </block><block type="factory_base" id="re:wQf$ut7lYuXjGw1.j" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">FaqStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -6017,7 +6051,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="T2rF}Jf]U6`Ue(Uj@8bu">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="S=Mt0fD}O%V~l_EH_,}E">
@@ -6036,7 +6070,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null"/>
+              <shadow type="type_null"></shadow>
               <block type="type_other" id="63Uu_MoO%KTr?*X$e]n4">
                 <field name="TYPE">MessageInteractions</field>
               </block>
@@ -6082,7 +6116,7 @@
                           </block>
                         </statement>
                         <value name="TYPE">
-                          <shadow type="type_null" id="AT4oBC`39ZS|{?WsXq-v"/>
+                          <shadow type="type_null" id="AT4oBC`39ZS|{?WsXq-v"></shadow>
                           <block type="type_other" id="xmx|+*petdx55{yg]L%z">
                             <field name="TYPE">FaqSettings</field>
                           </block>
@@ -6104,13 +6138,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="n-|S|66L-a?$cN@93keB" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="=i-O~06Qu^VDi1S11}/G"/>
+      <shadow type="type_null" id="=i-O~06Qu^VDi1S11}/G"></shadow>
       <block type="type_group" id="5M~wg6xgWd]jWFD$(20+">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="t`h=uO)l5d*xF970boC/">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -6214,9 +6248,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="TZ~5?FKiN|2GBP@Oh~!A"/>
+      <shadow type="type_null" id="TZ~5?FKiN|2GBP@Oh~!A"></shadow>
       <block type="type_group" id="?s.l[ML-yb5Il/ZY#$JS">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="kpmfbODOMkL!rht!Jn]5">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -6321,12 +6355,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="zLW/aYz~RK(!azP`Kndt">
-        <mutation colour="#a5805b"/>
+        <mutation colour="#a5805b"></mutation>
         <field name="HUE">30</field>
       </block>
     </value>
   </block><block type="factory_base" id="re:wQf$ut7lYuXjGw1.j" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">FaqSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -6343,7 +6377,7 @@
             <field name="ALIGN">LEFT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="P|WLC-wi8yHE_1d)wK@R">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">ServiceType</field>
                 <field name="USER0">Tipo de Serviço</field>
                 <field name="CPU0">None</field>
@@ -6359,7 +6393,7 @@
                     <field name="TEXT">Id da base</field>
                     <next>
                       <block type="field_input" id="V_5_qWEj:,TGANyx8u!O">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">KnowledgeBaseId</field>
                       </block>
                     </next>
@@ -6373,7 +6407,7 @@
                         <field name="TEXT">Chave</field>
                         <next>
                           <block type="field_input" id="Lp/+9N@+w;FP@(V]L|[U">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">EndpointKey</field>
                           </block>
                         </next>
@@ -6387,7 +6421,7 @@
                             <field name="TEXT">Url</field>
                             <next>
                               <block type="field_input" id=".Y#3`/}mgOQhN5ZC!PSO">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">Endpoint</field>
                               </block>
                             </next>
@@ -6429,18 +6463,18 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="n-|S|66L-a?$cN@93keB" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="YFoRG^{{{?Qr`ni_d{$`"/>
+      <shadow type="type_null" id="YFoRG^{{{?Qr`ni_d{$`"></shadow>
       <block type="type_other" id="c.#NvV)ETJWQbV.E0nV.">
         <field name="TYPE">FaqSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="zLW/aYz~RK(!azP`Kndt">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
       </block>
     </value>
@@ -6793,7 +6827,7 @@
       </block>
     </value>
   </block><block type="factory_base" id="re:wQf$ut7lYuXjGw1.j" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">LocationSource</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -6813,7 +6847,7 @@
                 <field name="TEXT">Nome</field>
                 <next>
                   <block type="field_input" id="]eWdhH|ih$=#oc}ODlk0">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Name</field>
                   </block>
                 </next>
@@ -6827,14 +6861,14 @@
                     <field name="TEXT">Latitude</field>
                     <next>
                       <block type="field_input" id="G^?SpW`VR/:QiK5.IZbo">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">Latitude</field>
                         <next>
                           <block type="field_static" id="_Aw#eJ~C?n[UBO(~GBqK">
                             <field name="TEXT">Longitude</field>
                             <next>
                               <block type="field_input" id="Pz1Rt(0noFqeg|3}GUM*">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">Longitude</field>
                               </block>
                             </next>
@@ -6852,14 +6886,14 @@
                         <field name="TEXT">CEP</field>
                         <next>
                           <block type="field_input" id="o+ez7J0|0$3n$r$gFrhD">
-                            <field name="TEXT"/>
+                            <field name="TEXT"></field>
                             <field name="FIELDNAME">ZipCode</field>
                             <next>
                               <block type="field_static" id="%gxcz(B+Kh.1sk)}@5/Y">
                                 <field name="TEXT">Logradouro</field>
                                 <next>
                                   <block type="field_input" id="W|~h(y6^`?7X3MJ^?Q2L">
-                                    <field name="TEXT"/>
+                                    <field name="TEXT"></field>
                                     <field name="FIELDNAME">Address</field>
                                   </block>
                                 </next>
@@ -6877,14 +6911,14 @@
                             <field name="TEXT">UF</field>
                             <next>
                               <block type="field_input" id="@rxv#PB9g;GA~YpWr]Wi">
-                                <field name="TEXT"/>
+                                <field name="TEXT"></field>
                                 <field name="FIELDNAME">State</field>
                                 <next>
                                   <block type="field_static" id="-ELYYf#f_UPzE!Y5_U@o">
                                     <field name="TEXT">Cidade</field>
                                     <next>
                                       <block type="field_input" id="4bR644XShDX)P:*=Ac}!">
-                                        <field name="TEXT"/>
+                                        <field name="TEXT"></field>
                                         <field name="FIELDNAME">City</field>
                                       </block>
                                     </next>
@@ -6911,29 +6945,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="n-|S|66L-a?$cN@93keB" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="k=~B7iOu`,I4|7JF$]05"/>
+      <shadow type="type_null" id="k=~B7iOu`,I4|7JF$]05"></shadow>
       <block type="type_other" id="PN5u7#@TfnI(=%F2kL:4">
         <field name="TYPE">LocationSource</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="/NWFw~S(s.Aw{2N,M042"/>
+      <shadow type="type_null" id="/NWFw~S(s.Aw{2N,M042"></shadow>
       <block type="type_other" id="%D-/n+9@c`K$RQqqKfOn">
         <field name="TYPE">LocationSource</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="zLW/aYz~RK(!azP`Kndt">
-        <mutation colour="#a5a55b"/>
+        <mutation colour="#a5a55b"></mutation>
         <field name="HUE">60</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">SwitchStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -6942,14 +6976,14 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="fX3;-sK$e:6^tmJcf3Xc">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
                 <field name="TEXT">Escolha</field>
                 <next>
                   <block type="field_input" id="l$mlt]31[l7L3X?lzHnO">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Input</field>
                   </block>
                 </next>
@@ -6967,7 +7001,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
               <block type="type_other" id="FNazW.$@Oo9~0|y7cjt;">
                 <field name="TYPE">Case</field>
               </block>
@@ -6982,7 +7016,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null"/>
+                  <shadow type="type_null"></shadow>
                   <block type="type_other" id="FS(o(`|CgWH1:0Cz=2WX">
                     <field name="TYPE">DataSource</field>
                   </block>
@@ -7000,13 +7034,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="M5v8G#=aTgIz7P_X*3*x"/>
+      <shadow type="type_null" id="M5v8G#=aTgIz7P_X*3*x"></shadow>
       <block type="type_group" id="BzZ86bId2#u%I=o0,/G`">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="F!T/1}Z!6%R%3v|6{EPA">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -7110,9 +7144,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="ApTmL%;}tU3Dt02e7F0,"/>
+      <shadow type="type_null" id="ApTmL%;}tU3Dt02e7F0,"></shadow>
       <block type="type_group" id="lCNOfT}_@[OW/Tl_#^ek">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="9-P($FK:DrsY*ON_cyjd">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -7217,12 +7251,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a5935b"/>
+        <mutation colour="#a5935b"></mutation>
         <field name="HUE">45</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">Case</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -7234,7 +7268,7 @@
             <field name="TEXT">Caso</field>
             <next>
               <block type="field_input" id="l$mlt]31[l7L3X?lzHnO">
-                <field name="TEXT"/>
+                <field name="TEXT"></field>
                 <field name="FIELDNAME">Value</field>
               </block>
             </next>
@@ -7250,9 +7284,9 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id=")(E/x$LCikTmE#*fYV|c"/>
+              <shadow type="type_null" id=")(E/x$LCikTmE#*fYV|c"></shadow>
               <block type="type_group" id="WL(VXu6i9vR18px,=hGd">
-                <mutation types="20"/>
+                <mutation types="20"></mutation>
                 <value name="TYPE0">
                   <block type="type_other" id="JvVtq+dfA#^v@m2:^iQ=">
                     <field name="TYPE">ReadGPSLocationStep</field>
@@ -7366,29 +7400,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="J$j:NXSnhJ6i9`}p.)~+"/>
+      <shadow type="type_null" id="J$j:NXSnhJ6i9`}p.)~+"></shadow>
       <block type="type_other" id="R:KowVG2F[Zb!hiEC=K)">
         <field name="TYPE">Case</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="5]y`#+:UGUHj5amV/UWs"/>
+      <shadow type="type_null" id="5]y`#+:UGUHj5amV/UWs"></shadow>
       <block type="type_other" id="JU2/EV!Fs*IQ$~]oy-HX">
         <field name="TYPE">Case</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a5805b"/>
+        <mutation colour="#a5805b"></mutation>
         <field name="HUE">30</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">ImageClassificationStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -7397,7 +7431,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="I?A@O8Pv/vSjYu{PMt{1">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
@@ -7416,7 +7450,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"/>
+              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"></shadow>
               <block type="type_other" id="?tLN`l/~R|uf,l_y!7vA">
                 <field name="TYPE">MessageInteractions</field>
               </block>
@@ -7431,7 +7465,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null"/>
+                  <shadow type="type_null"></shadow>
                   <block type="type_other" id="o7xy*+{%T,idb5X-8hm^">
                     <field name="TYPE">MessageInteractions</field>
                   </block>
@@ -7446,7 +7480,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="H)C|T6b*^oC+NhD@~9GO">
                         <field name="TYPE">MessageInteractions</field>
                       </block>
@@ -7548,7 +7582,7 @@
                                               </block>
                                             </statement>
                                             <value name="TYPE">
-                                              <shadow type="type_null" id="pJ5H{c{d=_BQZtwrNg$V"/>
+                                              <shadow type="type_null" id="pJ5H{c{d=_BQZtwrNg$V"></shadow>
                                               <block type="type_other" id="d2QNmte}|J1sE63N};OF">
                                                 <field name="TYPE">ImageClassificationSettings</field>
                                               </block>
@@ -7580,13 +7614,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="ff[O6g2|jp|mDxuiP95z"/>
+      <shadow type="type_null" id="ff[O6g2|jp|mDxuiP95z"></shadow>
       <block type="type_group" id="$%KSJc%(IdK.^V84VCg~">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="xYcM*K52lbGXjZA+U:DK">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -7690,9 +7724,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="^aGWYLTFnZKvt0ucXj/K"/>
+      <shadow type="type_null" id="^aGWYLTFnZKvt0ucXj/K"></shadow>
       <block type="type_group" id="k$s(}I|)E1=g3^Bgj4c,">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="q[T_/o;c$RcNaNSFCElL">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -7797,12 +7831,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#805ba5"/>
+        <mutation colour="#805ba5"></mutation>
         <field name="HUE">270</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="LEFT"/>
+    <mutation connections="LEFT"></mutation>
     <field name="NAME">ImageClassificationSettings</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">LEFT</field>
@@ -7819,7 +7853,7 @@
             <field name="ALIGN">RIGHT</field>
             <statement name="FIELDS">
               <block type="field_dropdown" id="2jxg!vK7^9eD3,31NmH|">
-                <mutation options="[&quot;text&quot;,&quot;text&quot;]"/>
+                <mutation options="[&quot;text&quot;,&quot;text&quot;]"></mutation>
                 <field name="FIELDNAME">ServiceType</field>
                 <field name="USER0">Tipo de serviço</field>
                 <field name="CPU0">None</field>
@@ -7893,23 +7927,23 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="OUTPUTTYPE">
-      <shadow type="type_null" id="L5fPhC/Q`fEDwpHKsd@:"/>
+      <shadow type="type_null" id="L5fPhC/Q`fEDwpHKsd@:"></shadow>
       <block type="type_other" id="K:xX_w@vHEug5OJ6NqBV">
         <field name="TYPE">ImageClassificationSettings</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5ba5a5"/>
+        <mutation colour="#5ba5a5"></mutation>
         <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">ReadGPSLocationStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -7918,7 +7952,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="I?A@O8Pv/vSjYu{PMt{1">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
@@ -7937,7 +7971,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"/>
+              <shadow type="type_null" id="lql|9Pe%[5e:5z98lacL"></shadow>
               <block type="type_other" id="?tLN`l/~R|uf,l_y!7vA">
                 <field name="TYPE">MessageInteractions</field>
               </block>
@@ -7952,7 +7986,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null"/>
+                  <shadow type="type_null"></shadow>
                   <block type="type_other" id="o7xy*+{%T,idb5X-8hm^">
                     <field name="TYPE">MessageInteractions</field>
                   </block>
@@ -7967,7 +8001,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="H)C|T6b*^oC+NhD@~9GO">
                         <field name="TYPE">MessageInteractions</field>
                       </block>
@@ -8046,13 +8080,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="(,!qt-m{MlOb=NWiSV7Z"/>
+      <shadow type="type_null" id="(,!qt-m{MlOb=NWiSV7Z"></shadow>
       <block type="type_group" id="-.qrpo;Xc-[{8WM;}{#S">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="FDN9uoDDA9nJClgfX6no">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8156,9 +8190,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="r!I39~,zDz@d9(25AkV["/>
+      <shadow type="type_null" id="r!I39~,zDz@d9(25AkV["></shadow>
       <block type="type_group" id="RXl{NtWVN=]{4pQsw@.7">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="bQY_-1vSh}ykYu.EPbkG">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8263,12 +8297,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5ba5a5"/>
+        <mutation colour="#5ba5a5"></mutation>
         <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">Transformation</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -8280,14 +8314,14 @@
             <field name="TEXT">de</field>
             <next>
               <block type="field_input" id="l$mlt]31[l7L3X?lzHnO">
-                <field name="TEXT"/>
+                <field name="TEXT"></field>
                 <field name="FIELDNAME">InputExpression</field>
                 <next>
                   <block type="field_static" id="Ge1bmA%`G@p7q:M9yd7O">
                     <field name="TEXT">para</field>
                     <next>
                       <block type="field_input" id=";eDlcW_BQmg/_c1iVzBO">
-                        <field name="TEXT"/>
+                        <field name="TEXT"></field>
                         <field name="FIELDNAME">OutputExpression</field>
                       </block>
                     </next>
@@ -8306,29 +8340,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="_lp(/c/Zz{$`o1s;@.c{"/>
+      <shadow type="type_null" id="_lp(/c/Zz{$`o1s;@.c{"></shadow>
       <block type="type_other" id="R:KowVG2F[Zb!hiEC=K)">
         <field name="TYPE">Transformation</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="lL:|hCpc5Pp|(/qby!p]"/>
+      <shadow type="type_null" id="lL:|hCpc5Pp|(/qby!p]"></shadow>
       <block type="type_other" id="QM.xce7!*_XcZLy%d89?">
         <field name="TYPE">Transformation</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#5b80a5"/>
+        <mutation colour="#5b80a5"></mutation>
         <field name="HUE">210</field>
       </block>
     </value>
   </block><block type="factory_base" id="A_~ay))A8c/d7bf5N|C_" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">File</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -8348,7 +8382,7 @@
                 <field name="TEXT">Nome</field>
                 <next>
                   <block type="field_input" id="^zw2]9#ZAS1yJ^ssYX4B">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Filename</field>
                   </block>
                 </next>
@@ -8381,29 +8415,29 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="YMx`LTEWqB.wpw}SLZ.w" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="5z%dJWvBuXJoMVT64(Mj"/>
+      <shadow type="type_null" id="5z%dJWvBuXJoMVT64(Mj"></shadow>
       <block type="type_other" id="hdcKof/i/j,.@|j=,?i5">
         <field name="TYPE">File</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="W(yfu8VEhcAkq4x;NbAz"/>
+      <shadow type="type_null" id="W(yfu8VEhcAkq4x;NbAz"></shadow>
       <block type="type_other" id="o$J-nzFT8yn]4xGsRt{3">
         <field name="TYPE">File</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="_{xgsRxeV%G6Lk}~Yhx$">
-        <mutation colour="#995ba5"/>
+        <mutation colour="#995ba5"></mutation>
         <field name="HUE">290</field>
       </block>
     </value>
   </block><block type="factory_base" id="wSA3oq!.3hb13Yr[uMQx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">HandoffStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -8412,7 +8446,7 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="r7[@G#JoO;VK6GC`1]u5">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="/Q;413}MBRJDW(77?HpT">
@@ -8452,13 +8486,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="_yjsUG|iH=M^z47g21+~" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id=",7|=)^XdhC#@Jg%9vL6A"/>
+      <shadow type="type_null" id=",7|=)^XdhC#@Jg%9vL6A"></shadow>
       <block type="type_group" id="lT!ss_DG}rX#6?A-E=U|">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="KTb93:O-R8[-Nn,GGWbY">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8562,9 +8596,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="]@8-H5Sc(r$3)5]^=qA`"/>
+      <shadow type="type_null" id="]@8-H5Sc(r$3)5]^=qA`"></shadow>
       <block type="type_group" id="Tw:FnsuU}FN$PB)B1}#C">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="CzW2a;W).f*{#;)oi5,/">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8669,12 +8703,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Qh!ErZhBTO5T6qhzgGdj">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">transformstep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -8683,7 +8717,7 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="fX3;-sK$e:6^tmJcf3Xc">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
@@ -8700,7 +8734,7 @@
                 <field name="TEXT">Origem</field>
                 <next>
                   <block type="field_input" id="6E=#a%VniC${wnCC,zj8">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">PropertyPath</field>
                   </block>
                 </next>
@@ -8716,7 +8750,7 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+                  <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
                   <block type="type_other" id="FNazW.$@Oo9~0|y7cjt;">
                     <field name="TYPE">Transformation</field>
                   </block>
@@ -8731,7 +8765,7 @@
                       </block>
                     </statement>
                     <value name="TYPE">
-                      <shadow type="type_null"/>
+                      <shadow type="type_null"></shadow>
                       <block type="type_other" id="FS(o(`|CgWH1:0Cz=2WX">
                         <field name="TYPE">DataSource</field>
                       </block>
@@ -8751,13 +8785,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="c${_{%un_J][=WE2ujHj"/>
+      <shadow type="type_null" id="c${_{%un_J][=WE2ujHj"></shadow>
       <block type="type_group" id="PCvB9q?T-].aOOLOf8`T">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="6_}MgBtb!s}bX^Rd9f6%">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8861,9 +8895,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="XnaJ2gaCaG#VN{}O%d|~"/>
+      <shadow type="type_null" id="XnaJ2gaCaG#VN{}O%d|~"></shadow>
       <block type="type_group" id="P~f%ml4|CpII{*9r#5Qm">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="J5XYeuz]YRm9E#j;fK}a">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -8968,12 +9002,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
       </block>
     </value>
   </block><block type="factory_base" id="wSA3oq!.3hb13Yr[uMQx" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">SimpleMessageStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -8982,14 +9016,14 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="r7[@G#JoO;VK6GC`1]u5">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="/Q;413}MBRJDW(77?HpT">
                 <field name="TEXT">Mensagem</field>
                 <next>
                   <block type="field_input" id="*TjLKNs.!|$o2PuR/mC!">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Message</field>
                   </block>
                 </next>
@@ -9006,13 +9040,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="_yjsUG|iH=M^z47g21+~" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="S(R8xTS:9BdK,%JXH?!0"/>
+      <shadow type="type_null" id="S(R8xTS:9BdK,%JXH?!0"></shadow>
       <block type="type_group" id="ZwG@IXrGMb7h?KKD:{80">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="kXey.-Ht(^O!/f8(TXsg">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -9116,9 +9150,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="}jgNkD3/Kp5z^+b(!f)v"/>
+      <shadow type="type_null" id="}jgNkD3/Kp5z^+b(!f)v"></shadow>
       <block type="type_group" id="nnZ5K):dLjin74W-pv`t">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="4(PAjoAOfaV{-!G/w8#y">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -9223,12 +9257,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="Qh!ErZhBTO5T6qhzgGdj">
-        <mutation colour="#80a55b"/>
+        <mutation colour="#80a55b"></mutation>
         <field name="HUE">90</field>
       </block>
     </value>
   </block><block type="factory_base" id="i~fNV?m|tP0pT$meZ6?Z" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">SimpleInputStep</field>
     <field name="INLINE">EXT</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -9237,14 +9271,14 @@
         <field name="ALIGN">LEFT</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="XVeYfMRK0,RGx!(q~8a}">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="i(Y+IKSy0cbGWzWRCU$-">
                 <field name="TEXT">Pergunta</field>
                 <next>
                   <block type="field_input" id="b6#;M9i(+TV55:4:7nZb">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Message</field>
                   </block>
                 </next>
@@ -9261,13 +9295,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="W4JZ%,WA*!xI{6Xbx{~j" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="g%r)juHnQX}8xw]5cNJ3"/>
+      <shadow type="type_null" id="g%r)juHnQX}8xw]5cNJ3"></shadow>
       <block type="type_group" id="@aD]IvUFh3#shftZkF]s">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="s-p8rZYJz*d}p%{@uYYK">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -9371,9 +9405,9 @@
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="MQq;L64,5Q3fY*[4m;Qy"/>
+      <shadow type="type_null" id="MQq;L64,5Q3fY*[4m;Qy"></shadow>
       <block type="type_group" id="?|QULKHri.JL%e{[PJIE">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="fx:aROs3c9;cuX}5wPu{">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -9478,12 +9512,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ln~L.VWDIst6RXUsY#wT">
-        <mutation colour="#5ba5a5"/>
+        <mutation colour="#5ba5a5"></mutation>
         <field name="HUE">180</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">SimpleConfirmStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -9492,14 +9526,14 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="I?A@O8Pv/vSjYu{PMt{1">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
                 <field name="TEXT">Confirmação</field>
                 <next>
                   <block type="field_input" id=":4[ZSc{}A^k)l/:+e0?G">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Mensagem</field>
                   </block>
                 </next>
@@ -9517,9 +9551,9 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
               <block type="type_group" id="Km~^_AT^h`HLK={3sBs]">
-                <mutation types="20"/>
+                <mutation types="20"></mutation>
                 <value name="TYPE0">
                   <block type="type_other" id="+MMbP.OQ;g-Yj-:p0P@Q">
                     <field name="TYPE">ReadGPSLocationStep</field>
@@ -9632,9 +9666,9 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="kIz#?oZuR[e9Hht4}r%A"/>
+                  <shadow type="type_null" id="kIz#?oZuR[e9Hht4}r%A"></shadow>
                   <block type="type_group" id="C1RA@ukZ_jCpBxi}$sp#">
-                    <mutation types="20"/>
+                    <mutation types="20"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="JlE^OJ0xY|h=DdbXr+Q4">
                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -9750,13 +9784,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="/i0wsD`;glrV9%KI.tzT"/>
+      <shadow type="type_null" id="/i0wsD`;glrV9%KI.tzT"></shadow>
       <block type="type_group" id="B=gq5$8y-SsL2PjAmw(j">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="QFtUXQ)}5EeO*c{-sUUn">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -9861,12 +9895,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#805ba5"/>
+        <mutation colour="#805ba5"></mutation>
         <field name="HUE">270</field>
       </block>
     </value>
   </block><block type="factory_base" id=":f@va$mv?rbSfUqv*+2P" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="TOP"/>
+    <mutation connections="TOP"></mutation>
     <field name="NAME">SimpleListStep</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">TOP</field>
@@ -9875,14 +9909,14 @@
         <field name="ALIGN">CENTRE</field>
         <statement name="FIELDS">
           <block type="field_label_serializable" id="fX3;-sK$e:6^tmJcf3Xc">
-            <field name="TEXT"/>
+            <field name="TEXT"></field>
             <field name="FIELDNAME">Id</field>
             <next>
               <block type="field_static" id="]c_Z`o6DDA}gKWh^QUb%">
                 <field name="TEXT">Lista de Botões</field>
                 <next>
                   <block type="field_input" id="]SzZ2umNwjyP4WdBz}l$">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Message</field>
                   </block>
                 </next>
@@ -9900,7 +9934,7 @@
               </block>
             </statement>
             <value name="TYPE">
-              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("/>
+              <shadow type="type_null" id="K4IfP4%nm,#c:h7O=1]("></shadow>
               <block type="type_other" id="FNazW.$@Oo9~0|y7cjt;">
                 <field name="TYPE">ListItem</field>
               </block>
@@ -9916,13 +9950,13 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="9fp/_{gk-:#j5eUX{M9v" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="vAte;yS5t9jv()Uii+J{"/>
+      <shadow type="type_null" id="vAte;yS5t9jv()Uii+J{"></shadow>
       <block type="type_group" id="0^?#E3h_WV(1Ih8wff*C">
-        <mutation types="20"/>
+        <mutation types="20"></mutation>
         <value name="TYPE0">
           <block type="type_other" id="yjix$a,`O?i}O,zU9p@H">
             <field name="TYPE">ReadGPSLocationStep</field>
@@ -10027,12 +10061,12 @@
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="ZQp80`p+zT%-O}T;k=r_">
-        <mutation colour="#a5935b"/>
+        <mutation colour="#a5935b"></mutation>
         <field name="HUE">45</field>
       </block>
     </value>
   </block><block type="factory_base" id="JXiC;9WkqUj}rDt@gR!Y" deletable="false" movable="false" x="10" y="10">
-    <mutation connections="BOTH"/>
+    <mutation connections="BOTH"></mutation>
     <field name="NAME">SimpleListItem</field>
     <field name="INLINE">AUTO</field>
     <field name="CONNECTIONS">BOTH</field>
@@ -10052,7 +10086,7 @@
                 <field name="TEXT">Título</field>
                 <next>
                   <block type="field_input" id="0egZ}ZqZ60CnPAHymd=J">
-                    <field name="TEXT"/>
+                    <field name="TEXT"></field>
                     <field name="FIELDNAME">Title</field>
                   </block>
                 </next>
@@ -10068,9 +10102,9 @@
                   </block>
                 </statement>
                 <value name="TYPE">
-                  <shadow type="type_null" id="pg(cVs4e=2QVI2w/~^th"/>
+                  <shadow type="type_null" id="pg(cVs4e=2QVI2w/~^th"></shadow>
                   <block type="type_group" id="MG2~ySJ_k#]y2CA3/ZlM">
-                    <mutation types="20"/>
+                    <mutation types="20"></mutation>
                     <value name="TYPE0">
                       <block type="type_other" id="};ND|xFE$%u4l:K*yt_J">
                         <field name="TYPE">ReadGPSLocationStep</field>
@@ -10186,25 +10220,132 @@
     </value>
     <value name="HELPURL">
       <block type="text" id="*S5]5SSrE%|Huh3C8.L|" deletable="false" movable="false">
-        <field name="TEXT"/>
+        <field name="TEXT"></field>
       </block>
     </value>
     <value name="TOPTYPE">
-      <shadow type="type_null" id="Wa7CpJn]kif42DF4JYma"/>
+      <shadow type="type_null" id="Wa7CpJn]kif42DF4JYma"></shadow>
       <block type="type_other" id="5NvT_Q4lo_.V^St-qzvg">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="BOTTOMTYPE">
-      <shadow type="type_null" id="i!i|S9G!C=VFzuv*^qPe"/>
+      <shadow type="type_null" id="i!i|S9G!C=VFzuv*^qPe"></shadow>
       <block type="type_other" id="yAosQ,?@a_P]/=`-i_VT">
         <field name="TYPE">ListItem</field>
       </block>
     </value>
     <value name="COLOUR">
       <block type="colour_hue" id="eSu(n|rTT[=/g*]Dv;aR">
-        <mutation colour="#a55ba5"/>
+        <mutation colour="#a55ba5"></mutation>
         <field name="HUE">300</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="+dpU_ebW~X-:ygI%rm1O" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">TelegramChannel</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="^e;.$*F*n~HcP:fjj5=}">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="=mMtR}!wqeO5yrM}|S;3">
+            <field name="TEXT">Telegram</field>
+          </block>
+        </statement>
+        <next>
+          <block type="input_dummy" id="*mt.T^F;A=$N*%EGrOP2">
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="IuQH~;F1w[l4F$w?fo|[">
+                <field name="TEXT">Token</field>
+                <next>
+                  <block type="field_input" id="AXeXJFecX..Cr.*dQNif">
+                    <field name="TEXT">Insira o token</field>
+                    <field name="FIELDNAME">TelegramToken</field>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="5QUT6`bH%og,.Y_6-~xi" deletable="false" movable="false">
+        <field name="TEXT">Configuração de canal Telegram</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="g=1{?XYvE6!.6I(Hk+g2" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="A_6hAnWE:12-xxc?3gLn"></shadow>
+      <block type="type_other" id="q]F-9^*16,X4ee!nx2is">
+        <field name="TYPE">TelegramChannel</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="=cb!qY+Tq9qnx{sB%@{0">
+        <mutation colour="#5b6da5"></mutation>
+        <field name="HUE">225</field>
+      </block>
+    </value>
+  </block><block type="factory_base" id="+dpU_ebW~X-:ygI%rm1O" deletable="false" movable="false" x="10" y="10">
+    <mutation connections="LEFT"></mutation>
+    <field name="NAME">WhatsAppChannel</field>
+    <field name="INLINE">AUTO</field>
+    <field name="CONNECTIONS">LEFT</field>
+    <statement name="INPUTS">
+      <block type="input_dummy" id="^e;.$*F*n~HcP:fjj5=}">
+        <field name="ALIGN">LEFT</field>
+        <statement name="FIELDS">
+          <block type="field_static" id="=mMtR}!wqeO5yrM}|S;3">
+            <field name="TEXT">WhatsApp</field>
+          </block>
+        </statement>
+        <next>
+          <block type="input_statement" id="BJ/kLOw3HGqY7=M3kypz">
+            <field name="INPUTNAME">phoneNumbers</field>
+            <field name="ALIGN">LEFT</field>
+            <statement name="FIELDS">
+              <block type="field_static" id="yMOZz@rvswfq5^-Ic,DG">
+                <field name="TEXT">Telefones</field>
+              </block>
+            </statement>
+            <value name="TYPE">
+              <shadow type="type_null" id="obuKl[?dGnD:9;MSCFbk"></shadow>
+              <block type="type_other" id="*prvIVbtT/_*45a]{fos">
+                <field name="TYPE">String</field>
+              </block>
+            </value>
+          </block>
+        </next>
+      </block>
+    </statement>
+    <value name="TOOLTIP">
+      <block type="text" id="5QUT6`bH%og,.Y_6-~xi" deletable="false" movable="false">
+        <field name="TEXT">Configuração de canal WhatsApp</field>
+      </block>
+    </value>
+    <value name="HELPURL">
+      <block type="text" id="g=1{?XYvE6!.6I(Hk+g2" deletable="false" movable="false">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <value name="OUTPUTTYPE">
+      <shadow type="type_null" id="(o|o{u=n6LPL4]XSjo|d"></shadow>
+      <block type="type_other" id="Rljr^2f+V]HMcB$Tl4+t">
+        <field name="TYPE">WhatsAppChannel</field>
+      </block>
+    </value>
+    <value name="COLOUR">
+      <block type="colour_hue" id="=cb!qY+Tq9qnx{sB%@{0">
+        <mutation colour="#5ba55b"></mutation>
+        <field name="HUE">120</field>
       </block>
     </value>
   </block></xml>

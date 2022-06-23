@@ -26,12 +26,12 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
         private readonly IChannelRegistrationServiceClient _channelRegistrationServiceClient;
 
         public BotService(IBotRepository botRepository,
-            ILifetimeScope scope, IChannelRegistrationServiceClient channelRegistrationServiceClient)
+            ILifetimeScope scope)
         {
             _botRepository = botRepository;
             _devBotRuntimeServiceClient = scope.ResolveOptionalNamed<IBotRuntimeServiceClient>("devBotRuntimeServiceClient");
             _prodBotRuntimeServiceClient = scope.ResolveOptionalNamed<IBotRuntimeServiceClient>("prodBotRuntimeServiceClient");
-            _channelRegistrationServiceClient = channelRegistrationServiceClient;
+            _channelRegistrationServiceClient = scope.ResolveOptional<IChannelRegistrationServiceClient>();
         }
 
         public IEnumerable<Bot> ListAll()
@@ -349,7 +349,10 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                         throw new ApplicationException(JoinErrorMessage(response));
                     }
 
-                    var channelRegistrationResponse = await _channelRegistrationServiceClient.RegisterAsync(new ChannelRegistrationRequest { BotId = botConfig.Id, Channels = botConfig.Channels });
+                    var channelRegistrationResponse = await _channelRegistrationServiceClient.RegisterAsync(new ChannelRegistrationRequest { 
+                        BotId = botConfig.Id, 
+                        WhatsAppChannel = botConfig.WhatsAppChannel, 
+                        TelegramChannel = botConfig.TelegramChannel });
 
                     if (!channelRegistrationResponse.Success)
                     {

@@ -70,7 +70,6 @@
     <Compile Include="BotInstanceSettings.cs" />
     <Compile Include="Channels\TelegramChannel.cs" />
     <Compile Include="Channels\WhatsAppChannel.cs" />
-    <Compile Include="Channels\IChannel.cs" />
     <Compile Include="ConditionInterpreter\AndOperatorExpression.cs" />
     <Compile Include="ConditionInterpreter\ConditionEvaluator.cs" />
     <Compile Include="ConditionInterpreter\IExpression.cs" />

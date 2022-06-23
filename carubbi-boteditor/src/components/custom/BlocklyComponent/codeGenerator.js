@@ -153,6 +153,8 @@ JsonBotDefinition['botconfig'] = (block, workspace) => {
     var value_speechsettings = parseValue(JsonBotDefinition.valueToCode(block, 'SpeechSettings', JsonBotDefinition.ORDER_ATOMIC));
     var value_appcredentials = parseValue(JsonBotDefinition.valueToCode(block, 'AppCredentials', JsonBotDefinition.ORDER_ATOMIC));
     var value_storesettings = parseValue(JsonBotDefinition.valueToCode(block, 'StoreSettings', JsonBotDefinition.ORDER_ATOMIC));
+    var value_whatsapp = parseValue(JsonBotDefinition.valueToCode(block, 'Whatsapp', JsonBotDefinition.ORDER_ATOMIC));
+    var value_telegram = parseValue(JsonBotDefinition.valueToCode(block, 'Telegram', JsonBotDefinition.ORDER_ATOMIC));
 
     var botJson = {
         name: text_name,
@@ -163,12 +165,39 @@ JsonBotDefinition['botconfig'] = (block, workspace) => {
         appId: (value_appcredentials && value_appcredentials.appId) || null,
         appPassword: (value_appcredentials && value_appcredentials.appPassword) || null,
         persistenceStrategy: (value_storesettings && value_storesettings.persistenceStrategy) || null,
-        connectionString: (value_storesettings && value_storesettings.connectionString) || null
+        connectionString: (value_storesettings && value_storesettings.connectionString) || null,
+        whatsAppChannel: typeof value_whatsapp === "object" ? value_whatsapp : null,
+        telegramChannel: typeof value_telegram === "object" ? value_telegram : null,
     };
 
     var code = JSON.stringify(botJson);
     return code.replace(/\\\\r/g, "\\r").replace(/\\\\n/g, "\\n");
 };
+
+JsonBotDefinition['telegramchannel'] = function(block) {
+    var text_telegramtoken = block.getFieldValue('TelegramToken');
+    
+    const telegramchannel = {
+        token: text_telegramtoken,
+    };
+
+    const code = JSON.stringify(telegramchannel);
+
+    return [code, JsonBotDefinition.ORDER_NONE];
+  };
+  
+  JsonBotDefinition['whatsappchannel'] = function(block) {
+    var statements_phonenumbers = statementToArray(JsonBotDefinition.statementToCode(block, 'phoneNumbers'));
+    
+    const whastappchannel = {
+        phoneNumbers: statements_phonenumbers,
+    };
+
+    const code = JSON.stringify(whastappchannel);
+
+    return [code, JsonBotDefinition.ORDER_NONE];
+  };
+
 
 JsonBotDefinition['messagestep'] = (block) => {
     var label_id = block.getFieldValue("Id");

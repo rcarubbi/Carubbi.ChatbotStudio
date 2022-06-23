@@ -1,6 +1,5 @@
-﻿using Carubbi.BotEditor.Config;
+﻿using Carubbi.BotEditor.Config.Channels;
 using System;
-using System.Collections.Generic;
 
 namespace Carubbi.BotEditor.Backend.Domain.Models.Request
 {
@@ -8,6 +7,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Models.Request
     {
         public Guid BotId { get; set; }
 
-        public List<IChannel> Channels { get; set; }
+        public WhatsAppChannel WhatsAppChannel { get; set; }
+        public TelegramChannel TelegramChannel { get; set; }
     }
 }

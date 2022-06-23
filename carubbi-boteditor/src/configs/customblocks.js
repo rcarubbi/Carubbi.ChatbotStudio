@@ -1,70 +1,81 @@
 import * as Blockly from 'blockly/core';
 
-const jsonBotDefinitionBlocks = [{
-  "type": "botconfig",
-  "message0": "%1 %2 Passos %3 Comandos %4 Voz %5 Credenciais %6 Persistência %7",
-  "args0": [
-    {
-      "type": "field_input",
-      "name": "Name",
-      "text": "Nome"
-    },
-    {
-      "type": "input_dummy",
-      "align": "CENTRE"
-    },
-    {
-      "type": "input_statement",
-      "name": "Steps",
-      "check": [
-        "ReadGPSLocationStep",
-        "MessageStep",
-        "ConfirmStep",
-        "InputStep",
-        "ListStep",
-        "FormStep",
-        "ConditionStep",
-        "SwitchStep",
-        "TransformStep",
-        "CompositeStep",
-        "ImageClassificationStep",
-        "MapsStep",
-        "FaqStep",
-        "ApiStep",
-        "GoTo",
-        "HandoffStep",
-        "SimpleMessageStep",
-        "SimpleInputStep",
-        "SimpleConfirmStep",
-        "SimpleListStep"
-      ]
-    },
-    {
-      "type": "input_statement",
-      "name": "CustomCommands",
-      "check": "CustomCommandConfig"
-    },
-    {
-      "type": "input_value",
-      "name": "SpeechSettings",
-      "check": "SpeechSettings"
-    },
-    {
-      "type": "input_value",
-      "name": "AppCredentials",
-      "check": "AppCredentials"
-    },
-    {
-      "type": "input_value",
-      "name": "StoreSettings",
-      "check": "StoreSettings"
-    }
-  ],
-  "inputsInline": false,
-  "colour": 240,
-  "tooltip": "Estrutura do bot",
-  "helpUrl": ""
-},
+const jsonBotDefinitionBlocks = [
+  {
+    "type": "botconfig",
+    "message0": "%1 %2 Passos %3 Comandos %4 Voz %5 Credenciais %6 Persistência %7 WhatsApp %8 Telegram %9",
+    "args0": [
+      {
+        "type": "field_input",
+        "name": "Name",
+        "text": "Nome"
+      },
+      {
+        "type": "input_dummy",
+        "align": "CENTRE"
+      },
+      {
+        "type": "input_statement",
+        "name": "Steps",
+        "check": [
+          "ReadGPSLocationStep",
+          "MessageStep",
+          "ConfirmStep",
+          "InputStep",
+          "ListStep",
+          "FormStep",
+          "ConditionStep",
+          "SwitchStep",
+          "TransformStep",
+          "CompositeStep",
+          "ImageClassificationStep",
+          "MapsStep",
+          "FaqStep",
+          "ApiStep",
+          "GoTo",
+          "HandoffStep",
+          "SimpleMessageStep",
+          "SimpleInputStep",
+          "SimpleConfirmStep",
+          "SimpleListStep"
+        ]
+      },
+      {
+        "type": "input_statement",
+        "name": "CustomCommands",
+        "check": "CustomCommandConfig"
+      },
+      {
+        "type": "input_value",
+        "name": "SpeechSettings",
+        "check": "SpeechSettings"
+      },
+      {
+        "type": "input_value",
+        "name": "AppCredentials",
+        "check": "AppCredentials"
+      },
+      {
+        "type": "input_value",
+        "name": "StoreSettings",
+        "check": "StoreSettings"
+      },
+      {
+        "type": "input_value",
+        "name": "Whatsapp",
+        "check": "WhatsAppChannel"
+      },
+      {
+        "type": "input_value",
+        "name": "Telegram",
+        "check": "TelegramChannel"
+      }
+    ],
+    "inputsInline": false,
+    "colour": 240,
+    "tooltip": "Estrutura do bot",
+    "helpUrl": ""
+  },
 {
   "type": "messagestep",
   "message0": "%1 Mensagem %2",
@@ -3742,6 +3753,42 @@ const jsonBotDefinitionBlocks = [{
   "nextStatement": "ListItem",
   "colour": 300,
   "tooltip": "Item de lista para navegar para passos filhos",
+  "helpUrl": ""
+},
+{
+  "type": "telegramchannel",
+  "message0": "Telegram %1 Token %2",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "field_input",
+      "name": "TelegramToken",
+      "text": "Insira o token"
+    }
+  ],
+  "output": "TelegramChannel",
+  "colour": 225,
+  "tooltip": "Configuração de canal Telegram",
+  "helpUrl": ""
+},
+{
+  "type": "whatsappchannel",
+  "message0": "WhatsApp %1 Telefones %2",
+  "args0": [
+    {
+      "type": "input_dummy"
+    },
+    {
+      "type": "input_statement",
+      "name": "phoneNumbers",
+      "check": "String"
+    }
+  ],
+  "output": "WhatsAppChannel",
+  "colour": 120,
+  "tooltip": "Configuração de canal WhatsApp",
   "helpUrl": ""
 }];
 

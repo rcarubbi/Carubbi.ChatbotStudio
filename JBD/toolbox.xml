@@ -166,6 +166,7 @@
                       <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
             pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
             responder novamente como #Nome#?
+                      
                       </comment>
                       <statement name="RestoreFields">
                         <shadow type="string">
@@ -542,6 +543,7 @@
       <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
             pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
             responder novamente como #Nome#?
+      
       </comment>
     </block>
     <block type="summary">
@@ -737,6 +739,12 @@
     <block type="storesettings">
       <field name="PersistenceStrategy">InMemory</field>
       <field name="ConnectionString"></field>
+    </block>
+  </category>
+  <category name="Canais">
+    <block type="whatsappchannel"></block>
+    <block type="telegramchannel">
+      <field name="TelegramToken">Insira o token</field>
     </block>
   </category>
 </xml>

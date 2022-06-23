@@ -1,5 +1,5 @@
 const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
-<block type="botconfig" id="4O%j;RlG2DOyB1V|eNTE" x="-112" y="-437">
+<block type="botconfig" id="4O%j;RlG2DOyB1V|eNTE" x="13" y="-412">
   <field name="Name">Nome</field>
   <statement name="CustomCommands">
     <block type="customcommandconfig" id="2UKr!l]2G1x(i32puDkr" collapsed="true">

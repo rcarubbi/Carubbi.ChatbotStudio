@@ -1,4 +1,5 @@
-﻿using Carubbi.BotEditor.Config.NLP;
+﻿using Carubbi.BotEditor.Config.Channels;
+using Carubbi.BotEditor.Config.NLP;
 using Carubbi.BotEditor.Config.Steps;
 using System;
 using System.Collections.Generic;
@@ -22,7 +23,8 @@ namespace Carubbi.BotEditor.Config
 
         public SpeechSettings SpeechSettings { get; set; }
 
-        public List<IChannel> Channels { get; set;  } 
+        public WhatsAppChannel WhatsAppChannel { get; set;  } 
+        public TelegramChannel TelegramChannel { get; set;  } 
 
         public string AppId { get; set; }
         public string AppPassword { get; set; }
