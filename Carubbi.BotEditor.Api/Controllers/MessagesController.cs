@@ -94,18 +94,15 @@ namespace Carubbi.BotEditor.Api
 
         private async Task HandleHandoffMessage(Activity activity)
         {
-            var connector = _microsoftAppCredentials.MicrosoftAppId == null
-                    ? new ConnectorClient(new Uri(activity.ServiceUrl))
-                    : new ConnectorClient(new Uri(activity.ServiceUrl), _microsoftAppCredentials);
+            var connector = GetConnectorClient(activity);
             activity.Type = ActivityTypes.Message;
             await connector.Conversations.SendToConversationAsync(activity);
         }
 
         private async Task HandleEndHandoffMessage(Activity activity)
         {
-            var connector = _microsoftAppCredentials.MicrosoftAppId == null
-                  ? new ConnectorClient(new Uri(activity.ServiceUrl))
-                  : new ConnectorClient(new Uri(activity.ServiceUrl), _microsoftAppCredentials);
+            var connector = GetConnectorClient(activity);
+            
             activity.Type = ActivityTypes.Message;
 
             using (var scope = Conversation.Container.BeginLifetimeScope())
@@ -208,52 +205,67 @@ namespace Carubbi.BotEditor.Api
 
         private async Task HandleMessageActivityAsync(Activity activity)
         {
-            if (activity.Recipient == null)
-            {
-                activity.Recipient = new ChannelAccount { Id = _botConfig.Name, Name = _botConfig.Name };
-            }
+
+            UpdateRecipientChannelAccount(activity);
 
             using (new FormStepAssemblyResolver())
             {
-                var connector = _microsoftAppCredentials.MicrosoftAppId == null
-                    ? new ConnectorClient(new Uri(activity.ServiceUrl))
-                    : new ConnectorClient(new Uri(activity.ServiceUrl), _microsoftAppCredentials);
+                var connector = GetConnectorClient(activity);
 
                 await activity.HandleTypingAsync(connector);
 
-                if (!await HandleCustomCommandsAsync(activity, connector))
+                if (await HandleCustomCommandsAsync(activity, connector))
                 {
-                    var mainTask = Task.Factory.StartNew(async () =>
+                    return;
+                }
+
+                var mainTask = Task.Factory.StartNew(async () =>
+                {
+                    if (IsVoiceInteraction(activity))
                     {
-                        if (activity.HasAudioAttachment() && _botConfig.SpeechSettings?.Recognition != null)
-                        {
-                            var speechRecognitionService = _scope.ResolveKeyed<ISpeechRecognitionService>(_botConfig.SpeechSettings?.Recognition?.ServiceType,
-                                   new TypedParameter(typeof(SpeechRecognitionSettings), _botConfig.SpeechSettings?.Recognition),
-                                   new TypedParameter(typeof(HttpContext), HttpContext.Current));
-
-                            activity.Text = await speechRecognitionService.RecognizeAsync(new Uri(activity.Attachments[0].ContentUrl));
-                        }
-
-                        var filledBotConfig = await LoadDurableOutputsAsync(activity.AsMessageActivity());
-
-                        await Conversation.SendAsync(activity, () => new Dialogs.RootDialog(_scope, filledBotConfig));
-                    });
-
-                    if (Debugger.IsAttached)
-                    {
-                        await mainTask.Result;
+                        activity.Text = await GetSpeechRecognitionService().RecognizeAsync(new Uri(activity.Attachments[0].ContentUrl));
                     }
-                    else
-                    {
-                        // Estratégia para suprimir mensagem de timeout que o connector envia para os canais
-                        // Sempre envia Response Status 200 - OK em no máximo 14 segundos evitando assim o timeout
-                        var timeout = 14000;
-                        await Task.WhenAny(mainTask, Task.Delay(timeout));
-                    }
+                    var filledBotConfig = await LoadDurableOutputsAsync(activity.AsMessageActivity());
+                    await Conversation.SendAsync(activity, () => new Dialogs.RootDialog(_scope, filledBotConfig));
+                });
+
+                if (!Debugger.IsAttached)
+                {
+                    // Estratégia para suprimir mensagem de timeout que o connector envia para os canais
+                    // Sempre envia Response Status 200 - OK em no máximo 14 segundos evitando assim o timeout
+                    var timeout = 14000;
+                    await Task.WhenAny(mainTask, Task.Delay(timeout));
+                }
+                else
+                {
+                    await mainTask.Result;
                 }
             }
         }
 
+        private ConnectorClient GetConnectorClient(Activity activity)
+        {
+            return _microsoftAppCredentials.MicrosoftAppId == null
+                ? new ConnectorClient(new Uri(activity.ServiceUrl))
+                : new ConnectorClient(new Uri(activity.ServiceUrl), _microsoftAppCredentials);
+        }
+
+        private ISpeechRecognitionService GetSpeechRecognitionService() => _scope.ResolveKeyed<ISpeechRecognitionService>(_botConfig.SpeechSettings?.Recognition?.ServiceType,
+                                               new TypedParameter(typeof(SpeechRecognitionSettings), _botConfig.SpeechSettings?.Recognition),
+                                               new TypedParameter(typeof(HttpContext), HttpContext.Current));
+
+        private bool IsVoiceInteraction(Activity activity)
+        {
+            return activity.HasAudioAttachment() && _botConfig.SpeechSettings?.Recognition != null;
+        }
+
+        private void UpdateRecipientChannelAccount(Activity activity)
+        {
+            if (activity.Recipient == null)
+            {
+                activity.Recipient = new ChannelAccount { Id = _botConfig.Name, Name = _botConfig.Name };
+            }
+        }
 
         public async Task<bool> HandleCustomCommandsAsync(Activity activity, ConnectorClient connector)
         {
