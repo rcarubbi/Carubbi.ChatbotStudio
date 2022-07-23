@@ -38,7 +38,7 @@ namespace Carubbi.BotEditor.Api
             TenantManager tenantManager = new TenantManager();
             tenantManager.ConfigureTenants();
             
-           
+            
             GlobalConfiguration.Configure(WebApiConfig.Register);
         }
 

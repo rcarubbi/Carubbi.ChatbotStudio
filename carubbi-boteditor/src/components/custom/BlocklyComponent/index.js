@@ -4,6 +4,7 @@ import "./styles.css";
 import Blockly from "blockly/core";
 import locale from "blockly/msg/pt-br";
 import JsonBotDefinition from "./codeGenerator.js";
+import "./FieldAutoComplete.js";
 
 Blockly.setLocale(locale);
 
@@ -145,14 +146,14 @@ class BlocklyComponent extends React.Component {
   }
 
   render() {
-   
+
 
     return (
-      
-        <div ref={e => (this.blocklyDiv = e)} id="blocklyDiv" />
-      
+
+      <div ref={e => (this.blocklyDiv = e)} id="blocklyDiv" />
+
     );
   }
 }
- 
+
 export default BlocklyComponent;

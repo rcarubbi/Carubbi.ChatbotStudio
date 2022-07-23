@@ -8,10 +8,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace Carubbi.BotEditor.Api.Controllers
 {
     [RoutePrefix("api/botRuntime")]
+    [EnableCors("*", "*", "*")]
     public class BotRuntimeController : ApiController
     {
        
@@ -74,6 +76,7 @@ namespace Carubbi.BotEditor.Api.Controllers
 
         [HttpPost]
         [Route("intellisense")]
+      
         public string[] Intellisense(string term, [FromBody] BotConfig botConfig)
         {
             var validStepProperyNames = botConfig.Steps.Select(x => $"Step{x.Id}");
@@ -89,7 +92,7 @@ namespace Carubbi.BotEditor.Api.Controllers
                     "@@", startProperties
                 },
             };
-
+ 
             foreach (var step in botConfig.Steps)
             {
                 var type = botConfig.Steps.Single(x => x.Id == step.Id).GetType();
@@ -98,7 +101,7 @@ namespace Carubbi.BotEditor.Api.Controllers
                 allTerms.Add(parentPropertyName, childPropertyNames);
                 AddTermsRecursively(allTerms, type.GetProperties(), parentPropertyName);
             }
-             
+ 
 
             return allTerms.Keys.Where(k => k == term).SelectMany(k => allTerms[k]).ToArray();
         }
