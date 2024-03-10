@@ -42,7 +42,7 @@ Pre-requisites:
 8. Create a new document as Carubbi.ChatbotStudio
 9. Click on + button to create a request called CreateAdminUser with the following parameters
 method: POST
-URL: http://localhost:44398/api/Account
+URL: https://localhost:44398/api/Account
 header: Content-type: application/json
 payload: 
 {
