@@ -261,7 +261,6 @@
     <Compile Include="Integrations\ChannelRegistrationServiceClient.cs" />
     <Compile Include="Integrations\JsonNetSerializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Providers\ApplicationOAuthProvider.cs" />
     <Compile Include="Providers\JwtFormat.cs" />
     <Compile Include="Providers\JwtOauthProvider.cs" />
     <Compile Include="Results\ChallengeResult.cs" />

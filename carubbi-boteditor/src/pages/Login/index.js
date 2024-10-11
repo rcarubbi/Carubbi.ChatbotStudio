@@ -59,7 +59,7 @@ function LoginPage(props) {
     e.preventDefault();
     setLoading(true);
     if (!username || !password) {
-      showError("Preencha e-mail e senha para continuar!");
+      showError("Email and password required to continue");
       setLoading(false);
     } else {
       try {
@@ -83,7 +83,7 @@ function LoginPage(props) {
           // request cancelled
         } else {
           showError(
-            "Houve um problema com o login, verifique suas credenciais"
+            "Login Error, check your credentials"
           );
         }
         setLoading(false);
@@ -134,7 +134,7 @@ function LoginPage(props) {
                   <p className={classes.divider}>Login</p>
                   <CardBody>
                     <CustomInput
-                      labelText="Nome de usuário..."
+                      labelText="User name..."
                       id="email"
                       formControlProps={{
                         fullWidth: true
@@ -151,7 +151,7 @@ function LoginPage(props) {
                       }}
                     />
                     <CustomInput
-                      labelText="Senha"
+                      labelText="Password"
                       id="pass"
                       formControlProps={{
                         fullWidth: true
@@ -180,11 +180,11 @@ function LoginPage(props) {
                       onClick={handleAuthenticateButtonClick}
                     >
                       {!loading ? (
-                        "Autenticar"
+                        "Login"
                       ) : (
                         <>
                           <i className="fa fa-cog fa-spin" />
-                          &nbsp;Carregando
+                          &nbsp;Loading
                         </>
                       )}
                     </Button>

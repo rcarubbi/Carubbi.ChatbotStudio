@@ -85,16 +85,17 @@ function BotsPage(props) {
         });
         setListBots(true);
         setToasterMessage({
-          Message: "Bot publicado com sucesso!",
+          Message: "Bot published!",
           Color: "success"
         });
       } catch (err) {
         setToasterMessage({
-          Message: `Erro ao pubicar o bot: ${err.message}`,
+          Message: `Error publishing bot: ${err.response.data.Message || err.message}`,
           Color: "danger"
         });
       } finally {
         setToasterOpened(true);
+        setLoading(false);
       }
     },
     [setListBots]
@@ -113,12 +114,12 @@ function BotsPage(props) {
         setListBots(true);
 
         setToasterMessage({
-          Message: "Bot excluído com sucesso!",
+          Message: "Bot deleted!",
           Color: "success"
         });
       } catch (err) {
         setToasterMessage({
-          Message: `Erro ao excluir o bot: ${err.message}`,
+          Message: `Error deleting bot: ${err.response.data.Message || err.message}`,
           Color: "danger"
         });
       } finally {
@@ -178,13 +179,15 @@ function BotsPage(props) {
       setBots(bots);
     } catch (err) {
       setToasterMessage({
-        Message: `Erro ao listar os bots: ${err.message}`,
+        Message: `Error listing bots: ${err.message}`,
         Color: "danger"
       });
       setToasterOpened(true);
+    } finally {
+      setLoading(false);
+      setListBots(false);
     }
-    setLoading(false);
-    setListBots(false);
+    
   }, [botRow, listBots]);
 
   useEffect(() => {
@@ -234,24 +237,24 @@ function BotsPage(props) {
             >
               <Close className={classes.modalClose} />
             </IconButton>
-            <h4 className={classes.modalTitle}>Confirmação de Exclusão</h4>
+            <h4 className={classes.modalTitle}>Confirm delete</h4>
           </DialogTitle>
           <DialogContent
             id="classic-modal-slide-description"
             className={classes.modalBody}
           >
-            <p>Tem certeza que deseja excluir o bot {botToDelete.name}?</p>
+            <p>Are you sure you want to delete bot {botToDelete.name}?</p>
           </DialogContent>
           <DialogActions className={classes.modalFooter}>
             <Button color="transparent" simple onClick={handleConfirmDelete}>
-              Sim
+              Yes
             </Button>
             <Button
               onClick={() => setDeleteConfirmationOpened(false)}
               color="danger"
               simple
             >
-              Não
+              No
             </Button>
           </DialogActions>
         </Dialog>
@@ -259,14 +262,14 @@ function BotsPage(props) {
           <CardHeader color="primary">
             <h4 className={classes.cardTitleWhite}>Chatbots</h4>
             <p className={classes.cardCategoryWhite}>
-              Crie ou edite um dos chatbots disponíveis
+              Create or edit existing chat bots
             </p>
           </CardHeader>
           <CardBody>
             {loading ? (
               <div className={classes.loading}>
                 <i className="fa fa-cog fa-spin" />
-                &nbsp;Carregando
+                &nbsp;Loading
               </div>
             ) : (
               <Table
@@ -274,9 +277,9 @@ function BotsPage(props) {
                 className={classes.botsTable}
                 tableHeaderColor="primary"
                 tableHead={[
-                  "Nome",
-                  "Publicado",
-                  { text: "Ações", align: "right" }
+                  "Name",
+                  "Published",
+                  { text: "Actions", align: "right" }
                 ]}
                 tableData={bots}
               />

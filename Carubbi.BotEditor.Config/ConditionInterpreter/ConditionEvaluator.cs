@@ -89,7 +89,6 @@ namespace Carubbi.BotEditor.Config.ConditionInterpreter
 
         public static bool Evaluate(string expression, BotConfig botConfig, CompositeStep parentStep, IActivity activity, List<object> dataSource)
         {
-             
             List<Token> tokens = new List<Token>();
             StringReader reader = new StringReader(expression);
 
@@ -118,8 +117,6 @@ namespace Carubbi.BotEditor.Config.ConditionInterpreter
  
             //Eval the expression tree
             return root.Interpret(botConfig, parentStep, activity, dataSource);
-
-           
         }
     }
 }

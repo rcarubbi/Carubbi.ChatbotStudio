@@ -25,8 +25,8 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                 ApplicationName = name
             };
 
-            _appAccessRepository.Save(newAppAccess);
-
+            newAppAccess.Id = _appAccessRepository.Save(newAppAccess);
+        
             return newAppAccess;
         }
 

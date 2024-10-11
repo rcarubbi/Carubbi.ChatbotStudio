@@ -1,6 +1,6 @@
 const toolbox = 
     `<xml xmlns="https://developers.google.com/blockly/xml" id="toolbox" style="display: none">
-    <category name="Atalhos">
+    <category name="Shortcuts">
       <block type="simplemessagestep">
         <field name="Id"></field>
         <field name="Message"></field>
@@ -11,7 +11,7 @@ const toolbox =
       </block>
       <block type="simpleconfirmstep">
         <field name="Id"></field>
-        <field name="Mensagem"></field>
+        <field name="Message"></field>
       </block>
       <block type="simpleliststep">
         <field name="Id"></field>
@@ -26,14 +26,14 @@ const toolbox =
         <field name="Title"></field>
       </block>
     </category>
-    <category name="Passos">
+    <category name="Steps">
       <block type="messagestep" collapsed="true">
         <field name="Id"></field>
         <value name="Messages">
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -42,14 +42,14 @@ const toolbox =
       <block type="confirmstep" collapsed="true">
         <field name="Id"></field>
         <field name="Durable">FALSE</field>
-        <field name="YesText">Sim</field>
-        <field name="NoText">Não</field>
+        <field name="YesText">Yes</field>
+        <field name="NoText">No</field>
         <field name="Attempts">3</field>
         <value name="Question">
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto da pergunta</field>
+                <field name="Value">Question text</field>
               </shadow>
             </statement>
           </shadow>
@@ -58,7 +58,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Não entendi, pode repetir?</field>
+                <field name="Value">I didn't catch that, could you say again please?</field>
               </shadow>
             </statement>
           </shadow>
@@ -67,19 +67,19 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Muitas tentativas, vamos voltar do início...</field>
+                <field name="Value">Too many tries, let's get back to the start...</field>
               </shadow>
             </statement>
           </shadow>
         </value>
         <statement name="YesAcceptedAnswers">
           <shadow type="string">
-            <field name="Value">Sim</field>
+            <field name="Value">Yes</field>
           </shadow>
         </statement>
         <statement name="NoAcceptedAnswers">
           <shadow type="string">
-            <field name="Value">Não</field>
+            <field name="Value">No</field>
           </shadow>
         </statement>
       </block>
@@ -90,7 +90,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -121,39 +121,39 @@ const toolbox =
         <field name="Durable">FALSE</field>
         <statement name="FormFields">
           <shadow type="formfield">
-            <field name="Name">Nome</field>
-            <field name="Question">Texto</field>
+            <field name="Name">Name</field>
+            <field name="Question">Text</field>
             <field name="Optional">FALSE</field>
             <field name="Type">None</field>
             <field name="NlpEntityName"></field>
             <field name="ValidationApiURL">http://</field>
-            <field name="ValidationFailedMessage">Resposta Inválida</field>
+            <field name="ValidationFailedMessage">Invalid answer</field>
             <field name="ActiveApiURL">http://</field>
             <next>
               <shadow type="optionsformfield">
-                <field name="Name">Nome</field>
-                <field name="Question">Texto</field>
+                <field name="Name">Name</field>
+                <field name="Question">Text</field>
                 <field name="Optional">FALSE</field>
                 <field name="Type">None</field>
                 <field name="NlpEntityName"></field>
                 <field name="ValidationApiURL">http://</field>
-                <field name="ValidationFailedMessage">Resposta Inválida</field>
+                <field name="ValidationFailedMessage">Invalid answer</field>
                 <field name="ActiveApiURL">http://</field>
                 <statement name="Options">
                   <shadow type="fieldoption">
-                    <field name="Value">Valor</field>
+                    <field name="Value">Value</field>
                     <field name="Description">Descrição</field>
                   </shadow>
                 </statement>
                 <next>
                   <shadow type="optionsformfield">
-                    <field name="Name">Nome</field>
-                    <field name="Question">Texto</field>
+                    <field name="Name">Name</field>
+                    <field name="Question">Text</field>
                     <field name="Optional">FALSE</field>
                     <field name="Type">None</field>
                     <field name="NlpEntityName"></field>
                     <field name="ValidationApiURL">http://</field>
-                    <field name="ValidationFailedMessage">Resposta Inválida</field>
+                    <field name="ValidationFailedMessage">Invalid answer</field>
                     <field name="ActiveApiURL">http://</field>
                     <statement name="Options">
                       <shadow type="fieldoptionsource">
@@ -162,16 +162,13 @@ const toolbox =
                     </statement>
                     <next>
                       <shadow type="restoreformfield">
-                        <field name="Name">Nome</field>
-                        <field name="Question">Texto</field>
-                        <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
-              pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
-              responder novamente como #Nome#?
-                        
+                        <field name="Name">Name</field>
+                        <field name="Question">Text</field>
+                        <comment pinned="false" h="80" w="160">  You can use the previous answered value on question text using the field name surrounded by #'s.Ex: Will you answer again as #Name#?
                         </comment>
                         <statement name="RestoreFields">
                           <shadow type="string">
-                            <field name="Value">Texto</field>
+                            <field name="Value">Text</field>
                           </shadow>
                         </statement>
                       </shadow>
@@ -184,7 +181,7 @@ const toolbox =
         </statement>
         <value name="Summary">
           <shadow type="summary">
-            <field name="SummaryText">Texto</field>
+            <field name="SummaryText">Text</field>
             <field name="IncludeFieldListOnSummary">TRUE</field>
             <field name="IncludeConfirmationButtonsOnSummary">TRUE</field>
           </shadow>
@@ -192,7 +189,7 @@ const toolbox =
         <statement name="FormCustomMessages">
           <shadow type="formcustommessage">
             <field name="Key">Yes</field>
-            <field name="Value">Valor</field>
+            <field name="Value">Value</field>
           </shadow>
         </statement>
         <statement name="FormCustomCommands">
@@ -237,7 +234,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -273,7 +270,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Não entendi sua resposta, pode repetir?</field>
+                <field name="Value">I didn't catch that, could you say again please?</field>
               </shadow>
             </statement>
           </shadow>
@@ -282,7 +279,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Muitas tentativas, vamos voltar do início...</field>
+                <field name="Value">Too many tries, let's get back to the start...</field>
               </shadow>
             </statement>
           </shadow>
@@ -302,7 +299,7 @@ const toolbox =
         <value name="DataSource">
           <shadow type="datasource">
             <field name="StepId">1</field>
-            <field name="Expression">Expressão</field>
+            <field name="Expression">Expression</field>
           </shadow>
         </value>
       </block>
@@ -335,7 +332,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -370,7 +367,7 @@ const toolbox =
         <value name="DataSource">
           <shadow type="datasource">
             <field name="StepId">1</field>
-            <field name="Expression">Expressão</field>
+            <field name="Expression">Expression</field>
           </shadow>
         </value>
       </block>
@@ -389,7 +386,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -398,7 +395,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -407,7 +404,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -432,7 +429,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -441,7 +438,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -450,7 +447,7 @@ const toolbox =
           <shadow type="messageinteractions">
             <statement name="Typed">
               <shadow type="string">
-                <field name="Value">Texto</field>
+                <field name="Value">Text</field>
               </shadow>
             </statement>
           </shadow>
@@ -472,13 +469,13 @@ const toolbox =
         <field name="Durable">FALSE</field>
       </block>
     </category>
-    <category name="Texto">
+    <category name="Text">
       <block type="messagestep">
         <field name="Id"></field>
       </block>
       <block type="messageinteractions"></block>
       <block type="string">
-        <field name="Value">Texto</field>
+        <field name="Value">Text</field>
       </block>
       <block type="transformstep">
         <field name="Id"></field>
@@ -493,7 +490,7 @@ const toolbox =
         <field name="Url">http://</field>
       </block>
     </category>
-    <category name="Perguntas">
+    <category name="Questions">
       <block type="inputstep">
         <field name="Id"></field>
         <field name="Durable">FALSE</field>
@@ -501,60 +498,57 @@ const toolbox =
       <block type="confirmstep">
         <field name="Id"></field>
         <field name="Durable">FALSE</field>
-        <field name="YesText">Sim</field>
-        <field name="NoText">Não</field>
+        <field name="YesText">Yes</field>
+        <field name="NoText">No</field>
         <field name="Attempts">3</field>
       </block>
     </category>
-    <category name="Questionário">
+    <category name="Form">
       <block type="formstep">
         <field name="Id"></field>
         <field name="Durable">FALSE</field>
       </block>
       <block type="formfield">
-        <field name="Name">Nome</field>
-        <field name="Question">Texto</field>
+        <field name="Name">Name</field>
+        <field name="Question">Text</field>
         <field name="Optional">FALSE</field>
         <field name="Type">None</field>
         <field name="NlpEntityName"></field>
         <field name="ValidationApiURL">http://</field>
-        <field name="ValidationFailedMessage">Resposta Inválida</field>
+        <field name="ValidationFailedMessage">Invalid answer</field>
         <field name="ActiveApiURL">http://</field>
       </block>
       <block type="optionsformfield">
-        <field name="Name">Nome</field>
-        <field name="Question">Texto</field>
+        <field name="Name">Name</field>
+        <field name="Question">Text</field>
         <field name="Optional">FALSE</field>
         <field name="Type">None</field>
         <field name="NlpEntityName"></field>
         <field name="ValidationApiURL">http://</field>
-        <field name="ValidationFailedMessage">Resposta Inválida</field>
+        <field name="ValidationFailedMessage">Invalid answer</field>
         <field name="ActiveApiURL">http://</field>
       </block>
       <block type="fieldoption">
-        <field name="Value">Valor</field>
+        <field name="Value">Value</field>
         <field name="Description">Descrição</field>
       </block>
       <block type="fieldoptionsource">
         <field name="OptionsSource">http://</field>
       </block>
       <block type="restoreformfield">
-        <field name="Name">Nome</field>
-        <field name="Question">Texto</field>
-        <comment pinned="false" h="80" w="160">  Você pode utilizar o valor respondido anteriormente no texto da
-              pergunta utilizando o nome dos campos entre #'s.Ex: Você vai
-              responder novamente como #Nome#?
-        
+        <field name="Name">Name</field>
+        <field name="Question">Text</field>
+        <comment pinned="false" h="80" w="160">  You can use the previous answered value on question text using the field name surrounded by #'s.Ex: Will you answer again as #Name#?
         </comment>
       </block>
       <block type="summary">
-        <field name="SummaryText">Texto</field>
+        <field name="SummaryText">Text</field>
         <field name="IncludeFieldListOnSummary">TRUE</field>
         <field name="IncludeConfirmationButtonsOnSummary">TRUE</field>
       </block>
       <block type="formcustommessage">
         <field name="Key">Yes</field>
-        <field name="Value">Valor</field>
+        <field name="Value">Value</field>
       </block>
       <block type="formcustomcommand">
         <field name="CommandType">Help</field>
@@ -563,7 +557,7 @@ const toolbox =
         <field name="HelpMessage"></field>
       </block>
     </category>
-    <category name="Fluxo">
+    <category name="Flow">
       <block type="conditionstep">
         <field name="Id"></field>
       </block>
@@ -576,7 +570,7 @@ const toolbox =
       <block type="unarylogicalexpression"></block>
       <block type="stepexpression">
         <field name="StepId">1</field>
-        <field name="Expression">Expressão</field>
+        <field name="Expression">Expression</field>
       </block>
       <block type="literal">
         <field name="Value">Literal</field>
@@ -601,7 +595,7 @@ const toolbox =
         <field name="Durable">FALSE</field>
       </block>
     </category>
-    <category name="Lista">
+    <category name="List">
       <block type="liststep">
         <field name="Id"></field>
         <field name="ListType">ImageList</field>
@@ -631,10 +625,10 @@ const toolbox =
       </block>
       <block type="datasource">
         <field name="StepId">1</field>
-        <field name="Expression">Expressão</field>
+        <field name="Expression">Expression</field>
       </block>
     </category>
-    <category name="Serviços">
+    <category name="Services">
       <block type="nlpsettings">
         <field name="NlpServiceType">Luis</field>
       </block>
@@ -712,7 +706,7 @@ const toolbox =
         <field name="ErrorStepId">0</field>
       </block>
     </category>
-    <category name="Configurações">
+    <category name="Settings">
       <block type="speechsettings">
         <field name="Language">None</field>
         <field name="RecognitionServiceType">BingSpeech</field>
@@ -742,7 +736,7 @@ const toolbox =
         <field name="ConnectionString"></field>
       </block>
     </category>
-    <category name="Canais">
+    <category name="Channels">
       <block type="whatsappchannel"></block>
       <block type="telegramchannel">
         <field name="TelegramToken">Insira o token</field>

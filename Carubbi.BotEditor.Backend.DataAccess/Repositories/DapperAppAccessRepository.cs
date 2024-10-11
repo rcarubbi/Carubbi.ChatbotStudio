@@ -4,6 +4,7 @@ using Carubbi.BotEditor.Backend.Domain.Entities;
 using Carubbi.BotEditor.Backend.Domain.Repositories;
 using System.Collections.Generic;
 using System.Linq;
+using System;
 
 namespace Carubbi.BotEditor.Backend.DataAccess.Repositories
 {
@@ -17,7 +18,7 @@ namespace Carubbi.BotEditor.Backend.DataAccess.Repositories
 
         public AppAccess GetByClientId(string clientId)
         {
-           return _connectionManager.IdentityServer.Query<AppAccess>(AppAccessQueries.GetByClientId, new { clientId = clientId }).SingleOrDefault();
+           return _connectionManager.IdentityServer.Query<AppAccess>(AppAccessQueries.GetByClientId, new { clientId }).SingleOrDefault();
         }
 
         public List<AppAccess> ListAll()
@@ -26,9 +27,9 @@ namespace Carubbi.BotEditor.Backend.DataAccess.Repositories
 
         }
 
-        public void Save(AppAccess appAccess)
+        public Guid Save(AppAccess appAccess)
         {
-            _connectionManager.IdentityServer.Execute(AppAccessQueries.Insert, appAccess);
+            return _connectionManager.IdentityServer.QueryFirst<Guid>(AppAccessQueries.Insert, appAccess);
         }
     }
 }

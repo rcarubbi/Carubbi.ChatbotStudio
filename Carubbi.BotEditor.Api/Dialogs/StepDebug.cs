@@ -11,17 +11,13 @@ using Microsoft.Bot.Builder.Dialogs;
 using Microsoft.Bot.Builder.FormFlow;
 using Microsoft.Bot.Builder.FormFlow.Advanced;
 using Microsoft.Bot.Connector;
+using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Collections.Generic;
-using System.Runtime.Serialization;
-using System.Reflection;
-using System.Runtime.CompilerServices;
-using System.Runtime.InteropServices;
-using Newtonsoft.Json;
 
- 
+
 
 namespace CineBot
 {
@@ -118,13 +114,13 @@ namespace CineBot
         }
         return Task.FromResult(new ValidateResult() { IsValid = true, Value = value });
     })
-    .SetPrompt(new PromptAttribute("#Nome#, você quer reutilizar as respostas anteriores? {||}")));
-            fb.Field(nameof(Nome), "Qual o seu nome?", validate: (state, value) => {
+    .SetPrompt(new PromptAttribute("#Name#, do you want to use your previous answers? {||}")));
+            fb.Field(nameof(Nome), "What is your name?", validate: (state, value) => {
 
                 if (_step.NLPSettings != null)
                 {
                     var result = nlpService.GetTopScoringResultAsync(value?.ToString()).Result;
-                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("Nome", StringComparison.CurrentCultureIgnoreCase));
+                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("Name", StringComparison.CurrentCultureIgnoreCase));
                     if (entity != null)
                     {
                         value = entity.Name;
@@ -135,12 +131,12 @@ namespace CineBot
 
                 return true;
             });
-            fb.Field(nameof(DataNascimento), "Qual sua data de nascimento?", validate: (state, value) => {
+            fb.Field(nameof(DataNascimento), "What is your birth date?", validate: (state, value) => {
                 value = GrammarUtilities.ParseDate(value.ToString());
                 if (_step.NLPSettings != null)
                 {
                     var result = nlpService.GetTopScoringResultAsync(value?.ToString()).Result;
-                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("DataNascimento", StringComparison.CurrentCultureIgnoreCase));
+                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("Dob", StringComparison.CurrentCultureIgnoreCase));
                     if (entity != null)
                     {
                         value = entity.Name;
@@ -156,7 +152,7 @@ namespace CineBot
                 if (_step.NLPSettings != null)
                 {
                     var result = nlpService.GetTopScoringResultAsync(value?.ToString()).Result;
-                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("Opcionais", StringComparison.CurrentCultureIgnoreCase));
+                    var entity = result.Entities.FirstOrDefault(x => x.Type.Equals("Optionals", StringComparison.CurrentCultureIgnoreCase));
                     if (entity != null)
                     {
                         value = entity.Name;

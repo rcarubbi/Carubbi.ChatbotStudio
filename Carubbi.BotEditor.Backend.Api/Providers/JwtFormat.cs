@@ -22,7 +22,7 @@ namespace Carubbi.BotEditor.Backend.Api.Providers
         public string Protect(AuthenticationTicket data)
         {
             string audience = data.Properties.Dictionary["audience"];
-            if (string.IsNullOrWhiteSpace(audience)) throw new InvalidOperationException("ClientId e AccessKey não foi encontrado");
+            if (string.IsNullOrWhiteSpace(audience)) throw new InvalidOperationException("ClientId and AccessKey not found");
             var keys = audience.Split(':');
             var client_id = keys.First();
             var applicationAccess = _appAccessService.Find(client_id);

@@ -1,6 +1,6 @@
 const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
 <block type="botconfig" id="4O%j;RlG2DOyB1V|eNTE" x="13" y="-412">
-  <field name="Name">Nome</field>
+  <field name="Name">Name</field>
   <statement name="CustomCommands">
     <block type="customcommandconfig" id="2UKr!l]2G1x(i32puDkr" collapsed="true">
       <field name="CommandText">/start</field>
@@ -32,7 +32,7 @@ const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="wo
                   <field name="ClearDialogStack">TRUE</field>
                   <field name="DeleteProfile">TRUE</field>
                   <field name="InvalidateCache">TRUE</field>
-                  <field name="CustomMessageReply">Fluxo recarregado. </field>
+                  <field name="CustomMessageReply">Flow reloaded. </field>
                 </block>
               </next>
             </block>

@@ -137,9 +137,15 @@ namespace Carubbi.BotEditor.Config
 
             var templateName = $"template{message.GetHashCode()}";
             
-            return Engine.Razor.IsTemplateCached(templateName, null)
-                ? Engine.Razor.Run(templateName, viewBag: viewBag)
-                : Engine.Razor.RunCompile(message, templateName, modelType: typeof(object), model: null, viewBag: viewBag);
+            if (Engine.Razor.IsTemplateCached(templateName, null))
+            {
+                return Engine.Razor.Run(templateName, viewBag: viewBag);
+            } 
+            else
+            {
+                return Engine.Razor.RunCompile(message, templateName, modelType: typeof(object), model: null, viewBag: viewBag); 
+            }
+             
         }
 
         private DynamicViewBag PrepareViewBag(int stepId)
@@ -186,7 +192,7 @@ namespace Carubbi.BotEditor.Config
             object value = null;
             var nextPropertyName = properties.Dequeue();
 
-            var type = context.GetType();
+            var type = context?.GetType();
             if (context is JToken)
             {
                 var camelCaseNamingStrategy = new CamelCaseNamingStrategy();
@@ -195,8 +201,13 @@ namespace Carubbi.BotEditor.Config
             }
             else
             {
-                var nextProperty = type.GetProperties().Single(x => x.Name == nextPropertyName);
-                value = nextProperty.GetValue(context);
+                var nextProperty = type?.GetProperties().Single(x => x.Name == nextPropertyName);
+                value = nextProperty?.GetValue(context);
+            }
+
+            if (value == null)
+            {
+                return value;
             }
 
             context = value;

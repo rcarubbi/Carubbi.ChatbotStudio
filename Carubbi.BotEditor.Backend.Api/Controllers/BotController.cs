@@ -22,20 +22,19 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             _userService = userService;
         }
 
-        [Authorize(Roles = "Listar Bots")]
-        // GET api/Usuario
+        [Authorize(Roles = "List Bots")]
         public IEnumerable<Bot> Get()
         {
             return _botService.ListAll();
         }
 
-        [Authorize(Roles = "Criar/Alterar Bots,Listar Bots")]
+        [Authorize(Roles = "Create/Alter Bots,List Bots")]
         public Bot Get(Guid id)
         {
             return _botService.GetById(id);
         }
 
-        [Authorize(Roles = "Criar/Alterar Bots")]
+        [Authorize(Roles = "Create/Alter Bots")]
         public async Task<IHttpActionResult> Put(BotRequest request)
         {
             var user = await _userService.FindByNameAsync(LoggedUser);
@@ -44,7 +43,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return Ok(request.Id);
         }
 
-        [Authorize(Roles = "Criar/Alterar Bots")]
+        [Authorize(Roles = "Create/Alter Bots")]
         public async Task<IHttpActionResult> Post(BotRequest request)
         {
             try
@@ -61,7 +60,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
 
         }
 
-        [Authorize(Roles = "Criar/Alterar Bots")]
+        [Authorize(Roles = "Create/Alter Bots")]
         [Route("api/bot/deactivate")]
         [HttpPatch]
         public async Task<IHttpActionResult> Deactivate(BotRequest request)
@@ -72,14 +71,21 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return Ok();
         }
 
-        [Authorize(Roles = "Criar/Alterar Bots")]
+        [Authorize(Roles = "Create/Alter Bots")]
         [Route("api/bot/publish")]
         [HttpPatch]
         public async Task<IHttpActionResult> Publish(BotRequest request)
         {
-            var user = await _userService.FindByNameAsync(LoggedUser);
-            await _botService.PublishAsync(request.Id, user);
-            return Ok();
+            try
+            {
+                var user = await _userService.FindByNameAsync(LoggedUser);
+                await _botService.PublishAsync(request.Id, user);
+                return Ok();
+            }
+            catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
     }
 }

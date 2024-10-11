@@ -1,5 +1,4 @@
 ﻿using Autofac;
-using Carubbi.BotEditor.Backend.Api.Services;
 using Carubbi.BotEditor.Backend.Domain.Services;
 using Microsoft.Owin;
 using Microsoft.Owin.Security;

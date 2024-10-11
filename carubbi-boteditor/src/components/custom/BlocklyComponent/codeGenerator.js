@@ -1278,7 +1278,7 @@ JsonBotDefinition['file'] = (block) => {
   };
   
   JsonBotDefinition['simpleconfirmstep'] = function(block) {
-    const text_mensagem = block.getFieldValue('Mensagem');
+    const text_mensagem = block.getFieldValue('Message');
     
     const label_id = block.getFieldValue("Id");
     const value_question = {

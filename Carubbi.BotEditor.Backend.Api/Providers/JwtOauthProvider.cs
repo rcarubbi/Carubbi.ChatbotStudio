@@ -23,17 +23,15 @@ namespace Carubbi.BotEditor.Backend.Api.Providers
 
         public override Task ValidateClientAuthentication(OAuthValidateClientAuthenticationContext context)
         {
-            string clientId = string.Empty;
-            string clientSecret = string.Empty;
-            string symmetricKeyAsBase64 = string.Empty;
-            if (!context.TryGetBasicCredentials(out clientId, out clientSecret))
+            if (!context.TryGetBasicCredentials(out _, out _))
             {
-                context.TryGetFormCredentials(out clientId, out clientSecret);
+                 context.TryGetFormCredentials(out _, out _);
             }
+
             if (context.ClientId == null)
             {
-                context.SetError("invalid_clientId", "client_Id não pode ser nulo");
-                return Task.FromResult<object>(null);
+                context.SetError("invalid_clientId", "client_Id cannot be null");
+                return Task.CompletedTask;
             }
 
             var token = context.ClientId.Split(':');
@@ -43,18 +41,17 @@ namespace Carubbi.BotEditor.Backend.Api.Providers
 
             if (applicationAccess == null)
             {
-                context.SetError("invalid_clientId", "client_Id não encontrado");
-                return Task.FromResult<object>(null);
+                context.SetError("invalid_clientId", "client_Id not found");
+                return Task.CompletedTask;
             }
             if (applicationAccess.AccessKey != accessKey)
             {
-                context.SetError("invalid_clientId", "access key não encontrado ou inválido");
-                return Task.FromResult<object>(null);
+                context.SetError("invalid_clientId", "access key invalid or not found");
+                return Task.CompletedTask;
             }
 
             context.Validated();
-            return Task.FromResult<object>(null);
-
+            return Task.CompletedTask;
         }
 
         public override async Task GrantResourceOwnerCredentials(OAuthGrantResourceOwnerCredentialsContext context)
@@ -63,7 +60,7 @@ namespace Carubbi.BotEditor.Backend.Api.Providers
 
             if (user == null)
             {
-                context.SetError("invalid_grant", "Usuário ou senha invalidos");
+                context.SetError("invalid_grant", "Invalid user or passord");
                 return;
             }
 
@@ -76,7 +73,7 @@ namespace Carubbi.BotEditor.Backend.Api.Providers
 
             var props = new AuthenticationProperties(new Dictionary<string, string> {
                     {
-                         "audience", (context.ClientId == null) ? string.Empty : context.ClientId
+                         "audience", context.ClientId ?? string.Empty
                     }
             });
 

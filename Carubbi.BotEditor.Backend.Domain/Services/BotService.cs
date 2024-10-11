@@ -179,7 +179,7 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                     var prodResponse = _prodBotRuntimeServiceClient.Delete(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
                     var channelRegistrationResponse = await _channelRegistrationServiceClient.UnregisterAsync(new ChannelRegistrationRequest { BotId = botConfig.Id });
 
-                    if (!channelRegistrationResponse.Success)
+                    if (channelRegistrationResponse != null && !channelRegistrationResponse.Success)
                     {
                         throw new ApplicationException(JoinErrorMessage(channelRegistrationResponse));
                     }
@@ -343,6 +343,11 @@ namespace Carubbi.BotEditor.Backend.Domain.Services
                         ? _prodBotRuntimeServiceClient.Update(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = PrepareUpdate(botConfig, lastDevVersion).FormStepsToUpdate })
                         : _prodBotRuntimeServiceClient.Create(new BotRuntimeRequest { BotConfig = botConfig, FormSteps = botConfig.GetFormSteps(true) });
 
+
+                    if (response == null)
+                    {
+                        throw new ApplicationException("Production server unavailable");
+                    }
 
                     if (response.FormStepResults.Any(x => !x.Success))
                     {

@@ -4,12 +4,12 @@ import * as Blockly from 'blockly/core';
 const jsonBotDefinitionBlocks = [
   {
     "type": "botconfig",
-    "message0": "%1 %2 Passos %3 Comandos %4 Voz %5 Credenciais %6 Persistência %7 WhatsApp %8 Telegram %9",
+    "message0": "%1 %2 Steps %3 Commands %4 Voice %5 Credentials %6 Persistence %7 WhatsApp %8 Telegram %9",
     "args0": [
       {
         "type": "field_autocomplete",
         "name": "Name",
-        "text": "Nome"
+        "text": "Name"
       },
       {
         "type": "input_dummy",
@@ -74,12 +74,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "inputsInline": false,
     "colour": 240,
-    "tooltip": "Estrutura do bot",
+    "tooltip": "Bot Structure",
     "helpUrl": ""
   },
   {
     "type": "messagestep",
-    "message0": "%1 Mensagem %2",
+    "message0": "%1 Message %2",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -139,12 +139,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 90,
-    "tooltip": "Passo de mensagem",
+    "tooltip": "Message Step",
     "helpUrl": ""
   },
   {
     "type": "inputstep",
-    "message0": "%1 Pergunta %2 Durável? %3 %4 Linguagem Natural %5 Análise de Texto %6",
+    "message0": "%1 Question %2 Durable? %3 %4 Natural Language %5 Text Analysis %6",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -222,7 +222,7 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 180,
-    "tooltip": "Passo de pergunta aberta",
+    "tooltip": "Open question step",
     "helpUrl": ""
   },
   {
@@ -232,18 +232,18 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Value",
-        "text": "Texto"
+        "text": "Text"
       }
     ],
     "previousStatement": "String",
     "nextStatement": "String",
     "colour": 135,
-    "tooltip": "Texto",
+    "tooltip": "Text",
     "helpUrl": ""
   },
   {
     "type": "nlpsettings",
-    "message0": "Linguagem natural %1 %2 %3 Modelos %4",
+    "message0": "Natural Language %1 %2 %3 Models %4",
     "args0": [
       {
         "type": "input_dummy",
@@ -254,7 +254,7 @@ const jsonBotDefinitionBlocks = [
         "name": "NlpServiceType",
         "options": [
           [
-            "Tipo de serviço",
+            "Service Type",
             "None"
           ],
           [
@@ -283,13 +283,13 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "NlpSettings",
     "colour": 225,
-    "tooltip": "Configurações de NLP",
+    "tooltip": "NLP Settings",
     "helpUrl": ""
   },
   {
     "type": "textanalysissettings",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Análise de texto %1 %2 %3 %4 %5 Chave %6 %7 URL %8",
+    "message0": "Text Analysis %1 %2 %3 %4 %5 Key %6 %7 URL %8",
     "args0": [
       {
         "type": "input_dummy",
@@ -300,7 +300,7 @@ const jsonBotDefinitionBlocks = [
         "name": "TextAnalysisServiceType",
         "options": [
           [
-            "Tipo de Serviço",
+            "Service Type",
             "None"
           ],
           [
@@ -318,19 +318,19 @@ const jsonBotDefinitionBlocks = [
         "name": "Language",
         "options": [
           [
-            "Idioma",
+            "Language",
             "None"
           ],
           [
-            "Português",
+            "Portuguese",
             "pt-BR"
           ],
           [
-            "Inglês",
+            "English",
             "en-US"
           ],
           [
-            "Espanhol",
+            "Spanish",
             "es-ES"
           ]
         ]
@@ -356,12 +356,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "TextAnalysisSettings",
     "colour": 315,
-    "tooltip": "Configurações de análise de texto",
+    "tooltip": "Text Analysis Settings",
     "helpUrl": ""
   },
   {
     "type": "nlpmodel",
-    "message0": "Modelo NLP %1 App Id %2 %3 Prediction Key %4 %5 Prediction Endpoint %6",
+    "message0": "NLP Model %1 App Id %2 %3 Prediction Key %4 %5 Prediction Endpoint %6",
     "args0": [
       {
         "type": "input_dummy"
@@ -391,12 +391,12 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "NlpModel",
     "nextStatement": "NlpModel",
     "colour": 30,
-    "tooltip": "Modelo de NLP",
+    "tooltip": "NLP Model",
     "helpUrl": ""
   },
   {
     "type": "confirmstep",
-    "message0": "%1 Confirmação %2 Pergunta %3 Retentativas %4 Muitas tentativas %5 Durável? %6 %7 Botão \"Sim\" %8 %9 Botão \"Não\" %10 %11 Respostas para \"Sim\" %12 Respostas para \"Não\" %13 Tentativas %14 %15 Passos para \"Sim\" %16 Passos para \"Não\" %17",
+    "message0": "%1 Confirm %2 Question %3 Retry Message %4 Too Many Attempts Message %5 Durable? %6 %7 \"Yes\" Text %8 %9 \"No\" Text %10 %11 \"Yes\" Accepted Answers %12 \"No\" Accepted Answers %13 Attempts %14 %15 Step to \"Yes\" %16 Step to \"No\" %17",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -433,7 +433,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "YesText",
-        "text": "Sim"
+        "text": "Yes"
       },
       {
         "type": "input_dummy"
@@ -441,7 +441,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "NoText",
-        "text": "Não"
+        "text": "No"
       },
       {
         "type": "input_dummy"
@@ -541,12 +541,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 270,
-    "tooltip": "Passo de confirmação",
+    "tooltip": "Confirm Step",
     "helpUrl": ""
   },
   {
     "type": "messageinteractions",
-    "message0": "Interações %1 Texto %2 Voz %3 Arquivos %4",
+    "message0": "Interactions %1 Typed %2 Spoken %3 Files %4",
     "args0": [
       {
         "type": "input_dummy",
@@ -570,12 +570,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "MessageInteractions",
     "colour": 120,
-    "tooltip": "Mensagens de Interações",
+    "tooltip": "Message Interactions",
     "helpUrl": ""
   },
   {
     "type": "liststep",
-    "message0": "%1 Lista de %2 %3 Texto %4 Itens %5 Retentativas %6 Muitas tentativas %7 Durável? %8 %9 Tentativas %10 %11 Linguagem Natural %12 Fonte de dados %13",
+    "message0": "%1 List of %2 %3 Prompt Message %4 Itens %5 Retry Message %6 Too Many Attempts Message %7 Durable? %8 %9 Attempts %10 %11 NLP Settings %12 Data Source %13",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -587,15 +587,15 @@ const jsonBotDefinitionBlocks = [
         "name": "ListType",
         "options": [
           [
-            "Imagens",
+            "Images",
             "ImageList"
           ],
           [
-            "Botões",
+            "Buttons",
             "ButtonList"
           ],
           [
-            "Imagens com botões",
+            "Image Buttons",
             "ImageButtonList"
           ]
         ]
@@ -675,17 +675,17 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 45,
-    "tooltip": "Passo de lista",
+    "tooltip": "List Step",
     "helpUrl": ""
   },
   {
     "type": "customcommandconfig",
-    "message0": "Comando %1 %2 Iniciar %3 %4 Reiniciar %5 %6 Excluir dados do usuário %7 %8 Limpar cache %9 %10 Resposta %11",
+    "message0": "Command %1 %2 Start %3 %4 Restart %5 %6 Delete user profile %7 %8 Clear cache %9 %10 Answer %11",
     "args0": [
       {
         "type": "field_autocomplete",
         "name": "CommandText",
-        "text": "/comando"
+        "text": "/command"
       },
       {
         "type": "input_dummy",
@@ -726,37 +726,37 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "CustomMessageReply",
-        "text": "Comando executado"
+        "text": "Command executed"
       }
     ],
     "previousStatement": "CustomCommandConfig",
     "nextStatement": "CustomCommandConfig",
     "colour": 0,
-    "tooltip": "Comando de ajuda",
+    "tooltip": "Help command",
     "helpUrl": ""
   },
   {
     "type": "speechsettings",
-    "message0": "Voz STT %1 %2 STT %3 %4 Região do STT  %5 %6 Chave do STT %7 %8 Voz TTS %9 %10 TTS %11 %12 Região do TTS %13 %14 Chave do TTS %15 %16 %17 %18 %19",
+    "message0": "STT Voice %1 %2 STT %3 %4 STT Region %5 %6 STT Key %7 %8 TTS Voice %9 %10 TTS %11 %12 TTS Region %13 %14 TTS Key %15 %16 %17 %18 %19",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "Language",
         "options": [
           [
-            "Idioma",
+            "Language",
             "None"
           ],
           [
-            "Português",
+            "Portuguese",
             "pt-BR"
           ],
           [
-            "Inglês",
+            "English",
             "en-US"
           ],
           [
-            "Espanhol",
+            "Spanish",
             "es-ES"
           ]
         ]
@@ -783,47 +783,47 @@ const jsonBotDefinitionBlocks = [
         "name": "RecognitionServiceRegion",
         "options": [
           [
-            "Sul do Brasil",
+            "Brazil South",
             "brazilsouth"
           ],
           [
-            "Leste dos EUA",
+            "East US",
             "eastus"
           ],
           [
-            "Leste dos EUA 2",
+            "East US 2",
             "eastus2"
           ],
           [
-            "Centro-sul dos EUA",
+            "South Central us",
             "southcentralus"
           ],
           [
-            "Oeste dos EUA",
+            "West US",
             "westus"
           ],
           [
-            "Oeste dos EUA 2",
+            "West US 2",
             "westus2"
           ],
           [
-            "Centro dos EUA",
+            "Central US",
             "centralus"
           ],
           [
-            "Centro-norte dos EUA",
+            "North Central US",
             "northcentralus"
           ],
           [
-            "Norte da Europa",
+            "North Europe",
             "northeurope"
           ],
           [
-            "Sul do Reino Unido",
+            "South UK",
             "southuk"
           ],
           [
-            "Oeste da Europa",
+            "West Europe",
             "westeurope"
           ]
         ]
@@ -865,47 +865,47 @@ const jsonBotDefinitionBlocks = [
         "name": "SynthesisServiceRegion",
         "options": [
           [
-            "Sul do Brasil",
+            "Brazil South",
             "brazilsouth"
           ],
           [
-            "Leste dos EUA",
+            "East US",
             "eastus"
           ],
           [
-            "Leste dos EUA 2",
+            "East US 2",
             "eastus2"
           ],
           [
-            "Centro-sul dos EUA",
+            "South Central us",
             "southcentralus"
           ],
           [
-            "Oeste dos EUA",
+            "West US",
             "westus"
           ],
           [
-            "Oeste dos EUA 2",
+            "West US 2",
             "westus2"
           ],
           [
-            "Centro dos EUA",
+            "Central US",
             "centralus"
           ],
           [
-            "Centro-norte dos EUA",
+            "North Central US",
             "northcentralus"
           ],
           [
-            "Norte da Europa",
+            "North Europe",
             "northeurope"
           ],
           [
-            "Sul do Reino Unido",
+            "South UK",
             "southuk"
           ],
           [
-            "Oeste da Europa",
+            "West Europe",
             "westeurope"
           ]
         ]
@@ -926,11 +926,11 @@ const jsonBotDefinitionBlocks = [
         "name": "CacheType",
         "options": [
           [
-            "Tipo de Cache",
+            "Cache Type",
             "None"
           ],
           [
-            "Em memória",
+            "In-memory",
             "InMemory"
           ],
           [
@@ -947,11 +947,11 @@ const jsonBotDefinitionBlocks = [
         "name": "StoreType",
         "options": [
           [
-            "Tipo de Armazenamento",
+            "Storage type",
             "None"
           ],
           [
-            "Em disco",
+            "File System",
             "FileSystem"
           ],
           [
@@ -963,12 +963,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "SpeechSettings",
     "colour": 45,
-    "tooltip": "Configurações de Voz",
+    "tooltip": "Speech Settings",
     "helpUrl": ""
   },
   {
     "type": "appcredentials",
-    "message0": "Credenciais %1 App Id %2 %3 App Password %4",
+    "message0": "Credentials %1 App Id %2 %3 App Password %4",
     "args0": [
       {
         "type": "input_dummy"
@@ -989,12 +989,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "AppCredentials",
     "colour": 165,
-    "tooltip": "Credenciais da API do Microsoft Bot Framework",
+    "tooltip": "Microsoft Bot Framework Api Credentials",
     "helpUrl": ""
   },
   {
     "type": "storesettings",
-    "message0": "Persistência %1 Armazenar em %2 %3 String de conexão %4",
+    "message0": "Persistence %1 Store in %2 %3 Connection String %4",
     "args0": [
       {
         "type": "input_dummy",
@@ -1005,15 +1005,15 @@ const jsonBotDefinitionBlocks = [
         "name": "PersistenceStrategy",
         "options": [
           [
-            "Memória",
+            "In-memory",
             "InMemory"
           ],
           [
-            "Banco de dados SQL Server",
+            "SQL Server",
             "SqlServer"
           ],
           [
-            "Banco de dados Azure Tables",
+            "Azure Tables",
             "AzureTables"
           ]
         ]
@@ -1029,12 +1029,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "StoreSettings",
     "colour": 300,
-    "tooltip": "Configurações de Armazenamento de log e estado (Em memória apenas estado)",
+    "tooltip": "Logging and state storage settings (In-memory only state)",
     "helpUrl": ""
   },
   {
     "type": "formstep",
-    "message0": "%1 Questionário %2 Perguntas %3 Confirmação %4 Durável? %5 %6 Literais %7 Comandos %8 Linguagem Natural %9",
+    "message0": "%1 Form %2 Fields %3 Confirmation %4 Durable? %5 %6 Literals %7 Commands %8 Natural Language %9",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -1125,12 +1125,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 160,
-    "tooltip": "Passo de questionário",
+    "tooltip": "Form step",
     "helpUrl": ""
   },
   {
     "type": "formfield",
-    "message0": "Pergunta %1 %2 %3 %4 Opcional? %5 %6 %7 %8 Entidade NLP %9 %10 Api de Validação %11 %12 Mensagem de falha %13 %14 Api de Ativação %15",
+    "message0": "Field %1 %2 %3 %4 Optional? %5 %6 %7 %8 NLP Entity %9 %10 Validation API %11 %12 Validation failed message %13 %14 Activation API %15",
     "args0": [
       {
         "type": "input_dummy",
@@ -1139,12 +1139,12 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Name",
-        "text": "Nome"
+        "text": "Name"
       },
       {
         "type": "field_autocomplete",
         "name": "Question",
-        "text": "Texto"
+        "text": "Text"
       },
       {
         "type": "input_dummy"
@@ -1162,23 +1162,23 @@ const jsonBotDefinitionBlocks = [
         "name": "Type",
         "options": [
           [
-            "Tipo",
+            "Type",
             "None"
           ],
           [
-            "Número",
+            "Number",
             "Number"
           ],
           [
-            "Texto",
+            "Text",
             "Text"
           ],
           [
-            "Data",
+            "Date",
             "Date"
           ],
           [
-            "Hora",
+            "Time",
             "Time"
           ],
           [
@@ -1186,12 +1186,12 @@ const jsonBotDefinitionBlocks = [
             "Decimal"
           ],
           [
-            "Sim/Não",
+            "Yes/No",
             "YesNo"
           ],
           [
-            "CPF",
-            "CPF"
+            "Brazilian CPF",
+            "Brazilian CPF"
           ]
         ]
       },
@@ -1217,7 +1217,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "ValidationFailedMessage",
-        "text": "Resposta Inválida"
+        "text": "Invalid answer"
       },
       {
         "type": "input_dummy"
@@ -1239,12 +1239,12 @@ const jsonBotDefinitionBlocks = [
       "RestoreFormField"
     ],
     "colour": 260,
-    "tooltip": "Pergunta simples para ser utilizada no passo de questionários",
+    "tooltip": "Simple form step field",
     "helpUrl": ""
   },
   {
     "type": "optionsformfield",
-    "message0": "Pergunta de seleção %1 %2 %3 %4 Opcional? %5 %6 %7 %8 Opções %9 Entidade NLP %10 %11 Api de Validação %12 %13 Mensagem de falha  %14 %15 Api de Ativação %16",
+    "message0": "Options Field %1 %2 %3 %4 Optional? %5 %6 %7 %8 Options %9 NLP Entity %10 %11 Validation Api %12 %13 Validation failed message %14 %15 Activation Api %16",
     "args0": [
       {
         "type": "input_dummy",
@@ -1253,12 +1253,12 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Name",
-        "text": "Nome"
+        "text": "Name"
       },
       {
         "type": "field_autocomplete",
         "name": "Question",
-        "text": "Texto"
+        "text": "Text"
       },
       {
         "type": "input_dummy"
@@ -1276,15 +1276,15 @@ const jsonBotDefinitionBlocks = [
         "name": "Type",
         "options": [
           [
-            "Tipo",
+            "Type",
             "None"
           ],
           [
-            "Escolha Única",
+            "Single Option",
             "SingleOption"
           ],
           [
-            "Escolha Múltipla",
+            "Multiple options",
             "ManyOptions"
           ]
         ]
@@ -1319,7 +1319,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "ValidationFailedMessage",
-        "text": "Resposta Inválida"
+        "text": "Invalid answer"
       },
       {
         "type": "input_dummy"
@@ -1341,33 +1341,33 @@ const jsonBotDefinitionBlocks = [
       "RestoreFormField"
     ],
     "colour": 290,
-    "tooltip": "Pergunta de seleção de opções (múltiplas ou única)",
+    "tooltip": "Options field (Single or multiple)",
     "helpUrl": ""
   },
   {
     "type": "fieldoption",
-    "message0": "Opção: %1 - %2",
+    "message0": "Option: %1 - %2",
     "args0": [
       {
         "type": "field_autocomplete",
         "name": "Value",
-        "text": "Valor"
+        "text": "Value"
       },
       {
         "type": "field_autocomplete",
         "name": "Description",
-        "text": "Descrição"
+        "text": "Description"
       }
     ],
     "previousStatement": "FieldOption",
     "nextStatement": "FieldOption",
     "colour": 230,
-    "tooltip": "Opção para seleção em pergunta de única ou múltipla escolha",
+    "tooltip": "Option for Option field",
     "helpUrl": ""
   },
   {
     "type": "fieldoptionsource",
-    "message0": "Api - Opções %1 %2",
+    "message0": "Api - Options %1 %2",
     "args0": [
       {
         "type": "input_dummy"
@@ -1380,12 +1380,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "previousStatement": "FieldOptionSource",
     "colour": 230,
-    "tooltip": "Opção para seleção em pergunta de única ou múltipla escolha",
+    "tooltip": "Field Option Source",
     "helpUrl": ""
   },
   {
     "type": "restoreformfield",
-    "message0": "Reutilização de respostas %1 %2 %3 %4 Perguntas vinculadas %5",
+    "message0": "Reuse answers %1 %2 %3 %4 bounded questions %5",
     "args0": [
       {
         "type": "input_dummy",
@@ -1394,12 +1394,12 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Name",
-        "text": "Nome"
+        "text": "Name"
       },
       {
         "type": "field_autocomplete",
         "name": "Question",
-        "text": "Texto"
+        "text": "Text"
       },
       {
         "type": "input_dummy",
@@ -1422,17 +1422,17 @@ const jsonBotDefinitionBlocks = [
       "RestoreFormField"
     ],
     "colour": 260,
-    "tooltip": "Pergunta de reutilização de respostas anteriores",
+    "tooltip": "Reuse previous answers field",
     "helpUrl": ""
   },
   {
     "type": "summary",
-    "message0": "Confirmação %1 %2 Lista de Respostas %3 %4 Botões %5",
+    "message0": "Confirmation %1 %2 Answers list %3 %4 Buttons %5",
     "args0": [
       {
         "type": "field_autocomplete",
         "name": "SummaryText",
-        "text": "Texto"
+        "text": "Text"
       },
       {
         "type": "input_dummy"
@@ -1453,167 +1453,167 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "Summary",
     "colour": 90,
-    "tooltip": "Sumário de respostas do questionário",
+    "tooltip": "Form summary",
     "helpUrl": ""
   },
   {
     "type": "formcustommessage",
-    "message0": "Customização de Literal %1 %2",
+    "message0": "Literal customization %1 %2",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "Key",
         "options": [
           [
-            "Sim",
+            "Yes",
             "Yes"
           ],
           [
-            "Não",
+            "No",
             "No"
           ],
           [
-            "Resposta vazia em pergunta opcional",
+            "No Preference Message",
             "NoPreferenceMessage"
           ],
           [
-            "utilizada antes da última escolha em listas de única escolha ",
+            "Choice Last Separator",
             "ChoiceLastSeparator"
           ],
           [
-            "utilizada antes da última escolha em listas de múltipla escolha ",
+            "Last Separator",
             "LastSeparator"
           ],
           [
-            "para nomear o campo de navegação",
+            "Navigation Field Name",
             "NavigationFieldName"
           ],
           [
-            "válida para valor atual em listas de única escolha",
+            "Current Choice Message",
             "CurrentChoiceMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo Sim/Não",
+            "Yes/No questions help message",
             "BoolHelpMessage"
           ],
           [
-            "Texto de pergunta do tipo Sim/Não",
+            "Yes/No questions text",
             "BoolMessage"
           ],
           [
-            "Esclarescer uma escolha ambígua",
+            "Clarify Message",
             "ClarifyMessage"
           ],
           [
-            "Texto de confirmação",
+            "Confirmation Message",
             "ConfirmationMessage"
           ],
           [
-            "Texto para exibir escolha atual",
+            "Current Choice",
             "CurrentChoice"
           ],
           [
-            "Texto de pergunta do tipo Data/Hora",
+            "Date Time Message",
             "DateTimeMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo Data/Hora",
+            "Date Time Help Message",
             "DateTimeHelpMessage"
           ],
           [
-            "Texto de pergunta do tipo Decimal",
+            "Decimal type question text",
             "DoubleMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo Decimal",
+            "Decimal type question help text",
             "DoubleHelpMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo lista numérica de múltipla seleção",
+            "Many Number Help Message",
             "EnumManyNumberHelpMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo lista de palavras de múltipla seleção",
+            "Many Word Help Message",
             "EnumManyWordHelpMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo lista numérica de única seleção",
+            "One Number Help Message",
             "EnumOneNumberHelpMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo lista de palavras de única seleção",
+            "One Word Help Message",
             "EnumOneWordHelpMessage"
           ],
           [
-            "Texto da pergunta do tipo lista de múltipla seleção",
+            "Select Many Message",
             "EnumSelectManyMessage"
           ],
           [
-            "Texto da pergunta do tipo lista de única seleção",
+            "Select One Message",
             "EnumSelectOneMessage"
           ],
           [
-            "Mensagem de feedback após resposta do usuário",
+            "Feed Back Message",
             "FeedBackMessage"
           ],
           [
-            "Mensagem de ajuda",
+            "Help Message",
             "HelpMessage"
           ],
           [
-            "Mensagem de ajuda exibida durante esclarescimento",
+            "Help Clarify Message",
             "HelpClarifyMessage"
           ],
           [
-            "Mensagem de ajuda exibida durante confirmação",
+            "Help Confirm Message",
             "HelpConfirmMessage"
           ],
           [
-            "Mensagem de ajuda exibida durante navegação",
+            "Help Navigation Message",
             "HelpNavigationMessage"
           ],
           [
-            "Texto da pergunta do tipo número",
+            "Integer Message",
             "IntegerMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo número",
+            "Integer Help Message",
             "IntegerHelpMessage"
           ],
           [
-            "Pergunta de navegação",
+            "Navigation Message",
             "NavigationMessage"
           ],
           [
-            "Formato de navegação",
+            "Navigation Format Message",
             "NavigationFormatMessage"
           ],
           [
-            "Mensagem de ajuda para navegação",
+            "Navigation Help Message",
             "NavigationHelpMessage"
           ],
           [
-            "Literal para resposta vazia em perguntas opcionais",
+            "No Preference Message",
             "NoPreferenceMessage"
           ],
           [
-            "Texto para respostas inválidas",
+            "Not Understood Message",
             "NotUnderstoodMessage"
           ],
           [
-            "Formato do status",
+            "Status Format Message",
             "StatusFormatMessage"
           ],
           [
-            "Texto da pergunta do tipo texto",
+            "Text Message",
             "StringMessage"
           ],
           [
-            "Mensagem de ajuda para perguntas do tipo texto",
+            "Text Help Message",
             "StringHelpMessage"
           ],
           [
-            "Texto para perguntas ainda não respondidas",
+            "Unspecified Message",
             "UnspecifiedMessage"
           ]
         ]
@@ -1621,37 +1621,37 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Value",
-        "text": "Valor"
+        "text": "Value"
       }
     ],
     "previousStatement": "FormCustomMessage",
     "nextStatement": "FormCustomMessage",
     "colour": 230,
-    "tooltip": "Customização de Literal",
+    "tooltip": "Literal customization",
     "helpUrl": ""
   },
   {
     "type": "formcustomcommand",
-    "message0": "Customização do comando %1 %2 Nome %3 Texto %4 %5 Mensagem de ajuda %6",
+    "message0": "Command customization %1 %2 Name %3 Text %4 %5 Help Message %6",
     "args0": [
       {
         "type": "field_dropdown",
         "name": "CommandType",
         "options": [
           [
-            "Ajuda",
+            "Help",
             "Help"
           ],
           [
-            "Voltar",
+            "Back",
             "Backup"
           ],
           [
-            "Reiniciar",
+            "Restart",
             "Reset"
           ],
           [
-            "Sair",
+            "Quit",
             "Quit"
           ],
           [
@@ -1685,13 +1685,13 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "FormCustomCommand",
     "nextStatement": "FormCustomCommand",
     "colour": 135,
-    "tooltip": "Customização de Comando",
+    "tooltip": "Command customization",
     "helpUrl": ""
   },
   {
     "type": "datasource",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Origem de dados %1 Passo %2 . %3",
+    "message0": "Data source %1 step %2 . %3",
     "args0": [
       {
         "type": "input_dummy",
@@ -1706,17 +1706,17 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Expression",
-        "text": "Expressão"
+        "text": "Expression"
       }
     ],
     "output": "DataSource",
     "colour": 285,
-    "tooltip": "Origem de dados",
+    "tooltip": "Data source",
     "helpUrl": ""
   },
   {
     "type": "conditionstep",
-    "message0": "%1 Se %2 Então %3 Senão %4 Fonte de dados %5",
+    "message0": "%1 If %2 then %3 else %4 data source %5",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -1795,7 +1795,7 @@ const jsonBotDefinitionBlocks = [
     ],
     "previousStatement": "ConditionStep",
     "colour": 240,
-    "tooltip": "Passo de condição",
+    "tooltip": "Condition step",
     "helpUrl": ""
   },
   {
@@ -1855,7 +1855,7 @@ const jsonBotDefinitionBlocks = [
     "inputsInline": true,
     "output": "RelationalExpression",
     "colour": 240,
-    "tooltip": "Expressão relacional",
+    "tooltip": "Relational expression",
     "helpUrl": ""
   },
   {
@@ -1876,11 +1876,11 @@ const jsonBotDefinitionBlocks = [
         "name": "Operator",
         "options": [
           [
-            "e",
+            "and",
             "And"
           ],
           [
-            "ou",
+            "or",
             "Or"
           ]
         ]
@@ -1901,12 +1901,12 @@ const jsonBotDefinitionBlocks = [
     "inputsInline": true,
     "output": null,
     "colour": 75,
-    "tooltip": "Expressão Lógica binária",
+    "tooltip": "Binary logical expression",
     "helpUrl": ""
   },
   {
     "type": "unarylogicalexpression",
-    "message0": "Não %1",
+    "message0": "Not %1",
     "args0": [
       {
         "type": "input_value",
@@ -1921,7 +1921,7 @@ const jsonBotDefinitionBlocks = [
     "inputsInline": true,
     "output": "UnaryLogicalExpression",
     "colour": 0,
-    "tooltip": "Operador Lógico Unário \"Não\"",
+    "tooltip": "Unary logical operator \"Not\"",
     "helpUrl": ""
   },
   {
@@ -1938,12 +1938,12 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "Expression",
-        "text": "Expressão"
+        "text": "Expression"
       }
     ],
     "output": "StepExpression",
     "colour": 285,
-    "tooltip": "Expressão para obter informações de um passo",
+    "tooltip": "Expression to get step data",
     "helpUrl": ""
   },
   {
@@ -1959,12 +1959,12 @@ const jsonBotDefinitionBlocks = [
     "inputsInline": true,
     "output": "Literal",
     "colour": 180,
-    "tooltip": "Valor Literal",
+    "tooltip": "Literal Value",
     "helpUrl": ""
   },
   {
     "type": "navigatelistitem",
-    "message0": "Navegar para passo %1 Título %2 %3 Sub-Título %4 %5 Url da Imagem %6 %7 Título do Botão %8 %9 Valor do Botão %10 %11 Passos %12",
+    "message0": "Navigate to step %1 Title %2 %3 Sub-Title %4 %5 Image Url %6 %7 Button title %8 %9 Button value %10 %11 Steps %12",
     "args0": [
       {
         "type": "input_dummy"
@@ -2044,13 +2044,13 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "ListItem",
     "nextStatement": "ListItem",
     "colour": 300,
-    "tooltip": "Item de lista para navegar para passos filhos",
+    "tooltip": "List item to navigate to child steps",
     "helpUrl": ""
   },
   {
     "type": "openurllistitem",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Abrir Página da Web %1 Título %2 %3 Sub-Título %4 %5 Url da Imagem %6 %7 Título do Botão %8 %9 Navegar para %10",
+    "message0": "Open webpage %1 Title %2 %3 Sub-title %4 %5 Image Url %6 %7 Button title %8 %9 Navigate to %10",
     "args0": [
       {
         "type": "input_dummy"
@@ -2100,13 +2100,13 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "ListItem",
     "nextStatement": "ListItem",
     "colour": 345,
-    "tooltip": "Item de lista para abrir página da web",
+    "tooltip": "List item to open url",
     "helpUrl": ""
   },
   {
     "type": "downloadfilelistitem",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Baixar Arquivo %1 Título %2 %3 Sub-Título %4 %5 Url da Imagem %6 %7 Título do Botão %8 %9 Link do arquivo %10",
+    "message0": "Download file %1 Title %2 %3 Sub-title %4 %5 Image url %6 %7 Button title %8 %9 File link %10",
     "args0": [
       {
         "type": "input_dummy"
@@ -2156,12 +2156,12 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "ListItem",
     "nextStatement": "ListItem",
     "colour": 75,
-    "tooltip": "Item de lista para baixar arquivo",
+    "tooltip": "Download file list item",
     "helpUrl": ""
   },
   {
     "type": "apistep",
-    "message0": "%1 API %2 Método %3 %4 Url %5 %6 Recurso %7 %8 Parâmetros %9 Durável? %10 %11 Fonte de dados %12 Mensagem durante o carregamento %13",
+    "message0": "%1 API %2 Method %3 %4 Url %5 %6 Resource %7 %8 Parameters %9 Durable? %10 %11 Data source %12 Loading message %13",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -2282,13 +2282,13 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 90,
-    "tooltip": "Passo de chamada de API externa",
+    "tooltip": "External API call step",
     "helpUrl": ""
   },
   {
     "type": "apiparameter",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Parâmetro %1 Nome %2 Valor %3 %4 Tipo %5",
+    "message0": "Parameter %1 Name %2 Valor %3 %4 Type %5",
     "args0": [
       {
         "type": "input_dummy",
@@ -2313,23 +2313,23 @@ const jsonBotDefinitionBlocks = [
         "name": "Type",
         "options": [
           [
-            "Padrão",
+            "Default",
             "Default"
           ],
           [
-            "Segmento de URL",
+            "URL Segment",
             "UrlSegment"
           ],
           [
-            "Cabeçalho HTTP",
+            "Header HTTP",
             "Header"
           ],
           [
-            "Arquivo",
+            "File",
             "File"
           ],
           [
-            "Objeto JSON",
+            "JSON Object",
             "JsonObject"
           ]
         ]
@@ -2338,13 +2338,13 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "ApiParameter",
     "nextStatement": "ApiParameter",
     "colour": 60,
-    "tooltip": "Parâmetro de API",
+    "tooltip": "API Parameter",
     "helpUrl": ""
   },
   {
     "type": "goto",
     "lastDummyAlign0": "CENTRE",
-    "message0": "Ir para o Passo %1",
+    "message0": "Go to Step %1",
     "args0": [
       {
         "type": "field_autocomplete",
@@ -2376,12 +2376,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 330,
-    "tooltip": "Redirecionar o fluxo para outro passo",
+    "tooltip": "Redirect the flow to another step",
     "helpUrl": ""
   },
   {
     "type": "compositestep",
-    "message0": "%1 Composto %2 Nome %3 %4 Passos %5",
+    "message0": "%1 Composite %2 Name %3 %4 steps %5",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -2473,12 +2473,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 330,
-    "tooltip": "Passo Composto de sub-passos",
+    "tooltip": "Composite step",
     "helpUrl": ""
   },
   {
     "type": "faqstep",
-    "message0": "%1 F.A.Q. %2 Mensagem %3 Percentual mínimo %4 %5 Durável? %6 %7 Configurações %8",
+    "message0": "%1 F.A.Q. %2 Message %3 Minimum Score %4 %5 Durable? %6 %7 Settings %8",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -2563,12 +2563,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 30,
-    "tooltip": "Passo de consulta a perguntas frequentes",
+    "tooltip": "FAQ step",
     "helpUrl": ""
   },
   {
     "type": "faqsettings",
-    "message0": "Configurações de FAQ %1 %2 %3 Id da base %4 %5 Chave %6 %7 Url %8 %9 Quantidade de respostas %10",
+    "message0": "FAQ settings %1 %2 %3 Knowledge Base Id %4 %5 Key %6 %7 Url %8 %9 Max answers %10",
     "args0": [
       {
         "type": "input_dummy",
@@ -2624,12 +2624,12 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "FaqSettings",
     "colour": 300,
-    "tooltip": "Configurações do serviço de FAQ",
+    "tooltip": "FAQ Settings",
     "helpUrl": ""
   },
   {
     "type": "mapsstep",
-    "message0": "%1 Mapas %2 %3 %4 Chave da Api %5 %6 Endereços %7 Selecionável? %8 %9 Durável? %10 %11 Fonte de dados %12",
+    "message0": "%1 Maps %2 %3 %4 Api Key %5 %6 Addresses %7 Selectable? %8 %9 Durable? %10 %11 Data source %12",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -2645,7 +2645,7 @@ const jsonBotDefinitionBlocks = [
         "name": "ServiceType",
         "options": [
           [
-            "Serviço",
+            "Service",
             "None"
           ],
           [
@@ -2741,13 +2741,13 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 120,
-    "tooltip": "Passo de lista de mapas",
+    "tooltip": "Maps step",
     "helpUrl": ""
   },
   {
     "type": "locationsource",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Endereço %1 Nome %2 %3 Latitude %4 Longitude %5 %6 CEP %7 Logradouro %8 %9 UF %10 Cidade %11",
+    "message0": "Address %1 Name %2 %3 Latitude %4 Longitude %5 %6 postcode %7 Street %8 %9 State %10 City %11",
     "args0": [
       {
         "type": "input_dummy",
@@ -2804,12 +2804,12 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "LocationSource",
     "nextStatement": "LocationSource",
     "colour": 60,
-    "tooltip": "Passo de consulta a perguntas frequentes",
+    "tooltip": "Location source",
     "helpUrl": ""
   },
   {
     "type": "switchstep",
-    "message0": "%1 Escolha %2 %3 Casos %4 Fonte de dados %5",
+    "message0": "%1 Switch %2 %3 Cases %4 Data source %5",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -2881,12 +2881,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 45,
-    "tooltip": "Passo de escolha - caso",
+    "tooltip": "Switch-case step",
     "helpUrl": ""
   },
   {
     "type": "case",
-    "message0": "Caso %1 %2 Faça %3",
+    "message0": "Case %1 %2 then %3",
     "args0": [
       {
         "type": "field_autocomplete",
@@ -2927,12 +2927,12 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "Case",
     "nextStatement": "Case",
     "colour": 30,
-    "tooltip": "Passo de escolha - caso",
+    "tooltip": "case",
     "helpUrl": ""
   },
   {
     "type": "imageclassificationstep",
-    "message0": "%1 Classificação de Imagem %2 Pergunta %3 Retentativas %4 Muitas tentativas %5 Durável? %6 %7 Tentativas %8 %9 Resultados %10 %11 Percentual mínimo %12 %13 Ir para o passo %14 se falhar %15 Configurações %16",
+    "message0": "%1 Image classification %2 Question %3 Retry Message %4 Too many tries message %5 Durable? %6 %7 Attempts %8 %9 Results %10 %11 Min score %12 %13 Go to step %14 if error  %15 Configuration %16",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3058,13 +3058,13 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 270,
-    "tooltip": "Passo de classificação de imagens",
+    "tooltip": "Image classification step",
     "helpUrl": ""
   },
   {
     "type": "imageclassificationsettings",
     "lastDummyAlign0": "RIGHT",
-    "message0": "Config. de classificação de imagens %1 %2 %3 %4 %5 Predição %6 %7 %8 Treinamento %9 %10",
+    "message0": "Image classification settings %1 %2 %3 %4 %5 Prediction %6 %7 %8 Training %9 %10",
     "args0": [
       {
         "type": "input_dummy",
@@ -3075,7 +3075,7 @@ const jsonBotDefinitionBlocks = [
         "name": "ServiceType",
         "options": [
           [
-            "Tipo de serviço",
+            "Service Type",
             "None"
           ],
           [
@@ -3091,7 +3091,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "ProjectId",
-        "text": "Id do Projeto"
+        "text": "Project Id"
       },
       {
         "type": "input_dummy",
@@ -3105,7 +3105,7 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "PredictionKey",
-        "text": "Chave"
+        "text": "Key"
       },
       {
         "type": "input_dummy",
@@ -3119,18 +3119,18 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "TrainingKey",
-        "text": "Chave"
+        "text": "Key"
       }
     ],
     "output": "ImageClassificationSettings",
     "colour": 180,
-    "tooltip": "Configurações de serviço de classificação de imagens",
+    "tooltip": "Image Classification Settings",
     "helpUrl": ""
   },
   {
     "type": "readgpslocationstep",
     "lastDummyAlign0": "RIGHT",
-    "message0": "%1 Localização de GPS %2 Pergunta %3 Retentativas %4 Muitas tentativas %5 Durável? %6 %7 Tentativas %8 %9 Ir para o passo %10 se falhar",
+    "message0": "%1 GPS Location %2 Question %3 Retry message %4 Too many attempts %5 Durable? %6 %7 Attempts %8 %9 If fails, go to step %10",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3227,13 +3227,13 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 180,
-    "tooltip": "Passo de classificação de imagens",
+    "tooltip": "GPS Location Step",
     "helpUrl": ""
   },
   {
     "type": "transformation",
     "lastDummyAlign0": "CENTRE",
-    "message0": "de %1 para %2",
+    "message0": "from %1 to %2",
     "args0": [
       {
         "type": "field_autocomplete",
@@ -3249,12 +3249,12 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "Transformation",
     "nextStatement": "Transformation",
     "colour": 210,
-    "tooltip": "Transformação",
+    "tooltip": "Transformation",
     "helpUrl": ""
   },
   {
     "type": "file",
-    "message0": "Arquivo %1 Nome %2 %3 Url %4",
+    "message0": "File %1 Name %2 %3 Url %4",
     "args0": [
       {
         "type": "input_dummy"
@@ -3276,13 +3276,13 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "File",
     "nextStatement": "File",
     "colour": 290,
-    "tooltip": "Arquivo para download",
+    "tooltip": "Download file",
     "helpUrl": ""
   },
   {
     "type": "handoffstep",
     "lastDummyAlign0": "RIGHT",
-    "message0": "%1 Derivar para %2 %3 Durável? %4",
+    "message0": "%1 Hand off to %2 %3 Durable? %4",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3349,12 +3349,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 300,
-    "tooltip": "Passo de derivação",
+    "tooltip": "Hand off step",
     "helpUrl": ""
   },
   {
     "type": "transformstep",
-    "message0": "%1 Transformação %2 Origem %3 %4 Transformações %5 Fonte de dados %6",
+    "message0": "%1 Transform %2 Source %3 %4 Transformations %5 Data source %6",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3429,12 +3429,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 300,
-    "tooltip": "Passo de transformações",
+    "tooltip": "Transformation step",
     "helpUrl": ""
   },
   {
     "type": "simplemessagestep",
-    "message0": "%1 Mensagem %2",
+    "message0": "%1 Message %2",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3493,12 +3493,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 90,
-    "tooltip": "Passo de mensagem",
+    "tooltip": "Message step",
     "helpUrl": ""
   },
   {
     "type": "simpleinputstep",
-    "message0": "%1 Pergunta %2",
+    "message0": "%1 Question %2",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3557,12 +3557,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 180,
-    "tooltip": "Passo de pergunta aberta",
+    "tooltip": "Simple Question step",
     "helpUrl": ""
   },
   {
     "type": "simpleconfirmstep",
-    "message0": "%1 Confirmação %2 %3 Passos para \"Sim\" %4 Passos para \"Não\" %5",
+    "message0": "%1 Confirmation %2 %3 \"Yes\" Steps %4 \"No\" Steps %5",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3654,12 +3654,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 270,
-    "tooltip": "Passo de confirmação",
+    "tooltip": "Simple confirmation step",
     "helpUrl": ""
   },
   {
     "type": "simpleliststep",
-    "message0": "%1 Lista de Botões %2 %3 Itens %4",
+    "message0": "%1 Button list %2 %3 Items %4",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3704,12 +3704,12 @@ const jsonBotDefinitionBlocks = [
       "SimpleListStep"
     ],
     "colour": 45,
-    "tooltip": "Passo de lista",
+    "tooltip": "List step",
     "helpUrl": ""
   },
   {
     "type": "simplelistitem",
-    "message0": "Navegar para passo %1 Título %2 %3 Passos %4",
+    "message0": "Navigate to step %1 Title %2 %3 Steps %4",
     "args0": [
       {
         "type": "input_dummy"
@@ -3753,7 +3753,7 @@ const jsonBotDefinitionBlocks = [
     "previousStatement": "ListItem",
     "nextStatement": "ListItem",
     "colour": 300,
-    "tooltip": "Item de lista para navegar para passos filhos",
+    "tooltip": "List item to navigate to child steps",
     "helpUrl": ""
   },
   {
@@ -3766,17 +3766,17 @@ const jsonBotDefinitionBlocks = [
       {
         "type": "field_autocomplete",
         "name": "TelegramToken",
-        "text": "Insira o token"
+        "text": "Token"
       }
     ],
     "output": "TelegramChannel",
     "colour": 225,
-    "tooltip": "Configuração de canal Telegram",
+    "tooltip": "Telegram channel setings",
     "helpUrl": ""
   },
   {
     "type": "whatsappchannel",
-    "message0": "WhatsApp %1 Telefones %2",
+    "message0": "WhatsApp %1 Phones %2",
     "args0": [
       {
         "type": "input_dummy"
@@ -3789,7 +3789,7 @@ const jsonBotDefinitionBlocks = [
     ],
     "output": "WhatsAppChannel",
     "colour": 120,
-    "tooltip": "Configuração de canal WhatsApp",
+    "tooltip": "WhatsApp channel settings",
     "helpUrl": ""
   }];
 

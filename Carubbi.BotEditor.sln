@@ -29,14 +29,9 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "Carubbi.BotEditor.Database"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integrations", "{93191224-71CB-43C0-95B7-006E5256605E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{66A85197-DB01-4AA6-9179-715BE0AC1FAB}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Carubbi.BotEditor.UI", "Carubbi.BotEditor.UI\Carubbi.BotEditor.UI.csproj", "{D18CD27D-366C-49EF-8B8D-CAED28A72401}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B6BDAFE-528E-4C51-AE54-8FAEC830E76C}"
 	ProjectSection(SolutionItems) = preProject
-		BotEditor Backend.bat = BotEditor Backend.bat
-		BotEditor Frontend.bat = BotEditor Frontend.bat
+		BotEditor.bat = BotEditor.bat
 	EndProjectSection
 EndProject
 Global
@@ -87,10 +82,6 @@ Global
 		{4866355D-BEF3-48DA-AFB3-FFC8F0F27BF0}.Release|x64.ActiveCfg = Release|x64
 		{4866355D-BEF3-48DA-AFB3-FFC8F0F27BF0}.Release|x64.Build.0 = Release|x64
 		{4866355D-BEF3-48DA-AFB3-FFC8F0F27BF0}.Release|x64.Deploy.0 = Release|x64
-		{D18CD27D-366C-49EF-8B8D-CAED28A72401}.Debug|x64.ActiveCfg = Debug|x64
-		{D18CD27D-366C-49EF-8B8D-CAED28A72401}.Debug|x64.Build.0 = Debug|x64
-		{D18CD27D-366C-49EF-8B8D-CAED28A72401}.Release|x64.ActiveCfg = Release|x64
-		{D18CD27D-366C-49EF-8B8D-CAED28A72401}.Release|x64.Build.0 = Release|x64
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -106,7 +97,6 @@ Global
 		{EAD40984-591A-4745-B631-81D7231F5055} = {0145976C-5113-4CB0-AB48-261646371958}
 		{355567DD-F92E-47C9-99B3-FB2654F40323} = {0145976C-5113-4CB0-AB48-261646371958}
 		{4866355D-BEF3-48DA-AFB3-FFC8F0F27BF0} = {0145976C-5113-4CB0-AB48-261646371958}
-		{D18CD27D-366C-49EF-8B8D-CAED28A72401} = {66A85197-DB01-4AA6-9179-715BE0AC1FAB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {87CB0103-14CE-48EF-8D99-4C4028A3508A}

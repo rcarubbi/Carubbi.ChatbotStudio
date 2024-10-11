@@ -19,119 +19,119 @@ namespace Carubbi.BotEditor.FormsIntegration
             var formBuilder = new FormBuilder<T>();
 
             formBuilder.Configuration.Yes = _step.Configuration?.Yes.Length == 0 
-                ? new string[] { "Sim" } 
+                ? new string[] { "Yes" } 
                 : _step.Configuration?.Yes;
 
             formBuilder.Configuration.No = _step.Configuration?.No.Length == 0 
-                ? new string[] { "Não" } 
+                ? new string[] { "No" } 
                 : _step.Configuration?.No;
 
             formBuilder.Configuration.NoPreference = _step.Configuration?.NoPreferenceMessage.Length == 0 
-                ? new string[] { "Nenhum" } 
+                ? new string[] { "None" } 
                 : _step.Configuration?.NoPreferenceMessage;
 
-            formBuilder.Configuration.DefaultPrompt.ChoiceLastSeparator = _step.Configuration?.ChoiceLastSeparator ?? ", ou ";
-            formBuilder.Configuration.DefaultPrompt.LastSeparator = _step.Configuration?.LastSeparator ?? ", e ";
+            formBuilder.Configuration.DefaultPrompt.ChoiceLastSeparator = _step.Configuration?.ChoiceLastSeparator ?? ", or ";
+            formBuilder.Configuration.DefaultPrompt.LastSeparator = _step.Configuration?.LastSeparator ?? ", and ";
 
-            formBuilder.Configuration.Navigation = _step.Configuration?.NavigationFieldName ?? "Nome do campo";
+            formBuilder.Configuration.Navigation = _step.Configuration?.NavigationFieldName ?? "Field name";
             
             formBuilder.Configuration.CurrentChoice = _step.Configuration?.CurrentChoiceMessage.Length == 0 
-                ? new string[] { "atual" } 
+                ? new string[] { "current" } 
                 : _step.Configuration?.CurrentChoiceMessage;
 
             var messages = new Dictionary<TemplateUsage, string>
             {
                 {
                     TemplateUsage.BoolHelp,
-                    _step.Configuration?.BoolHelpMessage ?? "Por favor responda 'sim' ou 'não' {?, {0}}"
+                    _step.Configuration?.BoolHelpMessage ?? "Please answer 'yes' or 'no' {?, {0}}"
                 },
                 {
                     TemplateUsage.Bool,
-                    _step.Configuration?.BoolMessage ?? "Você gostaria de um(a) {&}? {||}"
+                    _step.Configuration?.BoolMessage ?? "Would you like a {&}? {||}"
                 },
                 {
                     TemplateUsage.Clarify,
-                    _step.Configuration?.ClarifyMessage ?? "Por \"{0}\" {&} você quis dizer {||}"
+                    _step.Configuration?.ClarifyMessage ?? "By \"{0}\" {&} you mean {||}"
                 },
                 {
                     TemplateUsage.Confirmation,
-                    _step.Configuration?.ConfirmationMessage ?? "{*} Confira se as informações estão corretas. {||}"
+                    _step.Configuration?.ConfirmationMessage ?? "{*} Check if the information is correct. {||}"
                 },
                 {
                     TemplateUsage.CurrentChoice,
-                    _step.Configuration?.DateTimeMessage ?? "(Escolha atual: {})"
+                    _step.Configuration?.DateTimeMessage ?? "(Current choice: {})"
                 },
                 {
                     TemplateUsage.DateTime,
-                    _step.Configuration?.DateTimeMessage ?? "Por favor, digite uma data e hora para {&} {||}"
+                    _step.Configuration?.DateTimeMessage ?? "Please, input a date and time for {&} {||}"
                 },
                 {
                     TemplateUsage.DateTimeHelp,
-                    _step.Configuration?.DateTimeHelpMessage ?? "Por favor digite uma expressão de data e hora {?, {0}}{?, {1}}."
+                    _step.Configuration?.DateTimeHelpMessage ?? "Please, type a date time expression {?, {0}}{?, {1}}."
                 },
                 {
                     TemplateUsage.Double,
-                    _step.Configuration?.DoubleMessage ?? "Por favor informe um número {?entre {0:F1} e {1:F1}} para {&} {||}"
+                    _step.Configuration?.DoubleMessage ?? "Please inform a number {?between {0:F1} and {1:F1}} for {&} {||}"
                 },
                 {
                     TemplateUsage.DoubleHelp,
-                    _step.Configuration?.DoubleHelpMessage ?? "Por favor informe um número{? entre {2:F1} e {3:F1}}{?, {0}}{?, {1}}."
+                    _step.Configuration?.DoubleHelpMessage ?? "Please inform a number{? between {2:F1} and {3:F1}}{?, {0}}{?, {1}}."
                 },
                 {
                     TemplateUsage.EnumManyNumberHelp,
-                    _step.Configuration?.EnumManyNumberHelpMessage ?? "Você pode informar um ou mais números {0}-{1} ou palavras a partir das descrições. ({2})"
+                    _step.Configuration?.EnumManyNumberHelpMessage ?? "You can inform one or more numbers {0}-{1} or words from the descriptions. ({2})"
                 },
                 {
                     TemplateUsage.EnumManyWordHelp,
-                    _step.Configuration?.EnumManyWordHelpMessage ?? "Você pode informar uma ou mais seleções a partir das descrições. ({2})"
+                    _step.Configuration?.EnumManyWordHelpMessage ?? "You can inform one or more selections from the descriptions. ({2})"
                 },
                 {
                     TemplateUsage.EnumOneNumberHelp,
-                    _step.Configuration?.EnumOneNumberHelpMessage ?? "Você pode informar um número {0}-{1} ou palavras a partir das descrições. ({2})"
+                    _step.Configuration?.EnumOneNumberHelpMessage ?? "You can inform a number {0}-{1} or words from the descriptions. ({2})"
                 },
                 {
                     TemplateUsage.EnumOneWordHelp,
-                    _step.Configuration?.EnumOneWordHelpMessage ?? "Você pode informar qualquer palavra a partir das descrições. ({2})"
+                    _step.Configuration?.EnumOneWordHelpMessage ?? "You can inform any word from the descriptions. ({2})"
                 },
                 {
                     TemplateUsage.EnumSelectMany,
-                    _step.Configuration?.EnumSelectManyMessage ?? "Por favor, informe um(a) ou mais {&} {||}"
+                    _step.Configuration?.EnumSelectManyMessage ?? "Please, inform one or more {&} {||}"
                 },
                 {
                     TemplateUsage.EnumSelectOne,
-                    _step.Configuration?.EnumSelectOneMessage ?? "Por favor selecione um(a) {&} {||}"
+                    _step.Configuration?.EnumSelectOneMessage ?? "Please, select a {&} {||}"
                 },
                 {
                     TemplateUsage.Feedback,
-                    _step.Configuration?.FeedBackMessage ??  "Para '{&}' eu entendi {}." // {?\"{0}\" não é uma opção válida.}
+                    _step.Configuration?.FeedBackMessage ??  "For '{&}' i understood {}." // {?\"{0}\" is not a valid option.}
                 },
                 {
                     TemplateUsage.Help,
-                    _step.Configuration?.HelpMessage ??   "Você está preenchendo o campo {&}. \r\n Guia de Ajuda: \r\n{0}\r\n{1}"
+                    _step.Configuration?.HelpMessage ??   "You are filling the field {&}. \r\n Help guide: \r\n{0}\r\n{1}"
                 },
                 {
                     TemplateUsage.HelpClarify,
-                    _step.Configuration?.HelpClarifyMessage ??  "Você está confirmando o valor de {&}.  Resposta possível:\r\n{0}\r\n{1}"
+                    _step.Configuration?.HelpClarifyMessage ??  "You are confirming the value of {&}.  Possible answer:\r\n{0}\r\n{1}"
                 },
                 {
                     TemplateUsage.HelpConfirm,
-                    _step.Configuration?.HelpConfirmMessage ??  "Por favor responda a pergunta.  Resposta possível:\r\n{0}\r\n{1}"
+                    _step.Configuration?.HelpConfirmMessage ??  "Please answer the question.  Possible answer:\r\n{0}\r\n{1}"
                 },
                 {
                     TemplateUsage.HelpNavigation,
-                    _step.Configuration?.HelpNavigationMessage ?? "Escolha qual campo deseja modificar.  Resposta possível:\r\n{0}\r\n{1}"
+                    _step.Configuration?.HelpNavigationMessage ?? "Chose which field you want to modify. Possible answer:\r\n{0}\r\n{1}"
                 },
                 {
                     TemplateUsage.Integer,
-                    _step.Configuration?.IntegerMessage ?? "Por favor informe um número{? entre {0} e {1}} para {&} {||}"
+                    _step.Configuration?.IntegerMessage ?? "Please inform a number{? between {0} and {1}} for {&} {||}"
                 },
                 {
                     TemplateUsage.IntegerHelp,
-                    _step.Configuration?.IntegerHelpMessage ??  "Você pode informar um número{? entre {2} e {3}}{?, {0}}{?, {1}}."
+                    _step.Configuration?.IntegerHelpMessage ??  "You can inform a number{? between {2} and {3}}{?, {0}}{?, {1}}."
                 },
                  {
                     TemplateUsage.Navigation,
-                    _step.Configuration?.NavigationMessage ?? "O que você deseja alterar? {||}"
+                    _step.Configuration?.NavigationMessage ?? "What do you want to modify? {||}"
                 },
                 {
                     TemplateUsage.NavigationFormat,
@@ -139,15 +139,15 @@ namespace Carubbi.BotEditor.FormsIntegration
                 },
                 {
                     TemplateUsage.NavigationHelp,
-                    _step.Configuration?.NavigationHelpMessage ?? "Escolha {?um número de {0}-{1}, ou} o nome de um campo."
+                    _step.Configuration?.NavigationHelpMessage ?? "Chose {?a number from {0}-{1}, or} the field name."
                 },
                 {
                     TemplateUsage.NoPreference,
-                    _step.Configuration?.NoPreferenceMessage?.FirstOrDefault() ?? "Nenhum"
+                    _step.Configuration?.NoPreferenceMessage?.FirstOrDefault() ?? "None"
                 },
                 {
                     TemplateUsage.NotUnderstood,
-                    _step.Configuration?.NotUnderstoodMessage ?? "\"{0}\" não é uma opção para { &}."
+                    _step.Configuration?.NotUnderstoodMessage ?? "\"{0}\" is not an options for { &}."
                 },
                 {
                     TemplateUsage.StatusFormat,
@@ -155,15 +155,15 @@ namespace Carubbi.BotEditor.FormsIntegration
                 },
                 {
                     TemplateUsage.String,
-                    _step.Configuration?.StringMessage ?? "Por favor, informe {&} {||}"
+                    _step.Configuration?.StringMessage ?? "Please, inform {&} {||}"
                 },
                 {
                     TemplateUsage.StringHelp,
-                    _step.Configuration?.StringHelpMessage ?? "Você pode digitar o que quiser (use \"'s para forçar texto){?, {0}}{?, {1}}."
+                    _step.Configuration?.StringHelpMessage ?? "You can type anything you want (use \"'s to force text){?, {0}}{?, {1}}."
                 },
                 {
                     TemplateUsage.Unspecified,
-                    _step.Configuration?.UnspecifiedMessage ??  "Não respondido"
+                    _step.Configuration?.UnspecifiedMessage ??  "Not answered"
                 },
             };
 
@@ -181,33 +181,33 @@ namespace Carubbi.BotEditor.FormsIntegration
             var commands = new Dictionary<FormCommand, CommandDescription> {
                 {
                     FormCommand.Help,
-                    new CommandDescription(_step.Configuration?.Commands.HelpDescription ?? "Ajuda",
-                    _step.Configuration?.Commands.HelpTerms ?? new string[] { "/ajuda" },
-                    _step.Configuration?.Commands.HelpHelpMessage ?? "você pode digitar /ajuda para saber quais comandos estão disponíveis")
+                    new CommandDescription(_step.Configuration?.Commands.HelpDescription ?? "Help",
+                    _step.Configuration?.Commands.HelpTerms ?? new string[] { "/help" },
+                    _step.Configuration?.Commands.HelpHelpMessage ?? "you can type /help to know the available commands")
                 },
                  {
                     FormCommand.Backup,
-                    new CommandDescription(_step.Configuration?.Commands.BackupDescription ?? "Voltar",
-                    _step.Configuration?.Commands.BackupTerms ?? new string[] { "/voltar" },
-                    _step.Configuration?.Commands.BackupHelpMessage ?? "você pode digitar /voltar para responder novamente a questão anterior")
+                    new CommandDescription(_step.Configuration?.Commands.BackupDescription ?? "Back",
+                    _step.Configuration?.Commands.BackupTerms ?? new string[] { "/back" },
+                    _step.Configuration?.Commands.BackupHelpMessage ?? "you can type /back to answer a previous question again")
                 },
                   {
                     FormCommand.Reset,
-                    new CommandDescription(_step.Configuration?.Commands.ResetDescription ?? "Reiniciar",
-                    _step.Configuration?.Commands.ResetTerms ?? new string[] { "/reiniciar" },
-                    _step.Configuration?.Commands.ResetHelpMessage ?? "você pode digitar /reiniciar para recomeçar este diálogo")
+                    new CommandDescription(_step.Configuration?.Commands.ResetDescription ?? "Restart",
+                    _step.Configuration?.Commands.ResetTerms ?? new string[] { "/restart" },
+                    _step.Configuration?.Commands.ResetHelpMessage ?? "you can type /restart to restart a dialog")
                 },
                    {
                     FormCommand.Quit,
-                    new CommandDescription(_step.Configuration?.Commands.QuitDescription ?? "Sair",
-                    _step.Configuration?.Commands.QuitTerms ?? new string[] { "/sair" },
-                    _step.Configuration?.Commands.QuitHelpMessage ?? "você pode digitar /sair para desistir deste diálogo")
+                    new CommandDescription(_step.Configuration?.Commands.QuitDescription ?? "Quit",
+                    _step.Configuration?.Commands.QuitTerms ?? new string[] { "/quit" },
+                    _step.Configuration?.Commands.QuitHelpMessage ?? "you can type /quit to give up a dialog")
                 },
                     {
                     FormCommand.Status,
                     new CommandDescription(_step.Configuration?.Commands.StatusDescription ?? "Status",
                     _step.Configuration?.Commands.StatusTerms ?? new string[] { "/status" },
-                    _step.Configuration?.Commands.StatusHelpMessage ?? "você pode digitar /status para visualizar suas respostas informadas até o momento")
+                    _step.Configuration?.Commands.StatusHelpMessage ?? "you can type /status to review your answers")
                 },
             };
 

@@ -20,8 +20,8 @@ export default function FlowchartComponent(props) {
     "line-color": "black",
     "element-color": "black",
     fill: "black",
-    "yes-text": "sim",
-    "no-text": "não",
+    "yes-text": "yes",
+    "no-text": "no",
     "arrow-end": "block",
     scale: 1,
     symbols: {
@@ -173,11 +173,12 @@ export default function FlowchartComponent(props) {
       }
     }
   };
-  const defaultCode = `st=>start: Início
-  e=>end: Fim
+  const defaultCode = `st=>start: Start
+  e=>end: End
   st->e
   `;
   const generateFlowchart = () => {
+     
     const code =
       props.blocklyComponentToSync &&
       props.blocklyComponentToSync.current &&
@@ -197,6 +198,9 @@ export default function FlowchartComponent(props) {
       ps.destroy();
     };
   }, []);
+
+  console.log(generateFlowchart());
+
   return (
     <div
       ref={flowchartContainer}

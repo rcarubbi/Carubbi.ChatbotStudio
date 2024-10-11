@@ -18,19 +18,19 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             _repository = repository;
         }
 
-        [Authorize(Roles = "Listar Grupos de Acesso")]
+        [Authorize(Roles = "List Groups")]
         public IEnumerable<Group> Get()
         {
             return _repository.ListAll();
         }
 
-        [Authorize(Roles = "Listar Grupos de Acesso")]
+        [Authorize(Roles = "List Groups")]
         public IHttpActionResult Get(int id)
         {
             return Ok(_repository.GetById(id));
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         public IHttpActionResult Post(Group group)
         {
             try
@@ -44,7 +44,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             }
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         public IHttpActionResult Put(Group grupo)
         {
             try
@@ -58,7 +58,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             }
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         public IHttpActionResult Delete(int id)
         {
             try
@@ -72,7 +72,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             }
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         [HttpPost]
         public IHttpActionResult AddUser([FromBody] int groupId, [FromBody] Guid userId)
         {
@@ -86,7 +86,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         [HttpPost]
         public IHttpActionResult RemoveUser([FromBody] int groupId, [FromBody] Guid userId)
         {
@@ -100,7 +100,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         [HttpPost]
         public IHttpActionResult AddPermission([FromBody] int groupId, [FromBody] int permissionId)
         {
@@ -114,7 +114,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return BadRequest();
         }
 
-        [Authorize(Roles = "Criar/Alterar Grupos de Acesso")]
+        [Authorize(Roles = "Create/Alter Groups")]
         [HttpPost]
         public IHttpActionResult RemovePermission([FromBody] int groupId, [FromBody] int permissionId)
         {
