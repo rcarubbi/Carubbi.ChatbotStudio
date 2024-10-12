@@ -2579,7 +2579,7 @@ const jsonBotDefinitionBlocks = [
         "name": "ServiceType",
         "options": [
           [
-            "Tipo de Serviço",
+            "Service Type",
             "None"
           ],
           [
@@ -3562,7 +3562,7 @@ const jsonBotDefinitionBlocks = [
   },
   {
     "type": "simpleconfirmstep",
-    "message0": "%1 Confirmation %2 %3 \"Yes\" Steps %4 \"No\" Steps %5",
+    "message0": "%1 Confirm %2 %3 \"Yes\" Steps %4 \"No\" Steps %5",
     "args0": [
       {
         "type": "field_label_serializable",
@@ -3571,7 +3571,7 @@ const jsonBotDefinitionBlocks = [
       },
       {
         "type": "field_autocomplete",
-        "name": "Mensagem",
+        "name": "Message",
         "text": ""
       },
       {

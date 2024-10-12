@@ -142,7 +142,7 @@ const toolbox =
                 <statement name="Options">
                   <shadow type="fieldoption">
                     <field name="Value">Value</field>
-                    <field name="Description">Descrição</field>
+                    <field name="Description">Description</field>
                   </shadow>
                 </statement>
                 <next>
@@ -530,7 +530,7 @@ const toolbox =
       </block>
       <block type="fieldoption">
         <field name="Value">Value</field>
-        <field name="Description">Descrição</field>
+        <field name="Description">Description</field>
       </block>
       <block type="fieldoptionsource">
         <field name="OptionsSource">http://</field>
@@ -739,7 +739,7 @@ const toolbox =
     <category name="Channels">
       <block type="whatsappchannel"></block>
       <block type="telegramchannel">
-        <field name="TelegramToken">Insira o token</field>
+        <field name="TelegramToken">Token</field>
       </block>
     </category>
   </xml>`;

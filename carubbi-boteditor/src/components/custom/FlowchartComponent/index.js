@@ -199,8 +199,6 @@ export default function FlowchartComponent(props) {
     };
   }, []);
 
-  console.log(generateFlowchart());
-
   return (
     <div
       ref={flowchartContainer}

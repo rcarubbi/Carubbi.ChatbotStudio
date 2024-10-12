@@ -69,7 +69,7 @@ function addStepsToLater(steps) {
     steps;
 }
 
-Blockly.Flowchart.fromWorkspace = function(workspace) {
+Blockly.Flowchart.fromWorkspace = function (workspace) {
   currentScope = "botconfig";
   stepsToAddLater = {};
 
@@ -81,7 +81,7 @@ Blockly.Flowchart.fromWorkspace = function(workspace) {
   }
 };
 
-Blockly.Flowchart.generalBlockToObj = function(block, workspace) {
+Blockly.Flowchart.generalBlockToObj = function (block, workspace) {
   if (block && !block.isShadow_) {
     // dispatcher:
     var func = this[block.type];
@@ -97,7 +97,7 @@ Blockly.Flowchart.generalBlockToObj = function(block, workspace) {
   }
 };
 
-Blockly.Flowchart.scrub_ = function(block, code, opt_thisOnly) {
+Blockly.Flowchart.scrub_ = function (block, code, opt_thisOnly) {
   var obj = null;
   try {
     obj = JSON.parse(code);
@@ -124,7 +124,7 @@ Blockly.Flowchart.scrub_ = function(block, code, opt_thisOnly) {
   }
 };
 
-Blockly.Flowchart["botconfig"] = function(block, workspace) {
+Blockly.Flowchart["botconfig"] = function (block, workspace) {
   var text_name = block.getFieldValue("Name");
   var statements_steps = statementToArray(
     Blockly.Flowchart.statementToCode(block, "Steps")
@@ -162,20 +162,14 @@ Blockly.Flowchart["botconfig"] = function(block, workspace) {
   return code;
 };
 
-Blockly.Flowchart["messagestep"] = function(block) {
+Blockly.Flowchart["messagestep"] = function (block) {
   const label_id = block.getFieldValue("Id");
   const nextBlock = block.getNextBlock();
 
-  const flowchartConnections = [];
   const flowchartDeclarations = [];
+  const flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   const selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -194,20 +188,14 @@ Blockly.Flowchart["messagestep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["inputstep"] = function(block) {
+Blockly.Flowchart["inputstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -226,23 +214,23 @@ Blockly.Flowchart["inputstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["string"] = function(block) {
+Blockly.Flowchart["string"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["nlpsettings"] = function(block) {
+Blockly.Flowchart["nlpsettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["textanalysissettings"] = function(block) {
+Blockly.Flowchart["textanalysissettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["nlpmodel"] = function(block) {
+Blockly.Flowchart["nlpmodel"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["confirmstep"] = function(block) {
+Blockly.Flowchart["confirmstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var statements_truestep = statementToArray(
     Blockly.Flowchart.statementToCode(block, "TrueStep")
@@ -265,20 +253,32 @@ Blockly.Flowchart["confirmstep"] = function(block) {
     flowchartDeclarations.push(`eYes${label_id}=>end: End`);
     flowchartConnections.push(`step${label_id}(yes)->eYes${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
+    if (statements_truestep[0].type == "goto") {
+      flowchartDeclarations.push(`eYesGoto${label_id}=>end: Go to ${trueStepId}`);
+      flowchartConnections.push(`step${label_id}(yes)->eYesGoto${label_id}`);
+    }
+    else {
+      flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
+    }
   }
 
   if (!falseStepId) {
     flowchartDeclarations.push(`eNo${label_id}=>end: End`);
     flowchartConnections.push(`step${label_id}(no)->eNo${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
+    if (statements_falsestep[0].type == "goto") {
+      flowchartDeclarations.push(`eNoGoto${label_id}=>end: Go to ${falseStepId}`);
+      flowchartConnections.push(`step${label_id}(no)->eNoGoto${label_id}`);
+    }
+    else {
+      flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
+    }
   }
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
   flowchartDeclarations.push(
-    `step${label_id}=>condition: Confirmation ${label_id}|confirmstep${selected}`
+    `step${label_id}=>condition: Bool ${label_id}|confirmstep${selected}`
   );
 
   var confirmStep = {
@@ -291,11 +291,11 @@ Blockly.Flowchart["confirmstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["messageinteractions"] = function(block) {
+Blockly.Flowchart["messageinteractions"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["liststep"] = function(block) {
+Blockly.Flowchart["liststep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var listItems = statementToArray(
     Blockly.Flowchart.statementToCode(block, "Input")
@@ -313,8 +313,7 @@ Blockly.Flowchart["liststep"] = function(block) {
   for (var i = 0; i < listItems.length; i++) {
     if (i > 0) {
       flowchartDeclarations.push(
-        `step${label_id}i${i + 1}=>parallel: List ${label_id} \r\n[${
-          listItems[i].title
+        `step${label_id}i${i + 1}=>parallel: List ${label_id} \r\n[${listItems[i].title
         }]|liststep${selected}`
       );
       if (i > 1) {
@@ -322,8 +321,7 @@ Blockly.Flowchart["liststep"] = function(block) {
           `step${label_id}i${i}(path2, right)->step${label_id}i${i + 1}`
         );
         flowchartConnections.push(
-          `step${label_id}i${i}@>step${label_id}i${i + 1}({"stroke": "${
-            selected ? "yellow" : "#a5935b"
+          `step${label_id}i${i}@>step${label_id}i${i + 1}({"stroke": "${selected ? "yellow" : "#a5935b"
           }", "arrow-end": "none"})`
         );
       } else {
@@ -331,8 +329,7 @@ Blockly.Flowchart["liststep"] = function(block) {
           `step${label_id}(path2, right)->step${label_id}i${i + 1}`
         );
         flowchartConnections.push(
-          `step${label_id}@>step${label_id}i${i + 1}({"stroke": "${
-            selected ? "yellow" : "#a5935b"
+          `step${label_id}@>step${label_id}i${i + 1}({"stroke": "${selected ? "yellow" : "#a5935b"
           }", "arrow-end": "none"})`
         );
       }
@@ -361,11 +358,24 @@ Blockly.Flowchart["liststep"] = function(block) {
           );
         }
         break;
+      case "goto":
+        var description = `Go to ${listItems[i].targetStepId}`;
+        if (i > 0) { 
+          flowchartDeclarations.push(`endGoto${label_id}i${i + 1}=>end: ${description}`);
+          flowchartConnections.push(
+            `step${label_id}i${i + 1}(path1, bottom)->endGoto${label_id}i${i + 1}`
+          );
+        } else {
+          flowchartDeclarations.push(`endGoto${label_id}=>end: ${description}`);
+          flowchartConnections.push(
+            `step${label_id}(path1, bottom)->endGoto${label_id}`
+          );
+        }
+        break;
       default:
         if (i > 0) {
           flowchartConnections.push(
-            `step${label_id}i${i + 1}(path1, bottom)->step${
-              listItems[i].targetStepId
+            `step${label_id}i${i + 1}(path1, bottom)->step${listItems[i].targetStepId
             }`
           );
         } else {
@@ -413,35 +423,30 @@ Blockly.Flowchart["liststep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["customcommandconfig"] = function(block) {
+Blockly.Flowchart["customcommandconfig"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["speechsettings"] = function(block) {
+Blockly.Flowchart["speechsettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["appcredentials"] = function(block) {
+Blockly.Flowchart["appcredentials"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["storesettings"] = function(block) {
+Blockly.Flowchart["storesettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["formstep"] = function(block) {
+Blockly.Flowchart["formstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
-  var flowchartConnections = [];
-  var flowchartDeclarations = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  var flowchartDeclarations = [];
+  var flowchartConnections = [];
+
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -459,43 +464,43 @@ Blockly.Flowchart["formstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["formfield"] = function(block) {
+Blockly.Flowchart["formfield"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["optionsformfield"] = function(block) {
+Blockly.Flowchart["optionsformfield"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["fieldoption"] = function(block) {
+Blockly.Flowchart["fieldoption"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["fieldoptionsource"] = function(block) {
+Blockly.Flowchart["fieldoptionsource"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["restoreformfield"] = function(block) {
+Blockly.Flowchart["restoreformfield"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["summary"] = function(block) {
+Blockly.Flowchart["summary"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["formcustommessage"] = function(block) {
+Blockly.Flowchart["formcustommessage"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["formcustomcommand"] = function(block) {
+Blockly.Flowchart["formcustomcommand"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["datasource"] = function(block) {
+Blockly.Flowchart["datasource"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["conditionstep"] = function(block) {
+Blockly.Flowchart["conditionstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var statements_truestep = statementToArray(
     Blockly.Flowchart.statementToCode(block, "TrueStep")
@@ -517,6 +522,13 @@ Blockly.Flowchart["conditionstep"] = function(block) {
     flowchartDeclarations.push(`eYes${label_id}=>end: End`);
     flowchartConnections.push(`step${label_id}(yes)->eYes${label_id}`);
   } else {
+    if (statements_truestep[0].type == "goto") {
+      flowchartDeclarations.push(`eYesGoto${label_id}=>end: Go to ${trueStepId}`);
+      flowchartConnections.push(`step${label_id}(yes)->eYesGoto${label_id}`);
+    }
+    else {
+      flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
+    }
     flowchartConnections.push(`step${label_id}(yes)->step${trueStepId}`);
   }
 
@@ -524,13 +536,19 @@ Blockly.Flowchart["conditionstep"] = function(block) {
     flowchartDeclarations.push(`eNo${label_id}=>end: End`);
     flowchartConnections.push(`step${label_id}(no)->eNo${label_id}`);
   } else {
-    flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
+    if (statements_falsestep[0].type == "goto") {
+      flowchartDeclarations.push(`eNoGoto${label_id}=>end: Go to ${falseStepId}`);
+      flowchartConnections.push(`step${label_id}(no)->eNoGoto${label_id}`);
+    }
+    else {
+      flowchartConnections.push(`step${label_id}(no)->step${falseStepId}`);
+    }
   }
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
   flowchartDeclarations.push(
-    `step${label_id}=>condition: Condition ${label_id}|conditionstep${selected}`
+    `step${label_id}=>condition: If ${label_id}|conditionstep${selected}`
   );
 
   var conditionStep = {
@@ -544,7 +562,7 @@ Blockly.Flowchart["conditionstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["relationalexpression"] = function(block) {
+Blockly.Flowchart["relationalexpression"] = function (block) {
   if (block.isShadow_) return null;
 
   var value_left = parseValue(
@@ -565,7 +583,7 @@ Blockly.Flowchart["relationalexpression"] = function(block) {
   return [code, Blockly.Flowchart.ORDER_NONE];
 };
 
-Blockly.Flowchart["binarylogicalexpression"] = function(block) {
+Blockly.Flowchart["binarylogicalexpression"] = function (block) {
   if (block.isShadow_) return null;
 
   var value_left = parseValue(
@@ -587,7 +605,7 @@ Blockly.Flowchart["binarylogicalexpression"] = function(block) {
   return [code, Blockly.Flowchart.ORDER_NONE];
 };
 
-Blockly.Flowchart["unarylogicalexpression"] = function(block) {
+Blockly.Flowchart["unarylogicalexpression"] = function (block) {
   if (block.isShadow_) return null;
 
   var value_left = parseValue(
@@ -597,7 +615,7 @@ Blockly.Flowchart["unarylogicalexpression"] = function(block) {
   return [code, Blockly.Flowchart.ORDER_NONE];
 };
 
-Blockly.Flowchart["stepexpression"] = function(block) {
+Blockly.Flowchart["stepexpression"] = function (block) {
   if (block.isShadow_) return null;
 
   var text_expression = block.getFieldValue("Expression");
@@ -608,7 +626,7 @@ Blockly.Flowchart["stepexpression"] = function(block) {
   return [code, Blockly.Flowchart.ORDER_NONE];
 };
 
-Blockly.Flowchart["literal"] = function(block) {
+Blockly.Flowchart["literal"] = function (block) {
   if (block.isShadow_) return null;
 
   var text_value = block.getFieldValue("Value");
@@ -616,7 +634,7 @@ Blockly.Flowchart["literal"] = function(block) {
   return [code, Blockly.Flowchart.ORDER_NONE];
 };
 
-Blockly.Flowchart["navigatelistitem"] = function(block) {
+Blockly.Flowchart["navigatelistitem"] = function (block) {
   if (block.isShadow_) return null;
   var text_title = block.getFieldValue("Title");
   var statements_targetstep = statementToArray(
@@ -625,9 +643,16 @@ Blockly.Flowchart["navigatelistitem"] = function(block) {
 
   addStepsToLater(statements_targetstep);
 
+  const action = statements_targetstep.length > 0
+    ? statements_targetstep[0].type == "goto"
+      ? "goto"
+      : "NavigateStep"
+    : "NavigateStep";
+
+ 
   var listItem = {
     title: text_title,
-    action: "NavigateStep",
+    action: action,
     targetStepId:
       statements_targetstep.length > 0 ? statements_targetstep[0].id : null
   };
@@ -636,7 +661,7 @@ Blockly.Flowchart["navigatelistitem"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["openurllistitem"] = function(block) {
+Blockly.Flowchart["openurllistitem"] = function (block) {
   if (block.isShadow_) return null;
   var text_title = block.getFieldValue("Title");
 
@@ -649,7 +674,7 @@ Blockly.Flowchart["openurllistitem"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["downloadfilelistitem"] = function(block) {
+Blockly.Flowchart["downloadfilelistitem"] = function (block) {
   if (block.isShadow_) return null;
   var text_title = block.getFieldValue("Title");
 
@@ -662,20 +687,14 @@ Blockly.Flowchart["downloadfilelistitem"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["apistep"] = function(block) {
+Blockly.Flowchart["apistep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -693,17 +712,17 @@ Blockly.Flowchart["apistep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["apiparameter"] = function(block) {
+Blockly.Flowchart["apiparameter"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["goto"] = function(block) {
+Blockly.Flowchart["goto"] = function (block) {
   var number_id = block.getFieldValue("Id");
-  var code = JSON.stringify({ id: number_id });
+  var code = JSON.stringify({ id: number_id, type: "goto" });
   return code;
 };
 
-Blockly.Flowchart["compositestep"] = function(block) {
+Blockly.Flowchart["compositestep"] = function (block) {
   var parentScope = currentScope;
   var nextBlock = block.getNextBlock();
 
@@ -720,8 +739,8 @@ Blockly.Flowchart["compositestep"] = function(block) {
     steps = statements_steps.concat(stepsToAddLater[currentScope].steps);
   }
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
   let compositeStep = {
     id: label_id,
@@ -732,13 +751,7 @@ Blockly.Flowchart["compositestep"] = function(block) {
 
   currentScope = parentScope;
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -756,20 +769,14 @@ Blockly.Flowchart["compositestep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["faqstep"] = function(block) {
+Blockly.Flowchart["faqstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -787,24 +794,18 @@ Blockly.Flowchart["faqstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["faqsettings"] = function(block) {
+Blockly.Flowchart["faqsettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["mapsstep"] = function(block) {
+Blockly.Flowchart["mapsstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -822,7 +823,7 @@ Blockly.Flowchart["mapsstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["locationsource"] = function(block) {
+Blockly.Flowchart["locationsource"] = function (block) {
   var text_name = block.getFieldValue("Name");
   var text_latitude = block.getFieldValue("Latitude");
   var text_longitude = block.getFieldValue("Longitude");
@@ -845,128 +846,102 @@ Blockly.Flowchart["locationsource"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["switchstep"] = function(block) {
+Blockly.Flowchart["switchstep"] = function (block) {
   var text_input = block.getFieldValue("Input");
-  var statements_cases = statementToArray(
-    Blockly.Flowchart.statementToCode(block, "Cases")
-  );
+ 
   var label_id = block.getFieldValue("Id");
 
-  var nextBlock = block.getNextBlock();
+ 
 
   var flowchartConnections = [];
   var flowchartDeclarations = [];
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
+  flowchartDeclarations.push(
+    `step${label_id}=>parallel: Switch ${text_input} ${label_id} \r\n Else|switchstep${selected}`
+  );
+
+  var statements_cases = statementToArray(
+    Blockly.Flowchart.statementToCode(block, "Cases")
+  );
+
   for (var i = 0; i < statements_cases.length; i++) {
-    if (i > 0) {
-      flowchartDeclarations.push(
-        `step${label_id}i${i +
-          1}=>parallel: Switch ${text_input} ${label_id} \r\n Case ${
-          statements_cases[i].value
-        }|switchstep${selected}`
-      );
-      if (i > 1) {
-        flowchartConnections.push(
-          `step${label_id}i${i}(path2, right)->step${label_id}i${i + 1}`
-        );
-        flowchartConnections.push(
-          `step${label_id}i${i}@>step${label_id}i${i + 1}({"stroke": "${
-            selected ? "yellow" : "#a5935b"
-          }", "arrow-end": "none"})`
-        );
-        flowchartConnections.push(
-          `step${label_id}i${i + 1}(path1, bottom)->step${
-            statements_cases[i].targetStepId
-          }`
-        );
-      } else {
-        flowchartConnections.push(
-          `step${label_id}(path2, right)->step${label_id}i${i + 1}`
-        );
-        flowchartConnections.push(
-          `step${label_id}@>step${label_id}i${i + 1}({"stroke": "${
-            selected ? "yellow" : "#a5935b"
-          }", "arrow-end": "none"})`
-        );
-        flowchartConnections.push(
-          `step${label_id}i${i + 1}(path1, bottom)->step${
-            statements_cases[i].targetStepId
-          }`
-        );
-      }
+    flowchartDeclarations.push(
+      `step${label_id}i${i + 1}=>parallel: Switch ${text_input} ${label_id} \r\n Case ${statements_cases[i].value}|switchstep${selected}`
+    );
+       
+    addFlowchartConnections(i, i + 1, label_id, selected, flowchartConnections);
+    
+    if (statements_cases[i].action == "goto") {
+      handleGotoCase(i + 1, statements_cases[i], label_id, flowchartDeclarations, flowchartConnections);
     } else {
-      flowchartDeclarations.push(
-        `step${label_id}=>parallel: Switch ${text_input} ${label_id} \r\n Case ${statements_cases[i].value}|switchstep${selected}`
-      );
-      flowchartConnections.push(
-        `step${label_id}(path1, bottom)->step${statements_cases[i].targetStepId}`
-      );
+      handleNormalCase(i + 1, statements_cases[i], label_id, flowchartConnections);
     }
   }
 
+  var nextBlock = block.getNextBlock();
   if (nextBlock) {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    if (statements_cases.length === 0) {
-      flowchartDeclarations.push(
-        `step${label_id}=>parallel: Switch ${text_input} ${label_id} \r\n Else|switchstep${selected}`
-      );
-      flowchartConnections.push(
-        `step${label_id}(path1, bottom)->step${nextBlockId}`
-      );
-    } else {
-      flowchartDeclarations.push(
-        `step${label_id}i${statements_cases.length +
-          1}=>parallel: Switch ${text_input} ${label_id} \r\n Else|switchstep${selected}`
-      );
-      if (statements_cases.length > 1) {
-        flowchartConnections.push(
-          `step${label_id}i${
-            statements_cases.length
-          }(path2, right)->step${label_id}i${statements_cases.length + 1}`
-        );
-        flowchartConnections.push(
-          `step${label_id}i${
-            statements_cases.length
-          }@>step${label_id}i${statements_cases.length + 1}({"stroke": "${
-            selected ? "yellow" : "#a5935b"
-          }"})`
-        );
-      } else {
-        flowchartConnections.push(
-          `step${label_id}(path2, right)->step${label_id}i${statements_cases.length +
-            1}`
-        );
-        flowchartConnections.push(
-          `step${label_id}@>step${label_id}i${statements_cases.length +
-            1}({"stroke": "${selected ? "yellow" : "#a5935b"}"})`
-        );
-      }
-      flowchartConnections.push(
-        `step${label_id}i${statements_cases.length +
-          1}(path1, bottom)->step${nextBlockId}`
-      );
-    }
-  } else if (statements_cases.length === 0) {
-    flowchartDeclarations.push(
-      `step${label_id}=>parallel: Switch ${text_input} ${label_id}|switchstep${selected}`
-    );
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}(path1)->e${label_id}`);
+    handleNextBlock(nextBlock, flowchartDeclarations, flowchartConnections, label_id);
+  } else {
+     flowchartDeclarations.push(`e${label_id}=>end: End`);
+     flowchartConnections.push(`step${label_id}(path1, bottom)->e${label_id}`);
   }
 
   var switchStep = {
     id: label_id,
     flowchartDeclarations,
-    flowchartConnections
+    flowchartConnections,
   };
 
   var code = JSON.stringify(switchStep);
   return code;
 };
 
-Blockly.Flowchart["case"] = function(block) {
+
+function addFlowchartConnections(index, pathRight, label_id, selected, flowchartConnections) {
+  const stepName = index == 0
+  ? `step${label_id}`
+  : `step${label_id}i${index}`;
+
+  flowchartConnections.push(
+    `${stepName}(path2, right)->step${label_id}i${pathRight}`
+  );
+  flowchartConnections.push(
+    ` ${stepName}@>step${label_id}i${pathRight}({"stroke": "${selected ? "yellow" : "#a5935b"}", "arrow-end": "none"})`
+  );
+
+}
+
+function handleGotoCase(caseIndex, caseData, label_id, flowchartDeclarations, flowchartConnections) {
+  flowchartDeclarations.push(`eGoto${label_id}i${caseIndex}=>end: Go to ${caseData.targetStepId}`);
+  flowchartConnections.push(`step${label_id}i${caseIndex}(path1, bottom)->eGoto${label_id}i${caseIndex}`);
+}
+
+function handleNormalCase(caseIndex, caseData, label_id, flowchartConnections) {
+  flowchartConnections.push(
+    `step${label_id}i${caseIndex}(path1, bottom)->step${caseData.targetStepId}`
+  );
+}
+
+function handleNextBlock(nextBlock, flowchartDeclarations, flowchartConnections, label_id) {
+  var nextBlockType = nextBlock.type;
+  var nextBlockId = nextBlock.getFieldValue("Id");
+
+
+  if (nextBlockType == "goto") {
+    flowchartDeclarations.push(`eGoto${label_id}=>end: Go to ${nextBlockId}`);
+    flowchartConnections.push(`step${label_id}(path1, bottom)->eGoto${label_id}`);
+  } else {
+    flowchartConnections.push(
+      `step${label_id}(path1, bottom)->step${nextBlockId}`
+    );
+  }
+
+}
+
+
+Blockly.Flowchart["case"] = function (block) {
   var text_value = block.getFieldValue("Value");
   var statements_targetstep = statementToArray(
     Blockly.Flowchart.statementToCode(block, "TargetStep")
@@ -974,8 +949,15 @@ Blockly.Flowchart["case"] = function(block) {
 
   addStepsToLater(statements_targetstep);
 
+  const action = statements_targetstep.length > 0
+    ? statements_targetstep[0].type == "goto"
+      ? "goto"
+      : "NavigateStep"
+    : "NavigateStep";
+
   var $case = {
     value: text_value,
+    action: action,
     targetStepId:
       statements_targetstep.length > 0 ? statements_targetstep[0].id : null
   };
@@ -984,20 +966,14 @@ Blockly.Flowchart["case"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["imageclassificationstep"] = function(block) {
+Blockly.Flowchart["imageclassificationstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -1015,24 +991,18 @@ Blockly.Flowchart["imageclassificationstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["imageclassificationsettings"] = function(block) {
+Blockly.Flowchart["imageclassificationsettings"] = function (block) {
   return null;
 };
 
-Blockly.Flowchart["readgpslocationstep"] = function(block) {
+Blockly.Flowchart["readgpslocationstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -1050,20 +1020,14 @@ Blockly.Flowchart["readgpslocationstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["transformstep"] = function(block) {
+Blockly.Flowchart["transformstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -1081,20 +1045,14 @@ Blockly.Flowchart["transformstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["handoffstep"] = function(block) {
+Blockly.Flowchart["handoffstep"] = function (block) {
   var label_id = block.getFieldValue("Id");
   var nextBlock = block.getNextBlock();
 
-  var flowchartConnections = [];
   var flowchartDeclarations = [];
+  var flowchartConnections = [];
 
-  if (!nextBlock) {
-    flowchartDeclarations.push(`e${label_id}=>end: End`);
-    flowchartConnections.push(`step${label_id}->e${label_id}`);
-  } else {
-    var nextBlockId = nextBlock.getFieldValue("Id");
-    flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
-  }
+  addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections);
 
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
@@ -1112,23 +1070,23 @@ Blockly.Flowchart["handoffstep"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["simplemessagestep"] = function(block) {
+Blockly.Flowchart["simplemessagestep"] = function (block) {
   return Blockly.Flowchart["messagestep"](block);
 };
 
-Blockly.Flowchart["simpleinputstep"] = function(block) {
+Blockly.Flowchart["simpleinputstep"] = function (block) {
   return Blockly.Flowchart["inputstep"](block);
 };
 
-Blockly.Flowchart["simpleconfirmstep"] = function(block) {
+Blockly.Flowchart["simpleconfirmstep"] = function (block) {
   return Blockly.Flowchart["confirmstep"](block);
 };
 
-Blockly.Flowchart["simpleliststep"] = function(block) {
+Blockly.Flowchart["simpleliststep"] = function (block) {
   return Blockly.Flowchart["liststep"](block);
 };
 
-Blockly.Flowchart["simplelistitem"] = function(block) {
+Blockly.Flowchart["simplelistitem"] = function (block) {
   if (block.isShadow_) return null;
   var text_title = block.getFieldValue("Title");
   var statements_targetstep = statementToArray(
@@ -1137,9 +1095,15 @@ Blockly.Flowchart["simplelistitem"] = function(block) {
 
   addStepsToLater(statements_targetstep);
 
+  const action = statements_targetstep.length > 0
+    ? statements_targetstep[0].type == "goto"
+      ? "goto"
+      : "NavigateStep"
+    : "NavigateStep";
+
   var listItem = {
     title: text_title,
-    action: "NavigateStep",
+    action: action,
     targetStepId:
       statements_targetstep.length > 0 ? statements_targetstep[0].id : null
   };
@@ -1148,6 +1112,24 @@ Blockly.Flowchart["simplelistitem"] = function(block) {
   return code;
 };
 
-Blockly.Flowchart["transformation"] = function(block) {
+Blockly.Flowchart["transformation"] = function (block) {
   return null;
 };
+
+
+function addConnection(nextBlock, label_id, flowchartDeclarations, flowchartConnections) {
+  if (!nextBlock) {
+    flowchartDeclarations.push(`e${label_id}=>end: End`);
+    flowchartConnections.push(`step${label_id}->e${label_id}`);
+  } else {
+    var nextBlockId = nextBlock.getFieldValue("Id");
+    if (nextBlock.type == "goto") {
+      flowchartDeclarations.push(`egoto${label_id}=>end: Go to ${nextBlockId}`);
+      flowchartConnections.push(`step${label_id}(right)->egoto${label_id}`);
+    }
+    else {
+
+      flowchartConnections.push(`step${label_id}->step${nextBlockId}`);
+    }
+  }
+}

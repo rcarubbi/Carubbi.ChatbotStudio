@@ -11,23 +11,23 @@ const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="wo
       <field name="CustomMessageReply"></field>
       <next>
         <block type="customcommandconfig" id="KLbrY-m;!L8ch3|,UjSl" collapsed="true">
-          <field name="CommandText">/reiniciar</field>
+          <field name="CommandText">/restart</field>
           <field name="Startup">FALSE</field>
           <field name="ClearDialogStack">TRUE</field>
           <field name="DeleteProfile">FALSE</field>
           <field name="InvalidateCache">FALSE</field>
-          <field name="CustomMessageReply">Certo, vamos recomeçar então...</field>
+          <field name="CustomMessageReply">Right, let's restart then...</field>
           <next>
             <block type="customcommandconfig" id="ykgnq~DeWPbR1whaLAI)" collapsed="true">
-              <field name="CommandText">/esquecer</field>
+              <field name="CommandText">/forget</field>
               <field name="Startup">FALSE</field>
               <field name="ClearDialogStack">TRUE</field>
               <field name="DeleteProfile">TRUE</field>
               <field name="InvalidateCache">FALSE</field>
-              <field name="CustomMessageReply">Certo, seus dados foram excluídos. Vamos recomeçar então...</field>
+              <field name="CustomMessageReply">Right, your data has been deleted. Let's restart...</field>
               <next>
                 <block type="customcommandconfig" id=".o?XDIXSLW^mx2jKKvuP" collapsed="true">
-                  <field name="CommandText">/recarregar</field>
+                  <field name="CommandText">/reload</field>
                   <field name="Startup">FALSE</field>
                   <field name="ClearDialogStack">TRUE</field>
                   <field name="DeleteProfile">TRUE</field>
