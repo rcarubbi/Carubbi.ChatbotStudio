@@ -32,7 +32,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
             CreateExpressionEvaluator();
         }
 
-        private void CreateExpressionEvaluator()
+        protected void CreateExpressionEvaluator()
         {
             _expressionEvaluator = new ExpressionEvaluator(_botConfig, _parentStep, null);
             if (_step != null) DataSource = _expressionEvaluator.ResolveDataSource(_step.DataSourceExpression);

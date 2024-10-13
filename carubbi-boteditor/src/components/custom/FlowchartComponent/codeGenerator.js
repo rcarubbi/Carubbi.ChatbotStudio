@@ -278,7 +278,7 @@ Blockly.Flowchart["confirmstep"] = function (block) {
   var selected = Blockly.Flowchart.SelectedId === label_id ? "selected" : "";
 
   flowchartDeclarations.push(
-    `step${label_id}=>condition: Bool ${label_id}|confirmstep${selected}`
+    `step${label_id}=>condition: If ${label_id}|confirmstep${selected}`
   );
 
   var confirmStep = {

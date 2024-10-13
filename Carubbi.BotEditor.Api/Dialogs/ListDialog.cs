@@ -55,10 +55,10 @@ namespace Carubbi.BotEditor.Api.Dialogs
         private void AddListItems(IMessageActivity promptMessage,
            Func<ListItem, Attachment> addAsMultipleAttachmentHandler = null,
            Func<List<ListItem>, Attachment> addAsSingleAttachmentHandler = null)
-        {
+        {   
             promptMessage.AttachmentLayout = promptMessage.Attachments.Count == 0
-                    ? AttachmentLayoutTypes.Carousel
-                    : AttachmentLayoutTypes.List;
+                ? AttachmentLayoutTypes.Carousel
+                : AttachmentLayoutTypes.List;
 
             var items = new List<ListItem>();
             if (DataSource == null)
@@ -159,6 +159,8 @@ namespace Carubbi.BotEditor.Api.Dialogs
         private async Task ResumeAfterListOptionSelectedAsync(IDialogContext context, IAwaitable<object> result)
         {
             var activity = await result as IMessageActivity;
+
+
             ListItem item = null;
             if (int.TryParse(activity.Text, out var numericAnswer))
             {
@@ -169,12 +171,45 @@ namespace Carubbi.BotEditor.Api.Dialogs
                         return lookupIndex == numericAnswer;
                     }).FirstOrDefault();
             }
-            else
+            else 
             {
                 item = _step.Input
                     .FirstOrDefault(x => (x.ButtonValue ?? x.Title).Equals(activity.Text, StringComparison.CurrentCultureIgnoreCase));
-            }
 
+                if (item == null && DataSource?.Count > 0)
+                {
+                    if (_expressionEvaluator == null)
+                    {
+                        CreateExpressionEvaluator();
+                    }
+                    foreach (var listItem in _step.Input)
+                    {
+                        foreach(var dataSourceItem in DataSource)
+                        {
+                            var evaluatedItem = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.ButtonValue ?? listItem.Title), dataSourceItem);
+                            if (evaluatedItem != null && activity.Text.Equals(evaluatedItem.ToString(), StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                item = new ListItem
+                                {
+                                    Title = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.Title), dataSourceItem).ToString(),
+                                    Subtitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.Subtitle), dataSourceItem).ToString(),
+                                    ImageUrl = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.ImageUrl), dataSourceItem).ToString(),
+                                    ButtonTitle = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.ButtonTitle), dataSourceItem).ToString(),
+                                    ButtonValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, listItem.ButtonValue), dataSourceItem).ToString(),
+                                    Action = listItem.Action,
+                                    Order = listItem.Order,
+                                    TargetStepId = listItem.TargetStepId,
+                                }; 
+
+                                break;
+                            }
+                        }
+                        if (item != null)
+                            break;
+                    }
+                }
+            }
+            
             if (item != null)
             {
                 CallTargetDialog(item, context);

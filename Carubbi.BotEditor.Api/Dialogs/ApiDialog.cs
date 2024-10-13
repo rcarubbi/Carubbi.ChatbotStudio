@@ -100,6 +100,9 @@ namespace Carubbi.BotEditor.Api.Dialogs
             var evaluatedValue = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, parameter.Value), item).ToString();
             switch (parameter.Type)
             {
+                case ParameterTypes.QueryString:
+                    request.AddQueryParameter(parameter.Name, evaluatedValue);
+                    break;
                 case ParameterTypes.UrlSegment:
                     request.AddUrlSegment(parameter.Name, evaluatedValue);
                     break;

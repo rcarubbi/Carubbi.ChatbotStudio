@@ -6,6 +6,7 @@
         UrlSegment,
         Header,
         File,
-        JsonObject
+        JsonObject,
+        QueryString
     }
 }

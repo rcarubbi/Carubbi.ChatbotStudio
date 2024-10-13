@@ -2321,6 +2321,10 @@ const jsonBotDefinitionBlocks = [
             "UrlSegment"
           ],
           [
+            "Query string",
+            "QueryString"
+          ],
+          [
             "Header HTTP",
             "Header"
           ],
