@@ -31,7 +31,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integrations", "Integration
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{5B6BDAFE-528E-4C51-AE54-8FAEC830E76C}"
 	ProjectSection(SolutionItems) = preProject
+		.vs\Carubbi.ChatbotStudio\config\applicationhost.config = .vs\Carubbi.ChatbotStudio\config\applicationhost.config
 		BotEditor.bat = BotEditor.bat
+		SetEnvironmentVariables.ps1 = SetEnvironmentVariables.ps1
 	EndProjectSection
 EndProject
 Global

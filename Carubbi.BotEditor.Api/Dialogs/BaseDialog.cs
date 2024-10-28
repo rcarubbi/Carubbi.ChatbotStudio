@@ -51,7 +51,7 @@ namespace Carubbi.BotEditor.Api.Dialogs
                 ? messages.GetRandom()
                 : defaultMessage;
 
-            var messageText = _expressionEvaluator.PrepareMessage(_step.Id, selectedMessage);
+            var messageText = _expressionEvaluator.Evaluate(_expressionEvaluator.PrepareMessage(_step.Id, selectedMessage), null).ToString();
 
             var messageActivity = context.MakeMessage();
 
