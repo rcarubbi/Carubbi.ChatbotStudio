@@ -56,10 +56,12 @@ function BuilderPage(props) {
   const handleNodeSelected = useCallback((nodeName) => {
     const { current: blocklyComponent } = blocklyComponentReference;
     const blockId = getBlockId(nodeName);
+     
     const id = blockId.replace("step", "").split("i")[0];
     blocklyComponent.collapseStepBlocks();
 
     const block = blocklyComponent.getStepBlockById(id);
+   
     if (block) {
       block.select();
       var blockToExpand = block;
@@ -111,15 +113,16 @@ function BuilderPage(props) {
         }
       }, 250);
 
-      const block = ws.getBlockById(event.blockId || event.newValue);
+      const block = ws.getBlockById(event.blockId || event.newValue || event.newElementId);
 
       if (event.type === Blockly.Events.BLOCK_CREATE) {
         setBlockId(block);
       }
-
+       
       if (
         event.type === Blockly.Events.UI ||
-        event.type === Blockly.Events.BLOCK_MOVE
+        event.type === Blockly.Events.BLOCK_MOVE ||
+        event.type === Blockly.Events.SELECTED
       ) {
         if (block) {
           Blockly.Flowchart.SelectedId = block.getFieldValue("Id");
@@ -205,7 +208,7 @@ function BuilderPage(props) {
       setSaving(true);
       botId.current ? await updateBot() : (botId.current = await saveBot());
       setToasterMessage({
-        Message: "Bot salvo com sucesso!",
+        Message: "Bot saved!",
         Color: "success",
       });
       setToasterOpened(true);
@@ -224,7 +227,7 @@ function BuilderPage(props) {
       }
 
       setToasterMessage({
-        Message: `Erro ao salvar o bot: ${errorMessage}`,
+        Message: `Error saving bot: ${errorMessage}`,
         Color: "danger",
       });
       setToasterOpened(true);
@@ -293,7 +296,7 @@ function BuilderPage(props) {
             style={{ width: "102px" }}
             disabled={saving}
           >
-            {saving ? "Salvando..." : "Salvar"}
+            {saving ? "Saving..." : "Save"}
           </Button>
 
           <Button
@@ -301,10 +304,10 @@ function BuilderPage(props) {
             color="info"
             disabled={!botId.current}
           >
-            {showWebchat ? "Ocultar" : "Exibir"} Webchat
+            {showWebchat ? "Hide" : "Show"} Webchat
           </Button>
           <Button onClick={handleBackOnClick} color="transparent">
-            Voltar
+            Back
           </Button>
           <Snackbar
             place="tr"

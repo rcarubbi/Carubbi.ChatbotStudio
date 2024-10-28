@@ -7,8 +7,8 @@
                                                     [Id],
 	                                                [Name], 
 	                                                case dev.count 
-		                                                when 0 then 'Sim' 
-		                                                else 'Não' 
+		                                                when 0 then 'Yes' 
+		                                                else 'No' 
 	                                                end as published 
                                                 FROM BOT b (READPAST)  
 	                                                cross apply (

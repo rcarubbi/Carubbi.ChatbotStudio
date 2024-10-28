@@ -39,7 +39,7 @@ namespace Carubbi.BotEditor.Api.BotOverrides
                     if (Debugger.IsAttached)
                     {
                         var message = _botToUser.MakeMessage();
-                        message.Text = $"Exceção: {errorResp.Response.Content}";
+                        message.Text = $"Error: {errorResp.Response.Content}";
                         await _botToUser.PostAsync(message, token);
                     }
                     else
@@ -60,7 +60,7 @@ namespace Carubbi.BotEditor.Api.BotOverrides
                     if (Debugger.IsAttached)
                     {
                         var message = _botToUser.MakeMessage();
-                        message.Text = $"Exceção: { error.Message}";
+                        message.Text = $"Error: { error.Message}";
                         message.Attachments = new[]
                         {
                             new Attachment(MediaTypeNames.Text.Plain, content: error.StackTrace)

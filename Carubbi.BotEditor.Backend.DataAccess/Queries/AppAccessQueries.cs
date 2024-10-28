@@ -3,21 +3,21 @@
     public static class AppAccessQueries
     {
         public static string GetByClientId { get => "SELECT * FROM AppAccess WHERE ClientId = @ClientId"; }
-        public static string Insert { get => @"
-                                                INSERT INTO AppAccess 
+        public static string Insert { get => @" INSERT INTO AppAccess 
                                                 (
                                                       ClientId
                                                     , AccessKey
                                                     , SecretKey
                                                     , ApplicationName
                                                 ) 
+                                                OUTPUT INSERTED.ID as id
                                                 VALUES 
                                                 (
                                                     @ClientId
                                                     ,@AccessKey
                                                     ,@SecretKey
                                                     ,@ApplicationName
-                                                )"; }
+                                                );"; }
 
         public static string ListAll { get => "SELECT * FROM AppAccess"; }
     }

@@ -102,7 +102,7 @@ namespace Carubbi.BotEditor.Api
         private async Task HandleEndHandoffMessage(Activity activity)
         {
             var connector = GetConnectorClient(activity);
-            
+
             activity.Type = ActivityTypes.Message;
 
             using (var scope = Conversation.Container.BeginLifetimeScope())
@@ -147,9 +147,10 @@ namespace Carubbi.BotEditor.Api
                     {
 
                         var data = userData.GetProperty<object>(step.Id.ToString());
+                        var stepToSet = updatedBotConfig.Steps.Single(x => x.Id == step.Id);
+
                         if (data != null)
                         {
-                            var stepToSet = updatedBotConfig.Steps.Single(x => x.Id == step.Id);
 
                             if (stepToSet is FormStep)
                             {
@@ -176,8 +177,25 @@ namespace Carubbi.BotEditor.Api
                             }
                             else
                             {
-                                stepToSet.GetType().GetProperty(Constants.OUTPUT_PROPERTY_NAME).SetValue(stepToSet, data, null);
+                                var outputProperty = stepToSet.GetType().GetProperty(Constants.OUTPUT_PROPERTY_NAME);
+
+                                if (data is JObject jObject)
+                                {
+                                    
+                                    var outputType = outputProperty.PropertyType;
+                                    var typedOutput = (data as JToken).ToObject(outputType);
+                                    outputProperty.SetValue(stepToSet, typedOutput);
+                                }
+                                else
+                                {
+                                    outputProperty.SetValue(stepToSet, data);
+                                }
                             }
+                        }
+                        else
+                        {
+
+                            stepToSet.GetType().GetProperty(Constants.OUTPUT_PROPERTY_NAME).SetValue(stepToSet, null);
                         }
                     }
                 }

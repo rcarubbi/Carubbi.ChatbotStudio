@@ -77,6 +77,7 @@
     <Compile Include="ConditionInterpreter\OrOperatorExpression.cs" />
     <Compile Include="ConditionInterpreter\RelationalOperatorExpression.cs" />
     <Compile Include="ConditionInterpreter\Token.cs" />
+    <Compile Include="Constants.pt-br.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="CustomCommandConfig.cs" />
     <Compile Include="ExpressionEvaluator.cs" />

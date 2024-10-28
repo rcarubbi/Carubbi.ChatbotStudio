@@ -314,7 +314,7 @@ JsonBotDefinition['confirmstep'] = (block) => {
     const statements_falsestep = statementToArray(JsonBotDefinition.statementToCode(block, 'FalseStep'));
 
     addStepsToLater(statements_truestep.concat(statements_falsestep));
-
+     
     var confirmStep = {
         $type: "Carubbi.BotEditor.Config.Steps.ConfirmStep, Carubbi.BotEditor.Config",
         id: label_id,
@@ -330,7 +330,7 @@ JsonBotDefinition['confirmstep'] = (block) => {
         trueStepId: (statements_truestep.length > 0 && statements_truestep[0].id) || null,
         falseStepId: (statements_falsestep.length > 0 && statements_falsestep[0].id) || null,
     };
-
+    console.log(confirmStep);
     var code = JSON.stringify(confirmStep);
     return code;
 };
@@ -1278,12 +1278,13 @@ JsonBotDefinition['file'] = (block) => {
   };
   
   JsonBotDefinition['simpleconfirmstep'] = function(block) {
-    const text_mensagem = block.getFieldValue('Mensagem');
-    
+   
+    const text_message = block.getFieldValue('Message');
+     
     const label_id = block.getFieldValue("Id");
     const value_question = {
         typed: [
-            text_mensagem
+            text_message
         ]
     };
     const statements_truestep = statementToArray(JsonBotDefinition.statementToCode(block, 'TrueStep'));
@@ -1298,7 +1299,7 @@ JsonBotDefinition['file'] = (block) => {
         trueStepId: (statements_truestep.length > 0 && statements_truestep[0].id) || null,
         falseStepId: (statements_falsestep.length > 0 && statements_falsestep[0].id) || null,
     };
-
+    console.log(confirmStep);
     const code = JSON.stringify(confirmStep);
     return code;
 };

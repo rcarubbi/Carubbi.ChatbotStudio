@@ -2,7 +2,7 @@ import React from "react";
 import "./styles.css";
 
 import Blockly from "blockly/core";
-import locale from "blockly/msg/pt-br";
+import locale from "blockly/msg/en";
 import JsonBotDefinition from "./codeGenerator.js";
 import "./FieldAutoComplete.js";
 
@@ -112,11 +112,7 @@ class BlocklyComponent extends React.Component {
   scrollToBlock = block => {
     const { primaryWorkspace: ws } = this;
     const xy = block.getRelativeToSurfaceXY();
-    const m = ws.getMetrics();
-    ws.scrollbar.set(
-      xy.x * ws.scale - m.contentLeft - m.viewWidth * 0.1,
-      xy.y * ws.scale - m.contentTop - m.viewHeight * 0.1
-    );
+    ws.centerOnBlock(block.id);
   };
 
   onBlockLoaded = event => {

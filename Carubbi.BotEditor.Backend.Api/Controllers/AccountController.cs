@@ -18,8 +18,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             _userService = userService;
         }
 
-        [Authorize(Roles = "Listar Usuários")]
-        // GET api/Usuario
+        [Authorize(Roles = "List Users")]
         public IEnumerable<User> Get()
         {
             return _userService.Users;
@@ -28,7 +27,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
         public IHttpActionResult Get(Guid id)
         {
             var user = _userService.FindByIdAsync(id).Result;
-            if (LoggedUser == user.UserName || Permissions.Contains("Listar Usuários"))
+            if (LoggedUser == user.UserName || Permissions.Contains("List Users"))
                 return Ok(user);
             return Unauthorized();
         }
@@ -43,7 +42,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return BadRequest(string.Join(";", createResult.Errors));
         }
 
-        [ActionName("AlterarSenha")]
+        [ActionName("ChangePassword")]
         public IHttpActionResult ChangePassword(Guid id, [FromBody] string currentPassword, [FromBody] string newPassword)
         {
             var user = _userService.FindByIdAsync(id).Result;
@@ -61,11 +60,11 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return Unauthorized();
         }
 
-        [Authorize(Roles = "Alterar Usuários")]
+        [Authorize(Roles = "Alter Users")]
         public IHttpActionResult Put(Guid id, User updatedUser)
         {
             var user = _userService.FindByIdAsync(id).Result;
-            if (LoggedUser == user.UserName || Permissions.Contains("Alterar Usuários"))
+            if (LoggedUser == user.UserName || Permissions.Contains("Alter Users"))
             {
                 var taskResult = _userService.UpdateAsync(updatedUser).Result;
                 if (taskResult.Succeeded)
@@ -76,8 +75,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             return Unauthorized();
         }
 
-        [Authorize(Roles = "Alterar Usuários")]
-        // DELETE api/Usuario/5
+        [Authorize(Roles = "Alter Users")]
         public IHttpActionResult Delete(Guid id)
         {
             var taskResult = _userService.FindByIdAsync(id).ContinueWith(

@@ -141,7 +141,7 @@ namespace Carubbi.BotEditor.Api.Forms
 
         private string IncludeSummaryText(FormStep step)
         {
-            return step.SummaryText ?? "As informações preenchidas estão corretas? Você pode editá-las se necessário.";
+            return step.SummaryText ?? "Are the filled fields correct? You can amend if needed.";
         }
 
         private string IncludeConfirmationButtonsOnSummary(FormStep step)

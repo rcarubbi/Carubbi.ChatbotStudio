@@ -144,20 +144,20 @@ class AdminNavbarLinks extends React.Component {
                         onClick={this.handleCloseProfile}
                         className={classes.dropdownItem + selectedMenuItemClass}
                       >
-                        Conta
+                        Account
                       </MenuItem>
                       <MenuItem
                         onClick={this.handleCloseProfile}
                         className={classes.dropdownItem + selectedMenuItemClass}
                       >
-                        Configurações
+                        Settings
                       </MenuItem>
                       <Divider light />
                       <MenuItem
                         onClick={this.handleLogout}
                         className={classes.dropdownItem + selectedMenuItemClass}
                       >
-                        Sair
+                        Logoff
                       </MenuItem>
                     </MenuList>
                   </ClickAwayListener>

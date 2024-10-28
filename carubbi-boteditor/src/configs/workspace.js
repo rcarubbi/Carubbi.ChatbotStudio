@@ -1,6 +1,6 @@
 const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="workspaceBlocks" style="display: none">
 <block type="botconfig" id="4O%j;RlG2DOyB1V|eNTE" x="13" y="-412">
-  <field name="Name">Nome</field>
+  <field name="Name">Name</field>
   <statement name="CustomCommands">
     <block type="customcommandconfig" id="2UKr!l]2G1x(i32puDkr" collapsed="true">
       <field name="CommandText">/start</field>
@@ -11,28 +11,28 @@ const workspace = `<xml xmlns="https://developers.google.com/blockly/xml" id="wo
       <field name="CustomMessageReply"></field>
       <next>
         <block type="customcommandconfig" id="KLbrY-m;!L8ch3|,UjSl" collapsed="true">
-          <field name="CommandText">/reiniciar</field>
+          <field name="CommandText">/restart</field>
           <field name="Startup">FALSE</field>
           <field name="ClearDialogStack">TRUE</field>
           <field name="DeleteProfile">FALSE</field>
           <field name="InvalidateCache">FALSE</field>
-          <field name="CustomMessageReply">Certo, vamos recomeçar então...</field>
+          <field name="CustomMessageReply">Right, let's restart then...</field>
           <next>
             <block type="customcommandconfig" id="ykgnq~DeWPbR1whaLAI)" collapsed="true">
-              <field name="CommandText">/esquecer</field>
+              <field name="CommandText">/forget</field>
               <field name="Startup">FALSE</field>
               <field name="ClearDialogStack">TRUE</field>
               <field name="DeleteProfile">TRUE</field>
               <field name="InvalidateCache">FALSE</field>
-              <field name="CustomMessageReply">Certo, seus dados foram excluídos. Vamos recomeçar então...</field>
+              <field name="CustomMessageReply">Right, your data has been deleted. Let's restart...</field>
               <next>
                 <block type="customcommandconfig" id=".o?XDIXSLW^mx2jKKvuP" collapsed="true">
-                  <field name="CommandText">/recarregar</field>
+                  <field name="CommandText">/reload</field>
                   <field name="Startup">FALSE</field>
                   <field name="ClearDialogStack">TRUE</field>
                   <field name="DeleteProfile">TRUE</field>
                   <field name="InvalidateCache">TRUE</field>
-                  <field name="CustomMessageReply">Fluxo recarregado. </field>
+                  <field name="CustomMessageReply">Flow reloaded. </field>
                 </block>
               </next>
             </block>

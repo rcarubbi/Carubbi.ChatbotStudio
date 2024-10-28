@@ -14,8 +14,7 @@ namespace Carubbi.BotEditor.Backend.Api.Controllers
             _repository = repository;
         }
 
-        [Authorize(Roles = "Listar Permissões")]
-        // GET api/Usuario
+        [Authorize(Roles = "List Permissions")]
         public IEnumerable<Permission> Get()
         {
             return _repository.Roles;

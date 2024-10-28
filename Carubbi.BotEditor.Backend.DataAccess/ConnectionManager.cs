@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 
 namespace Carubbi.BotEditor.Backend.DataAccess
 {
-
     public class ConnectionManager : IDisposable
     {
         public ConnectionManager()
@@ -85,8 +84,6 @@ namespace Carubbi.BotEditor.Backend.DataAccess
                     dbConnection.Close();
                     dbConnection.Dispose();
                 }
-
-                dbConnection = null;
             }
         }
     }

@@ -58,7 +58,7 @@ function WebChat({ visible, classes, runtime }) {
     return <>{visible ?
         (<div className={classes.webchatContainer}>
             <CustomInput
-                labelText="Nome do canal"
+                labelText="Channel Name"
                 id="channel"
                 formControlProps={{
                     fullWidth: true

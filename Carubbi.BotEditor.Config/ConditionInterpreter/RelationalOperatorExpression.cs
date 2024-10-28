@@ -2,6 +2,7 @@
 using Microsoft.Bot.Connector;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Carubbi.BotEditor.Config.ConditionInterpreter
 {
@@ -16,7 +17,7 @@ namespace Carubbi.BotEditor.Config.ConditionInterpreter
             var parts = operation.Trim().Split(' ');
             _leftSide = parts[0].Trim();
             _operator = parts[1];
-            _rightSide = parts[2].Trim();
+            _rightSide = parts.Count() == 2? "" : parts[2].Trim();
         }
 
         public bool Interpret(BotConfig botConfig, CompositeStep parentStep, IActivity activity, List<object> dataSource = null)
